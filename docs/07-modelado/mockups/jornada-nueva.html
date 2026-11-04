@@ -248,6 +248,19 @@
         <input class="input mono" id="excluir" placeholder="Ej: AB123 C015">
         <span class="ayuda">Los excluidos siguen apareciendo como pendientes.</span>
       </div>
+      <div class="campo mt">
+        <label>¿Faltaron animales y no sabés cuáles? Poné cuántos en cada categoría (opcional)</label>
+        <div class="tabla-wrap responsive">
+          <table class="tabla">
+          <thead><tr><th>Categoría</th><th class="num">Animales</th><th>Faltaron sin identificar</th></tr></thead>
+          <tbody>
+          <tr><td data-label="Categoría">Vaquillonas</td><td data-label="Animales" class="num">5</td><td data-label="Faltaron sin identificar"><input class="input input-chico" inputmode="numeric" placeholder="0" style="max-width:6rem" aria-label="Faltaron sin identificar en Vaquillonas"></td></tr>
+          <tr><td data-label="Categoría">Novillitos</td><td data-label="Animales" class="num">1</td><td data-label="Faltaron sin identificar"><input class="input input-chico" inputmode="numeric" placeholder="0" style="max-width:6rem" aria-label="Faltaron sin identificar en Novillitos"></td></tr>
+          </tbody>
+          </table>
+        </div>
+        <span class="ayuda">Por ejemplo, "1 vaca". Se carga la vacuna a todos, pero la falta te queda en Pendientes hasta que identifiques al animal, marques que ya lo vacunaste o la cierres.</span>
+      </div>
     </section>
 
     <!-- Desparasitación: excepciones -->
@@ -256,6 +269,22 @@
       <div class="campo mt">
         <label for="excluir-d">¿Alguno no pasó por la manga? Escribí su caravana para excluirlo (opcional)</label>
         <input class="input mono" id="excluir-d" placeholder="Ej: AB123 C015">
+      </div>
+      <div class="campo mt">
+        <label>¿Faltaron animales y no sabés cuáles? Poné cuántos en cada categoría (opcional)</label>
+        <div class="tabla-wrap responsive">
+          <table class="tabla">
+          <thead><tr><th>Categoría</th><th class="num">Animales</th><th>Faltaron sin identificar</th></tr></thead>
+          <tbody>
+          <tr><td data-label="Categoría">Vacas</td><td data-label="Animales" class="num">92</td><td data-label="Faltaron sin identificar"><input class="input input-chico" inputmode="numeric" placeholder="0" style="max-width:6rem" aria-label="Faltaron sin identificar en Vacas"></td></tr>
+          <tr><td data-label="Categoría">Toros</td><td data-label="Animales" class="num">4</td><td data-label="Faltaron sin identificar"><input class="input input-chico" inputmode="numeric" placeholder="0" style="max-width:6rem" aria-label="Faltaron sin identificar en Toros"></td></tr>
+          <tr><td data-label="Categoría">Vaquillonas</td><td data-label="Animales" class="num">5</td><td data-label="Faltaron sin identificar"><input class="input input-chico" inputmode="numeric" placeholder="0" style="max-width:6rem" aria-label="Faltaron sin identificar en Vaquillonas"></td></tr>
+          <tr><td data-label="Categoría">Novillitos</td><td data-label="Animales" class="num">1</td><td data-label="Faltaron sin identificar"><input class="input input-chico" inputmode="numeric" placeholder="0" style="max-width:6rem" aria-label="Faltaron sin identificar en Novillitos"></td></tr>
+          <tr><td data-label="Categoría">Terneros al pie</td><td data-label="Animales" class="num">87</td><td data-label="Faltaron sin identificar"><input class="input input-chico" inputmode="numeric" placeholder="0" style="max-width:6rem" aria-label="Faltaron sin identificar en Terneros al pie"></td></tr>
+          </tbody>
+          </table>
+        </div>
+        <span class="ayuda">Por ejemplo, "1 vaca". Se carga la desparasitación a todos, pero la falta te queda en Pendientes hasta que identifiques al animal, marques que ya lo desparasitaste o la cierres.</span>
       </div>
     </section>
 

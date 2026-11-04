@@ -22,7 +22,7 @@
   </div>
 
   <section class="card">
-    <div class="card-titulo"><h2><span class="semaforo rojo" style="display:inline-block;margin-right:.5rem"></span> Vacunas obligatorias pendientes</h2><span class="badge danger">1</span></div>
+    <div class="card-titulo"><h2><span class="semaforo rojo" style="display:inline-block;margin-right:.5rem"></span> Vacunas obligatorias pendientes</h2><span class="badge danger">2</span></div>
     <ul class="alertas">
       <li>
         <span class="semaforo rojo"></span>
@@ -31,6 +31,14 @@
           <small>Ventana del plan: septiembre a noviembre · vence el 30/11/2026 · categorías pendientes: vaquillonas (5) y novillitos (1)</small>
         </div>
         <a class="btn btn-primario" href="jornada-nueva.html?tipo=vacunar">Vacunar ahora</a>
+      </li>
+      <li>
+        <span class="semaforo rojo"></span>
+        <div class="texto">
+          <strong>Carbunclo — 1 vaca sin vacunar, sin identificar</strong>
+          <small>En la vacunación del 08/10/2026 faltó una vaca y no se sabe cuál · cuando la reconozcas, identificala o marcá que ya la vacunaste</small>
+        </div>
+        <button class="btn" type="button" data-abrir="modal-faltante">Resolver</button>
       </li>
     </ul>
   </section>
@@ -90,6 +98,34 @@
   <p class="chico mt">Los pendientes se calculan solos a partir del plan sanitario, de los eventos y de los cobros cargados. Se van cuando cargás la vacuna, el parto, la castración o el cobro.</p>
 
 </main>
+
+<!-- Modal: resolver animales que faltaron sin identificar (RN-027) -->
+<div class="modal-fondo" id="modal-faltante">
+  <div class="modal" role="dialog" aria-labelledby="t-faltante">
+    <div class="modal-cab"><h2 id="t-faltante">Resolver: 1 vaca sin vacunar contra carbunclo</h2><button class="cerrar" data-cerrar aria-label="Cerrar">×</button></div>
+    <div class="modal-cuerpo">
+      <div class="aviso info" style="margin-bottom:1.25rem"><i data-ico="info"></i><div>En la vacunación del <strong>08/10/2026</strong> faltó <strong>1 vaca</strong> y no se sabe cuál fue. La vacuna quedó cargada a todas las vacas de la jornada, pero esta falta sigue en Pendientes hasta que la resuelvas.</div></div>
+      <div class="campo completo"><label>¿Qué pasó con la vaca que faltó? <span class="req">*</span></label>
+        <div class="opciones">
+          <label><input type="radio" name="faltante" checked> Ya sé cuál es</label>
+          <label><input type="radio" name="faltante"> Ya la vacuné</label>
+          <label><input type="radio" name="faltante"> No se va a vacunar</label>
+        </div>
+      </div>
+      <div class="form-grid mt">
+        <div class="campo"><label>Caravana</label><input class="input mono" placeholder="Ej: AB123 B117"><span class="ayuda">Si es un ternero al pie, buscalo por la madre o por sexo, pelaje y seña. Obligatoria si elegiste "Ya sé cuál es".</span></div>
+        <div class="campo"><label>Fecha en que la vacunaste</label><input class="input" type="date"><span class="ayuda">Solo si elegiste "Ya la vacuné". La caravana es opcional: si no la sabés, solo se cierra la falta.</span></div>
+        <div class="campo"><label>Motivo</label><select class="input"><option>Se vendió</option><option>Se murió</option><option>No se va a vacunar</option><option>Otro</option></select><span class="ayuda">Solo si elegiste "No se va a vacunar".</span></div>
+        <div class="campo"><label>Observaciones</label><input class="input" placeholder="Opcional"></div>
+      </div>
+      <p class="chico mt">Si elegís "Ya sé cuál es", la vacuna de esa vaca en esta jornada queda como <strong>no aplicada</strong> y pasa a pendiente de carbunclo. Todo queda en la auditoría.</p>
+    </div>
+    <div class="modal-pie">
+      <button class="btn" data-cerrar>Cancelar</button>
+      <button class="btn btn-primario" data-guardar="Falta resuelta">Guardar</button>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>

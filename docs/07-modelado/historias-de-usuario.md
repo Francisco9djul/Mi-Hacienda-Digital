@@ -209,6 +209,8 @@
 - **Criterios de aceptación:**
   - Elijo la vacuna con su **marca**, la **serie** y el **vencimiento** de la serie, y una, varias o **todas las categorías**, con la **fecha de cada categoría** (por ejemplo, vacas el 08/10 y vaquillonas el 09/10).
   - La vacuna queda registrada para todos los animales de esas categorías (RN-023): no tengo que cargar caravanas. Puedo excluir a los que no pasaron por la manga.
+  - Si sé que faltaron animales pero no vi cuáles, cargo **la cantidad por categoría** (por ejemplo, "1 vaca") sin identificarlos (RN-027). No puedo poner más de los que hay en esa categoría.
+  - Ese faltante me queda como pendiente hasta que lo resuelvo: puedo **identificar** después qué animal era (y queda pendiente de vacunar), marcar que **ya lo vacuné** o **cerrarlo** con un motivo.
   - No se carga la dosis. A un animal suelto lo puedo vacunar desde su ficha.
   - Si el producto tiene un intervalo de refuerzo, se calcula la fecha de la próxima dosis.
 
@@ -218,7 +220,7 @@
 - **Criterios de aceptación:**
   - El tratamiento es **individual**: elijo el animal por su caravana (o, si es un ternero al pie, por la madre o por sexo, pelaje y seña) y registro diagnóstico, producto, dosis, duración y fecha de inicio.
   - Al guardar puedo pedir que me avise para revisarlo en una cantidad de días (HU-44).
-  - La desparasitación es **masiva**: elijo una, varias o todas las categorías, con la fecha de cada una (RN-023).
+  - La desparasitación es **masiva**: elijo una, varias o todas las categorías, con la fecha de cada una (RN-023). Los que no pasaron por la manga los excluyo por caravana o, si no sé cuáles fueron, por cantidad (RN-027), igual que en la vacunación.
   - El período de retiro se completa desde el producto y puede modificarse.
   - El animal queda marcado como "no apto para venta o faena" hasta que termina el retiro (RN-009).
   - En una desparasitación indico contra qué es (internos, mosca, piojo, sarna) y el producto con su forma de aplicación (inyectable, pour-on, baño).
@@ -243,7 +245,7 @@
 - RF-019 · Prioridad **M** · 5 pts
 - **Criterios de aceptación:**
   - Las alertas aparecen en el tablero de inicio, agrupadas por tipo y con la cantidad de animales.
-  - Muestran: próximas dosis (con 30 días de anticipación por defecto, RN-010), dosis atrasadas y fin de retiro.
+  - Muestran: próximas dosis (con 30 días de anticipación por defecto, RN-010), dosis atrasadas, fin de retiro y animales que faltaron vacunar o desparasitar sin identificar ("Carbunclo: 1 vaca sin vacunar, sin identificar", RN-027), con un botón para resolverlos.
   - Las vacunas y análisis obligatorios (aftosa, carbunclo, brucelosis, raspaje de toros) se destacan.
   - Desde una alerta puedo iniciar directamente la jornada de vacunación con esos animales ya seleccionados.
 
@@ -375,7 +377,7 @@
 **Como** productor, **quiero** ver qué porcentaje del rodeo tiene cada vacuna del plan, **para** saber si cumplí.
 - RF-031 · Prioridad **S** · 3 pts
 - **Criterios de aceptación:**
-  - Por cada producto del plan, veo los animales vacunados y pendientes de cada categoría, con el porcentaje.
+  - Por cada producto del plan, veo los animales vacunados y pendientes de cada categoría, con el porcentaje. Los que faltaron sin identificar no cuentan como vacunados ("49 de 50 · 1 sin identificar", RN-027).
   - Puedo abrir el listado de pendientes.
 
 ### HU-32 — Filtrar reportes
@@ -462,3 +464,4 @@
 | 0.10 | 2026-10-10 | Francisco Garcia Martinez | Tratamiento individual y desparasitación por categoría (HU-17); marca, serie y vencimiento (HU-16); búsqueda por serie (HU-20); nueva HU-44 (aviso de revisión) |
 | 0.11 | 2026-11-03 | Francisco Garcia Martinez | Cuaderno del productor: corregir madre (HU-13), castración (HU-15), servicio individual (HU-22), mellizos (HU-24), conteo de partos (HU-29), desbaste, comisión y cuotas (HU-41), compra con ternero (HU-43); nuevas HU-45 (apartados) y HU-46 (alimentación) |
 | 0.12 | 2026-11-03 | Francisco Garcia Martinez | Datos del productor reemplazados por datos ficticios (nombre, establecimiento, ubicación, códigos SENASA y montos) para publicar el repositorio |
+| 0.13 | 2026-11-04 | Francisco Garcia Martinez | Animales que faltaron vacunar o desparasitar sin identificar (RN-027) en HU-16, HU-17, HU-19 y HU-31 |

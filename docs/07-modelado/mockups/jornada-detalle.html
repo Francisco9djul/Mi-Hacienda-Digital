@@ -26,11 +26,24 @@
   </div>
 
   <div class="grilla g-4">
-    <div class="card kpi"><div class="etiqueta">Animales</div><div class="valor">96</div><div class="detalle">faltan 6 (vaquillonas y novillito)</div></div>
+    <div class="card kpi"><div class="etiqueta">Animales</div><div class="valor">96</div><div class="detalle">faltan 6 (vaquillonas y novillito) · 1 vaca sin identificar</div></div>
     <div class="card kpi"><div class="etiqueta">Producto</div><div class="valor" style="font-size:1.5rem;margin:.9rem 0">Carbunclo</div><div class="detalle">Laboratorio Sur · obligatoria</div></div>
     <div class="card kpi"><div class="etiqueta">Categorías</div><div class="valor" style="font-size:1.25rem;margin:.9rem 0">Vacas 92 · Toros 4</div><div class="detalle">las dos el 08/10 · serie 4410 (vence 03/2027)</div></div>
     <div class="card kpi"><div class="etiqueta">Próxima</div><div class="valor" style="font-size:1.5rem;margin:.9rem 0">Sep – nov 2027</div><div class="detalle">según plan sanitario</div></div>
   </div>
+
+  <section class="card mt">
+    <div class="card-titulo"><h2>Faltaron sin identificar</h2><span class="badge danger">1 pendiente</span></div>
+    <div class="tabla-wrap responsive">
+      <table class="tabla">
+        <thead><tr><th>Categoría</th><th class="num">Faltaron</th><th class="num">Resueltos</th><th>Estado</th><th></th></tr></thead>
+        <tbody>
+          <tr><td data-label="Categoría">Vacas</td><td data-label="Faltaron" class="num">1</td><td data-label="Resueltos" class="num">0</td><td data-label="Estado"><span class="badge danger">Pendiente</span></td><td class="sin-label"><button class="btn btn-chico" type="button" data-abrir="modal-faltante">Resolver</button></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="chico mt">La vacuna se cargó a todas las vacas. Cuando sepas cuál faltó, identificala: su registro pasa a <strong>no aplicado</strong>.</p>
+  </section>
 
   <section class="card mt">
     <div class="card-titulo">
@@ -54,6 +67,34 @@
   </section>
 
 </main>
+
+<!-- Modal: resolver animales que faltaron sin identificar (RN-027) -->
+<div class="modal-fondo" id="modal-faltante">
+  <div class="modal" role="dialog" aria-labelledby="t-faltante">
+    <div class="modal-cab"><h2 id="t-faltante">Resolver: 1 vaca sin vacunar contra carbunclo</h2><button class="cerrar" data-cerrar aria-label="Cerrar">×</button></div>
+    <div class="modal-cuerpo">
+      <div class="aviso info" style="margin-bottom:1.25rem"><i data-ico="info"></i><div>En la vacunación del <strong>08/10/2026</strong> faltó <strong>1 vaca</strong> y no se sabe cuál fue. La vacuna quedó cargada a todas las vacas de la jornada, pero esta falta sigue en Pendientes hasta que la resuelvas.</div></div>
+      <div class="campo completo"><label>¿Qué pasó con la vaca que faltó? <span class="req">*</span></label>
+        <div class="opciones">
+          <label><input type="radio" name="faltante" checked> Ya sé cuál es</label>
+          <label><input type="radio" name="faltante"> Ya la vacuné</label>
+          <label><input type="radio" name="faltante"> No se va a vacunar</label>
+        </div>
+      </div>
+      <div class="form-grid mt">
+        <div class="campo"><label>Caravana</label><input class="input mono" placeholder="Ej: AB123 B117"><span class="ayuda">Si es un ternero al pie, buscalo por la madre o por sexo, pelaje y seña. Obligatoria si elegiste "Ya sé cuál es".</span></div>
+        <div class="campo"><label>Fecha en que la vacunaste</label><input class="input" type="date"><span class="ayuda">Solo si elegiste "Ya la vacuné". La caravana es opcional: si no la sabés, solo se cierra la falta.</span></div>
+        <div class="campo"><label>Motivo</label><select class="input"><option>Se vendió</option><option>Se murió</option><option>No se va a vacunar</option><option>Otro</option></select><span class="ayuda">Solo si elegiste "No se va a vacunar".</span></div>
+        <div class="campo"><label>Observaciones</label><input class="input" placeholder="Opcional"></div>
+      </div>
+      <p class="chico mt">Si elegís "Ya sé cuál es", la vacuna de esa vaca en esta jornada queda como <strong>no aplicada</strong> y pasa a pendiente de carbunclo. Todo queda en la auditoría.</p>
+    </div>
+    <div class="modal-pie">
+      <button class="btn" data-cerrar>Cancelar</button>
+      <button class="btn btn-primario" data-guardar="Falta resuelta">Guardar</button>
+    </div>
+  </div>
+</div>
 
 <div class="modal-fondo" id="modal-anular">
   <div class="modal" role="dialog">
