@@ -41,17 +41,6 @@ Queda para una **v2.0**: versión móvil para cargar en la manga sin señal y le
 
 Detalle en el [cronograma](docs/06-cronograma.md) y la [EDT](docs/05-edt.md).
 
-## Mockups
-
-Son 19 pantallas HTML estáticas (P01 a P19), navegables entre sí y con datos de ejemplo, en [`docs/07-modelado/mockups/`](docs/07-modelado/mockups/). GitHub no muestra los HTML como páginas, así que para verlas hay que clonar el repositorio y abrir `docs/07-modelado/mockups/index.html` en el navegador (no hace falta servidor):
-
-```powershell
-git clone https://github.com/Francisco9djul/mi-hacienda-digital.git
-start mi-hacienda-digital\docs\07-modelado\mockups\index.html
-```
-
-La lista de pantallas y su relación con los requisitos está en [mockups.md](docs/07-modelado/mockups.md).
-
 ## Documentación
 
 Toda la documentación está en [`docs/`](docs/README.md), Los diagramas están en Mermaid y GitHub los muestra directamente.
