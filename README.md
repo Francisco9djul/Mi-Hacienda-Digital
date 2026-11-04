@@ -4,15 +4,6 @@
 
 Aplicación web para la gestión integral del rodeo bovino de un establecimiento ganadero de cría de la Provincia de Buenos Aires (en la documentación, **Los Álamos**). Reemplaza el cuaderno de campo por un registro centralizado de cada animal, con alertas sanitarias y reproductivas y reportes del rodeo.
 
-Proyecto de **Práctica Supervisada** — Ingeniería en Sistemas de Información, UTN Facultad Regional La Plata.
-
-| | |
-|---|---|
-| Alumno | Francisco Garcia Martinez |
-| Docente tutor | Osvaldo Falabella |
-| Cliente | Productor ganadero y veterinario (en la documentación, Juan Pérez) |
-| Carga horaria | 230 horas, de octubre de 2026 a marzo de 2027 |
-
 ## Estado actual
 
 **Etapa 1 de 7: relevamiento y análisis de requerimientos.** Todavía no hay código: el repositorio contiene la documentación de análisis y diseño y los mockups navegables.
@@ -32,7 +23,7 @@ Proyecto de **Práctica Supervisada** — Ingeniería en Sistemas de Informació
 | **M5 — Reportes** | Tablero de inicio, stock por categoría, índices de preñez, parición y destete, mortalidad y enfermedades de terneros, ventas y cobros pendientes. |
 | **M6 — Configuración** | Datos del establecimiento, catálogos (razas, categorías, productos, toros, enfermedades) y respaldo. |
 
-Queda para una **v2.0**, fuera de la Práctica Supervisada: versión móvil para cargar en la manga sin señal y lectura de caravanas electrónicas con bastón.
+Queda para una **v2.0**: versión móvil para cargar en la manga sin señal y lectura de caravanas electrónicas con bastón.
 
 **Plataforma:** aplicación web para PC (Windows y Chrome), con base de datos relacional (PostgreSQL como opción preferida) y hosting en planes gratuitos. El stack se elige en la etapa 2 entre .NET, JavaScript/TypeScript y Python ([comparativa](docs/02-plan-del-proyecto.md)).
 
@@ -63,7 +54,7 @@ La lista de pantallas y su relación con los requisitos está en [mockups.md](do
 
 ## Documentación
 
-Toda la documentación está en [`docs/`](docs/README.md), organizada según la guía de trabajos prácticos de la cátedra. Los diagramas están en Mermaid y GitHub los muestra directamente.
+Toda la documentación está en [`docs/`](docs/README.md), Los diagramas están en Mermaid y GitHub los muestra directamente.
 
 | Documento | Contenido |
 |---|---|
