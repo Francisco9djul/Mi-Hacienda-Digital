@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jornadas — Mi Hacienda Digital</title>
+  <link rel="stylesheet" href="assets/estilos.css">
+  <script src="assets/app.js" defer></script>
+</head>
+<body data-layout="app" data-nav="jornadas" data-codigo="P10">
+
+<main class="contenido">
+
+  <div class="encabezado">
+    <div>
+      <h1>Jornadas</h1>
+      <p>Todo lo que se cargó para varios animales a la vez, de la más nueva a la más vieja.</p>
+    </div>
+    <div class="acciones">
+      <a class="btn btn-primario btn-grande" href="jornada-nueva.html"><i data-ico="mas"></i> Nueva jornada</a>
+    </div>
+  </div>
+
+  <form class="filtros">
+    <div class="campo"><label>Tipo</label><select class="input"><option>Todas</option><option>Vacunación</option><option>Desparasitación</option><option>Enfermos</option><option>Análisis</option><option>Tacto</option><option>Servicio</option><option>Castración</option><option>Destete</option><option>Venta</option><option>Compra</option><option>Pesada</option><option>Alimentación</option></select></div>
+    <div class="campo"><label>Desde</label><input class="input" type="date" value="2026-01-01"></div>
+    <div class="campo"><label>Hasta</label><input class="input" type="date" value="2026-10-10"></div>
+    <button class="btn" type="reset">Limpiar</button>
+  </form>
+
+  <div class="tabla-wrap responsive">
+    <table class="tabla">
+      <thead><tr><th>Fecha</th><th>Tipo</th><th>Descripción</th><th class="num">Animales</th><th>Cargó</th><th></th></tr></thead>
+      <tbody>
+        <tr><td data-label="Fecha">08/10/2026</td><td data-label="Tipo"><span class="badge ok">💉 Vacunación</span></td><td data-label="Descripción">Carbunclo — vacas y toros (serie 4410)</td><td data-label="Animales" class="num">96</td><td data-label="Cargó">Juan</td><td class="sin-label"><a class="btn btn-chico" href="jornada-detalle.html">Ver</a></td></tr>
+        <tr><td data-label="Fecha">08/10/2026</td><td data-label="Tipo"><span class="badge tierra">🌾 Alimentación</span></td><td data-label="Descripción">1 rollo al rodeo general · quedan 9 rollos</td><td data-label="Animales" class="num">—</td><td data-label="Cargó">Juan</td><td class="sin-label"><a class="btn btn-chico" href="alimentacion.html">Ver</a></td></tr>
+        <tr><td data-label="Fecha">05/10/2026</td><td data-label="Tipo"><span class="badge tierra">🚛 Venta</span></td><td data-label="Descripción">4 vacas viejas (apartadas) · 1.640 kg · neto $ 4.920.000 · 2 cuotas pendientes</td><td data-label="Animales" class="num">4</td><td data-label="Cargó">Juan</td><td class="sin-label"><a class="btn btn-chico" href="reportes.html#ventas">Ver</a></td></tr>
+        <tr><td data-label="Fecha">05/10/2026</td><td data-label="Tipo"><span class="badge danger">🤒 Enfermos</span></td><td data-label="Descripción">Diarrea — 3 terneros al pie · causa probable: frío y lluvia</td><td data-label="Animales" class="num">3</td><td data-label="Cargó">Juan</td><td class="sin-label"><a class="btn btn-chico" href="jornada-detalle.html">Ver</a></td></tr>
+        <tr><td data-label="Fecha">25/09/2026</td><td data-label="Tipo"><span class="badge info">✂️ Castración</span></td><td data-label="Descripción">Segunda tanda de terneros machos</td><td data-label="Animales" class="num">15</td><td data-label="Cargó">Juan</td><td class="sin-label"><a class="btn btn-chico" href="jornada-detalle.html">Ver</a></td></tr>
+        <tr><td data-label="Fecha">27/08/2026</td><td data-label="Tipo"><span class="badge info">🐂 Servicio</span></td><td data-label="Descripción">Temporada 2026-2027 — 4 toros · hasta el 11/01/2027</td><td data-label="Animales" class="num">97</td><td data-label="Cargó">Juan</td><td class="sin-label"><a class="btn btn-chico" href="reproduccion.html#temporada">Ver</a></td></tr>
+        <tr><td data-label="Fecha">20/07/2026</td><td data-label="Tipo"><span class="badge info">✂️ Castración</span></td><td data-label="Descripción">Primera tanda de terneros machos</td><td data-label="Animales" class="num">28</td><td data-label="Cargó">Juan</td><td class="sin-label"><a class="btn btn-chico" href="jornada-detalle.html">Ver</a></td></tr>
+        <tr><td data-label="Fecha">15/07/2026</td><td data-label="Tipo"><span class="badge info">🧪 Análisis</span></td><td data-label="Descripción">Raspaje de toros · 4 negativos</td><td data-label="Animales" class="num">4</td><td data-label="Cargó">Juan</td><td class="sin-label"><a class="btn btn-chico" href="jornada-detalle.html">Ver</a></td></tr>
+        <tr><td data-label="Fecha">20/05/2026</td><td data-label="Tipo"><span class="badge tierra">🚛 Venta</span></td><td data-label="Descripción">7 vacas vacías · 2.730 kg · neto $ 7.862.400 · cobrada</td><td data-label="Animales" class="num">7</td><td data-label="Cargó">Juan</td><td class="sin-label"><a class="btn btn-chico" href="reportes.html#ventas">Ver</a></td></tr>
+        <tr><td data-label="Fecha">25/04/2026</td><td data-label="Tipo"><span class="badge tierra">🚛 Venta</span></td><td data-label="Descripción">Segunda tanda de terneros · 6.440 kg (3 % desbaste, prom. 189 kg) · neto $ 29.235.960 · cobrada</td><td data-label="Animales" class="num">33</td><td data-label="Cargó">Juan</td><td class="sin-label"><a class="btn btn-chico" href="reportes.html#ventas">Ver</a></td></tr>
+        <tr><td data-label="Fecha">14/04/2026</td><td data-label="Tipo"><span class="badge ok">🩺 Tacto</span></td><td data-label="Descripción">Tacto general · 90 preñadas, 7 vacías</td><td data-label="Animales" class="num">97</td><td data-label="Cargó">Juan</td><td class="sin-label"><a class="btn btn-chico" href="jornada-detalle.html">Ver</a></td></tr>
+        <tr><td data-label="Fecha">18/03/2026</td><td data-label="Tipo"><span class="badge tierra">🛒 Compra</span></td><td data-label="Descripción">4 vacas de 3 años con su ternero al pie · remate · cheque</td><td data-label="Animales" class="num">8</td><td data-label="Cargó">Juan</td><td class="sin-label"><a class="btn btn-chico" href="reportes.html#ventas">Ver</a></td></tr>
+        <tr><td data-label="Fecha">21/02/2026</td><td data-label="Tipo"><span class="badge tierra">🚛 Venta</span></td><td data-label="Descripción">Primera tanda de terneros (26 ♂ y 24 ♀) · 11.300 kg (3 % desbaste, prom. 219 kg) · neto $ 42.090.240 · cobrada</td><td data-label="Animales" class="num">50</td><td data-label="Cargó">Juan</td><td class="sin-label"><a class="btn btn-chico" href="reportes.html#ventas">Ver</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="pie-tabla">
+    <span class="chico">Mostrando 13 de 58 jornadas</span>
+    <div class="paginado"><a href="#">◀</a><span class="actual">1</span><a href="#">2</a><a href="#">3</a><a href="#">4</a><a href="#">5</a><a href="#">▶</a></div>
+  </div>
+
+</main>
+
+</body>
+</html>

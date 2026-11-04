@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Alimentación — Mi Hacienda Digital</title>
+  <link rel="stylesheet" href="assets/estilos.css">
+  <script src="assets/app.js" defer></script>
+</head>
+<body data-layout="app" data-nav="alimentacion" data-codigo="P19">
+
+<main class="contenido">
+
+  <div class="encabezado">
+    <div>
+      <h1>Alimentación y reservas</h1>
+      <p>Lo que se le da de comer al rodeo y cuánto queda de rollos y silo. Funcionalidad deseable (RF-046).</p>
+    </div>
+    <div class="acciones">
+      <button class="btn" type="button" data-abrir="modal-entrada"><i data-ico="mas"></i> Entrada de rollos o silo</button>
+      <a class="btn btn-primario" href="jornada-nueva.html?tipo=alimentar"><i data-ico="mas"></i> Cargar alimentación</a>
+    </div>
+  </div>
+
+  <div class="grilla g-3">
+    <div class="card kpi"><div class="etiqueta">Rollos</div><div class="valor" style="color:var(--amarillo)">9</div><div class="detalle">alcanzan para 9 días a 1 rollo por día</div></div>
+    <div class="card kpi"><div class="etiqueta">Silo de maíz</div><div class="valor">2</div><div class="detalle">bolsas sin abrir</div></div>
+    <div class="card kpi"><div class="etiqueta">Parcela en uso</div><div class="valor" style="font-size:1.5rem;margin:.9rem 0">Avena · 3.ª</div><div class="detalle">vacas paridas desde el 05/10</div></div>
+  </div>
+
+  <section class="card mt">
+    <div class="card-titulo"><h2>Últimas entregas</h2></div>
+    <div class="tabla-wrap responsive">
+      <table class="tabla">
+        <thead><tr><th>Fecha</th><th>Qué</th><th class="num">Cantidad</th><th>A quién</th><th>Stock después</th></tr></thead>
+        <tbody>
+          <tr><td data-label="Fecha">08/10/2026</td><td data-label="Qué">Rollo</td><td data-label="Cantidad" class="num">1</td><td data-label="A quién">Rodeo general</td><td data-label="Stock">9 rollos</td></tr>
+          <tr><td data-label="Fecha">07/10/2026</td><td data-label="Qué">Rollo</td><td data-label="Cantidad" class="num">1</td><td data-label="A quién">Rodeo general</td><td data-label="Stock">10 rollos</td></tr>
+          <tr><td data-label="Fecha">05/10/2026</td><td data-label="Qué">Parcela de avena (3.ª)</td><td data-label="Cantidad" class="num">—</td><td data-label="A quién">Vacas paridas con sus terneros</td><td data-label="Stock">—</td></tr>
+          <tr><td data-label="Fecha">04/10/2026</td><td data-label="Qué">Silo de maíz</td><td data-label="Cantidad" class="num">1 bolsa</td><td data-label="A quién">Vaquillonas y toros</td><td data-label="Stock">2 bolsas</td></tr>
+          <tr><td data-label="Fecha">01/10/2026</td><td data-label="Qué">Rollo</td><td data-label="Cantidad" class="num">1</td><td data-label="A quién">Rodeo general</td><td data-label="Stock">11 rollos</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="chico mt">La siembra, la cosecha y la venta de granos no se registran: solo lo que come la hacienda.</p>
+  </section>
+
+</main>
+
+<div class="modal-fondo" id="modal-entrada">
+  <div class="modal" role="dialog" style="max-width:480px">
+    <div class="modal-cab"><h2>Entrada de reservas</h2><button class="cerrar" data-cerrar aria-label="Cerrar">×</button></div>
+    <div class="modal-cuerpo">
+      <div class="form-grid">
+        <div class="campo"><label>Fecha</label><input class="input" type="date" value="2026-10-10"></div>
+        <div class="campo"><label>Qué</label><select class="input"><option selected>Rollos</option><option>Silo (bolsas)</option></select></div>
+        <div class="campo completo"><label>Cantidad <span class="req">*</span></label><input class="input" value="20"></div>
+      </div>
+    </div>
+    <div class="modal-pie"><button class="btn" data-cerrar>Cancelar</button><button class="btn btn-primario" data-guardar="Stock actualizado: 29 rollos">Guardar</button></div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Plan sanitario — Mi Hacienda Digital</title>
+  <link rel="stylesheet" href="assets/estilos.css">
+  <script src="assets/app.js" defer></script>
+</head>
+<body data-layout="app" data-nav="sanidad" data-codigo="P14">
+
+<main class="contenido">
+
+  <a class="volver" href="sanidad.html"><i data-ico="volver"></i> Volver a Sanidad</a>
+
+  <div class="encabezado">
+    <div>
+      <h1>Plan sanitario</h1>
+      <p>Qué vacuna se da, a quién y en qué meses. Con esto se calculan los pendientes. Viene cargado con el plan de Los Álamos.</p>
+    </div>
+    <div class="acciones">
+      <select class="input" style="width:auto;min-height:46px" aria-label="Año"><option>2026</option><option>2027</option></select>
+      <button class="btn" type="button">Copiar del año anterior</button>
+      <button class="btn btn-primario" type="button" data-abrir="modal-item"><i data-ico="mas"></i> Agregar al plan</button>
+    </div>
+  </div>
+
+  <div class="leyenda" style="margin-bottom:1rem">
+    <span><i style="background:var(--verde)"></i> Obligatoria (todos los años)</span>
+    <span><i style="background:var(--verde-claro);border:1px solid #b8d6be"></i> Del plan del productor</span>
+    <span><i style="background:#eee;border:1px dashed #aaa"></i> Inactiva (no genera pendientes)</span>
+    <span><i style="background:#fff8e5;border:1px solid #ecd393"></i> Mes actual</span>
+  </div>
+
+  <div class="tabla-wrap">
+    <table class="tabla plan">
+      <thead>
+        <tr><th>Vacuna · a quién</th><th>Ene</th><th>Feb</th><th>Mar</th><th>Abr</th><th>May</th><th>Jun</th><th>Jul</th><th>Ago</th><th>Sep</th><th class="mes-actual">Oct</th><th>Nov</th><th>Dic</th><th></th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Aftosa</strong> · Todas las categorías</td><td></td><td></td><td><span class="dosis obl">Única</span></td><td><span class="dosis obl">Única</span></td><td></td><td></td><td></td><td></td><td></td><td class="mes-actual"></td><td></td><td></td><td><button class="btn-link btn" data-abrir="modal-item">Editar</button></td></tr>
+        <tr style="opacity:.55"><td><strong>Aftosa</strong> · Terneros <span class="badge">Estratégica</span><br><small>solo si se venden antes</small></td><td></td><td></td><td></td><td></td><td></td><td><span class="dosis" style="background:#eee;border:1px dashed #aaa">Única</span></td><td></td><td></td><td></td><td class="mes-actual"></td><td></td><td></td><td><button class="btn-link btn" data-abrir="modal-item">Activar</button></td></tr>
+        <tr><td><strong>Diarrea de los terneros (Rotatec)</strong> · Vacas preñadas</td><td></td><td></td><td><span class="dosis">1.ª</span></td><td><span class="dosis">1.ª</span></td><td><span class="dosis">2.ª</span></td><td></td><td></td><td></td><td></td><td class="mes-actual"></td><td></td><td></td><td><button class="btn-link btn" data-abrir="modal-item">Editar</button></td></tr>
+        <tr style="opacity:.55"><td><strong>Neumonía</strong> · Terneros <span class="badge">Inactiva</span></td><td></td><td></td><td></td><td></td><td></td><td></td><td><span class="dosis" style="background:#eee;border:1px dashed #aaa">1.ª</span></td><td><span class="dosis" style="background:#eee;border:1px dashed #aaa">2.ª</span></td><td></td><td class="mes-actual"></td><td></td><td></td><td><button class="btn-link btn" data-abrir="modal-item">Activar</button></td></tr>
+        <tr><td><strong>Mancha-gangrena-enterotoxemia</strong> · Terneros</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="mes-actual"><span class="dosis">1.ª</span></td><td><span class="dosis">1.ª</span></td><td><span class="dosis">2.ª</span></td><td><button class="btn-link btn" data-abrir="modal-item">Editar</button></td></tr>
+        <tr><td><strong>Carbunclo</strong> · Vacas, toros, vaquillonas, novillos, novillitos ≥ 8 m</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><span class="dosis obl">Única</span></td><td class="mes-actual"><span class="dosis obl">Única</span></td><td><span class="dosis obl">Única</span></td><td></td><td><button class="btn-link btn" data-abrir="modal-item">Editar</button></td></tr>
+        <tr><td><strong>Brucelosis</strong> · Terneras de 3 a 8 meses</td><td><span class="dosis obl">Única</span></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="mes-actual"></td><td></td><td><span class="dosis obl">Única</span></td><td><button class="btn-link btn" data-abrir="modal-item">Editar</button></td></tr>
+        <tr><td colspan="14" style="background:var(--gris-claro)"><strong>Desparasitaciones</strong> · todo el rodeo</td></tr>
+        <tr><td><strong>Mosca de los cuernos</strong> · pour-on o baño<br><small>3 aplicaciones como mínimo</small></td><td><span class="dosis">✔</span></td><td><span class="dosis">✔</span></td><td><span class="dosis">✔</span></td><td></td><td></td><td></td><td></td><td></td><td></td><td class="mes-actual"></td><td></td><td><span class="dosis">✔</span></td><td><button class="btn-link btn" data-abrir="modal-item">Editar</button></td></tr>
+        <tr><td><strong>Piojo</strong> · pour-on, aspersión o inyectable<br><small>2 aplicaciones como mínimo</small></td><td></td><td></td><td></td><td></td><td><span class="dosis">✔</span></td><td><span class="dosis">✔</span></td><td><span class="dosis">✔</span></td><td><span class="dosis">✔</span></td><td></td><td class="mes-actual"></td><td></td><td></td><td><button class="btn-link btn" data-abrir="modal-item">Editar</button></td></tr>
+        <tr style="opacity:.55"><td><strong>Parásitos internos</strong> · inyectable, rotando drogas <span class="badge">Estratégica</span><br><small>1 o 2 veces al año, cuando hace falta</small></td><td colspan="12" style="text-align:center"><span class="dosis" style="background:#eee;border:1px dashed #aaa">Se carga cuando se hace</span></td><td><button class="btn-link btn" data-abrir="modal-item">Editar</button></td></tr>
+        <tr><td colspan="14" style="background:var(--gris-claro)"><strong>Análisis</strong></td></tr>
+        <tr><td><strong>Raspaje</strong> (venéreas) · Toros<br><small>obligatorio, anual, antes del servicio</small></td><td></td><td></td><td></td><td></td><td><span class="dosis obl">✔</span></td><td><span class="dosis obl">✔</span></td><td><span class="dosis obl">✔</span></td><td></td><td></td><td class="mes-actual"></td><td></td><td></td><td><button class="btn-link btn" data-abrir="modal-item">Editar</button></td></tr>
+        <tr><td><strong>Sangrado</strong> (brucelosis) · Vacas y toros<br><small>año por medio · cualquier mes · próximo: 2027</small></td><td colspan="12" style="text-align:center"><span class="dosis">Cualquier mes del año</span></td><td><button class="btn-link btn" data-abrir="modal-item">Editar</button></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="aviso info mt"><i data-ico="info"></i><div>Cada vacuna tiene una <strong>ventana de meses</strong> (puede cruzar el año, como la brucelosis). Los pendientes aparecen <strong>30 días antes</strong> de que se abra la ventana. Una 2.ª dosis se pide solo a los animales que recibieron la 1.ª.</div></div>
+  <div class="aviso warn mt"><i data-ico="aviso"></i><div>La <strong>sarna</strong> no va en el plan: se carga cuando aparece.</div></div>
+
+</main>
+
+<div class="modal-fondo" id="modal-item">
+  <div class="modal" role="dialog">
+    <div class="modal-cab"><h2>Vacuna o análisis del plan 2026</h2><button class="cerrar" data-cerrar aria-label="Cerrar">×</button></div>
+    <div class="modal-cuerpo">
+      <div class="form-grid">
+        <div class="campo"><label>Vacuna <span class="req">*</span></label><select class="input"><option>Aftosa</option><option>Diarrea de los terneros (Rotatec)</option><option>Neumonía</option><option>Mancha-gangrena-enterotoxemia</option><option selected>Carbunclo</option><option>Brucelosis</option><option>Raspaje (análisis)</option><option>Sangrado (análisis)</option></select></div>
+        <div class="campo"><label>Dosis</label><select class="input"><option selected>Única</option><option>1.ª dosis</option><option>2.ª dosis</option></select><span class="ayuda">La 2.ª dosis se pide solo a los que recibieron la 1.ª.</span></div>
+        <div class="campo"><label>Desde el mes <span class="req">*</span></label><select class="input"><option selected>Septiembre</option><option>Octubre</option></select></div>
+        <div class="campo"><label>Hasta el mes <span class="req">*</span></label><select class="input"><option selected>Noviembre</option><option>Diciembre</option><option>Enero (año siguiente)</option></select></div>
+        <div class="campo completo"><span class="label">Categorías <span class="req">*</span></span>
+          <div class="opciones"><label><input type="checkbox" checked> Vacas</label><label><input type="checkbox" checked> Toros</label><label><input type="checkbox" checked> Vaquillonas</label><label><input type="checkbox" checked> Novillos</label><label><input type="checkbox" checked> Novillitos</label><label><input type="checkbox"> Terneros</label><label><input type="checkbox"> Terneras</label></div></div>
+        <p class="seccion-form completo">Condiciones (opcionales)</p>
+        <div class="campo"><span class="label">Edad (meses)</span><div class="fila-inputs"><span>desde</span><input class="input" value="8" aria-label="Edad mínima"><span>hasta</span><input class="input" placeholder="—" aria-label="Edad máxima"></div><span class="ayuda">Ej: brucelosis de 3 a 8 meses.</span></div>
+        <div class="campo"><label>Sexo</label><select class="input"><option selected>Ambos</option><option>Solo hembras</option><option>Solo machos</option></select></div>
+        <div class="campo"><span class="label">Estado</span><div class="opciones"><label><input type="checkbox"> Solo vacas preñadas</label></div></div>
+        <div class="campo"><label>Frecuencia</label><select class="input"><option selected>Todos los años</option><option>Año por medio</option></select></div>
+        <div class="campo"><label>Aplicaciones mínimas en la ventana</label><input class="input" value="1"><span class="ayuda">Ej: 3 contra la mosca en verano.</span></div>
+        <div class="campo"><span class="label">Opciones</span><div class="opciones"><label><input type="checkbox" checked> Obligatoria</label><label><input type="checkbox" checked> Activa</label></div></div>
+      </div>
+    </div>
+    <div class="modal-pie"><button class="btn" data-cerrar>Cancelar</button><button class="btn btn-primario" data-guardar>Guardar</button></div>
+  </div>
+</div>
+
+</body>
+</html>

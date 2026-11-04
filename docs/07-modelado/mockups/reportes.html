@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reportes — Mi Hacienda Digital</title>
+  <link rel="stylesheet" href="assets/estilos.css">
+  <script src="assets/app.js" defer></script>
+</head>
+<body data-layout="app" data-nav="reportes" data-codigo="P08">
+
+<main class="contenido" data-tabs-ambito>
+
+  <div class="encabezado">
+    <div>
+      <h1>Reportes</h1>
+      <p>Los números del rodeo, sin hacer cuentas a mano.</p>
+    </div>
+    <div class="acciones">
+      <button class="btn" type="button"><i data-ico="pdf"></i> PDF</button>
+      <button class="btn" type="button"><i data-ico="excel"></i> Excel</button>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <button data-tab="stock">Stock</button>
+    <button data-tab="indices">Índices y parición</button>
+    <button data-tab="terneros" class="activo">Terneros: mortalidad y enfermedades</button>
+    <button data-tab="ventas">Ventas, compras y cobros</button>
+    <button data-tab="bajas">Bajas</button>
+    <button data-tab="cobertura">Cobertura sanitaria</button>
+  </div>
+
+  <!-- ================= STOCK (RF-028) ================= -->
+  <div class="tab-panel" id="stock">
+    <div class="filtros">
+      <div class="campo"><label>Stock al día</label><input class="input" type="date" value="2026-10-10"></div>
+      <div class="campo"><label>Categoría</label><select class="input"><option>Todas</option></select></div>
+    </div>
+
+    <div class="grilla g-5-7">
+      <section class="card">
+        <h2>Por categoría</h2>
+        <div class="barras-h" style="margin-top:1rem">
+          <div class="fila"><span>Vacas</span><div class="pista"><div class="relleno" style="width:100%"></div></div><span class="num">92</span></div>
+          <div class="fila"><span>Vaquillonas</span><div class="pista"><div class="relleno" style="width:5%"></div></div><span class="num">5</span></div>
+          <div class="fila"><span>Terneros al pie</span><div class="pista"><div class="relleno tierra" style="width:49%"></div></div><span class="num">45</span></div>
+          <div class="fila"><span>Terneras al pie</span><div class="pista"><div class="relleno tierra" style="width:46%"></div></div><span class="num">42</span></div>
+          <div class="fila"><span>Novillitos</span><div class="pista"><div class="relleno amarillo" style="width:1%"></div></div><span class="num">1</span></div>
+          <div class="fila"><span>Toros</span><div class="pista"><div class="relleno amarillo" style="width:4%"></div></div><span class="num">4</span></div>
+        </div>
+        <p style="margin-top:1rem"><strong>Total: 189 cabezas</strong></p>
+      </section>
+
+      <section class="card">
+        <h2>Cómo varió en el año</h2>
+        <div class="tabla-wrap" style="margin-top:1rem">
+          <table class="tabla">
+            <thead><tr><th>Fecha</th><th class="num">Cabezas</th><th>Qué pasó</th></tr></thead>
+            <tbody>
+              <tr><td>01/01/2026</td><td class="num">192</td><td>Terneros de 2025 al pie</td></tr>
+              <tr><td>28/02/2026</td><td class="num">142</td><td>Primera venta de terneros (21/02)</td></tr>
+              <tr><td>30/04/2026</td><td class="num">117</td><td>Compra de 4 vacas con ternero (18/03) y segunda venta (25/04)</td></tr>
+              <tr><td>31/05/2026</td><td class="num">110</td><td>Venta de las vacas vacías (20/05); primer parto (28/05)</td></tr>
+              <tr><td>31/07/2026</td><td class="num">160</td><td>Pariciones</td></tr>
+              <tr><td>10/10/2026</td><td class="num"><strong>189</strong></td><td>Parición casi terminada</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- ================= ÍNDICES Y PARICIÓN (RF-029) ================= -->
+  <div class="tab-panel" id="indices">
+    <div class="filtros">
+      <div class="campo"><label>Temporada de servicio</label><select class="input"><option>2025-2026 (27/08/2025 – 11/01/2026)</option><option>2024-2025</option><option>2023-2024</option></select></div>
+      <div class="campo"><label>Categoría</label><select class="input"><option>Vacas y vaquillonas</option><option>Solo vacas</option><option>Solo vaquillonas</option></select></div>
+    </div>
+
+    <div class="grilla g-4">
+      <div class="card kpi"><div class="etiqueta">Preñez</div><div class="valor">93 %</div><div class="detalle">90 / 97</div><div class="tendencia sube">▲ 2 pts vs 24-25</div></div>
+      <div class="card kpi"><div class="etiqueta">Parición</div><div class="valor">91 %</div><div class="detalle">88 / 97 · faltan parir 2</div></div>
+      <div class="card kpi"><div class="etiqueta">Destete 24-25</div><div class="valor">86 %</div><div class="detalle">83 / 96</div><div class="tendencia baja">▼ 1 pt</div></div>
+      <div class="card kpi"><div class="etiqueta">Intervalo entre partos</div><div class="valor">368</div><div class="detalle">días promedio</div><div class="tendencia sube">▼ 5 días</div></div>
+    </div>
+
+    <section class="card mt">
+      <h2>Conteo de la parición 2026</h2>
+      <p class="chico">Igual que en el cuaderno: cuántos nacieron, de qué pelaje y sexo, y cuántas vacas faltan.</p>
+      <div class="tabla-wrap responsive" style="margin-top:1rem">
+        <table class="tabla">
+          <thead><tr><th>Pelaje</th><th class="num">Machos</th><th class="num">Hembras</th><th class="num">Total</th></tr></thead>
+          <tbody>
+            <tr><td data-label="Pelaje">Negros</td><td data-label="Machos" class="num">28</td><td data-label="Hembras" class="num">24</td><td data-label="Total" class="num">52</td></tr>
+            <tr><td data-label="Pelaje">Colorados</td><td data-label="Machos" class="num">19</td><td data-label="Hembras" class="num">19</td><td data-label="Total" class="num">38</td></tr>
+          </tbody>
+          <tfoot><tr><td>Total nacidos</td><td class="num">47</td><td class="num">43</td><td class="num">90</td></tr></tfoot>
+        </table>
+      </div>
+      <p class="chico mt">88 vacas paridas (2 partos de mellizos) · faltan parir 2 · 2 nacieron muertos · primer parto 28/05/2026.</p>
+    </section>
+
+    <section class="card mt">
+      <div class="card-titulo">
+        <h2>Comparación con temporadas anteriores</h2>
+        <div class="leyenda">
+          <span><i style="background:var(--verde)"></i> Preñez</span>
+          <span><i style="background:var(--tierra)"></i> Parición</span>
+          <span><i style="background:#d99a00"></i> Destete</span>
+        </div>
+      </div>
+      <div class="grafico-v" style="margin-top:1.5rem" role="img" aria-label="Índices por temporada">
+        <div class="grupo-v"><div class="col c1" style="height:88%"><span>88</span></div><div class="col c2" style="height:85%"><span>85</span></div><div class="col c3" style="height:82%"><span>82</span></div></div>
+        <div class="grupo-v"><div class="col c1" style="height:90%"><span>90</span></div><div class="col c2" style="height:88%"><span>88</span></div><div class="col c3" style="height:86%"><span>86</span></div></div>
+        <div class="grupo-v"><div class="col c1" style="height:91%"><span>91</span></div><div class="col c2" style="height:89%"><span>89</span></div><div class="col c3" style="height:86%"><span>86</span></div></div>
+        <div class="grupo-v"><div class="col c1" style="height:93%"><span>93</span></div><div class="col c2" style="height:91%"><span>en curso</span></div><div class="col c3" style="height:0"></div></div>
+      </div>
+      <div class="etiquetas-v"><div>22-23</div><div>23-24</div><div>24-25</div><div>25-26</div></div>
+      <p class="chico mt">La parición de 25-26 se completa el 21/10/2026 y el destete con las ventas de febrero a mayo de 2027.</p>
+    </section>
+  </div>
+
+  <!-- ================= TERNEROS: MORTALIDAD Y ENFERMEDADES (RF-039) ================= -->
+  <div class="tab-panel activo" id="terneros">
+    <div class="filtros">
+      <div class="campo"><label>Temporada de parición</label><select class="input"><option>2026 (may – oct)</option><option>2025</option><option>2024</option></select></div>
+    </div>
+
+    <div class="grilla g-4">
+      <div class="card kpi"><div class="etiqueta">Terneros nacidos</div><div class="valor">90</div><div class="detalle">2 nacieron muertos</div></div>
+      <div class="card kpi"><div class="etiqueta">Mortalidad</div><div class="valor" style="color:var(--rojo)">3 %</div><div class="detalle">3 / 90 · 2 al nacer, 1 por diarrea</div><div class="tendencia sube">▼ 2 pts vs 2025</div></div>
+      <div class="card kpi"><div class="etiqueta">Con diarrea</div><div class="valor" style="color:var(--rojo)">13 %</div><div class="detalle">12 / 90 terneros</div><div class="tendencia baja">▲ 4 pts vs 2025</div></div>
+      <div class="card kpi"><div class="etiqueta">Con neumonía</div><div class="valor">7 %</div><div class="detalle">6 / 90 terneros</div><div class="tendencia sube">▼ 1 pt vs 2025</div></div>
+    </div>
+
+    <div class="grilla g-2 mt">
+      <section class="card">
+        <h2>Causas probables — Diarrea</h2>
+        <div class="barras-h" style="margin-top:1rem">
+          <div class="fila"><span>Frío y lluvia</span><div class="pista"><div class="relleno rojo" style="width:58%"></div></div><span class="num">7</span></div>
+          <div class="fila"><span>Barro en la parición</span><div class="pista"><div class="relleno rojo" style="width:25%"></div></div><span class="num">3</span></div>
+          <div class="fila"><span>No se sabe</span><div class="pista"><div class="relleno rojo" style="width:17%"></div></div><span class="num">2</span></div>
+        </div>
+        <p class="chico mt">12 terneros, 14 casos (uno se enfermó tres veces: cuenta una sola vez en el %).</p>
+      </section>
+      <section class="card">
+        <h2>Causas probables — Neumonía</h2>
+        <div class="barras-h" style="margin-top:1rem">
+          <div class="fila"><span>Cambio brusco de temperatura</span><div class="pista"><div class="relleno amarillo" style="width:67%"></div></div><span class="num">4</span></div>
+          <div class="fila"><span>No se sabe</span><div class="pista"><div class="relleno amarillo" style="width:33%"></div></div><span class="num">2</span></div>
+        </div>
+        <p class="chico mt">La neumonía no está vacunada en el plan (no se suele dar). Además hubo 3 terneros con problemas de ombligo.</p>
+      </section>
+    </div>
+
+    <section class="card mt">
+      <h2>Comparación con temporadas anteriores</h2>
+      <div class="tabla-wrap responsive" style="margin-top:1rem">
+        <table class="tabla">
+          <thead><tr><th>Temporada</th><th class="num">Nacidos</th><th class="num">% Mortalidad</th><th class="num">% Diarrea</th><th class="num">% Neumonía</th><th class="num">% Otras</th></tr></thead>
+          <tbody>
+            <tr><td data-label="Temporada">2024</td><td data-label="Nacidos" class="num">86</td><td data-label="Mortalidad" class="num">6 %</td><td data-label="Diarrea" class="num">10 %</td><td data-label="Neumonía" class="num">9 %</td><td data-label="Otras" class="num">2 %</td></tr>
+            <tr><td data-label="Temporada">2025</td><td data-label="Nacidos" class="num">88</td><td data-label="Mortalidad" class="num">5 %</td><td data-label="Diarrea" class="num">9 %</td><td data-label="Neumonía" class="num">8 %</td><td data-label="Otras" class="num">1 %</td></tr>
+            <tr><td data-label="Temporada"><strong>2026</strong> <small>(en curso)</small></td><td data-label="Nacidos" class="num">90</td><td data-label="Mortalidad" class="num"><strong>3 %</strong></td><td data-label="Diarrea" class="num"><strong>13 %</strong></td><td data-label="Neumonía" class="num"><strong>7 %</strong></td><td data-label="Otras" class="num">3 %</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="chico mt">Cada porcentaje se calcula sobre los terneros nacidos en la temporada, incluidos los que nacieron muertos.</p>
+    </section>
+  </div>
+
+  <!-- ================= VENTAS, COMPRAS Y COBROS (RF-041, RF-043) ================= -->
+  <div class="tab-panel" id="ventas">
+    <div class="filtros">
+      <div class="campo"><label>Desde</label><input class="input" type="date" value="2026-01-01"></div>
+      <div class="campo"><label>Hasta</label><input class="input" type="date" value="2026-10-10"></div>
+      <div class="campo"><label>Cobro</label><select class="input"><option>Todas</option><option>Con cuotas pendientes</option><option>Cobradas</option></select></div>
+    </div>
+    <div class="grilla g-4">
+      <div class="card kpi"><div class="etiqueta">Cabezas vendidas</div><div class="valor">94</div><div class="detalle">83 terneros · 11 vacas</div></div>
+      <div class="card kpi"><div class="etiqueta">Kilos netos</div><div class="valor">21.578</div><div class="detalle">kg (con desbaste)</div></div>
+      <div class="card kpi"><div class="etiqueta">Neto del año</div><div class="valor" style="font-size:1.5rem">$ 84.108.600</div><div class="detalle">bruto $ 87.613.125 − comisiones</div></div>
+      <div class="card kpi"><div class="etiqueta">Pendiente de cobro</div><div class="valor" style="color:var(--amarillo);font-size:1.5rem">$ 4.920.000</div><div class="detalle">2 cuotas (04/11 y 04/12)</div></div>
+    </div>
+    <section class="card mt">
+      <h2>Ventas del período</h2>
+      <div class="tabla-wrap responsive" style="margin-top:1rem">
+        <table class="tabla">
+          <thead><tr><th>Fecha</th><th>Comprador</th><th>Qué</th><th class="num">Cab.</th><th class="num">Kilos</th><th class="num">Desb.</th><th class="num">Prom.</th><th class="num">$/kg</th><th class="num">Bruto</th><th class="num">Comisión</th><th class="num">Neto</th><th>Cuotas</th></tr></thead>
+          <tbody>
+            <tr><td data-label="Fecha">05/10/2026</td><td data-label="Comprador">Frigorífico local</td><td data-label="Qué">Vacas viejas (apartadas)</td><td data-label="Cab." class="num">4</td><td data-label="Kilos" class="num">1.640</td><td data-label="Desb." class="num">0 %</td><td data-label="Prom." class="num">410</td><td data-label="$/kg" class="num">3.125</td><td data-label="Bruto" class="num">5.125.000</td><td data-label="Comisión" class="num">4 %</td><td data-label="Neto" class="num">4.920.000</td><td data-label="Cuotas"><span class="badge warn">0 de 2</span> <small>04/11 · 04/12</small></td></tr>
+            <tr><td data-label="Fecha">20/05/2026</td><td data-label="Comprador">Consignataria El Ombú</td><td data-label="Qué">Vacas vacías</td><td data-label="Cab." class="num">7</td><td data-label="Kilos" class="num">2.730</td><td data-label="Desb." class="num">0 %</td><td data-label="Prom." class="num">390</td><td data-label="$/kg" class="num">3.000</td><td data-label="Bruto" class="num">8.190.000</td><td data-label="Comisión" class="num">4 %</td><td data-label="Neto" class="num">7.862.400</td><td data-label="Cuotas"><span class="badge ok">2 de 2</span></td></tr>
+            <tr><td data-label="Fecha">25/04/2026</td><td data-label="Comprador">Consignataria El Ombú</td><td data-label="Qué">Terneros (2.ª tanda)</td><td data-label="Cab." class="num">33</td><td data-label="Kilos" class="num">6.440</td><td data-label="Desb." class="num">3 %</td><td data-label="Prom." class="num">189</td><td data-label="$/kg" class="num">4.875</td><td data-label="Bruto" class="num">30.454.125</td><td data-label="Comisión" class="num">4 %</td><td data-label="Neto" class="num">29.235.960</td><td data-label="Cuotas"><span class="badge ok">2 de 2</span></td></tr>
+            <tr><td data-label="Fecha">21/02/2026</td><td data-label="Comprador">Consignataria El Ombú</td><td data-label="Qué">Terneros (1.ª tanda, 26 ♂ y 24 ♀)</td><td data-label="Cab." class="num">50</td><td data-label="Kilos" class="num">11.300</td><td data-label="Desb." class="num">3 %</td><td data-label="Prom." class="num">219</td><td data-label="$/kg" class="num">4.000</td><td data-label="Bruto" class="num">43.844.000</td><td data-label="Comisión" class="num">4 %</td><td data-label="Neto" class="num">42.090.240</td><td data-label="Cuotas"><span class="badge ok">2 de 2</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="mt-2">Cuotas pendientes</h2>
+      <div class="tabla-wrap responsive" style="margin-top:1rem">
+        <table class="tabla">
+          <thead><tr><th>Venta</th><th>Cuota</th><th>Vence</th><th class="num">Monto</th><th></th></tr></thead>
+          <tbody>
+            <tr><td data-label="Venta">05/10 · Frigorífico local</td><td data-label="Cuota">1 de 2 (30 días)</td><td data-label="Vence">04/11/2026</td><td data-label="Monto" class="num">$ 2.460.000</td><td class="sin-label"><button class="btn btn-chico" type="button" data-guardar="Cuota marcada como cobrada">Cobrada</button></td></tr>
+            <tr><td data-label="Venta">05/10 · Frigorífico local</td><td data-label="Cuota">2 de 2 (60 días)</td><td data-label="Vence">04/12/2026</td><td data-label="Monto" class="num">$ 2.460.000</td><td class="sin-label"><button class="btn btn-chico" type="button" data-guardar="Cuota marcada como cobrada">Cobrada</button></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="mt-2">Compras del período</h2>
+      <div class="tabla-wrap responsive" style="margin-top:1rem">
+        <table class="tabla">
+          <thead><tr><th>Fecha</th><th>Vendedor</th><th>Qué</th><th class="num">Cabezas</th><th class="num">Precio</th><th class="num">Total</th><th>Pago</th></tr></thead>
+          <tbody>
+            <tr><td data-label="Fecha">18/03/2026</td><td data-label="Vendedor">Remate feria</td><td data-label="Qué">4 vacas de 3 años con su ternero al pie</td><td data-label="Cabezas" class="num">8</td><td data-label="Precio" class="num">$ 7.500.000 por vaca con ternero</td><td data-label="Total" class="num">$ 30.000.000</td><td data-label="Pago"><span class="badge ok">Cheque · pagada 17/04</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="chico mt">Las ventas se cargan en la <a href="jornada-nueva.html?tipo=venta">jornada de venta</a> y las compras en la <a href="jornada-nueva.html?tipo=compra">jornada de compra</a>. Las cuotas vencidas sin cobrar aparecen en Pendientes.</p>
+    </section>
+  </div>
+
+  <!-- ================= BAJAS (RF-030) ================= -->
+  <div class="tab-panel" id="bajas">
+    <div class="filtros">
+      <div class="campo"><label>Desde</label><input class="input" type="date" value="2026-01-01"></div>
+      <div class="campo"><label>Hasta</label><input class="input" type="date" value="2026-10-10"></div>
+      <div class="campo"><label>Categoría</label><select class="input"><option>Todas</option></select></div>
+    </div>
+    <div class="grilla g-4">
+      <div class="card kpi"><div class="etiqueta">Bajas</div><div class="valor">97</div></div>
+      <div class="card kpi"><div class="etiqueta">Ventas</div><div class="valor">94</div><div class="detalle">83 terneros · 7 vacas vacías · 4 vacas viejas</div></div>
+      <div class="card kpi"><div class="etiqueta">Muertes</div><div class="valor" style="color:var(--rojo)">2</div><div class="detalle">1 ternero · 1 vaca</div></div>
+      <div class="card kpi"><div class="etiqueta">Traslados a otro campo</div><div class="valor">1</div></div>
+    </div>
+    <section class="card mt">
+      <h2>Detalle</h2>
+      <div class="tabla-wrap responsive" style="margin-top:1rem">
+        <table class="tabla">
+          <thead><tr><th>Fecha</th><th>Caravana</th><th>Categoría</th><th>Motivo</th><th class="num">Peso</th></tr></thead>
+          <tbody>
+            <tr><td data-label="Fecha">05/10/2026</td><td data-label="Caravana" class="mono">EF789 A044</td><td data-label="Categoría">Vaca (apartada)</td><td data-label="Motivo"><span class="badge">Venta</span></td><td data-label="Peso" class="num">410 kg <small>(prom.)</small></td></tr>
+            <tr><td data-label="Fecha">02/09/2026</td><td data-label="Caravana">Cría de AB123 B140</td><td data-label="Categoría">Ternero al pie</td><td data-label="Motivo"><span class="badge danger">Muerte — Diarrea</span></td><td data-label="Peso" class="num">—</td></tr>
+            <tr><td data-label="Fecha">10/07/2026</td><td data-label="Caravana" class="mono">AB123 A120</td><td data-label="Categoría">Novillito</td><td data-label="Motivo"><span class="badge info">Traslado a otro campo</span></td><td data-label="Peso" class="num">—</td></tr>
+            <tr><td data-label="Fecha">25/04/2026</td><td data-label="Caravana" class="mono">AB123 C033</td><td data-label="Categoría">Ternero</td><td data-label="Motivo"><span class="badge">Venta</span></td><td data-label="Peso" class="num">189 kg <small>(prom.)</small></td></tr>
+            <tr><td data-label="Fecha">04/04/2026</td><td data-label="Caravana" class="mono">EF789 A050</td><td data-label="Categoría">Vaca</td><td data-label="Motivo"><span class="badge danger">Muerte — No se sabe</span></td><td data-label="Peso" class="num">—</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <!-- ================= COBERTURA SANITARIA (RF-031) ================= -->
+  <div class="tab-panel" id="cobertura">
+    <div class="filtros">
+      <div class="campo"><label>Plan</label><select class="input"><option>2026</option><option>2025</option></select></div>
+    </div>
+    <div class="tabla-wrap responsive">
+      <table class="tabla">
+        <thead><tr><th>Vacuna</th><th>A quién</th><th class="num">Debían</th><th class="num">Vacunados</th><th class="num">Pendientes</th><th style="width:22%">Cobertura</th></tr></thead>
+        <tbody>
+          <tr><td data-label="Vacuna">Aftosa (mar – abr)</td><td data-label="A quién">Todas las categorías</td><td data-label="Debían" class="num">147</td><td data-label="Vacunados" class="num">147</td><td data-label="Pendientes" class="num">0</td><td data-label="Cobertura"><div class="progreso"><div style="width:100%"></div></div> <small>100 %</small></td></tr>
+          <tr><td data-label="Vacuna">Rotatec 1.ª y 2.ª (mar – may)</td><td data-label="A quién">Vacas preñadas</td><td data-label="Debían" class="num">90</td><td data-label="Vacunados" class="num">90</td><td data-label="Pendientes" class="num">0</td><td data-label="Cobertura"><div class="progreso"><div style="width:100%"></div></div> <small>100 %</small></td></tr>
+          <tr><td data-label="Vacuna"><strong>Carbunclo (sep – nov)</strong> · obligatoria</td><td data-label="A quién">Vacas, toros, vaquillonas, novillitos ≥ 8 m</td><td data-label="Debían" class="num">102</td><td data-label="Vacunados" class="num">96</td><td data-label="Pendientes" class="num" style="color:var(--rojo);font-weight:800">6</td><td data-label="Cobertura"><div class="progreso"><div style="width:94%"></div></div> <small>94 % · vence 30/11</small></td></tr>
+          <tr><td data-label="Vacuna">Mancha-gangrena-enterotoxemia 1.ª (oct – nov)</td><td data-label="A quién">Terneros</td><td data-label="Debían" class="num">87</td><td data-label="Vacunados" class="num">0</td><td data-label="Pendientes" class="num" style="color:var(--amarillo);font-weight:800">87</td><td data-label="Cobertura"><div class="progreso"><div style="width:0"></div></div> <small>0 % · ventana abierta</small></td></tr>
+          <tr><td data-label="Vacuna"><strong>Brucelosis (dic – ene)</strong> · obligatoria</td><td data-label="A quién">Terneras de 3 a 8 meses</td><td data-label="Debían" class="num">—</td><td data-label="Vacunados" class="num">—</td><td data-label="Pendientes" class="num">—</td><td data-label="Cobertura"><small>Empieza el 01/12</small></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</main>
+
+</body>
+</html>

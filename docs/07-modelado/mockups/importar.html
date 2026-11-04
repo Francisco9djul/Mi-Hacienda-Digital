@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Importar planilla — Mi Hacienda Digital</title>
+  <link rel="stylesheet" href="assets/estilos.css">
+  <script src="assets/app.js" defer></script>
+</head>
+<body data-layout="app" data-nav="importar" data-codigo="P09">
+
+<main class="contenido" data-tabs-ambito>
+
+  <div class="encabezado">
+    <div>
+      <h1>Importar animales desde una planilla</h1>
+      <p>Para cargar de una vez el rodeo que tenés anotado. Con unas 100 cabezas también se puede cargar a mano.</p>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <button data-tab="i-subir">1 · Subir archivo</button>
+    <button data-tab="i-revisar" class="activo">2 · Revisar</button>
+    <button data-tab="i-listo">3 · Listo</button>
+  </div>
+
+  <!-- Paso 1 -->
+  <div class="tab-panel" id="i-subir">
+    <div class="grilla g-7-5">
+      <div class="soltar">
+        <i data-ico="importar"></i>
+        <strong>Arrastrá la planilla acá</strong>
+        <p>o</p>
+        <button class="btn btn-primario btn-grande" type="button" onclick="MiHacienda.activarTab(document.querySelector('[data-tab=i-revisar]'))">Elegir archivo…</button>
+        <p class="chico mt">Excel (.xlsx) o CSV</p>
+      </div>
+      <div class="card">
+        <h2>¿Cómo tiene que estar la planilla?</h2>
+        <p>Una fila por animal y estas columnas (la primera fila con los títulos):</p>
+        <table class="tabla">
+          <tbody>
+            <tr><td><strong>caravana</strong> <span style="color:var(--rojo)">*</span></td><td class="mono">AB123 B081</td></tr>
+            <tr><td><strong>sexo</strong> <span style="color:var(--rojo)">*</span></td><td>H o M</td></tr>
+            <tr><td><strong>categoria</strong> <span style="color:var(--rojo)">*</span></td><td>Vaca</td></tr>
+            <tr><td>nacimiento o edad</td><td>14/08/2021 · 5</td></tr>
+            <tr><td>pelaje</td><td>Negro</td></tr>
+            <tr><td>madre</td><td class="mono">CD456 A033</td></tr>
+          </tbody>
+        </table>
+        <p class="chico mt">La caravana es obligatoria salvo en los terneros al pie: para ellos alcanza con la caravana de la madre.</p>
+        <a class="btn btn-bloque mt" href="#"><i data-ico="descargar"></i> Descargar planilla modelo</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Paso 2 -->
+  <div class="tab-panel activo" id="i-revisar">
+    <div class="grilla g-3">
+      <div class="card kpi"><div class="etiqueta">Filas leídas</div><div class="valor">189</div><div class="detalle">rodeo_los_alamos.xlsx</div></div>
+      <div class="card kpi"><div class="etiqueta">Listas para importar</div><div class="valor" style="color:var(--verde)">185</div><div class="detalle">sin problemas</div></div>
+      <div class="card kpi"><div class="etiqueta">Con errores</div><div class="valor" style="color:var(--rojo)">4</div><div class="detalle">no se van a importar</div></div>
+    </div>
+
+    <div class="aviso warn mt"><i data-ico="aviso"></i>
+      <div>Hay <strong>4 filas con errores</strong>. Podés corregirlas en la planilla y volver a subirla, o importar ahora las 185 correctas y cargar las otras a mano.</div>
+    </div>
+
+    <div class="tabs mt" style="margin-bottom:.75rem">
+      <a href="#" class="activo">Con errores (4)</a><a href="#">Todas (189)</a>
+    </div>
+
+    <div class="tabla-wrap responsive">
+      <table class="tabla">
+        <thead><tr><th class="num">Fila</th><th>Caravana</th><th>Sexo</th><th>Categoría</th><th>Madre</th><th>Problema</th></tr></thead>
+        <tbody>
+          <tr class="error"><td data-label="Fila" class="num">14</td><td data-label="Caravana" class="mono">AB123 B094</td><td data-label="Sexo">H</td><td data-label="Categoría">Vaca</td><td data-label="Madre">—</td><td data-label="Problema"><strong>Caravana repetida</strong> (también en la fila 57)</td></tr>
+          <tr class="error"><td data-label="Fila" class="num">31</td><td data-label="Caravana" class="mono">AB12 B1O2</td><td data-label="Sexo">H</td><td data-label="Categoría">Vaca</td><td data-label="Madre">—</td><td data-label="Problema"><strong>Caravana con formato no válido</strong>: 2 letras, 3 números, 1 letra y 3 números</td></tr>
+          <tr class="error"><td data-label="Fila" class="num">62</td><td data-label="Caravana" class="mono">—</td><td data-label="Sexo">M</td><td data-label="Categoría">Novillito</td><td data-label="Madre">—</td><td data-label="Problema"><strong>Falta la caravana</strong> (solo los terneros al pie pueden no tenerla)</td></tr>
+          <tr class="error"><td data-label="Fila" class="num">88</td><td data-label="Caravana" class="mono">—</td><td data-label="Sexo">H</td><td data-label="Categoría">Ternera</td><td data-label="Madre" class="mono">AB123 B990</td><td data-label="Problema"><strong>La madre no está en la planilla</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="form-pie">
+      <button class="btn" type="button" onclick="MiHacienda.activarTab(document.querySelector('[data-tab=i-subir]'))">Subir otra planilla</button>
+      <button class="btn btn-primario btn-grande" type="button" onclick="MiHacienda.activarTab(document.querySelector('[data-tab=i-listo]'))">IMPORTAR 185 ANIMALES</button>
+    </div>
+  </div>
+
+  <!-- Paso 3 -->
+  <div class="tab-panel" id="i-listo">
+    <div class="card" style="text-align:center;padding:3rem 1.5rem;max-width:640px;margin:0 auto">
+      <div style="font-size:3rem">✅</div>
+      <h1>Se importaron 185 animales</h1>
+      <p>Las 4 filas con errores no se cargaron. Podés descargarlas para corregirlas.</p>
+      <div class="acciones" style="justify-content:center;margin-top:1.5rem">
+        <a class="btn" href="#"><i data-ico="descargar"></i> Descargar filas con error</a>
+        <a class="btn btn-primario" href="animales.html">Ver animales</a>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+</body>
+</html>

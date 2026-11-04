@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vaca AB123 B081 — Mi Hacienda Digital</title>
+  <link rel="stylesheet" href="assets/estilos.css">
+  <script src="assets/app.js" defer></script>
+</head>
+<body data-layout="app" data-nav="animales" data-codigo="P04">
+
+<main class="contenido">
+
+  <a class="volver" href="animales.html"><i data-ico="volver"></i> Volver a Animales</a>
+
+  <div class="encabezado">
+    <div class="ficha-cab">
+      <span class="caravana-grande">AB123 B081</span>
+      <div>
+        <h1 style="margin:0">Vaca AB123 B081</h1>
+        <p>Aberdeen Angus · Negra · 5 años</p>
+        <div style="display:flex;gap:.4rem;margin-top:.4rem;flex-wrap:wrap">
+          <span class="badge ok">● Activa</span>
+          <span class="badge ok">Preñada</span>
+          <span class="badge warn">Sin parir · la parición termina el 21/10</span>
+        </div>
+      </div>
+    </div>
+    <div class="acciones">
+      <a class="btn" href="animal-nuevo.html?editar=AB123B081"><i data-ico="editar"></i> Editar</a>
+      <button class="btn btn-peligro" type="button" data-abrir="modal-baja"><i data-ico="baja"></i> Dar de baja</button>
+      <div class="desplegable" data-desplegable>
+        <button class="btn btn-primario" type="button"><i data-ico="mas"></i> Registrar evento ▾</button>
+        <div class="desplegable-menu">
+          <div class="chico" style="padding:.4rem .85rem">Reproducción</div>
+          <a href="#" data-abrir="modal-evento">🩺 Tacto</a>
+          <a href="paricion.html">🍼 Parto</a>
+          <a href="#" data-abrir="modal-evento">⚠️ Aborto</a>
+          <a href="#" data-abrir="modal-servicio">🐂 Servicio individual</a>
+          <a href="#" data-abrir="modal-evento">❤️ Celo (si lo viste)</a>
+          <div class="chico" style="padding:.4rem .85rem">Sanidad</div>
+          <a href="#" data-abrir="modal-evento">💉 Vacuna</a>
+          <a href="#" data-abrir="modal-enfermedad">💊 Tratamiento</a>
+          <a href="#" data-abrir="modal-recordatorio">⏰ Recordatorio</a>
+          <a href="#" data-guardar="Vaca apartada para descarte">📌 Apartar para vender o descartar</a>
+          <a href="#" data-abrir="modal-enfermedad">🤒 Enfermedad</a>
+          <div class="chico" style="padding:.4rem .85rem">Manejo</div>
+          <a href="#" data-abrir="modal-pesada">⚖️ Pesada</a>
+          <a href="#" data-abrir="modal-categoria">🏷️ Cambiar categoría</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grilla g-7-5">
+    <section class="card">
+      <h2>Datos</h2>
+      <dl class="datos">
+        <div class="dato"><dt>Caravana SENASA</dt><dd class="mono">AB123 B081</dd></div>
+        <div class="dato"><dt>Caravana electrónica</dt><dd>— <small>(es anterior a la electrónica)</small></dd></div>
+        <div class="dato"><dt>Sexo</dt><dd>Hembra</dd></div>
+        <div class="dato"><dt>Categoría</dt><dd>Vaca</dd></div>
+        <div class="dato"><dt>Nacimiento</dt><dd>14/08/2021</dd></div>
+        <div class="dato"><dt>Edad</dt><dd>5 años 1 mes</dd></div>
+        <div class="dato"><dt>Raza</dt><dd>Aberdeen Angus</dd></div>
+        <div class="dato"><dt>Pelaje</dt><dd>Negro</dd></div>
+        <div class="dato"><dt>Origen</dt><dd>Nacida en el campo</dd></div>
+        <div class="dato"><dt>Madre</dt><dd><a href="animal-ficha.html" class="mono">CD456 A033</a> <button class="btn-link btn" type="button" data-abrir="modal-madre">Corregir</button></dd></div>
+        <div class="dato"><dt>Padre</dt><dd>Desconocido <small>(toros en grupo)</small></dd></div>
+      </dl>
+    </section>
+
+    <section class="card">
+      <h2>Resumen</h2>
+      <dl class="datos" style="grid-template-columns:1fr">
+        <div class="dato"><dt>Estado reproductivo</dt><dd><span class="badge ok">Preñada</span> <small>(tacto 14/04/2026)</small></dd></div>
+        <div class="dato"><dt>Temporada de servicio</dt><dd>2025-2026 · 27/08/2025 al 11/01/2026</dd></div>
+        <div class="dato"><dt>Parición esperada</dt><dd>06/06 al 21/10/2026 <small>(faltan 11 días)</small></dd></div>
+        <div class="dato"><dt>Partos</dt><dd>3</dd></div>
+        <div class="dato"><dt>Carbunclo 2026</dt><dd><span class="badge ok">Aplicada 08/10</span></dd></div>
+        <div class="dato"><dt>Último sangrado</dt><dd>18/11/2025 · <span class="badge ok">Negativo</span> <small>(próximo: 2027)</small></dd></div>
+        <div class="dato"><dt>Apta venta / faena</dt><dd><span class="badge ok">Sí</span></dd></div>
+      </dl>
+    </section>
+  </div>
+
+  <section class="card mt" data-tabs-ambito>
+    <div class="tabs" role="tablist">
+      <button data-tab="t-repro" class="activo">Reproducción</button>
+      <button data-tab="t-sanidad">Sanidad</button>
+      <button data-tab="t-pesadas">Pesadas</button>
+      <button data-tab="t-cat">Categorías</button>
+      <button data-tab="t-crias">Crías (3)</button>
+      <button data-tab="t-gen">Genealogía</button>
+    </div>
+
+    <!-- Reproducción -->
+    <div class="tab-panel activo" id="t-repro">
+      <div class="tabla-wrap responsive">
+        <table class="tabla">
+          <thead><tr><th>Fecha</th><th>Evento</th><th>Detalle</th><th>Cargó</th><th></th></tr></thead>
+          <tbody>
+            <tr><td data-label="Fecha">27/08/2026</td><td data-label="Evento"><span class="badge info">Servicio</span></td><td data-label="Detalle">Temporada 2026-2027 · entró con los 4 toros (en curso)</td><td data-label="Cargó">Juan</td><td class="sin-label"><button class="btn-link btn" data-abrir="modal-anular">Anular</button></td></tr>
+            <tr><td data-label="Fecha">20/05/2026</td><td data-label="Evento"><span class="badge tierra">Destete</span></td><td data-label="Detalle">Destete de terneras por grupo (hembras negras) · una de ellas, <a href="animal-ficha.html" class="mono">AB123 C015</a>, queda para reposición <small>(madre no verificada)</small></td><td data-label="Cargó">Juan</td><td class="sin-label"><button class="btn-link btn" data-abrir="modal-anular">Anular</button></td></tr>
+            <tr><td data-label="Fecha">14/04/2026</td><td data-label="Evento"><span class="badge ok">Tacto</span></td><td data-label="Detalle">Preñada · parición esperada del 06/06 al 21/10/2026</td><td data-label="Cargó">Juan</td><td class="sin-label"><button class="btn-link btn" data-abrir="modal-anular">Anular</button></td></tr>
+            <tr><td data-label="Fecha">27/08/2025</td><td data-label="Evento"><span class="badge info">Servicio</span></td><td data-label="Detalle">Temporada 2025-2026 · hasta el 11/01/2026 · 4 toros</td><td data-label="Cargó">Juan</td><td class="sin-label"><button class="btn-link btn" data-abrir="modal-anular">Anular</button></td></tr>
+            <tr><td data-label="Fecha">18/08/2025</td><td data-label="Evento"><span class="badge ok">Parto</span></td><td data-label="Detalle">Normal — ternera viva (hoy <a href="animal-ficha.html" class="mono">AB123 C015</a>)</td><td data-label="Cargó">Juan</td><td class="sin-label"><button class="btn-link btn" data-abrir="modal-anular">Anular</button></td></tr>
+            <tr class="anulado"><td data-label="Fecha">10/04/2025</td><td data-label="Evento">Tacto</td><td data-label="Detalle">Vacía — anulado: "Se cargó a la vaca equivocada"</td><td data-label="Cargó">Juan</td><td class="sin-label"></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Sanidad -->
+    <div class="tab-panel" id="t-sanidad">
+      <div class="tabla-wrap responsive">
+        <table class="tabla">
+          <thead><tr><th>Fecha</th><th>Tipo</th><th>Producto / enfermedad</th><th>Dosis</th><th>Serie</th><th>Retiro hasta</th></tr></thead>
+          <tbody>
+            <tr><td data-label="Fecha">08/10/2026</td><td data-label="Tipo">Vacuna</td><td data-label="Producto">Carbunclo (Laboratorio Sur)</td><td data-label="Dosis">—</td><td data-label="Serie" class="mono">4410 <small>vence 03/2027</small></td><td data-label="Retiro hasta">—</td></tr>
+            <tr><td data-label="Fecha">12/05/2026</td><td data-label="Tipo">Vacuna</td><td data-label="Producto">Diarrea de los terneros (Rotatec) — 2.ª dosis</td><td data-label="Dosis">—</td><td data-label="Serie" class="mono">RT-0921</td><td data-label="Retiro hasta">—</td></tr>
+            <tr><td data-label="Fecha">14/04/2026</td><td data-label="Tipo">Vacuna</td><td data-label="Producto">Aftosa</td><td data-label="Dosis">—</td><td data-label="Serie" class="mono">L-80110</td><td data-label="Retiro hasta">—</td></tr>
+            <tr><td data-label="Fecha">14/04/2026</td><td data-label="Tipo">Vacuna</td><td data-label="Producto">Diarrea de los terneros (Rotatec) — 1.ª dosis</td><td data-label="Dosis">—</td><td data-label="Serie" class="mono">RT-0921</td><td data-label="Retiro hasta">—</td></tr>
+            <tr><td data-label="Fecha">18/11/2025</td><td data-label="Tipo">Análisis</td><td data-label="Producto">Sangrado — brucelosis · <span class="badge ok">Negativo</span></td><td data-label="Dosis">—</td><td data-label="Serie" class="mono">—</td><td data-label="Retiro hasta">—</td></tr>
+            <tr><td data-label="Fecha">03/03/2026</td><td data-label="Tipo">Enfermedad</td><td data-label="Producto">Queratoconjuntivitis · tratada con oxitetraciclina · recuperada</td><td data-label="Dosis">15 ml × 3 días</td><td data-label="Serie" class="mono">OX-551</td><td data-label="Retiro hasta">31/03/2026</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Pesadas -->
+    <div class="tab-panel" id="t-pesadas">
+      <div class="vacio">
+        <p><strong>Sin pesadas.</strong></p>
+        <p class="chico">En Los Álamos se pesa en la venta: el peso aparece acá cuando el animal se vende o si cargás una pesada.</p>
+        <button class="btn" type="button" data-abrir="modal-pesada"><i data-ico="mas"></i> Cargar pesada</button>
+      </div>
+    </div>
+
+    <!-- Categorías -->
+    <div class="tab-panel" id="t-cat">
+      <ul class="timeline">
+        <li><strong>20/08/2023</strong> · Vaquillona → <strong>Vaca</strong> <span class="badge info">Sugerido y aceptado</span><br><small>Primer parto</small></li>
+        <li><strong>15/03/2022</strong> · Ternera → <strong>Vaquillona</strong> <span class="badge info">Sugerido y aceptado</span><br><small>Destete (se le puso la caravana)</small></li>
+        <li><strong>14/08/2021</strong> · Alta como <strong>Ternera al pie</strong><br><small>Nacida en el campo, cría de CD456 A033</small></li>
+      </ul>
+    </div>
+
+    <!-- Crías -->
+    <div class="tab-panel" id="t-crias">
+      <div class="tabla-wrap responsive">
+        <table class="tabla">
+          <thead><tr><th>Caravana</th><th>Sexo</th><th>Nacimiento</th><th>Padre</th><th class="num">Peso de venta</th><th>Estado</th></tr></thead>
+          <tbody>
+            <tr><td data-label="Caravana"><a class="caravana" href="animal-ficha.html">AB123 C015</a></td><td data-label="Sexo">Hembra</td><td data-label="Nacimiento">18/08/2025</td><td data-label="Padre">Desconocido</td><td data-label="Peso de venta" class="num">—</td><td data-label="Estado"><span class="badge ok">Activa — Vaquillona</span> <small>madre no verificada</small></td></tr>
+            <tr><td data-label="Caravana"><a class="caravana" href="animal-ficha.html">AB123 B210</a></td><td data-label="Sexo">Macho</td><td data-label="Nacimiento">22/08/2024</td><td data-label="Padre">Desconocido</td><td data-label="Peso de venta" class="num">172 kg <small>(promedio del lote)</small></td><td data-label="Estado"><span class="badge">Baja — Venta 12/03/2025</span></td></tr>
+            <tr><td data-label="Caravana">—</td><td data-label="Sexo">Macho</td><td data-label="Nacimiento">20/08/2023</td><td data-label="Padre">Desconocido</td><td data-label="Peso de venta" class="num">—</td><td data-label="Estado"><span class="badge danger">Nació muerto</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Genealogía -->
+    <div class="tab-panel" id="t-gen">
+      <div class="arbol">
+        <div>
+          <div class="nodo" style="margin-bottom:.5rem"><small>Madre</small><strong>CD456 A033</strong><small>Vaca · 9a</small></div>
+          <div class="nodo"><small>Padre</small><strong>Desconocido</strong><small>Toros en grupo</small></div>
+        </div>
+        <span style="font-size:1.6rem;color:var(--gris)">→</span>
+        <div class="nodo yo"><small>Este animal</small><strong>AB123 B081</strong><small>Vaca</small></div>
+        <span style="font-size:1.6rem;color:var(--gris)">→</span>
+        <div>
+          <div class="nodo" style="margin-bottom:.5rem"><small>Cría</small><strong>AB123 C015</strong><small>Vaquillona</small></div>
+          <div class="nodo"><small>Cría</small><strong>AB123 B210</strong><small>Baja (venta)</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <p class="chico mt">Observaciones: Mansa. Buena madre. Ojo izquierdo con nube desde 2026.</p>
+
+</main>
+
+<!-- Modal: dar de baja (RF-007, solo Administrador) -->
+<div class="modal-fondo" id="modal-baja">
+  <div class="modal" role="dialog" aria-labelledby="t-baja">
+    <div class="modal-cab"><h2 id="t-baja">Dar de baja a la vaca AB123 B081</h2><button class="cerrar" data-cerrar aria-label="Cerrar">×</button></div>
+    <div class="modal-cuerpo">
+      <div class="aviso warn" style="margin-bottom:1.25rem"><i data-ico="aviso"></i><div>El animal deja de contar en el stock y no admite eventos nuevos. <strong>Su historia se conserva</strong>. Para vender varios animales juntos usá la <a href="jornada-nueva.html?tipo=venta">jornada de venta</a>.</div></div>
+      <div class="form-grid">
+        <div class="campo"><label>Fecha de baja <span class="req">*</span></label><input class="input" type="date" value="2026-10-10"></div>
+        <div class="campo"><label>Motivo <span class="req">*</span></label>
+          <select class="input"><option selected>Venta</option><option>Muerte</option><option>Traslado a otro campo propio</option><option>Otro</option></select></div>
+        <div class="campo"><label>Peso de venta (kg)</label><input class="input" inputmode="decimal" placeholder="Opcional"><span class="ayuda">Solo si el motivo es "Venta".</span></div>
+        <div class="campo"><label>Causa de la muerte</label>
+          <select class="input"><option>No se sabe</option><option>Parto difícil</option><option>Diarrea</option><option>Neumonía</option><option>Accidente</option><option>Otra</option></select>
+          <span class="ayuda">Solo si el motivo es "Muerte" y la conocés.</span></div>
+        <div class="campo completo"><label>Observaciones</label><textarea class="input"></textarea></div>
+      </div>
+    </div>
+    <div class="modal-pie">
+      <button class="btn" data-cerrar>Cancelar</button>
+      <button class="btn btn-peligro-lleno" data-guardar="Baja registrada">Dar de baja</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: anular evento (RN-011) -->
+<div class="modal-fondo" id="modal-anular">
+  <div class="modal" role="dialog">
+    <div class="modal-cab"><h2>Anular evento</h2><button class="cerrar" data-cerrar aria-label="Cerrar">×</button></div>
+    <div class="modal-cuerpo">
+      <p><strong>Tacto del 14/04/2026</strong> — Preñada.</p>
+      <p class="chico">El evento no se borra: queda tachado en el historial con tu nombre, la fecha y el motivo.</p>
+      <div class="campo"><label>Motivo de la anulación <span class="req">*</span></label><textarea class="input" placeholder="Ej: Se cargó a la vaca equivocada"></textarea></div>
+    </div>
+    <div class="modal-pie">
+      <button class="btn" data-cerrar>Cancelar</button>
+      <button class="btn btn-peligro-lleno" data-guardar="Evento anulado">Anular</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: pesada (RF-012) -->
+<div class="modal-fondo" id="modal-pesada">
+  <div class="modal" role="dialog" style="max-width:460px">
+    <div class="modal-cab"><h2>Pesada — AB123 B081</h2><button class="cerrar" data-cerrar aria-label="Cerrar">×</button></div>
+    <div class="modal-cuerpo">
+      <div class="form-grid">
+        <div class="campo"><label>Fecha</label><input class="input" type="date" value="2026-10-10"></div>
+        <div class="campo"><label>Peso (kg) <span class="req">*</span></label><input class="input" inputmode="decimal"></div>
+      </div>
+      <p class="chico mt">No tiene pesadas anteriores.</p>
+    </div>
+    <div class="modal-pie"><button class="btn" data-cerrar>Cancelar</button><button class="btn btn-primario" data-guardar>Guardar</button></div>
+  </div>
+</div>
+
+<!-- Modal: cambio de categoría (RF-010) -->
+<div class="modal-fondo" id="modal-categoria">
+  <div class="modal" role="dialog" style="max-width:500px">
+    <div class="modal-cab"><h2>Cambiar categoría</h2><button class="cerrar" data-cerrar aria-label="Cerrar">×</button></div>
+    <div class="modal-cuerpo">
+      <div class="form-grid">
+        <div class="campo"><label>Categoría actual</label><input class="input" value="Vaca" disabled></div>
+        <div class="campo"><label>Nueva categoría <span class="req">*</span></label><select class="input"><option>Vaca</option><option>Vaquillona</option></select></div>
+        <div class="campo completo"><label>Fecha</label><input class="input" type="date" value="2026-10-10"></div>
+      </div>
+      <div class="aviso info mt"><i data-ico="info"></i><div>El sistema sugiere <strong>Vaca</strong> porque tiene partos registrados. Es solo una sugerencia: decidís vos.</div></div>
+    </div>
+    <div class="modal-pie"><button class="btn" data-cerrar>Cancelar</button><button class="btn btn-primario" data-guardar>Guardar</button></div>
+  </div>
+</div>
+
+<!-- Modal: enfermedad (RF-038) -->
+<div class="modal-fondo" id="modal-enfermedad">
+  <div class="modal" role="dialog">
+    <div class="modal-cab"><h2>Enfermedad o tratamiento — AB123 B081</h2><button class="cerrar" data-cerrar aria-label="Cerrar">×</button></div>
+    <div class="modal-cuerpo">
+      <div class="form-grid">
+        <div class="campo"><label>Fecha <span class="req">*</span></label><input class="input" type="date" value="2026-10-10"></div>
+        <div class="campo"><label>Enfermedad <span class="req">*</span></label><select class="input"><option>Diarrea</option><option>Neumonía</option><option>Queratoconjuntivitis</option><option>Otra</option></select></div>
+        <div class="campo completo"><label>Causa probable</label><input class="input" placeholder="Ej: frío y lluvia, cambio de alimentación, no se sabe"></div>
+        <div class="campo"><label>Tratamiento (opcional)</label><select class="input"><option>Sin tratamiento</option><option>Oxitetraciclina</option><option>Enrofloxacina</option><option>Sales de rehidratación</option></select></div>
+        <div class="campo"><label>Evolución</label><select class="input"><option>En curso</option><option>Recuperado</option><option>Murió</option></select><span class="ayuda">Si muere, se da de baja con esta enfermedad como causa.</span></div>
+        <div class="campo completo"><span class="label">Aviso</span><div class="fila-inputs"><label><input type="checkbox"> Avisarme para revisarla en</label><input class="input" value="3" style="max-width:80px"><span>días</span></div></div>
+      </div>
+    </div>
+    <div class="modal-pie"><button class="btn" data-cerrar>Cancelar</button><button class="btn btn-primario" data-guardar>Guardar</button></div>
+  </div>
+</div>
+
+<!-- Modal: corregir la madre (RF-013, RN-025) -->
+<div class="modal-fondo" id="modal-madre">
+  <div class="modal" role="dialog" style="max-width:480px">
+    <div class="modal-cab"><h2>Corregir la madre</h2><button class="cerrar" data-cerrar aria-label="Cerrar">×</button></div>
+    <div class="modal-cuerpo">
+      <div class="form-grid">
+        <div class="campo"><label>Madre actual</label><input class="input mono" value="CD456 A033" disabled></div>
+        <div class="campo"><label>Madre correcta <span class="req">*</span></label><input class="input mono" value="CD456 A040"></div>
+        <div class="campo completo"><label>Motivo <span class="req">*</span></label><input class="input" value="Se anotó mal: el ternero era de otra vaca"></div>
+      </div>
+      <p class="chico mt">El cambio queda en la auditoría y los índices se recalculan.</p>
+    </div>
+    <div class="modal-pie"><button class="btn" data-cerrar>Cancelar</button><button class="btn btn-primario" data-guardar="Madre corregida">Guardar</button></div>
+  </div>
+</div>
+
+<!-- Modal: servicio individual (RF-022, excepción a RN-004) -->
+<div class="modal-fondo" id="modal-servicio">
+  <div class="modal" role="dialog" style="max-width:500px">
+    <div class="modal-cab"><h2>Servicio individual — AB123 B081</h2><button class="cerrar" data-cerrar aria-label="Cerrar">×</button></div>
+    <div class="modal-cuerpo">
+      <div class="form-grid">
+        <div class="campo"><label>Fecha del servicio <span class="req">*</span></label><input class="input" type="date" value="2026-08-28"></div>
+        <div class="campo"><label>Toro <span class="req">*</span></label><select class="input"><option selected>AB123 A102 — "Don Pancho"</option><option>GH234 A007</option><option>GH234 A011</option><option>AB123 A115</option></select></div>
+        <div class="campo completo"><label>Fecha probable de parto</label><input class="input" value="07/06/2027" disabled><span class="ayuda">Servicio + 283 días. El padre de la cría va a quedar registrado.</span></div>
+      </div>
+      <p class="chico mt">Es una excepción: normalmente los toros están en grupo y el servicio se carga por temporada.</p>
+    </div>
+    <div class="modal-pie"><button class="btn" data-cerrar>Cancelar</button><button class="btn btn-primario" data-guardar>Guardar</button></div>
+  </div>
+</div>
+
+<!-- Modal: recordatorio suelto (RF-044) -->
+<div class="modal-fondo" id="modal-recordatorio">
+  <div class="modal" role="dialog" style="max-width:480px">
+    <div class="modal-cab"><h2>Recordatorio — AB123 B081</h2><button class="cerrar" data-cerrar aria-label="Cerrar">×</button></div>
+    <div class="modal-cuerpo">
+      <div class="form-grid">
+        <div class="campo"><label>Avisarme el <span class="req">*</span></label><input class="input" type="date" value="2026-10-13"></div>
+        <div class="campo"><label>Motivo <span class="req">*</span></label><input class="input" value="Revisar si parió"></div>
+      </div>
+    </div>
+    <div class="modal-pie"><button class="btn" data-cerrar>Cancelar</button><button class="btn btn-primario" data-guardar>Guardar</button></div>
+  </div>
+</div>
+
+<!-- Modal: evento genérico (tacto, aborto, celo, vacuna, tratamiento) -->
+<div class="modal-fondo" id="modal-evento">
+  <div class="modal" role="dialog">
+    <div class="modal-cab"><h2>Tacto — AB123 B081</h2><button class="cerrar" data-cerrar aria-label="Cerrar">×</button></div>
+    <div class="modal-cuerpo">
+      <div class="form-grid">
+        <div class="campo"><label>Fecha <span class="req">*</span></label><input class="input" type="date" value="2026-04-14"></div>
+        <div class="campo"><span class="label">Resultado <span class="req">*</span></span>
+          <div class="opciones"><label><input type="radio" name="res" checked> Preñada</label><label><input type="radio" name="res"> Vacía</label></div></div>
+        <div class="campo"><label>Meses de gestación</label><input class="input" placeholder="Opcional"></div>
+        <div class="campo"><label>Parición esperada</label><input class="input" value="06/06 al 21/10/2026" disabled><span class="ayuda">Temporada de servicio 27/08/2025 – 11/01/2026 + 283 días</span></div>
+        <div class="campo completo"><label>Observaciones</label><textarea class="input"></textarea></div>
+      </div>
+      <p class="chico mt">Para el tacto de todo el rodeo usá <a href="jornada-nueva.html?tipo=tacto">Nueva jornada</a>.</p>
+    </div>
+    <div class="modal-pie"><button class="btn" data-cerrar>Cancelar</button><button class="btn btn-primario" data-guardar>Guardar</button></div>
+  </div>
+</div>
+
+</body>
+</html>

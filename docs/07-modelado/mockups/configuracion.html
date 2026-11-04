@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Establecimiento — Mi Hacienda Digital</title>
+  <link rel="stylesheet" href="assets/estilos.css">
+  <script src="assets/app.js" defer></script>
+</head>
+<body data-layout="app" data-nav="establecimiento" data-codigo="P18">
+
+<main class="contenido" style="max-width:1040px">
+
+  <div class="encabezado">
+    <div>
+      <h1>Establecimiento</h1>
+      <p>Datos del campo, preferencias de los avisos y copia de seguridad.</p>
+    </div>
+  </div>
+
+  <!-- RF-036 -->
+  <form class="card">
+    <h2>Datos del establecimiento</h2>
+    <div class="form-grid mt">
+      <div class="campo"><label>Nombre <span class="req">*</span></label><input class="input" value="Los Álamos"></div>
+      <div class="campo"><label>RENSPA</label><input class="input mono" value="01.123.0.00456/00"></div>
+      <div class="campo"><label>Código de caravana del establecimiento</label><input class="input mono" value="AB123"><span class="ayuda">Es la primera parte de las caravanas SENASA de los animales nacidos acá. Al caravanear terneros se completa solo.</span></div>
+      <div class="campo"><label>Localidad</label><input class="input" value="Localidad de ejemplo"></div>
+      <div class="campo"><label>Provincia</label><input class="input" value="Buenos Aires"></div>
+      <div class="campo completo"><label>Sistema productivo</label><select class="input"><option selected>Cría</option><option>Cría y recría</option><option>Ciclo completo</option></select><span class="ayuda">Solo cambia lo que se muestra primero: el sistema permite cargar todas las categorías (novillitos, novillos) aunque hoy se haga solo cría.</span></div>
+    </div>
+
+    <h2 class="mt-2">Avisos</h2>
+    <div class="form-grid mt">
+      <div class="campo">
+        <label>Avisar los pendientes con</label>
+        <div class="fila-inputs"><input class="input" value="30" style="max-width:110px"> <span>días de anticipación</span></div>
+      </div>
+      <div class="campo">
+        <label>Edad de destete</label>
+        <div class="fila-inputs"><input class="input" value="180" style="max-width:110px"> <span>días</span></div>
+        <span class="ayuda">Desde esta edad los terneros aparecen como "para destetar". En Los Álamos se destetan en las ventas, en dos tandas entre febrero y mayo.</span>
+      </div>
+    </div>
+
+    <h2 class="mt-2">Valores por defecto</h2>
+    <div class="form-grid mt">
+      <div class="campo">
+        <label>Temporada de servicio habitual</label>
+        <div class="fila-inputs"><span>del</span><input class="input" value="27/08" style="max-width:110px"><span>al</span><input class="input" value="11/01" style="max-width:110px"></div>
+        <span class="ayuda">Se propone al cargar una temporada nueva.</span>
+      </div>
+      <div class="campo">
+        <label>Raza preseleccionada</label>
+        <select class="input"><option selected>Aberdeen Angus</option><option>Otra</option></select>
+      </div>
+    </div>
+
+    <div class="form-pie">
+      <button class="btn btn-primario btn-grande" type="button" data-guardar>GUARDAR</button>
+    </div>
+  </form>
+
+  <!-- RF-037 -->
+  <section class="card">
+    <div class="card-titulo">
+      <h2>Copia de seguridad</h2>
+      <span class="badge ok">✔ Automática todos los días · sin costo</span>
+    </div>
+    <p>Los datos se copian solos cada noche fuera del servidor y se conservan 30 días. Además, podés bajarte una copia completa a tu computadora.</p>
+    <div class="grilla g-2 mt">
+      <div class="aviso ok"><i data-ico="respaldo"></i><div><strong>Última copia automática</strong><br>Hoy, 10/10/2026 a las 03:00</div></div>
+      <div class="aviso info"><i data-ico="descargar"></i><div><strong>Última descarga manual</strong><br>01/09/2026 por Juan</div></div>
+    </div>
+    <div class="form-pie">
+      <span class="chico" style="margin-right:auto;align-self:center">Incluye animales, eventos, jornadas, catálogos y usuarios (sin contraseñas).</span>
+      <button class="btn" type="button" data-guardar="Descargando planilla Excel…"><i data-ico="excel"></i> Descargar en Excel</button>
+      <button class="btn btn-primario" type="button" data-guardar="Descargando copia completa…"><i data-ico="descargar"></i> Descargar copia completa</button>
+    </div>
+  </section>
+
+</main>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ingresar — Mi Hacienda Digital</title>
+  <link rel="stylesheet" href="assets/estilos.css">
+  <script src="assets/app.js" defer></script>
+</head>
+<body data-codigo="P01">
+
+  <div class="login-fondo">
+    <section class="login-arte">
+      <div class="marca" style="border:0;padding:0">
+        <span class="marca-logo">MH</span>
+        <span class="marca-texto">Mi Hacienda Digital<small>Establecimiento Los Álamos</small></span>
+      </div>
+      <div>
+        <h1>Todo el rodeo,<br>en un solo lugar.</h1>
+        <p>Cada animal con su historia, las vacunas que se vienen y los índices de la temporada, sin hacer cuentas a mano.</p>
+      </div>
+      <svg class="campo-svg" viewBox="0 0 600 160" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 110 C120 80 220 120 330 95 S520 70 600 90 V160 H0Z" fill="rgba(255,255,255,.08)"/>
+        <path d="M0 130 C140 105 260 140 380 120 S540 110 600 118 V160 H0Z" fill="rgba(255,255,255,.12)"/>
+      </svg>
+    </section>
+
+    <section class="login-panel">
+      <div class="login-caja">
+        <div class="card">
+          <h1>Ingresar</h1>
+          <p class="chico" style="margin-bottom:1.5rem">Escribí tu email y tu contraseña.</p>
+
+          <form action="inicio.html">
+            <div class="campo" style="margin-bottom:1.1rem">
+              <label for="email">Email</label>
+              <input class="input" id="email" type="email" value="productor@ejemplo.com" autocomplete="username">
+            </div>
+            <div class="campo" style="margin-bottom:.6rem">
+              <label for="pass">Contraseña</label>
+              <div class="ojo">
+                <input class="input" id="pass" type="password" value="contraseña" autocomplete="current-password">
+                <button type="button" aria-label="Mostrar contraseña"
+                  onclick="var p=document.getElementById('pass');p.type=p.type==='password'?'text':'password'"><i data-ico="ojo"></i></button>
+              </div>
+            </div>
+            <label style="display:flex;gap:.5rem;align-items:center;margin-bottom:1.5rem">
+              <input type="checkbox" checked style="width:20px;height:20px;accent-color:var(--verde)"> Recordarme en esta computadora
+            </label>
+
+            <button class="btn btn-primario btn-grande btn-bloque" type="submit">INGRESAR</button>
+          </form>
+
+          <p style="text-align:center;margin:1.25rem 0 0">
+            <a href="recuperar.html">¿Te olvidaste la contraseña?</a>
+          </p>
+        </div>
+
+        <div class="aviso danger mt" role="alert">
+          <i data-ico="aviso"></i>
+          <div><strong>Ejemplo de error:</strong> El email o la contraseña no son correctos. Revisalos y probá de nuevo.</div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+</body>
+</html>

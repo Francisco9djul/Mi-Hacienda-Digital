@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sanidad — Mi Hacienda Digital</title>
+  <link rel="stylesheet" href="assets/estilos.css">
+  <script src="assets/app.js" defer></script>
+</head>
+<body data-layout="app" data-nav="sanidad" data-codigo="P13">
+
+<main class="contenido">
+
+  <div class="encabezado">
+    <div>
+      <h1>Sanidad</h1>
+      <p>Vacunas, animales enfermos, análisis, tratamientos y desparasitaciones del rodeo.</p>
+    </div>
+    <div class="acciones">
+      <a class="btn" href="plan-sanitario.html"><i data-ico="calendario"></i> Plan sanitario 2026</a>
+      <button class="btn" type="button" data-abrir="modal-tratar">💊 Tratar un animal</button>
+      <button class="btn" type="button" data-abrir="modal-enfermo">🤒 Animal enfermo</button>
+      <a class="btn" href="jornada-nueva.html?tipo=analisis">🧪 Análisis</a>
+      <a class="btn btn-primario" href="jornada-nueva.html?tipo=vacunar"><i data-ico="mas"></i> Vacunar / desparasitar</a>
+    </div>
+  </div>
+
+  <div class="grilla g-4">
+    <div class="card kpi"><div class="etiqueta">Carbunclo (obligatoria)</div><div class="valor" style="color:var(--amarillo)">94 %</div><div class="detalle">96 de 102 · vence 30/11</div></div>
+    <div class="card kpi"><div class="etiqueta">Ventana abierta</div><div class="valor" style="color:var(--amarillo)">87</div><div class="detalle">terneros · mancha 1.ª dosis</div></div>
+    <div class="card kpi"><div class="etiqueta">Enfermos en curso</div><div class="valor" style="color:var(--rojo)">3</div><div class="detalle">terneros con diarrea</div></div>
+    <div class="card kpi"><div class="etiqueta">En retiro</div><div class="valor" style="color:var(--amarillo)">1</div><div class="detalle">no apto venta/faena</div></div>
+  </div>
+
+  <section class="card mt" data-tabs-ambito>
+    <div class="tabs">
+      <button data-tab="proximas" class="activo">Vacunas pendientes</button>
+      <button data-tab="enfermos">Animales enfermos (3 en curso)</button>
+      <button data-tab="analisis">Análisis</button>
+      <button data-tab="retiro">En período de retiro (1)</button>
+      <button data-tab="historial">Historial</button>
+    </div>
+
+    <div class="tab-panel activo" id="proximas">
+      <div class="tabla-wrap responsive">
+        <table class="tabla">
+          <thead><tr><th>Estado</th><th>Vacuna</th><th>Dosis</th><th>A quién</th><th class="num">Animales</th><th>Ventana</th><th></th></tr></thead>
+          <tbody>
+            <tr><td data-label="Estado"><span class="badge danger">Obligatoria · pendiente</span></td><td data-label="Vacuna">Carbunclo</td><td data-label="Dosis">Única</td><td data-label="A quién">Faltan: vaquillonas y novillitos ≥ 8 m</td><td data-label="Animales" class="num">6</td><td data-label="Ventana">sep – nov · vence 30/11</td><td class="sin-label"><a class="btn btn-primario btn-chico" href="jornada-nueva.html?tipo=vacunar">Vacunar</a></td></tr>
+            <tr><td data-label="Estado"><span class="badge warn">Ventana abierta</span></td><td data-label="Vacuna">Mancha-gangrena-enterotoxemia</td><td data-label="Dosis">1.ª</td><td data-label="A quién">Terneros al pie</td><td data-label="Animales" class="num">87</td><td data-label="Ventana">oct – nov (en la yerra)</td><td class="sin-label"><a class="btn btn-chico" href="jornada-nueva.html?tipo=vacunar">Vacunar</a></td></tr>
+            <tr><td data-label="Estado"><span class="badge info">Desde el 01/12</span></td><td data-label="Vacuna">Mancha-gangrena-enterotoxemia</td><td data-label="Dosis">2.ª</td><td data-label="A quién">Terneros con la 1.ª dosis</td><td data-label="Animales" class="num">—</td><td data-label="Ventana">dic</td><td class="sin-label"></td></tr>
+            <tr><td data-label="Estado"><span class="badge info">Desde el 01/12</span></td><td data-label="Vacuna">Brucelosis · obligatoria</td><td data-label="Dosis">Única</td><td data-label="A quién">Terneras de 3 a 8 meses</td><td data-label="Animales" class="num">38</td><td data-label="Ventana">dic – ene</td><td class="sin-label"></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="enfermos">
+      <div class="tabla-wrap responsive">
+        <table class="tabla">
+          <thead><tr><th>Fecha</th><th>Animal</th><th>Enfermedad</th><th>Causa probable</th><th>Tratamiento</th><th>Evolución</th><th></th></tr></thead>
+          <tbody>
+            <tr><td data-label="Fecha">05/10/2026</td><td data-label="Animal">Cría de <a class="caravana" href="animal-ficha.html">AB123 B094</a></td><td data-label="Enfermedad"><span class="badge danger">Diarrea</span></td><td data-label="Causa">Frío y lluvia</td><td data-label="Tratamiento">Sales de rehidratación</td><td data-label="Evolución"><span class="badge warn">En curso</span></td><td class="sin-label"><button class="btn btn-chico" data-abrir="modal-enfermo">Actualizar</button></td></tr>
+            <tr><td data-label="Fecha">05/10/2026</td><td data-label="Animal">Cría de <a class="caravana" href="animal-ficha.html">AB123 B117</a></td><td data-label="Enfermedad"><span class="badge danger">Diarrea</span></td><td data-label="Causa">Frío y lluvia</td><td data-label="Tratamiento">Sales de rehidratación</td><td data-label="Evolución"><span class="badge warn">En curso</span></td><td class="sin-label"><button class="btn btn-chico" data-abrir="modal-enfermo">Actualizar</button></td></tr>
+            <tr><td data-label="Fecha">05/10/2026</td><td data-label="Animal">Ternera negra · <em>"mancha blanca en la frente"</em></td><td data-label="Enfermedad"><span class="badge danger">Diarrea</span></td><td data-label="Causa">Frío y lluvia</td><td data-label="Tratamiento">Sales de rehidratación</td><td data-label="Evolución"><span class="badge warn">En curso</span></td><td class="sin-label"><button class="btn btn-chico" data-abrir="modal-enfermo">Actualizar</button></td></tr>
+            <tr><td data-label="Fecha">22/09/2026</td><td data-label="Animal">Cría de <a class="caravana" href="animal-ficha.html">AB123 B102</a></td><td data-label="Enfermedad"><span class="badge warn">Neumonía</span></td><td data-label="Causa">Cambio brusco de temperatura</td><td data-label="Tratamiento">Oxitetraciclina LA</td><td data-label="Evolución"><span class="badge ok">Recuperada</span></td><td class="sin-label"></td></tr>
+            <tr><td data-label="Fecha">28/08/2026</td><td data-label="Animal">Cría de <span class="caravana">AB123 B140</span></td><td data-label="Enfermedad"><span class="badge danger">Diarrea</span></td><td data-label="Causa">Barro en la parición</td><td data-label="Tratamiento">Enrofloxacina</td><td data-label="Evolución"><span class="badge danger">Murió 02/09</span></td><td class="sin-label"></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="chico mt">El resumen por temporada y por causa está en <a href="reportes.html#terneros">Reportes → Terneros</a>.</p>
+    </div>
+
+    <div class="tab-panel" id="analisis">
+      <div class="tabla-wrap responsive">
+        <table class="tabla">
+          <thead><tr><th>Fecha</th><th>Análisis</th><th>A quién</th><th class="num">Animales</th><th>Resultado</th><th>Próximo</th></tr></thead>
+          <tbody>
+            <tr><td data-label="Fecha">15/07/2026</td><td data-label="Análisis">Raspaje (enfermedades venéreas) · <strong>obligatorio</strong></td><td data-label="A quién">Toros</td><td data-label="Animales" class="num">4</td><td data-label="Resultado"><span class="badge ok">4 negativos</span></td><td data-label="Próximo">may – jul 2027</td></tr>
+            <tr><td data-label="Fecha">18/11/2025</td><td data-label="Análisis">Sangrado (brucelosis)</td><td data-label="A quién">Vacas y toros</td><td data-label="Animales" class="num">99</td><td data-label="Resultado"><span class="badge ok">99 negativos</span></td><td data-label="Próximo">2027 (año por medio)</td></tr>
+            <tr><td data-label="Fecha">10/07/2025</td><td data-label="Análisis">Raspaje (enfermedades venéreas)</td><td data-label="A quién">Toros</td><td data-label="Animales" class="num">4</td><td data-label="Resultado"><span class="badge warn">3 negativos · 1 sospechoso</span></td><td data-label="Próximo">—</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="chico mt">Un resultado positivo aparece como alerta en el tablero y en la ficha del animal.</p>
+    </div>
+
+    <div class="tab-panel" id="retiro">
+      <div class="aviso warn" style="margin-bottom:1rem"><i data-ico="aviso"></i><div>Estos animales <strong>no se pueden vender ni mandar a faena</strong> hasta que termine el retiro.</div></div>
+      <div class="tabla-wrap responsive">
+        <table class="tabla">
+          <thead><tr><th>Animal</th><th>Categoría</th><th>Producto</th><th>Aplicado</th><th>Retiro hasta</th><th>Faltan</th></tr></thead>
+          <tbody>
+            <tr><td data-label="Animal">Cría de <a class="caravana" href="animal-ficha.html">AB123 B102</a></td><td data-label="Categoría">Ternera al pie</td><td data-label="Producto">Oxitetraciclina LA (neumonía)</td><td data-label="Aplicado">22/09/2026</td><td data-label="Retiro hasta"><strong>20/10/2026</strong></td><td data-label="Faltan"><span class="badge warn">10 días</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="historial">
+      <div class="filtros" style="box-shadow:none">
+        <div class="campo"><label>Tipo</label><select class="input"><option>Todos</option><option>Vacunación</option><option>Enfermedad</option><option>Análisis</option><option>Tratamiento</option><option>Desparasitación</option></select></div>
+        <div class="campo"><label>Producto o marca</label><select class="input"><option>Todos</option><option>Carbunclo (Laboratorio Sur)</option><option>Aftosa</option><option>Rotatec</option><option>Ivermectina 1%</option></select></div>
+        <div class="campo"><label>Serie</label><input class="input mono" placeholder="Ej: 4410"><span class="ayuda">Para saber qué animales recibieron esa serie.</span></div>
+        <div class="campo"><label>Desde</label><input class="input" type="date" value="2026-01-01"></div>
+        <div class="campo"><label>Hasta</label><input class="input" type="date" value="2026-10-10"></div>
+      </div>
+      <div class="tabla-wrap responsive">
+        <table class="tabla">
+          <thead><tr><th>Fecha</th><th>Tipo</th><th>Producto / enfermedad</th><th class="num">Animales</th><th>Responsable</th><th></th></tr></thead>
+          <tbody>
+            <tr><td data-label="Fecha">08/10/2026</td><td data-label="Tipo">Vacunación</td><td data-label="Producto">Carbunclo (vacas y toros)</td><td data-label="Animales" class="num">96</td><td data-label="Responsable">Juan</td><td class="sin-label"><a href="jornada-detalle.html">Ver jornada</a></td></tr>
+            <tr><td data-label="Fecha">05/10/2026</td><td data-label="Tipo">Enfermedad</td><td data-label="Producto">Diarrea</td><td data-label="Animales" class="num">2</td><td data-label="Responsable">Juan</td><td class="sin-label"><a href="jornada-detalle.html">Ver jornada</a></td></tr>
+            <tr><td data-label="Fecha">20/08/2026</td><td data-label="Tipo">Desparasitación</td><td data-label="Producto">Piojo — cipermetrina pour-on (2 de 2)</td><td data-label="Animales" class="num">165</td><td data-label="Responsable">Juan</td><td class="sin-label"><a href="jornada-detalle.html">Ver jornada</a></td></tr>
+            <tr><td data-label="Fecha">15/07/2026</td><td data-label="Tipo">Análisis</td><td data-label="Producto">Raspaje — 4 toros negativos</td><td data-label="Animales" class="num">4</td><td data-label="Responsable">Juan</td><td class="sin-label"><a href="jornada-detalle.html">Ver jornada</a></td></tr>
+            <tr><td data-label="Fecha">15/06/2026</td><td data-label="Tipo">Vacunación</td><td data-label="Producto">Aftosa (estratégica)</td><td data-label="Animales" class="num">8</td><td data-label="Responsable">Juan</td><td class="sin-label"><a href="jornada-detalle.html">Ver jornada</a></td></tr>
+            <tr><td data-label="Fecha">12/05/2026</td><td data-label="Tipo">Vacunación</td><td data-label="Producto">Rotatec 2.ª dosis</td><td data-label="Animales" class="num">90</td><td data-label="Responsable">Juan</td><td class="sin-label"><a href="jornada-detalle.html">Ver jornada</a></td></tr>
+            <tr><td data-label="Fecha">14/04/2026</td><td data-label="Tipo">Vacunación</td><td data-label="Producto">Aftosa</td><td data-label="Animales" class="num">80</td><td data-label="Responsable">Juan</td><td class="sin-label"><a href="jornada-detalle.html">Ver jornada</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Modal: tratar un animal (RF-017, RF-044) -->
+<div class="modal-fondo" id="modal-tratar">
+  <div class="modal" role="dialog">
+    <div class="modal-cab"><h2>Tratar un animal</h2><button class="cerrar" data-cerrar aria-label="Cerrar">×</button></div>
+    <div class="modal-cuerpo">
+      <div class="form-grid">
+        <div class="campo completo"><label>Caravana <span class="req">*</span></label><input class="input mono" value="AB123 B126"><span class="ayuda" style="color:var(--verde)">✔ Vaca AB123 B126 · 6 años</span></div>
+        <div class="campo"><label>Fecha <span class="req">*</span></label><input class="input" type="date" value="2026-10-07"></div>
+        <div class="campo"><label>Diagnóstico</label><input class="input" value="Pietín (renguera)"></div>
+        <div class="campo"><label>Producto <span class="req">*</span></label><select class="input"><option selected>Oxitetraciclina LA (inyectable)</option><option>Enrofloxacina (inyectable)</option></select></div>
+        <div class="campo"><label>Dosis</label><input class="input" value="20 ml"></div>
+        <div class="campo"><label>Duración (días)</label><input class="input" value="1"></div>
+        <div class="campo"><label>Retiro hasta</label><input class="input" value="04/11/2026" disabled><span class="ayuda">28 días, según el producto.</span></div>
+        <div class="campo completo"><span class="label">Aviso</span><div class="fila-inputs"><label><input type="checkbox" checked> Avisarme para revisarla en</label><input class="input" value="3" style="max-width:80px"><span>días</span><input class="input" value="Ver si mejoró la renguera" aria-label="Motivo"></div><span class="ayuda">El 10/10/2026 aparece en Pendientes hasta que lo marques como hecho.</span></div>
+      </div>
+      <p class="chico mt">Para un ternero sin caravana, elegilo por la madre o por sexo, pelaje y seña.</p>
+    </div>
+    <div class="modal-pie"><button class="btn" data-cerrar>Cancelar</button><button class="btn btn-primario" data-guardar="Tratamiento guardado. Te aviso el 10/10 para revisarla.">Guardar</button></div>
+  </div>
+</div>
+
+<!-- Modal: animal enfermo (RF-038) -->
+<div class="modal-fondo" id="modal-enfermo">
+  <div class="modal" role="dialog">
+    <div class="modal-cab"><h2>Animal enfermo</h2><button class="cerrar" data-cerrar aria-label="Cerrar">×</button></div>
+    <div class="modal-cuerpo">
+      <div class="form-grid">
+        <div class="campo completo"><span class="label">Animal <span class="req">*</span></span><div class="opciones"><label><input type="radio" name="ide"> Por caravana</label><label><input type="radio" name="ide"> Ternero, por la madre</label><label><input type="radio" name="ide" checked> Ternero, por sexo, pelaje y seña</label></div><div class="fila-inputs mt"><select class="input" aria-label="Sexo"><option>Hembra</option><option>Macho</option></select><select class="input" aria-label="Pelaje"><option>Negra</option><option>Colorada</option></select><input class="input" value="mancha blanca en la frente" aria-label="Seña"></div><span class="ayuda">✔ Coincide con 1 ternera al pie (cría de AB123 B117). Si no coincide con ninguno, se registra igual como "un ternero al pie" de ese grupo.</span></div>
+        <div class="campo"><label>Fecha <span class="req">*</span></label><input class="input" type="date" value="2026-10-05"></div>
+        <div class="campo"><label>Enfermedad <span class="req">*</span></label><select class="input"><option selected>Diarrea</option><option>Neumonía</option><option>Ombligo</option><option>Otra</option></select></div>
+        <div class="campo completo"><label>Causa probable</label><input class="input" value="Frío y lluvia"></div>
+        <div class="campo"><label>Tratamiento (opcional)</label><select class="input"><option>Sales de rehidratación</option><option>Enrofloxacina</option><option>Oxitetraciclina LA</option><option>Sin tratamiento</option></select></div>
+        <div class="campo"><label>Evolución</label><select class="input"><option>En curso</option><option>Recuperado</option><option>Murió</option></select><span class="ayuda">Si murió, se da de baja con esta enfermedad como causa.</span></div>
+        <div class="campo completo"><span class="label">Aviso</span><div class="fila-inputs"><label><input type="checkbox" checked> Avisarme para revisarlo en</label><input class="input" value="3" style="max-width:80px"><span>días</span></div></div>
+      </div>
+      <p class="chico mt">Para varios terneros a la vez usá <a href="jornada-nueva.html?tipo=enfermos">Nueva jornada → Enfermos</a>.</p>
+    </div>
+    <div class="modal-pie"><button class="btn" data-cerrar>Cancelar</button><button class="btn btn-primario" data-guardar>Guardar</button></div>
+  </div>
+</div>
+
+</body>
+</html>

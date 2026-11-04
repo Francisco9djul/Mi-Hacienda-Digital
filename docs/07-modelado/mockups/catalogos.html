@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Catálogos — Mi Hacienda Digital</title>
+  <link rel="stylesheet" href="assets/estilos.css">
+  <script src="assets/app.js" defer></script>
+</head>
+<body data-layout="app" data-nav="catalogos" data-codigo="P16">
+
+<main class="contenido" data-tabs-ambito>
+
+  <div class="encabezado">
+    <div>
+      <h1>Catálogos</h1>
+      <p>Las listas que aparecen en los formularios. Lo que se deshabilita deja de ofrecerse, pero no se borra.</p>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <button data-tab="productos" class="activo">Productos sanitarios</button>
+    <button data-tab="enfermedades">Enfermedades</button>
+    <button data-tab="toros">Toros</button>
+    <button data-tab="categorias">Categorías</button>
+    <button data-tab="razas">Razas</button>
+  </div>
+
+  <!-- Productos sanitarios -->
+  <div class="tab-panel activo" id="productos">
+    <div class="pie-tabla" style="margin:0 0 1rem"><strong>15 productos y análisis</strong><button class="btn btn-primario" data-abrir="modal-producto"><i data-ico="mas"></i> Nuevo producto</button></div>
+    <div class="tabla-wrap responsive">
+      <table class="tabla">
+        <thead><tr><th>Producto</th><th>Tipo</th><th class="num">Días de retiro</th><th>Obligatoria</th><th></th></tr></thead>
+        <tbody>
+          <tr><td data-label="Producto"><strong>Aftosa</strong></td><td data-label="Tipo">Vacuna</td><td data-label="Retiro" class="num">—</td><td data-label="Obligatoria"><span class="badge ok">Sí</span></td><td class="sin-label"><button class="btn btn-chico" data-abrir="modal-producto">Editar</button></td></tr>
+          <tr><td data-label="Producto"><strong>Carbunclo</strong></td><td data-label="Tipo">Vacuna</td><td data-label="Retiro" class="num">—</td><td data-label="Obligatoria"><span class="badge ok">Sí</span></td><td class="sin-label"><button class="btn btn-chico" data-abrir="modal-producto">Editar</button></td></tr>
+          <tr><td data-label="Producto"><strong>Brucelosis</strong></td><td data-label="Tipo">Vacuna</td><td data-label="Retiro" class="num">—</td><td data-label="Obligatoria"><span class="badge ok">Sí</span></td><td class="sin-label"><button class="btn btn-chico" data-abrir="modal-producto">Editar</button></td></tr>
+          <tr><td data-label="Producto"><strong>Diarrea de los terneros (Rotatec)</strong></td><td data-label="Tipo">Vacuna</td><td data-label="Retiro" class="num">—</td><td data-label="Obligatoria">No</td><td class="sin-label"><button class="btn btn-chico" data-abrir="modal-producto">Editar</button></td></tr>
+          <tr><td data-label="Producto"><strong>Mancha-gangrena-enterotoxemia</strong></td><td data-label="Tipo">Vacuna</td><td data-label="Retiro" class="num">—</td><td data-label="Obligatoria">No</td><td class="sin-label"><button class="btn btn-chico" data-abrir="modal-producto">Editar</button></td></tr>
+          <tr><td data-label="Producto"><strong>Neumonía</strong></td><td data-label="Tipo">Vacuna</td><td data-label="Retiro" class="num">—</td><td data-label="Obligatoria">No</td><td class="sin-label"><button class="btn btn-chico" data-abrir="modal-producto">Editar</button></td></tr>
+          <tr><td data-label="Producto"><strong>Doramectina</strong> (inyectable)</td><td data-label="Tipo">Antiparasitario</td><td data-label="Retiro" class="num">35 días</td><td data-label="Obligatoria">No</td><td class="sin-label"><button class="btn btn-chico" data-abrir="modal-producto">Editar</button></td></tr>
+          <tr><td data-label="Producto"><strong>Cipermetrina</strong> (pour-on)</td><td data-label="Tipo">Antiparasitario</td><td data-label="Retiro" class="num">7 días</td><td data-label="Obligatoria">No</td><td class="sin-label"><button class="btn btn-chico" data-abrir="modal-producto">Editar</button></td></tr>
+          <tr><td data-label="Producto"><strong>Cipermetrina</strong> (baño de aspersión)</td><td data-label="Tipo">Antiparasitario</td><td data-label="Retiro" class="num">7 días</td><td data-label="Obligatoria">No</td><td class="sin-label"><button class="btn btn-chico" data-abrir="modal-producto">Editar</button></td></tr>
+          <tr><td data-label="Producto"><strong>Ivermectina 1%</strong> (inyectable)</td><td data-label="Tipo">Antiparasitario</td><td data-label="Retiro" class="num">35 días</td><td data-label="Obligatoria">No</td><td class="sin-label"><button class="btn btn-chico" data-abrir="modal-producto">Editar</button></td></tr>
+          <tr><td data-label="Producto"><strong>Oxitetraciclina LA</strong></td><td data-label="Tipo">Antibiótico</td><td data-label="Retiro" class="num">28 días</td><td data-label="Obligatoria">No</td><td class="sin-label"><button class="btn btn-chico" data-abrir="modal-producto">Editar</button></td></tr>
+          <tr><td data-label="Producto"><strong>Enrofloxacina</strong></td><td data-label="Tipo">Antibiótico</td><td data-label="Retiro" class="num">14 días</td><td data-label="Obligatoria">No</td><td class="sin-label"><button class="btn btn-chico" data-abrir="modal-producto">Editar</button></td></tr>
+          <tr><td data-label="Producto"><strong>Raspaje</strong> (enfermedades venéreas)</td><td data-label="Tipo">Análisis</td><td data-label="Retiro" class="num">—</td><td data-label="Obligatoria"><span class="badge ok">Sí</span></td><td class="sin-label"><button class="btn btn-chico" data-abrir="modal-producto">Editar</button></td></tr>
+          <tr><td data-label="Producto"><strong>Sangrado</strong> (brucelosis)</td><td data-label="Tipo">Análisis</td><td data-label="Retiro" class="num">—</td><td data-label="Obligatoria">No</td><td class="sin-label"><button class="btn btn-chico" data-abrir="modal-producto">Editar</button></td></tr>
+          <tr><td data-label="Producto"><strong>Sales de rehidratación</strong></td><td data-label="Tipo">Otro</td><td data-label="Retiro" class="num">—</td><td data-label="Obligatoria">No</td><td class="sin-label"><button class="btn btn-chico" data-abrir="modal-producto">Editar</button></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="chico mt">Las fechas de cada vacuna se definen en el <a href="plan-sanitario.html">plan sanitario</a>.</p>
+  </div>
+
+  <!-- Enfermedades -->
+  <div class="tab-panel" id="enfermedades">
+    <div class="pie-tabla" style="margin:0 0 1rem"><strong>5 enfermedades</strong><button class="btn btn-primario" data-abrir="modal-enfermedad"><i data-ico="mas"></i> Nueva enfermedad</button></div>
+    <div class="tabla-wrap responsive">
+      <table class="tabla">
+        <thead><tr><th>Enfermedad</th><th class="num">Casos 2026</th><th>En el reporte de terneros</th><th>Estado</th><th></th></tr></thead>
+        <tbody>
+          <tr><td data-label="Enfermedad"><strong>Diarrea</strong></td><td data-label="Casos" class="num">14</td><td data-label="Reporte"><span class="badge ok">Sí</span></td><td data-label="Estado"><span class="badge ok">Activa</span></td><td class="sin-label"><button class="btn btn-chico" data-abrir="modal-enfermedad">Editar</button></td></tr>
+          <tr><td data-label="Enfermedad"><strong>Neumonía</strong></td><td data-label="Casos" class="num">6</td><td data-label="Reporte"><span class="badge ok">Sí</span></td><td data-label="Estado"><span class="badge ok">Activa</span></td><td class="sin-label"><button class="btn btn-chico" data-abrir="modal-enfermedad">Editar</button></td></tr>
+          <tr><td data-label="Enfermedad"><strong>Queratoconjuntivitis</strong></td><td data-label="Casos" class="num">1</td><td data-label="Reporte">En "otras"</td><td data-label="Estado"><span class="badge ok">Activa</span></td><td class="sin-label"><button class="btn btn-chico" data-abrir="modal-enfermedad">Editar</button></td></tr>
+          <tr><td data-label="Enfermedad"><strong>Ombligo</strong></td><td data-label="Casos" class="num">3</td><td data-label="Reporte">En "otras"</td><td data-label="Estado"><span class="badge ok">Activa</span></td><td class="sin-label"><button class="btn btn-chico" data-abrir="modal-enfermedad">Editar</button></td></tr>
+          <tr><td data-label="Enfermedad"><strong>Otra</strong></td><td data-label="Casos" class="num">0</td><td data-label="Reporte">En "otras"</td><td data-label="Estado"><span class="badge ok">Activa</span></td><td class="sin-label"><button class="btn btn-chico" data-abrir="modal-enfermedad">Editar</button></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Toros -->
+  <div class="tab-panel" id="toros">
+    <section class="card">
+      <div class="card-titulo"><h2>Toros</h2><a class="btn btn-chico" href="animal-nuevo.html">+ Nuevo toro</a></div>
+      <p class="chico">Los toros son animales del rodeo: se dan de alta como cualquier macho entero. Están todos juntos con las vacas en la temporada de servicio.</p>
+      <div class="tabla-wrap">
+        <table class="tabla">
+          <thead><tr><th>Caravana</th><th>Raza</th><th class="num">Edad</th><th>Origen</th><th>Estado</th></tr></thead>
+          <tbody>
+            <tr><td><a class="caravana" href="animal-ficha.html">GH234 A007</a></td><td>Aberdeen Angus</td><td class="num">4a</td><td>Comprado</td><td><span class="badge info">En servicio</span></td></tr>
+            <tr><td><a class="caravana" href="animal-ficha.html">GH234 A011</a></td><td>Aberdeen Angus</td><td class="num">4a</td><td>Comprado</td><td><span class="badge info">En servicio</span></td></tr>
+            <tr><td><a class="caravana" href="animal-ficha.html">AB123 A102</a></td><td>Aberdeen Angus</td><td class="num">3a</td><td>Nacido acá</td><td><span class="badge info">En servicio</span></td></tr>
+            <tr><td><a class="caravana" href="animal-ficha.html">AB123 A115</a></td><td>Aberdeen Angus</td><td class="num">2a</td><td>Nacido acá</td><td><span class="badge info">En servicio</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <!-- Categorías -->
+  <div class="tab-panel" id="categorias">
+    <div class="aviso info" style="margin-bottom:1rem"><i data-ico="info"></i><div>El sistema <strong>sugiere</strong> el cambio de categoría (por ejemplo, ternera → vaquillona al destete, vaquillona → vaca con el primer parto). Vos decidís si lo aplicás.</div></div>
+    <div class="tabla-wrap responsive">
+      <table class="tabla">
+        <thead><tr><th class="num">Orden</th><th>Categoría</th><th>Sexo</th><th class="num">Animales</th><th>Estado</th></tr></thead>
+        <tbody>
+          <tr><td data-label="Orden" class="num">1</td><td data-label="Categoría"><strong>Ternero</strong></td><td data-label="Sexo">Macho</td><td data-label="Animales" class="num">45</td><td data-label="Estado"><span class="badge ok">Activa</span></td></tr>
+          <tr><td data-label="Orden" class="num">2</td><td data-label="Categoría"><strong>Ternera</strong></td><td data-label="Sexo">Hembra</td><td data-label="Animales" class="num">42</td><td data-label="Estado"><span class="badge ok">Activa</span></td></tr>
+          <tr><td data-label="Orden" class="num">3</td><td data-label="Categoría"><strong>Vaquillona</strong></td><td data-label="Sexo">Hembra</td><td data-label="Animales" class="num">5</td><td data-label="Estado"><span class="badge ok">Activa</span></td></tr>
+          <tr><td data-label="Orden" class="num">4</td><td data-label="Categoría"><strong>Vaca</strong></td><td data-label="Sexo">Hembra</td><td data-label="Animales" class="num">92</td><td data-label="Estado"><span class="badge ok">Activa</span></td></tr>
+          <tr><td data-label="Orden" class="num">5</td><td data-label="Categoría"><strong>Novillito</strong></td><td data-label="Sexo">Macho</td><td data-label="Animales" class="num">1</td><td data-label="Estado"><span class="badge ok">Activa</span></td></tr>
+          <tr><td data-label="Orden" class="num">6</td><td data-label="Categoría"><strong>Novillo</strong></td><td data-label="Sexo">Macho</td><td data-label="Animales" class="num">0</td><td data-label="Estado"><span class="badge ok">Activa</span></td></tr>
+          <tr><td data-label="Orden" class="num">7</td><td data-label="Categoría"><strong>Toro</strong></td><td data-label="Sexo">Macho</td><td data-label="Animales" class="num">4</td><td data-label="Estado"><span class="badge ok">Activa</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Razas -->
+  <div class="tab-panel" id="razas">
+    <div class="pie-tabla" style="margin:0 0 1rem"><strong>2 razas</strong><button class="btn btn-primario" type="button"><i data-ico="mas"></i> Nueva raza</button></div>
+    <div class="tabla-wrap responsive">
+      <table class="tabla">
+        <thead><tr><th>Raza</th><th class="num">Animales</th><th>Estado</th><th></th></tr></thead>
+        <tbody>
+          <tr><td data-label="Raza"><strong>Aberdeen Angus</strong> <span class="badge info">Preseleccionada</span></td><td data-label="Animales" class="num">189</td><td data-label="Estado"><span class="badge ok">Activa</span></td><td class="sin-label"><button class="btn btn-chico">Editar</button></td></tr>
+          <tr><td data-label="Raza"><strong>Otra</strong></td><td data-label="Animales" class="num">0</td><td data-label="Estado"><span class="badge ok">Activa</span></td><td class="sin-label"><button class="btn btn-chico">Editar</button></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</main>
+
+<div class="modal-fondo" id="modal-producto">
+  <div class="modal" role="dialog">
+    <div class="modal-cab"><h2>Producto sanitario</h2><button class="cerrar" data-cerrar aria-label="Cerrar">×</button></div>
+    <div class="modal-cuerpo">
+      <div class="form-grid">
+        <div class="campo completo"><label>Nombre <span class="req">*</span></label><input class="input" value="Oxitetraciclina LA"></div>
+        <div class="campo"><label>Tipo <span class="req">*</span></label><select class="input"><option>Vacuna</option><option>Antiparasitario</option><option selected>Antibiótico</option><option>Vitamina</option><option>Análisis</option><option>Otro</option></select></div>
+        <div class="campo"><label>Marca o laboratorio</label><input class="input" value="Laboratorio Sur"></div>
+        <div class="campo"><label>Forma de aplicación</label><select class="input"><option selected>Inyectable</option><option>Pour-on (sobre el lomo)</option><option>Baño de aspersión</option><option>Oral</option><option>Otra</option></select></div>
+        <div class="campo"><label>Días de retiro</label><input class="input" value="28"><span class="ayuda">Días sin poder vender ni faenar.</span></div>
+        <div class="campo"><span class="label">¿Obligatoria?</span><div class="opciones"><label><input type="radio" name="ob"> Sí</label><label><input type="radio" name="ob" checked> No</label></div></div>
+      </div>
+    </div>
+    <div class="modal-pie"><button class="btn" data-cerrar>Cancelar</button><button class="btn btn-primario" data-guardar>Guardar</button></div>
+  </div>
+</div>
+
+<div class="modal-fondo" id="modal-enfermedad">
+  <div class="modal" role="dialog" style="max-width:480px">
+    <div class="modal-cab"><h2>Enfermedad</h2><button class="cerrar" data-cerrar aria-label="Cerrar">×</button></div>
+    <div class="modal-cuerpo">
+      <div class="form-grid">
+        <div class="campo completo"><label>Nombre <span class="req">*</span></label><input class="input" value="Neumonía"></div>
+        <div class="campo completo"><span class="label">Reporte de terneros</span><div class="opciones"><label><input type="radio" name="rt" checked> Mostrarla aparte</label><label><input type="radio" name="rt"> Sumarla en "otras"</label></div></div>
+      </div>
+    </div>
+    <div class="modal-pie"><button class="btn" data-cerrar>Cancelar</button><button class="btn btn-primario" data-guardar>Guardar</button></div>
+  </div>
+</div>
+
+</body>
+</html>

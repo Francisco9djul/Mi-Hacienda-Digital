@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Registrar parto — Mi Hacienda Digital</title>
+  <link rel="stylesheet" href="assets/estilos.css">
+  <script src="assets/app.js" defer></script>
+</head>
+<body data-layout="app" data-nav="reproduccion" data-codigo="P07">
+
+<main class="contenido" style="max-width:940px">
+
+  <a class="volver" href="animal-ficha.html"><i data-ico="volver"></i> Volver a la vaca AB123 B081</a>
+
+  <div class="encabezado">
+    <div class="ficha-cab">
+      <span class="caravana-grande" style="font-size:1.5rem">AB123 B081</span>
+      <div>
+        <h1 style="margin:0">Registrar parto</h1>
+        <p>Vaca AB123 B081 · Preñada (tacto 14/04/2026) · Parición esperada del 06/06 al 21/10/2026</p>
+      </div>
+    </div>
+  </div>
+
+  <form class="card">
+    <div class="form-grid">
+      <p class="seccion-form completo">El parto</p>
+      <div class="campo">
+        <label for="fecha">Fecha del parto <span class="req">*</span></label>
+        <input class="input" id="fecha" type="date" value="2026-10-10">
+      </div>
+      <div class="campo">
+        <span class="label">Tipo de parto</span>
+        <div class="opciones">
+          <label><input type="radio" name="tp" checked> Normal</label>
+          <label><input type="radio" name="tp"> Asistido</label>
+          <label><input type="radio" name="tp"> Cesárea</label>
+        </div>
+      </div>
+
+      <p class="seccion-form completo">El ternero</p>
+      <div class="campo completo">
+        <span class="label">¿Cuántos terneros?</span>
+        <div class="opciones">
+          <label><input type="radio" name="cant" checked onchange="mellizos(false)"> Uno</label>
+          <label><input type="radio" name="cant" onchange="mellizos(true)"> Mellizos</label>
+        </div>
+      </div>
+      <div class="campo">
+        <span class="label">Estado <span class="req">*</span></span>
+        <div class="opciones">
+          <label><input type="radio" name="ec" checked onchange="cria(true)"> Vivo</label>
+          <label><input type="radio" name="ec" onchange="cria(false)"> Nació muerto</label>
+        </div>
+      </div>
+      <div class="campo">
+        <span class="label">Sexo <span class="req">*</span></span>
+        <div class="opciones">
+          <label><input type="radio" name="sx" checked> Macho</label>
+          <label><input type="radio" name="sx"> Hembra</label>
+        </div>
+      </div>
+      <div class="campo" id="c-pelaje">
+        <label for="pel">Pelaje</label>
+        <select class="input" id="pel"><option>Negro</option><option>Colorado</option></select>
+      </div>
+      <div class="campo" id="c-sena">
+        <label for="sena">Seña particular</label>
+        <input class="input" id="sena" placeholder="Ej: mancha blanca en la frente">
+        <span class="ayuda">Sirve para reconocerlo hasta que tenga caravana.</span>
+      </div>
+      <div class="campo" id="c-padre">
+        <span class="label">Padre</span>
+        <input class="input" value="Desconocido (toros en grupo)" disabled>
+      </div>
+      <div class="completo oculto" id="mellizo2">
+        <p class="seccion-form">Segundo ternero (mellizo)</p>
+        <div class="form-grid">
+          <div class="campo"><span class="label">Estado</span><div class="opciones"><label><input type="radio" name="ec2" checked> Vivo</label><label><input type="radio" name="ec2"> Nació muerto</label></div></div>
+          <div class="campo"><span class="label">Sexo</span><div class="opciones"><label><input type="radio" name="sx2"> Macho</label><label><input type="radio" name="sx2" checked> Hembra</label></div></div>
+          <div class="campo"><label>Pelaje</label><select class="input"><option>Negro</option><option>Colorado</option></select></div>
+          <div class="campo"><label>Seña particular</label><input class="input" placeholder="Opcional"></div>
+        </div>
+      </div>
+      <div class="campo completo">
+        <label for="obs">Observaciones</label>
+        <textarea class="input" id="obs" placeholder="Ej: parto de noche, la vaca lo lamió bien"></textarea>
+      </div>
+    </div>
+
+    <div class="aviso info mt" id="aviso-cria"><i data-ico="info"></i>
+      <div>Se va a dar de alta un <strong>TERNERO AL PIE</strong>, cría de la vaca <strong>AB123 B081</strong>, <strong>sin caravana</strong>: se la ponés al destete o en la venta. Mientras tanto lo encontrás como "Cría de AB123 B081". La castración se carga después, en una jornada de castración.</div>
+    </div>
+    <div class="aviso warn mt oculto" id="aviso-muerta"><i data-ico="aviso"></i>
+      <div>El ternero muerto queda registrado en el parto y <strong>cuenta en la mortalidad de terneros</strong> de la temporada. No se da de alta.</div>
+    </div>
+
+    <div class="form-pie">
+      <a class="btn" href="animal-ficha.html">Cancelar</a>
+      <button class="btn btn-primario btn-grande" type="button" data-guardar="Guardado. Se creó el ternero, cría de AB123 B081." data-ir="animal-ficha.html">GUARDAR</button>
+    </div>
+  </form>
+
+</main>
+
+<script>
+  function mellizos(si) {
+    document.getElementById("mellizo2").classList.toggle("oculto", !si);
+  }
+  function cria(vivo) {
+    ["c-pelaje", "c-sena", "c-padre", "aviso-cria"].forEach(function (id) { document.getElementById(id).classList.toggle("oculto", !vivo); });
+    document.getElementById("aviso-muerta").classList.toggle("oculto", vivo);
+  }
+</script>
+
+</body>
+</html>

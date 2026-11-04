@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reproducción — Mi Hacienda Digital</title>
+  <link rel="stylesheet" href="assets/estilos.css">
+  <script src="assets/app.js" defer></script>
+</head>
+<body data-layout="app" data-nav="reproduccion" data-codigo="P15">
+
+<main class="contenido">
+
+  <div class="encabezado">
+    <div>
+      <h1>Reproducción</h1>
+      <p>Temporada de servicio 2025-2026 (27/08/2025 – 11/01/2026) · 97 hembras con los 4 toros</p>
+    </div>
+    <div class="acciones">
+      <select class="input" style="width:auto;min-height:46px" aria-label="Temporada"><option>2025-2026</option><option>2026-2027 (en curso)</option><option>2024-2025</option></select>
+      <a class="btn" href="jornada-nueva.html?tipo=tacto">🩺 Cargar tacto</a>
+      <a class="btn btn-primario" href="paricion.html"><i data-ico="mas"></i> Registrar parto</a>
+    </div>
+  </div>
+
+  <!-- Embudo de la temporada -->
+  <section class="card">
+    <h2>Cómo viene la temporada</h2>
+    <div class="barras-h" style="margin-top:1rem">
+      <div class="fila"><span>Entraron en servicio</span><div class="pista"><div class="relleno" style="width:100%"></div></div><span class="num">97</span></div>
+      <div class="fila"><span>Preñadas (tacto abril)</span><div class="pista"><div class="relleno" style="width:93%"></div></div><span class="num">90</span></div>
+      <div class="fila"><span>Paridas</span><div class="pista"><div class="relleno tierra" style="width:91%"></div></div><span class="num">88</span></div>
+      <div class="fila"><span>Faltan parir</span><div class="pista"><div class="relleno amarillo" style="width:2%"></div></div><span class="num">2</span></div>
+      <div class="fila"><span>Vacías (vendidas)</span><div class="pista"><div class="relleno rojo" style="width:7%"></div></div><span class="num">7</span></div>
+    </div>
+    <p class="chico">Parición esperada: del 06/06 al 21/10/2026 (servicio + 283 días). Primer parto: 28/05/2026.</p>
+  </section>
+
+  <section class="card mt" data-tabs-ambito>
+    <div class="tabs">
+      <button data-tab="paricion" class="activo">Parición 2026 (faltan 2)</button>
+      <button data-tab="temporada">Servicio 2026-2027</button>
+      <button data-tab="vacias">Vacías (7)</button>
+      <button data-tab="terneros">Terneros al pie (87)</button>
+    </div>
+
+    <div class="tab-panel activo" id="paricion">
+      <!-- Conteo como lo lleva el productor en el cuaderno (RF-029) -->
+      <div class="grilla g-4">
+        <div class="card kpi"><div class="etiqueta">Vacas paridas</div><div class="valor">88</div><div class="detalle">de 90 preñadas</div></div>
+        <div class="card kpi"><div class="etiqueta">Terneros nacidos</div><div class="valor">90</div><div class="detalle">2 partos de mellizos</div></div>
+        <div class="card kpi"><div class="etiqueta">Negros</div><div class="valor">52</div><div class="detalle">28 machos · 24 hembras</div></div>
+        <div class="card kpi"><div class="etiqueta">Colorados</div><div class="valor">38</div><div class="detalle">19 machos · 19 hembras</div></div>
+      </div>
+      <p class="chico mt">Nacieron muertos 2 terneros y murió 1 por diarrea: quedan 87 al pie.</p>
+
+      <div class="aviso warn mt"><i data-ico="aviso"></i><div>La parición esperada termina el <strong>21/10/2026</strong>. Si estas vacas no paren, puede que hayan perdido la preñez: registrá el aborto o revisalas.</div></div>
+      <div class="tabla-wrap responsive mt">
+        <table class="tabla">
+          <thead><tr><th>Caravana</th><th>Categoría</th><th>Tacto</th><th>Parición esperada</th><th></th></tr></thead>
+          <tbody>
+            <tr><td data-label="Caravana"><a class="caravana" href="animal-ficha.html">AB123 B081</a></td><td data-label="Categoría">Vaca</td><td data-label="Tacto">Preñada · 14/04/2026</td><td data-label="Parición esperada">06/06 – 21/10/2026</td><td class="sin-label"><a class="btn btn-primario btn-chico" href="paricion.html">Parió</a></td></tr>
+            <tr><td data-label="Caravana"><a class="caravana" href="animal-ficha.html">AB123 B126</a></td><td data-label="Categoría">Vaca</td><td data-label="Tacto">Preñada · 14/04/2026</td><td data-label="Parición esperada">06/06 – 21/10/2026</td><td class="sin-label"><a class="btn btn-chico" href="paricion.html">Parió</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h3 class="mt">Últimos partos</h3>
+      <div class="tabla-wrap responsive">
+        <table class="tabla">
+          <thead><tr><th>Fecha</th><th>Madre</th><th>Tipo</th><th>Terneros</th><th class="num">Total acumulado</th></tr></thead>
+          <tbody>
+            <tr><td data-label="Fecha">01/10/2026</td><td data-label="Madre" class="mono">AB123 B087</td><td data-label="Tipo">Normal</td><td data-label="Terneros">Macho negro, vivo</td><td data-label="Total" class="num">90 (38 col. · 52 N)</td></tr>
+            <tr><td data-label="Fecha">30/09/2026</td><td data-label="Madre" class="mono">AB123 B140</td><td data-label="Tipo">Normal</td><td data-label="Terneros">Hembra colorada, viva</td><td data-label="Total" class="num">89 (38 col. · 51 N)</td></tr>
+            <tr><td data-label="Fecha">21/07/2026</td><td data-label="Madre" class="mono">AB123 B121</td><td data-label="Tipo">Normal</td><td data-label="Terneros"><span class="badge info">Mellizos</span> 2 colorados, vivos</td><td data-label="Total" class="num">58</td></tr>
+            <tr><td data-label="Fecha">09/07/2026</td><td data-label="Madre" class="mono">AB123 C004</td><td data-label="Tipo"><span class="badge warn">Asistido</span></td><td data-label="Terneros"><span class="badge danger">Nació muerto</span> macho negro</td><td data-label="Total" class="num">52</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="temporada">
+      <div class="grilla g-2">
+        <dl class="datos" style="grid-template-columns:1fr">
+          <div class="dato"><dt>Temporada</dt><dd>2026-2027 · en curso</dd></div>
+          <div class="dato"><dt>Entraron los toros</dt><dd>27/08/2026</dd></div>
+          <div class="dato"><dt>Salen los toros</dt><dd>11/01/2027 <small>(planificado)</small></dd></div>
+          <div class="dato"><dt>Parición esperada</dt><dd>06/06 al 21/10/2027</dd></div>
+        </dl>
+        <dl class="datos" style="grid-template-columns:1fr">
+          <div class="dato"><dt>Hembras en servicio</dt><dd>97 <small>(92 vacas y 5 vaquillonas)</small></dd></div>
+          <div class="dato"><dt>Toros del grupo</dt><dd class="mono">GH234 A007, GH234 A011, AB123 A102, AB123 A115</dd></div>
+          <div class="dato"><dt>Qué toro sirvió a cada vaca</dt><dd>No se registra (toros en grupo)</dd></div>
+        </dl>
+      </div>
+      <h3 class="mt">Servicios individuales (excepción)</h3>
+      <div class="tabla-wrap responsive">
+        <table class="tabla">
+          <thead><tr><th>Fecha</th><th>Vaca</th><th>Toro</th><th>Fecha probable de parto</th></tr></thead>
+          <tbody>
+            <tr><td data-label="Fecha">28/08/2026</td><td data-label="Vaca" class="mono">AB123 B102</td><td data-label="Toro">Toro negro "Don Pancho" (AB123 A102)</td><td data-label="FPP"><strong>07/06/2027</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="form-pie"><a class="btn" href="animal-ficha.html#t-repro">+ Servicio individual</a><a class="btn" href="jornada-nueva.html?tipo=servicio">Editar temporada</a></div>
+    </div>
+
+    <div class="tab-panel" id="vacias">
+      <div class="aviso info" style="margin-bottom:1rem"><i data-ico="info"></i><div>Vacías en el tacto del 14/04/2026. Se apartaron para vender y se vendieron el 20/05.</div></div>
+      <div class="tabla-wrap responsive">
+        <table class="tabla">
+          <thead><tr><th>Caravana</th><th class="num">Edad</th><th class="num">Partos</th><th>Vacía también en 24-25</th><th>Destino</th></tr></thead>
+          <tbody>
+            <tr><td data-label="Caravana" class="mono">AB123 B133</td><td data-label="Edad" class="num">7a 2m</td><td data-label="Partos" class="num">4</td><td data-label="Vacía en 24-25">No</td><td data-label="Destino"><span class="badge">Venta 20/05 · 390 kg (prom.)</span></td></tr>
+            <tr><td data-label="Caravana" class="mono">EF789 A051</td><td data-label="Edad" class="num">10a 1m</td><td data-label="Partos" class="num">7</td><td data-label="Vacía en 24-25"><span class="badge danger">Sí</span></td><td data-label="Destino"><span class="badge">Venta 20/05 · 390 kg (prom.)</span></td></tr>
+            <tr><td data-label="Caravana" class="mono">AB123 C009</td><td data-label="Edad" class="num">1a 9m</td><td data-label="Partos" class="num">0</td><td data-label="Vacía en 24-25">—</td><td data-label="Destino"><span class="badge">Venta 20/05 · 390 kg (prom.)</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="terneros">
+      <div class="aviso info" style="margin-bottom:1rem"><i data-ico="info"></i><div>Los terneros al pie no tienen caravana: se destetan y caravanean en las ventas, en dos tandas entre febrero y mayo. En el destete se eligen <strong>por sexo y pelaje</strong>, no por la madre: hoy hay 26 machos negros, 19 machos colorados, 24 hembras negras y 18 hembras coloradas.</div></div>
+      <div class="grilla g-3">
+        <div class="card kpi"><div class="etiqueta">Machos</div><div class="valor">45</div><div class="detalle">43 castrados · 2 sin castrar</div></div>
+        <div class="card kpi"><div class="etiqueta">Hembras</div><div class="valor">42</div></div>
+        <div class="card kpi"><div class="etiqueta">Castraciones</div><div class="valor" style="font-size:1.5rem;margin:.9rem 0">20/07 y 25/09</div><div class="detalle">28 y 15 terneros</div></div>
+      </div>
+      <div class="tabla-wrap responsive mt">
+        <table class="tabla">
+          <thead><tr><th>Ternero</th><th>Sexo</th><th>Pelaje / seña</th><th>Nacimiento</th><th>Estado</th></tr></thead>
+          <tbody>
+            <tr><td data-label="Ternero">Cría de <span class="mono">CD456 A033</span></td><td data-label="Sexo">Macho (castrado)</td><td data-label="Pelaje">Negro</td><td data-label="Nacimiento">28/05/2026</td><td data-label="Estado"><span class="badge">Sano</span></td></tr>
+            <tr><td data-label="Ternero">Cría de <span class="mono">AB123 B102</span></td><td data-label="Sexo">Hembra</td><td data-label="Pelaje">Colorada</td><td data-label="Nacimiento">03/08/2026</td><td data-label="Estado"><span class="badge warn">En retiro</span></td></tr>
+            <tr><td data-label="Ternero">Cría de <span class="mono">AB123 B121</span> (mellizo 1)</td><td data-label="Sexo">Macho (castrado)</td><td data-label="Pelaje">Colorado</td><td data-label="Nacimiento">21/07/2026</td><td data-label="Estado"><span class="badge">Sano</span></td></tr>
+            <tr><td data-label="Ternero">Cría de <span class="mono">AB123 B117</span></td><td data-label="Sexo">Hembra</td><td data-label="Pelaje">Negra · "mancha blanca en la frente"</td><td data-label="Nacimiento">14/09/2026</td><td data-label="Estado"><span class="badge danger">Diarrea</span></td></tr>
+            <tr><td data-label="Ternero">Cría de <span class="mono">AB123 B087</span></td><td data-label="Sexo">Macho (sin castrar)</td><td data-label="Pelaje">Negro</td><td data-label="Nacimiento">01/10/2026</td><td data-label="Estado"><span class="badge info">Para castrar</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="form-pie"><a class="btn" href="jornada-nueva.html?tipo=castrar">Castrar</a><a class="btn" href="jornada-nueva.html?tipo=destete">Destetar</a><a class="btn btn-primario" href="jornada-nueva.html?tipo=venta">Cargar venta</a></div>
+    </div>
+  </section>
+
+</main>
+
+</body>
+</html>

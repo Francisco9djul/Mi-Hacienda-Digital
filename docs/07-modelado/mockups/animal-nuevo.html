@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nuevo animal — Mi Hacienda Digital</title>
+  <link rel="stylesheet" href="assets/estilos.css">
+  <script src="assets/app.js" defer></script>
+</head>
+<body data-layout="app" data-nav="animales" data-codigo="P05">
+
+<main class="contenido" style="max-width:980px">
+
+  <a class="volver" href="animales.html"><i data-ico="volver"></i> Volver a Animales</a>
+  <div class="encabezado">
+    <div>
+      <h1>Nuevo animal</h1>
+      <p>Por ejemplo, una vaca comprada. Los campos con <span style="color:var(--rojo)">*</span> son obligatorios. El resto se puede completar después.</p>
+    </div>
+  </div>
+
+  <div class="aviso info" style="margin-bottom:1rem"><i data-ico="info"></i><div>¿Nació un ternero? No lo cargues acá: registrá el <a href="paricion.html">parto</a> desde la madre y el ternero se crea solo, sin caravana hasta el destete.<br>¿Compraste varios animales? Usá la <a href="jornada-nueva.html?tipo=compra">jornada de compra</a>: los das de alta juntos y anotás el precio.<br>¿Vuelve un animal de otro de tus campos? Escribí su caravana: si estaba dado de baja por traslado, el sistema te ofrece <strong>registrar el reingreso</strong> con toda su historia.</div></div>
+
+  <form class="card">
+    <div class="form-grid">
+      <p class="seccion-form completo">Identificación</p>
+
+      <div class="campo">
+        <label for="car">Caravana SENASA <span class="req">*</span></label>
+        <input class="input con-error" id="car" value="AB12 B092">
+        <span class="error-txt">⚠ Formato SENASA: código del establecimiento (2 letras y 3 números) + número del animal (1 letra y 3 números). Ej: AB123 B081.</span>
+      </div>
+      <div class="campo">
+        <label for="care">Caravana electrónica</label>
+        <input class="input mono" id="care" placeholder="Número del chip (opcional)">
+        <span class="ayuda">Las vacas compradas ya vienen con caravana electrónica. Por ahora el número se carga a mano.</span>
+      </div>
+
+      <div class="campo">
+        <span class="label">Sexo <span class="req">*</span></span>
+        <div class="opciones">
+          <label><input type="radio" name="sexo" checked> Hembra</label>
+          <label><input type="radio" name="sexo"> Macho</label>
+        </div>
+      </div>
+
+      <div class="campo">
+        <label for="cat">Categoría <span class="req">*</span> <span class="sugerido">· sugerida: Vaca</span></label>
+        <select class="input" id="cat"><option>Vaquillona</option><option selected>Vaca</option><option>Novillito</option><option>Toro</option></select>
+        <span class="ayuda">Se sugiere según el sexo y la edad. Decidís vos.</span>
+      </div>
+      <div class="campo">
+        <span class="label">Castrado</span>
+        <div class="opciones">
+          <label><input type="radio" name="cas" checked disabled> Sí</label>
+          <label><input type="radio" name="cas" disabled> No (queda para toro)</label>
+        </div>
+        <span class="ayuda">Solo para machos.</span>
+      </div>
+
+      <p class="seccion-form completo">Edad y raza</p>
+
+      <div class="campo">
+        <label for="nac">Fecha de nacimiento</label>
+        <input class="input" id="nac" type="date">
+      </div>
+      <div class="campo">
+        <span class="label">o edad aproximada</span>
+        <div class="fila-inputs">
+          <input class="input" value="4" aria-label="Años"> <span>años</span>
+          <input class="input" placeholder="—" aria-label="Meses"> <span>meses</span>
+        </div>
+        <span class="ayuda">Si no sabés la fecha exacta (común en las vacas compradas).</span>
+      </div>
+
+      <div class="campo">
+        <label for="raza">Raza</label>
+        <select class="input" id="raza"><option selected>Aberdeen Angus</option><option>Otra</option></select>
+        <span class="ayuda">Viene elegida la raza del establecimiento.</span>
+      </div>
+      <div class="campo">
+        <label for="pel">Pelaje</label>
+        <select class="input" id="pel"><option>Negro</option><option>Colorado</option></select>
+      </div>
+
+      <p class="seccion-form completo">Origen y padres</p>
+
+      <div class="campo completo">
+        <span class="label">Origen</span>
+        <div class="opciones">
+          <label><input type="radio" name="ori"> Nacido acá</label>
+          <label><input type="radio" name="ori" checked> Comprado</label>
+          <label><input type="radio" name="ori"> Viene de otro campo propio</label>
+          <label><input type="radio" name="ori"> Otro</label>
+        </div>
+      </div>
+
+      <div class="campo">
+        <label for="madre">Madre (caravana)</label>
+        <input class="input" id="madre" placeholder="Opcional">
+        <span class="ayuda">Si la sabés.</span>
+      </div>
+      <div class="campo">
+        <label for="padre">Padre</label>
+        <select class="input" id="padre">
+          <option selected>No se sabe</option>
+          <optgroup label="Toros del campo"><option>GH234 A007</option><option>GH234 A011</option><option>AB123 A102</option><option>AB123 A115</option></optgroup>
+        </select>
+        <span class="ayuda">Con los toros en grupo, normalmente no se sabe.</span>
+      </div>
+
+      <div class="campo completo">
+        <label for="obs">Observaciones</label>
+        <textarea class="input" id="obs" placeholder="Algo para recordar de este animal">Comprada en el remate de marzo.</textarea>
+      </div>
+    </div>
+
+    <div class="form-pie">
+      <a class="btn" href="animales.html">Cancelar</a>
+      <button class="btn" type="button" data-guardar="Guardado. Podés cargar el siguiente.">Guardar y cargar otro</button>
+      <button class="btn btn-primario btn-grande" type="button" data-guardar="Guardado" data-ir="animal-ficha.html">GUARDAR</button>
+    </div>
+  </form>
+
+</main>
+
+</body>
+</html>

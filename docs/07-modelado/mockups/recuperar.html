@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Recuperar contraseña — Mi Hacienda Digital</title>
+  <link rel="stylesheet" href="assets/estilos.css">
+  <script src="assets/app.js" defer></script>
+</head>
+<body data-codigo="P01b">
+
+  <div class="login-panel" style="min-height:100vh">
+    <div class="login-caja">
+      <a class="volver" href="login.html"><i data-ico="volver"></i> Volver a Ingresar</a>
+
+      <div class="card" data-tabs-ambito>
+        <div class="tabs oculto">
+          <button data-tab="paso-email" class="activo" data-hash="no">1</button>
+          <button data-tab="paso-enviado" data-hash="no">2</button>
+          <button data-tab="paso-nueva" data-hash="no">3</button>
+        </div>
+
+        <!-- Paso 1 -->
+        <div class="tab-panel activo" id="paso-email">
+          <h1>Recuperar contraseña</h1>
+          <p class="chico">Te mandamos un mail con un enlace para crear una contraseña nueva.</p>
+          <div class="campo" style="margin:1.25rem 0 1.5rem">
+            <label for="email">Tu email</label>
+            <input class="input" id="email" type="email" value="productor@ejemplo.com">
+          </div>
+          <button class="btn btn-primario btn-grande btn-bloque" type="button"
+            onclick="MiHacienda.activarTab(document.querySelector('[data-tab=paso-enviado]'))">ENVIAR ENLACE</button>
+        </div>
+
+        <!-- Paso 2 -->
+        <div class="tab-panel" id="paso-enviado" style="text-align:center">
+          <div style="width:72px;height:72px;border-radius:50%;background:var(--verde-claro);color:var(--verde);display:grid;place-items:center;margin:0 auto 1rem">
+            <i data-ico="mail" class="ico" style="width:36px;height:36px"></i>
+          </div>
+          <h1>Revisá tu correo</h1>
+          <p>Te mandamos un enlace a <strong>productor@ejemplo.com</strong>.<br>Vale por 1 hora.</p>
+          <p class="chico">¿No llegó? Fijate en "Correo no deseado" o
+            <button class="btn-link btn" type="button">volvé a mandarlo</button>.</p>
+          <button class="btn btn-bloque mt" type="button"
+            onclick="MiHacienda.activarTab(document.querySelector('[data-tab=paso-nueva]'))">Simular: abrir el enlace del mail →</button>
+        </div>
+
+        <!-- Paso 3 -->
+        <div class="tab-panel" id="paso-nueva">
+          <h1>Contraseña nueva</h1>
+          <p class="chico">Usá al menos 8 letras o números.</p>
+          <div class="campo" style="margin:1.25rem 0 1rem">
+            <label for="p1">Contraseña nueva</label>
+            <input class="input" id="p1" type="password" value="12345678">
+          </div>
+          <div class="campo" style="margin-bottom:1.5rem">
+            <label for="p2">Repetila</label>
+            <input class="input" id="p2" type="password" value="12345678">
+          </div>
+          <button class="btn btn-primario btn-grande btn-bloque" type="button" data-guardar="Contraseña cambiada. Ya podés ingresar." data-ir="login.html">GUARDAR CONTRASEÑA</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

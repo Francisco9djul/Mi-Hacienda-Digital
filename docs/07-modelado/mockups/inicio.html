@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inicio — Mi Hacienda Digital</title>
+  <link rel="stylesheet" href="assets/estilos.css">
+  <script src="assets/app.js" defer></script>
+</head>
+<body data-layout="app" data-nav="inicio" data-codigo="P02">
+
+<main class="contenido">
+
+  <div class="encabezado">
+    <div>
+      <h1>Buen día, Juan</h1>
+      <p>Sábado 10/10/2026 · Servicio 2026-2027 en curso (toros desde el 27/08) · Parición 2026 terminando</p>
+    </div>
+  </div>
+
+  <!-- Accesos rápidos: las cargas frecuentes a 1 clic (RNF-003) -->
+  <div class="grilla g-3">
+    <a class="acceso destacado" href="jornada-nueva.html">
+      <span class="acceso-ico">📋</span>
+      <span>Nueva jornada<small>Vacunar, castrar, venta, rollos…</small></span>
+    </a>
+    <a class="acceso" href="paricion.html">
+      <span class="acceso-ico">🐮</span>
+      <span>Registrar parto<small>Se crea el ternero solo (o los mellizos)</small></span>
+    </a>
+    <a class="acceso" href="animales.html">
+      <span class="acceso-ico">🔍</span>
+      <span>Buscar animal<small>Por caravana (o la de la madre)</small></span>
+    </a>
+  </div>
+
+  <div class="grilla g-5-7 mt">
+    <!-- Stock -->
+    <section class="card">
+      <div class="card-titulo">
+        <h2>Rodeo: 189 animales</h2>
+        <a href="reportes.html#stock" class="chico">Ver stock completo</a>
+      </div>
+      <div class="tabla-wrap" style="border:0">
+        <table class="tabla">
+          <thead><tr><th>Categoría</th><th class="num">Cabezas</th><th style="width:40%"></th></tr></thead>
+          <tbody>
+            <tr><td>Vacas</td><td class="num">92</td><td><div class="progreso"><div style="width:100%"></div></div></td></tr>
+            <tr><td>Vaquillonas</td><td class="num">5</td><td><div class="progreso"><div style="width:5%"></div></div></td></tr>
+            <tr><td>Terneros al pie</td><td class="num">45</td><td><div class="progreso"><div style="width:49%"></div></div></td></tr>
+            <tr><td>Terneras al pie</td><td class="num">42</td><td><div class="progreso"><div style="width:46%"></div></div></td></tr>
+            <tr><td>Novillitos</td><td class="num">1</td><td><div class="progreso"><div style="width:1%"></div></div></td></tr>
+            <tr><td>Toros</td><td class="num">4</td><td><div class="progreso"><div style="width:4%"></div></div></td></tr>
+          </tbody>
+          <tfoot><tr><td>Total</td><td class="num">189</td><td></td></tr></tfoot>
+        </table>
+      </div>
+      <p class="chico mt">Los 87 terneros al pie todavía no tienen caravana: se caravanean al destete. Quedan <strong>9 rollos</strong> (<a href="alimentacion.html">alimentación</a>).</p>
+    </section>
+
+    <!-- Pendientes -->
+    <section class="card">
+      <div class="card-titulo">
+        <h2>⚠ Pendientes</h2>
+        <a href="alertas.html" class="btn btn-chico">Ver todos</a>
+      </div>
+      <ul class="alertas">
+        <li>
+          <span class="semaforo rojo"></span>
+          <div class="texto"><strong>Carbunclo (obligatoria): faltan 6 animales</strong><small>Ventana sep – nov · vence el 30/11/2026 · vaquillonas (5) y novillitos (1)</small></div>
+          <a class="btn btn-primario btn-chico" href="jornada-nueva.html?tipo=vacunar">Vacunar ahora</a>
+        </li>
+        <li>
+          <span class="semaforo amarillo"></span>
+          <div class="texto"><strong>Revisar la vaca AB123 B126 — hoy</strong><small>Tratada el 07/10 por pietín · "Ver si mejoró la renguera"</small></div>
+          <button class="btn btn-chico" type="button" data-guardar="Recordatorio marcado como hecho">✔ Hecho</button>
+        </li>
+        <li>
+          <span class="semaforo amarillo"></span>
+          <div class="texto"><strong>Mancha-gangrena-enterotoxemia 1.ª dosis: 87 terneros</strong><small>Ventana oct – nov · se da en la yerra</small></div>
+          <a class="btn btn-chico" href="alertas.html">Ver</a>
+        </li>
+        <li>
+          <span class="semaforo amarillo"></span>
+          <div class="texto"><strong>Faltan parir 2 vacas</strong><small>88 paridas de 90 preñadas · la parición esperada termina el 21/10/2026</small></div>
+          <a class="btn btn-chico" href="reproduccion.html#paricion">Ver</a>
+        </li>
+        <li>
+          <span class="semaforo azul"></span>
+          <div class="texto"><strong>Cobro pendiente: venta del 05/10</strong><small>4 vacas viejas · 1.ª cuota $ 2.460.000 el 04/11/2026</small></div>
+          <a class="btn btn-chico" href="reportes.html#ventas">Ver</a>
+        </li>
+      </ul>
+    </section>
+  </div>
+
+  <div class="grilla g-3 mt">
+    <div class="card kpi">
+      <div class="etiqueta">Preñez 2025-26</div>
+      <div class="valor">93 %</div>
+      <div class="detalle">90 de 97 servidas · <span class="tendencia sube">▲ 2 pts</span></div>
+    </div>
+    <div class="card kpi">
+      <div class="etiqueta">Terneros enfermos 2026</div>
+      <div class="valor">23 %</div>
+      <div class="detalle">12 con diarrea · 6 con neumonía · 3 de ombligo · de 90 nacidos</div>
+    </div>
+    <div class="card kpi">
+      <div class="etiqueta">Mortalidad de terneros 2026</div>
+      <div class="valor">3 %</div>
+      <div class="detalle">3 de 90 · 2 al nacer y 1 por diarrea</div>
+    </div>
+  </div>
+
+  <section class="card mt">
+    <div class="card-titulo">
+      <h2>Últimas jornadas</h2>
+      <a href="jornadas.html" class="chico">Ver todas</a>
+    </div>
+    <div class="tabla-wrap responsive" style="border:0">
+      <table class="tabla">
+        <thead><tr><th>Fecha</th><th>Jornada</th><th class="num">Animales</th><th>Cargó</th><th></th></tr></thead>
+        <tbody>
+          <tr><td data-label="Fecha">08/10/2026</td><td data-label="Jornada">💉 Vacunación — Carbunclo (vacas y toros)</td><td data-label="Animales" class="num">96</td><td data-label="Cargó">Juan</td><td class="sin-label"><a href="jornada-detalle.html">Ver</a></td></tr>
+          <tr><td data-label="Fecha">05/10/2026</td><td data-label="Jornada">🚛 Venta — 4 vacas viejas</td><td data-label="Animales" class="num">4</td><td data-label="Cargó">Juan</td><td class="sin-label"><a href="reportes.html#ventas">Ver</a></td></tr>
+          <tr><td data-label="Fecha">25/09/2026</td><td data-label="Jornada">✂️ Castración — 15 terneros</td><td data-label="Animales" class="num">15</td><td data-label="Cargó">Juan</td><td class="sin-label"><a href="jornada-detalle.html">Ver</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+</main>
+
+</body>
+</html>

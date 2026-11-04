@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nueva jornada — Mi Hacienda Digital</title>
+  <link rel="stylesheet" href="assets/estilos.css">
+  <script src="assets/app.js" defer></script>
+</head>
+<body data-layout="app" data-nav="jornadas" data-codigo="P06">
+
+<main class="contenido" data-tabs-ambito>
+
+  <div class="encabezado">
+    <div>
+      <h1>Nueva jornada</h1>
+      <p>Cargá de una vez lo que hiciste con muchos animales: en la manga, en la venta o con los terneros.</p>
+    </div>
+    <div class="pasos" id="pasos">
+      <span class="paso activo" data-paso="1"><span class="n">1</span> Qué hiciste</span><span class="linea"></span>
+      <span class="paso" data-paso="2"><span class="n">2</span> Animales</span><span class="linea"></span>
+      <span class="paso" data-paso="3"><span class="n">3</span> Confirmar</span>
+    </div>
+  </div>
+
+  <div class="tabs oculto">
+    <button data-tab="j-1" class="activo" data-hash="no">1</button>
+    <button data-tab="j-2" data-hash="no">2</button>
+    <button data-tab="j-3" data-hash="no">3</button>
+  </div>
+
+  <!-- ================= PASO 1 ================= -->
+  <div class="tab-panel activo" id="j-1">
+    <section class="card">
+      <h2>¿Qué hiciste?</h2>
+      <div class="tipos" id="tipos" style="margin-top:1rem">
+        <button class="tipo activo" type="button" data-valor="vacunar"><span class="emoji">💉</span>Vacunar<small>Carbunclo, aftosa…</small></button>
+        <button class="tipo" type="button" data-valor="enfermos"><span class="emoji">🤒</span>Enfermos<small>Diarrea, neumonía…</small></button>
+        <button class="tipo" type="button" data-valor="desparasitar"><span class="emoji">🪱</span>Desparasitar<small>Mosca, piojo, internos…</small></button>
+        <button class="tipo" type="button" data-valor="analisis"><span class="emoji">🧪</span>Análisis<small>Raspaje, sangrado</small></button>
+        <button class="tipo" type="button" data-valor="tacto"><span class="emoji">🩺</span>Tacto<small>Preñada o vacía</small></button>
+        <button class="tipo" type="button" data-valor="servicio"><span class="emoji">🐂</span>Servicio<small>Poner los toros</small></button>
+        <button class="tipo" type="button" data-valor="castrar"><span class="emoji">✂️</span>Castración<small>Terneros machos</small></button>
+        <button class="tipo" type="button" data-valor="destete"><span class="emoji">🍼</span>Destete<small>Separar y caravanear</small></button>
+        <button class="tipo" type="button" data-valor="venta"><span class="emoji">🚛</span>Venta<small>Con peso y destete</small></button>
+        <button class="tipo" type="button" data-valor="compra"><span class="emoji">🛒</span>Compra<small>Alta de animales comprados</small></button>
+        <button class="tipo" type="button" data-valor="pesar"><span class="emoji">⚖️</span>Pesar<small>Pesada en balanza</small></button>
+        <button class="tipo" type="button" data-valor="alimentar"><span class="emoji">🌾</span>Alimentación<small>Rollos, silo, parcela</small></button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2 id="titulo-datos">Datos de la vacunación</h2>
+      <p class="chico">Se aplican a todos los animales de la jornada.</p>
+
+      <!-- Vacunar -->
+      <div class="form-grid campos-tipo" data-para="vacunar">
+        <div class="campo"><label>Vacuna <span class="req">*</span></label><select class="input"><option selected>Carbunclo (plan: sep – nov)</option><option>Mancha-gangrena-enterotoxemia 1.ª dosis (plan: oct – nov)</option><option>Brucelosis (plan: dic – ene)</option><option>Aftosa</option><option>Diarrea de los terneros (Rotatec)</option></select></div>
+        <div class="campo"><label>Marca / laboratorio</label><input class="input" value="Laboratorio Sur" disabled><span class="ayuda">Sale del producto elegido.</span></div>
+        <div class="campo"><label>Serie <span class="req">*</span></label><input class="input mono" value="4410"></div>
+        <div class="campo"><label>Vencimiento de la serie</label><input class="input" type="month" value="2027-03"></div>
+        <div class="completo">
+          <span class="label">Categorías y fecha de cada una <span class="req">*</span></span>
+          <div class="tabla-wrap responsive" style="margin-top:.5rem">
+            <table class="tabla">
+              <thead><tr><th class="centro"><input type="checkbox" aria-label="Todas las categorías"> Todas</th><th>Categoría</th><th class="num">Animales</th><th>Fecha</th><th>Plan</th></tr></thead>
+              <tbody>
+                <tr><td class="centro sin-label"><input type="checkbox"></td><td data-label="Categoría">Vacas</td><td data-label="Animales" class="num">92</td><td data-label="Fecha">—</td><td data-label="Plan"><span class="badge ok">Ya vacunadas 08/10</span></td></tr>
+                <tr><td class="centro sin-label"><input type="checkbox"></td><td data-label="Categoría">Toros</td><td data-label="Animales" class="num">4</td><td data-label="Fecha">—</td><td data-label="Plan"><span class="badge ok">Ya vacunados 08/10</span></td></tr>
+                <tr><td class="centro sin-label"><input type="checkbox" checked></td><td data-label="Categoría">Vaquillonas</td><td data-label="Animales" class="num">5</td><td data-label="Fecha"><input class="input input-chico" type="date" value="2026-10-10"></td><td data-label="Plan"><span class="badge danger">Pendiente</span></td></tr>
+                <tr><td class="centro sin-label"><input type="checkbox" checked></td><td data-label="Categoría">Novillitos</td><td data-label="Animales" class="num">1</td><td data-label="Fecha"><input class="input input-chico" type="date" value="2026-10-12"></td><td data-label="Plan"><span class="badge danger">Pendiente</span></td></tr>
+                <tr><td class="centro sin-label"><input type="checkbox" disabled></td><td data-label="Categoría" style="color:var(--gris)">Terneros al pie</td><td data-label="Animales" class="num">87</td><td data-label="Fecha">—</td><td data-label="Plan">No corresponde (menos de 8 meses)</td></tr>
+              </tbody>
+              <tfoot><tr><td></td><td>Total</td><td class="num"><strong>6</strong></td><td colspan="2"></td></tr></tfoot>
+            </table>
+          </div>
+          <span class="ayuda">La vacuna se registra para todos los animales de las categorías elegidas: no hace falta cargar caravanas. La dosis no se carga.</span>
+        </div>
+      </div>
+
+      <!-- Enfermos -->
+      <div class="form-grid campos-tipo oculto" data-para="enfermos">
+        <div class="campo"><label>Fecha <span class="req">*</span></label><input class="input" type="date" value="2026-10-10"></div>
+        <div class="campo"><label>Enfermedad <span class="req">*</span></label><select class="input"><option selected>Diarrea</option><option>Neumonía</option><option>Otra</option></select></div>
+        <div class="campo completo"><label>Causa probable</label><input class="input" value="Frío y lluvia de la semana"><span class="ayuda">Si no la sabés, dejala vacía. Sirve para ver después qué provoca las enfermedades.</span></div>
+        <div class="campo"><label>Tratamiento (opcional)</label><select class="input"><option>Sales de rehidratación</option><option>Enrofloxacina</option><option>Oxitetraciclina</option><option>Sin tratamiento</option></select></div>
+        <div class="campo"><label>Evolución</label><select class="input"><option>En curso</option><option>Recuperado</option></select><span class="ayuda">Después la actualizás en cada animal.</span></div>
+      </div>
+
+      <!-- Tratar -->
+      <div class="form-grid campos-tipo oculto" data-para="desparasitar">
+        <div class="campo"><label>Contra qué <span class="req">*</span></label><select class="input"><option selected>Parásitos internos</option><option>Mosca de los cuernos</option><option>Piojo</option><option>Sarna</option></select></div>
+        <div class="campo"><label>Producto <span class="req">*</span></label><select class="input"><option>Ivermectina 1% (inyectable)</option><option selected>Doramectina (inyectable)</option><option>Levamisol (inyectable)</option><option>Cipermetrina (pour-on)</option><option>Cipermetrina (baño de aspersión)</option></select></div>
+        <div class="completo aviso info"><i data-ico="info"></i><div>La última desparasitación interna fue con <strong>ivermectina</strong> (14/04/2026). Para rotar, conviene otra droga: elegiste <strong>doramectina</strong>.</div></div>
+        <div class="completo">
+          <span class="label">Categorías y fecha de cada una <span class="req">*</span></span>
+          <div class="tabla-wrap responsive" style="margin-top:.5rem">
+            <table class="tabla">
+              <thead><tr><th class="centro"><input type="checkbox" checked aria-label="Todas las categorías"> Todas</th><th>Categoría</th><th class="num">Animales</th><th>Fecha</th></tr></thead>
+              <tbody>
+                <tr><td class="centro sin-label"><input type="checkbox" checked></td><td data-label="Categoría">Vacas</td><td data-label="Animales" class="num">92</td><td data-label="Fecha"><input class="input input-chico" type="date" value="2026-10-10"></td></tr>
+                <tr><td class="centro sin-label"><input type="checkbox" checked></td><td data-label="Categoría">Vaquillonas</td><td data-label="Animales" class="num">5</td><td data-label="Fecha"><input class="input input-chico" type="date" value="2026-10-10"></td></tr>
+                <tr><td class="centro sin-label"><input type="checkbox" checked></td><td data-label="Categoría">Terneros al pie</td><td data-label="Animales" class="num">87</td><td data-label="Fecha"><input class="input input-chico" type="date" value="2026-10-10"></td></tr>
+                <tr><td class="centro sin-label"><input type="checkbox" checked></td><td data-label="Categoría">Novillitos</td><td data-label="Animales" class="num">1</td><td data-label="Fecha"><input class="input input-chico" type="date" value="2026-10-10"></td></tr>
+                <tr><td class="centro sin-label"><input type="checkbox" checked></td><td data-label="Categoría">Toros</td><td data-label="Animales" class="num">4</td><td data-label="Fecha"><input class="input input-chico" type="date" value="2026-10-10"></td></tr>
+              </tbody>
+              <tfoot><tr><td></td><td>Total</td><td class="num"><strong>189</strong></td><td></td></tr></tfoot>
+            </table>
+          </div>
+        </div>
+        <div class="completo aviso warn"><i data-ico="aviso"></i><div>Este producto tiene <strong>35 días de retiro</strong>. Los animales quedan <strong>no aptos para venta ni faena hasta el 14/11/2026</strong>.</div></div>
+        <div class="completo aviso info"><i data-ico="info"></i><div>¿Querés tratar a un animal enfermo? Los tratamientos son individuales: hacelo desde su ficha o desde <a href="sanidad.html">Sanidad → Tratar un animal</a>.</div></div>
+      </div>
+
+      <!-- Análisis -->
+      <div class="form-grid campos-tipo oculto" data-para="analisis">
+        <div class="campo"><label>Fecha <span class="req">*</span></label><input class="input" type="date" value="2026-07-15"></div>
+        <div class="campo"><label>Análisis <span class="req">*</span></label><select class="input"><option selected>Raspaje de toros (enfermedades venéreas) · obligatorio</option><option>Sangrado (brucelosis)</option></select></div>
+        <div class="campo completo"><label>Laboratorio / observaciones</label><input class="input" placeholder="Opcional"></div>
+        <div class="completo aviso info"><i data-ico="info"></i><div>En el paso 2 cargás el resultado de cada animal. Un <strong>positivo</strong> aparece como alerta.</div></div>
+      </div>
+
+      <!-- Tacto -->
+      <div class="form-grid campos-tipo oculto" data-para="tacto">
+        <div class="campo"><label>Fecha <span class="req">*</span></label><input class="input" type="date" value="2026-04-14"></div>
+        <div class="campo"><label>Temporada de servicio</label><select class="input"><option>2025-2026 (27/08/2025 – 11/01/2026)</option></select></div>
+        <div class="completo aviso info"><i data-ico="info"></i><div>Las preñadas van a tener una <strong>parición esperada del 06/06 al 21/10/2026</strong>, según la temporada de servicio. Los meses de gestación son opcionales.</div></div>
+      </div>
+
+      <!-- Servicio -->
+      <div class="form-grid campos-tipo oculto" data-para="servicio">
+        <div class="campo"><label>Temporada</label><input class="input" value="2026-2027"></div>
+        <div class="campo"><span class="label">Método</span><div class="opciones"><label><input type="radio" checked disabled> Monta natural (toros en grupo)</label></div></div>
+        <div class="campo"><label>Entran los toros <span class="req">*</span></label><input class="input" type="date" value="2026-08-27"></div>
+        <div class="campo"><label>Salen los toros</label><input class="input" type="date" value="2027-01-11"><span class="ayuda">Se puede completar después.</span></div>
+        <div class="campo completo"><span class="label">Toros del grupo (opcional)</span>
+          <div class="opciones"><label><input type="checkbox" checked> GH234 A007</label><label><input type="checkbox" checked> GH234 A011</label><label><input type="checkbox" checked> AB123 A102</label><label><input type="checkbox" checked> AB123 A115</label></div>
+          <span class="ayuda">No se registra qué toro sirvió a cada vaca. Si una vaca tuvo un servicio con un toro conocido, cargalo desde su ficha (servicio individual).</span></div>
+      </div>
+
+      <!-- Castración -->
+      <div class="form-grid campos-tipo oculto" data-para="castrar">
+        <div class="campo"><label>Fecha <span class="req">*</span></label><input class="input" type="date" value="2026-10-10"></div>
+        <div class="campo"><label>Terneros castrados <span class="req">*</span></label><input class="input" value="2"><span class="ayuda">Hay 2 terneros machos al pie sin castrar.</span></div>
+        <div class="completo aviso info"><i data-ico="info"></i><div>Se marcan como castrados los terneros machos al pie de mayor edad que todavía no lo estaban. Si dejás alguno entero para toro, destildalo en el paso 2.</div></div>
+      </div>
+
+      <!-- Alimentación -->
+      <div class="form-grid campos-tipo oculto" data-para="alimentar">
+        <div class="campo"><label>Fecha <span class="req">*</span></label><input class="input" type="date" value="2026-10-10"></div>
+        <div class="campo"><label>Qué <span class="req">*</span></label><select class="input"><option selected>Rollos</option><option>Silo de maíz</option><option>Parcela de avena</option><option>Parcela de maíz</option></select></div>
+        <div class="campo"><label>Cantidad</label><input class="input" value="1"><span class="ayuda">Quedan 9 rollos: después de esta carga quedan 8.</span></div>
+        <div class="campo"><label>A quién</label><select class="input"><option selected>Rodeo general</option><option>Vacas paridas con sus terneros</option><option>Vaquillonas y toros</option></select></div>
+      </div>
+
+      <!-- Destete -->
+      <div class="form-grid campos-tipo oculto" data-para="destete">
+        <div class="campo"><label>Fecha <span class="req">*</span></label><input class="input" type="date" value="2027-05-18"></div>
+        <div class="campo"><label>Descripción</label><input class="input" value="Terneras que quedan para reposición"></div>
+        <div class="completo aviso info"><i data-ico="info"></i><div>En el paso 2 elegís cuántos terneros de cada sexo y pelaje y les cargás la <strong>caravana de SENASA</strong>. Si los terneros se venden, usá <strong>Venta</strong>: registra el destete solo.</div></div>
+      </div>
+
+      <!-- Venta -->
+      <div class="form-grid campos-tipo oculto" data-para="venta">
+        <div class="campo"><label>Fecha <span class="req">*</span></label><input class="input" type="date" value="2027-02-21"></div>
+        <div class="campo"><label>Comprador <span class="req">*</span></label><input class="input" value="Consignataria El Ombú"></div>
+        <div class="campo"><label>Kilos del lote <span class="req">*</span></label><input class="input" inputmode="decimal" value="11.300"><span class="ayuda">Se pesa el lote entero: cada animal queda con el promedio.</span></div>
+        <div class="campo"><label>Desbaste (%)</label><input class="input" inputmode="decimal" value="3"><span class="ayuda">Kilos netos: 10.961.</span></div>
+        <div class="campo"><label>Precio por kilo ($) <span class="req">*</span></label><input class="input" inputmode="decimal" value="4.000"></div>
+        <div class="campo"><label>Comisión (%)</label><input class="input" inputmode="decimal" value="4"></div>
+        <div class="campo"><label>Otros gastos ($)</label><input class="input" inputmode="decimal" placeholder="Ej: flete"></div>
+        <div class="campo"><label>Bruto / neto</label><input class="input" value="$ 43.844.000 / $ 42.090.240" disabled><span class="ayuda">Comisión: $ 1.753.760.</span></div>
+        <div class="campo completo"><span class="label">Cuotas de cobro</span>
+          <div class="tabla-wrap" style="margin-top:.5rem">
+            <table class="tabla">
+              <thead><tr><th>Cuota</th><th>Días</th><th>Vence</th><th class="num">Monto</th></tr></thead>
+              <tbody>
+                <tr><td>1</td><td><input class="input input-chico" value="30"></td><td>23/03/2027</td><td class="num">$ 21.045.120</td></tr>
+                <tr><td>2</td><td><input class="input input-chico" value="60"></td><td>22/04/2027</td><td class="num">$ 21.045.120</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <span class="ayuda">Suele cobrarse a 30 y 60 días. Una sola cuota con 0 días = al contado.</span></div>
+        <div class="completo aviso warn"><i data-ico="aviso"></i><div>Todos los animales quedan <strong>dados de baja por venta</strong>. A los terneros al pie se les registra también el <strong>destete</strong> y la <strong>caravana</strong> en la misma fecha. Solo el Administrador puede confirmar una venta.</div></div>
+      </div>
+
+      <!-- Compra -->
+      <div class="form-grid campos-tipo oculto" data-para="compra">
+        <div class="campo"><label>Fecha <span class="req">*</span></label><input class="input" type="date" value="2026-03-18"></div>
+        <div class="campo"><label>Vendedor <span class="req">*</span></label><input class="input" value="Remate feria"></div>
+        <div class="campo"><label>Cantidad <span class="req">*</span></label><input class="input" value="4"><span class="ayuda">4 vacas con su ternero al pie.</span></div>
+        <div class="campo"><label>Kilos totales</label><input class="input" placeholder="Opcional"></div>
+        <div class="campo"><span class="label">Precio</span><div class="opciones"><label><input type="radio" name="pc"> Por kilo</label><label><input type="radio" name="pc" checked> Por cabeza</label></div><input class="input mt" value="$ 7.500.000"><span class="ayuda">Por vaca con su ternero.</span></div>
+        <div class="campo"><label>Total</label><input class="input" value="$ 30.000.000" disabled></div>
+        <div class="campo"><label>Forma de pago</label><select class="input"><option selected>Cheque</option><option>Transferencia</option><option>Efectivo</option></select></div>
+        <div class="campo"><label>Fecha de pago</label><input class="input" type="date" value="2026-04-17"></div>
+        <div class="completo aviso info"><i data-ico="info"></i><div>En el paso 2 cargás la caravana de cada animal (con el código de su campo de origen), la caravana electrónica si la tiene, la categoría y la edad aproximada. Todos quedan con origen <strong>Comprado</strong>.</div></div>
+      </div>
+
+      <!-- Pesar -->
+      <div class="form-grid campos-tipo oculto" data-para="pesar">
+        <div class="campo"><label>Fecha <span class="req">*</span></label><input class="input" type="date" value="2026-10-10"></div>
+        <div class="campo"><label>Descripción</label><input class="input" placeholder="Ej: Pesada de novillitos"></div>
+      </div>
+
+      <div class="form-pie">
+        <a class="btn" href="jornadas.html">Cancelar</a>
+        <button class="btn btn-primario btn-grande" type="button" onclick="irPaso(2)">SIGUIENTE: ELEGIR ANIMALES →</button>
+      </div>
+    </section>
+  </div>
+
+  <!-- ================= PASO 2 ================= -->
+  <div class="tab-panel" id="j-2">
+    <section class="card oculto" id="card-animales">
+      <h2>¿A qué animales?</h2>
+      <div class="opciones" style="margin:1rem 0 1.25rem">
+        <label><input type="radio" name="modo" value="car" checked onchange="modo(this.value)"> Escribir o pegar caravanas</label>
+        <label><input type="radio" name="modo" value="filtro" onchange="modo(this.value)"> Por categoría y sexo</label>
+      </div>
+
+      <div id="modo-car">
+        <div class="campo">
+          <label for="caravanas">Caravanas (una por línea o separadas con comas). Para un ternero sin caravana, poné la de la madre.</label>
+          <textarea class="input mono" id="caravanas" style="min-height:110px">AB123 B081, AB123 B094, AB123 B102, AB123 C022, GH234 A007, AB123 B990</textarea>
+        </div>
+        <div class="acciones mt">
+          <span class="badge ok" style="font-size:1rem">✔ 5 encontradas</span>
+          <span class="badge danger" style="font-size:1rem">✖ 1 no existe: AB123 B990</span>
+        </div>
+      </div>
+
+      <div id="modo-filtro" class="oculto">
+        <div class="form-grid">
+          <div class="campo"><label>Categoría</label><select class="input"><option>Vacas</option><option>Vaquillonas</option><option>Terneros al pie</option><option>Novillitos</option><option>Toros</option></select></div>
+          <div class="campo"><label>Sexo</label><select class="input"><option>Todos</option><option>Hembras</option><option>Machos</option></select></div>
+        </div>
+        <div class="aviso info mt"><i data-ico="info"></i><div><strong>92 animales</strong> cumplen el filtro. Podés destildar los que no pasaron por la manga.</div></div>
+      </div>
+    </section>
+
+    <!-- Vacunación: excepciones -->
+    <section class="card lista-tipo" data-para="vacunar">
+      <div class="card-titulo"><h3>6 animales de 2 categorías</h3></div>
+      <p>Vaquillonas (5) el 10/10/2026 · Novillitos (1) el 12/10/2026.</p>
+      <div class="campo mt">
+        <label for="excluir">¿Alguno no pasó por la manga? Escribí su caravana para excluirlo (opcional)</label>
+        <input class="input mono" id="excluir" placeholder="Ej: AB123 C015">
+        <span class="ayuda">Los excluidos siguen apareciendo como pendientes.</span>
+      </div>
+    </section>
+
+    <!-- Desparasitación: excepciones -->
+    <section class="card lista-tipo oculto" data-para="desparasitar">
+      <div class="card-titulo"><h3>189 animales de 5 categorías (todo el rodeo)</h3></div>
+      <div class="campo mt">
+        <label for="excluir-d">¿Alguno no pasó por la manga? Escribí su caravana para excluirlo (opcional)</label>
+        <input class="input mono" id="excluir-d" placeholder="Ej: AB123 C015">
+      </div>
+    </section>
+
+    <!-- Castración: terneros machos -->
+    <section class="card lista-tipo oculto" data-para="castrar">
+      <div class="card-titulo"><h3>Terneros machos sin castrar</h3></div>
+      <div class="tabla-wrap responsive">
+        <table class="tabla">
+          <thead><tr><th class="centro">✔</th><th>Ternero</th><th>Pelaje</th><th>Nacimiento</th></tr></thead>
+          <tbody>
+            <tr><td class="centro sin-label"><input type="checkbox" checked></td><td data-label="Ternero">Cría de <span class="mono">AB123 B140</span></td><td data-label="Pelaje">Colorado</td><td data-label="Nacimiento">22/09/2026</td></tr>
+            <tr><td class="centro sin-label"><input type="checkbox" checked></td><td data-label="Ternero">Cría de <span class="mono">AB123 B087</span></td><td data-label="Pelaje">Negro</td><td data-label="Nacimiento">01/10/2026</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="chico mt">Destildá el que dejes entero para toro.</p>
+    </section>
+
+    <!-- Alimentación: confirmación -->
+    <section class="card lista-tipo oculto" data-para="alimentar">
+      <div class="card-titulo"><h3>Rodeo general</h3></div>
+      <p>1 rollo · el stock de rollos baja de 9 a 8. Se ve en <a href="alimentacion.html">Alimentación</a>.</p>
+    </section>
+
+    <!-- Lista simple (servicio) -->
+    <section class="card lista-tipo oculto" data-para="servicio">
+      <div class="card-titulo"><h3>5 animales en la jornada</h3><button class="btn btn-chico" type="button">Destildar todos</button></div>
+      <div class="tabla-wrap responsive">
+        <table class="tabla">
+          <thead><tr><th class="centro">✔</th><th>Caravana</th><th>Categoría</th><th>Aviso</th></tr></thead>
+          <tbody>
+            <tr><td class="centro sin-label"><input type="checkbox" checked></td><td data-label="Caravana" class="mono"><strong>AB123 B081</strong></td><td data-label="Categoría">Vaca</td><td data-label="Aviso">—</td></tr>
+            <tr><td class="centro sin-label"><input type="checkbox" checked></td><td data-label="Caravana" class="mono"><strong>AB123 B094</strong></td><td data-label="Categoría">Vaca</td><td data-label="Aviso">—</td></tr>
+            <tr class="aviso"><td class="centro sin-label"><input type="checkbox" checked></td><td data-label="Caravana" class="mono"><strong>AB123 B102</strong></td><td data-label="Categoría">Vaca</td><td data-label="Aviso">Ya tiene esta vacuna el 08/10/2026</td></tr>
+            <tr><td class="centro sin-label"><input type="checkbox" checked></td><td data-label="Caravana" class="mono"><strong>AB123 C022</strong></td><td data-label="Categoría">Novillito</td><td data-label="Aviso">—</td></tr>
+            <tr><td class="centro sin-label"><input type="checkbox" checked></td><td data-label="Caravana" class="mono"><strong>GH234 A007</strong></td><td data-label="Categoría">Toro</td><td data-label="Aviso">—</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="chico mt">Si una caravana es de una vaca con ternero al pie, el sistema pregunta si la jornada es para la vaca o para su ternero.</p>
+    </section>
+
+    <!-- Enfermos: terneros al pie -->
+    <section class="card lista-tipo oculto" data-para="enfermos">
+      <div class="card-titulo"><h3>Terneros enfermos</h3><span class="chico">Por la madre o por sexo, pelaje y seña</span></div>
+      <div class="tabla-wrap responsive">
+        <table class="tabla">
+          <thead><tr><th class="centro">✔</th><th>Ternero</th><th>Cómo se lo identificó</th></tr></thead>
+          <tbody>
+            <tr><td class="centro sin-label"><input type="checkbox" checked></td><td data-label="Ternero">Cría de <span class="mono">AB123 B094</span> · macho negro</td><td data-label="Identificación">Por la madre</td></tr>
+            <tr><td class="centro sin-label"><input type="checkbox" checked></td><td data-label="Ternero">Hembra negra · <em>"mancha blanca en la frente"</em></td><td data-label="Identificación">Por pelaje y seña</td></tr>
+            <tr><td class="centro sin-label"><input type="checkbox" checked></td><td data-label="Ternero">Un ternero macho colorado <small>(sin identificar)</small></td><td data-label="Identificación">Solo sexo y pelaje: cuenta como un ternero aparte</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <button class="btn btn-chico mt" type="button">+ Agregar ternero por sexo, pelaje y seña</button>
+    </section>
+
+    <!-- Compra: animales comprados -->
+    <section class="card lista-tipo oculto" data-para="compra">
+      <div class="card-titulo"><h3>Animales comprados</h3></div>
+      <div class="tabla-wrap responsive">
+        <table class="tabla">
+          <thead><tr><th>Caravana SENASA</th><th>Caravana electrónica</th><th>Categoría</th><th>Edad aprox.</th><th>Pelaje</th><th>Ternero al pie</th></tr></thead>
+          <tbody>
+            <tr><td data-label="Caravana"><input class="input input-chico mono" value="JK567 A118" style="min-width:9rem"></td><td data-label="Electrónica"><input class="input input-chico mono" value="032000123456789" style="min-width:11rem"></td><td data-label="Categoría"><select class="input input-chico"><option selected>Vaca</option><option>Vaquillona</option><option>Toro</option></select></td><td data-label="Edad"><input class="input input-chico" value="4 años"></td><td data-label="Pelaje"><select class="input input-chico"><option>Negro</option><option>Colorado</option></select></td><td data-label="Ternero al pie"><select class="input input-chico"><option>Sin ternero</option><option selected>Macho negro</option><option>Hembra negra</option><option>Macho colorado</option><option>Hembra colorada</option></select></td></tr>
+            <tr><td data-label="Caravana"><input class="input input-chico mono" value="JK567 A124" style="min-width:9rem"></td><td data-label="Electrónica"><input class="input input-chico mono" value="032000123456795" style="min-width:11rem"></td><td data-label="Categoría"><select class="input input-chico"><option selected>Vaca</option><option>Vaquillona</option><option>Toro</option></select></td><td data-label="Edad"><input class="input input-chico" value="3 años"></td><td data-label="Pelaje"><select class="input input-chico"><option>Negro</option><option>Colorado</option></select></td><td data-label="Ternero al pie"><select class="input input-chico"><option>Sin ternero</option><option selected>Macho negro</option><option>Hembra negra</option><option>Macho colorado</option><option>Hembra colorada</option></select></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="chico mt">JK567 es el código del campo de origen. El número electrónico se carga a mano (sin lector en la v1.0). El ternero al pie se da de alta sin caravana, vinculado a su madre.</p>
+    </section>
+
+    <!-- Tacto por lote -->
+    <section class="card lista-tipo oculto" data-para="tacto">
+      <div class="card-titulo"><h3>Resultado de cada vaca</h3><span class="chico">Atajo: <kbd>P</kbd> preñada · <kbd>V</kbd> vacía · <kbd>Enter</kbd> siguiente</span></div>
+      <div class="tabla-wrap responsive">
+        <table class="tabla">
+          <thead><tr><th>Caravana</th><th>Resultado</th><th>Meses (opcional)</th><th>Parición esperada</th></tr></thead>
+          <tbody>
+            <tr><td data-label="Caravana" class="mono"><strong>AB123 B081</strong></td><td data-label="Resultado"><span class="pv"><button type="button" class="sel-p">P</button><button type="button">V</button></span></td><td data-label="Meses"><input class="input input-chico" placeholder="—"></td><td data-label="Parición esperada">06/06 al 21/10/2026</td></tr>
+            <tr><td data-label="Caravana" class="mono"><strong>AB123 B094</strong></td><td data-label="Resultado"><span class="pv"><button type="button" class="sel-p">P</button><button type="button">V</button></span></td><td data-label="Meses"><input class="input input-chico" placeholder="—"></td><td data-label="Parición esperada">06/06 al 21/10/2026</td></tr>
+            <tr><td data-label="Caravana" class="mono"><strong>AB123 B133</strong></td><td data-label="Resultado"><span class="pv"><button type="button">P</button><button type="button" class="sel-v">V</button></span></td><td data-label="Meses">—</td><td data-label="Parición esperada">—</td></tr>
+            <tr><td data-label="Caravana" class="mono"><strong>AB123 C004</strong></td><td data-label="Resultado"><span class="pv"><button type="button">P</button><button type="button">V</button></span></td><td data-label="Meses"><input class="input input-chico" placeholder="—"></td><td data-label="Parición esperada">—</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="chico mt">3 de 4 cargadas · 2 preñadas · 1 vacía</p>
+    </section>
+
+    <!-- Destete / venta: terneros por sexo y pelaje -->
+    <section class="card lista-tipo oculto" data-para="destete venta">
+      <div class="card-titulo"><h3>Terneros al pie: ¿cuántos de cada grupo?</h3><span class="chico">Se eligen por sexo y pelaje, no por la madre</span></div>
+      <div class="tabla-wrap responsive">
+        <table class="tabla">
+          <thead><tr><th>Grupo</th><th class="num">Hay al pie</th><th>Cantidad</th></tr></thead>
+          <tbody>
+            <tr><td data-label="Grupo">Machos negros</td><td data-label="Hay al pie" class="num">26</td><td data-label="Cantidad"><input class="input input-chico" value="16"></td></tr>
+            <tr><td data-label="Grupo">Machos colorados</td><td data-label="Hay al pie" class="num">19</td><td data-label="Cantidad"><input class="input input-chico" value="10"></td></tr>
+            <tr><td data-label="Grupo">Hembras negras</td><td data-label="Hay al pie" class="num">24</td><td data-label="Cantidad"><input class="input input-chico" value="14"></td></tr>
+            <tr><td data-label="Grupo">Hembras coloradas</td><td data-label="Hay al pie" class="num">18</td><td data-label="Cantidad"><input class="input input-chico" value="10"></td></tr>
+          </tbody>
+          <tfoot><tr><td>Total</td><td></td><td class="num"><strong>50 terneros</strong></td></tr></tfoot>
+        </table>
+      </div>
+      <div class="campo mt">
+        <label for="car-nuevas">Caravanas que les pusiste (50). El código del establecimiento <span class="mono">AB123</span> se completa solo: escribí el número de cada ternero.</label>
+        <div class="fila-inputs"><span class="mono" style="font-weight:800">AB123</span><textarea class="input mono" id="car-nuevas" style="min-height:90px">C051, C052, C053, C054, C055, C056, C057, C058, C059, C060, … (50 números) …, C099, C10</textarea></div>
+        <span class="error-txt">⚠ El número C10 está incompleto: tiene que ser 1 letra y 3 números.</span>
+      </div>
+      <div class="campo mt">
+        <label for="car-otros">Otros animales de la venta (por caravana)</label>
+        <input class="input mono" id="car-otros" placeholder="Opcional">
+        <span class="ayuda">Por ejemplo, vacas vacías o viejas. Si se pesan aparte, conviene cargarlas en otra venta.</span>
+      </div>
+      <div class="aviso info mt"><i data-ico="info"></i><div>50 terneros · 11.300 kg − 3 % de desbaste = 10.961 kg → <strong>peso promedio de 219 kg</strong> por animal. El sistema toma los terneros de cada grupo de mayor a menor edad y su madre queda como "no verificada".</div></div>
+    </section>
+
+    <!-- Análisis: resultado por animal -->
+    <section class="card lista-tipo oculto" data-para="analisis">
+      <div class="card-titulo"><h3>Resultado de cada animal</h3></div>
+      <div class="tabla-wrap responsive">
+        <table class="tabla">
+          <thead><tr><th>Caravana</th><th>Categoría</th><th>Resultado</th></tr></thead>
+          <tbody>
+            <tr><td data-label="Caravana" class="mono"><strong>GH234 A007</strong></td><td data-label="Categoría">Toro</td><td data-label="Resultado"><select class="input input-chico"><option selected>Negativo</option><option>Positivo</option><option>Sospechoso</option></select></td></tr>
+            <tr><td data-label="Caravana" class="mono"><strong>GH234 A011</strong></td><td data-label="Categoría">Toro</td><td data-label="Resultado"><select class="input input-chico"><option selected>Negativo</option><option>Positivo</option><option>Sospechoso</option></select></td></tr>
+            <tr><td data-label="Caravana" class="mono"><strong>AB123 A102</strong></td><td data-label="Categoría">Toro</td><td data-label="Resultado"><select class="input input-chico"><option selected>Negativo</option><option>Positivo</option><option>Sospechoso</option></select></td></tr>
+            <tr><td data-label="Caravana" class="mono"><strong>AB123 A115</strong></td><td data-label="Categoría">Toro</td><td data-label="Resultado"><select class="input input-chico"><option selected>Negativo</option><option>Positivo</option><option>Sospechoso</option></select></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Pesada: peso por animal -->
+    <section class="card lista-tipo oculto" data-para="pesar">
+      <div class="card-titulo"><h3>Peso de cada animal</h3></div>
+      <div class="tabla-wrap responsive">
+        <table class="tabla">
+          <thead><tr><th>Caravana</th><th>Categoría</th><th>Peso (kg)</th><th class="num">Peso anterior</th></tr></thead>
+          <tbody>
+            <tr><td data-label="Caravana" class="mono"><strong>AB123 C022</strong></td><td data-label="Categoría">Novillito</td><td data-label="Peso (kg)"><input class="input input-chico" value="221"></td><td data-label="Peso anterior" class="num">205 kg</td></tr>
+            <tr><td data-label="Caravana" class="mono"><strong>AB123 C027</strong></td><td data-label="Categoría">Novillito</td><td data-label="Peso (kg)"><input class="input input-chico" placeholder="—"></td><td data-label="Peso anterior" class="num">198 kg</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <div class="form-pie">
+      <button class="btn" type="button" onclick="irPaso(1)">← Volver</button>
+      <button class="btn btn-primario btn-grande" type="button" onclick="irPaso(3)">SIGUIENTE: CONFIRMAR →</button>
+    </div>
+  </div>
+
+  <!-- ================= PASO 3 ================= -->
+  <div class="tab-panel" id="j-3">
+    <section class="card" style="max-width:760px">
+      <h2>Revisá antes de guardar</h2>
+      <dl class="datos" style="grid-template-columns:1fr;margin:1rem 0 1.5rem">
+        <div class="dato"><dt>Jornada</dt><dd id="resumen-tipo">💉 Vacunación</dd></div>
+        <div class="dato"><dt>Detalle</dt><dd>Carbunclo · Laboratorio Sur · serie 4410 (vence 03/2027)</dd></div>
+        <div class="dato"><dt>Categorías</dt><dd>Vaquillonas (5) el 10/10/2026 · Novillitos (1) el 12/10/2026</dd></div>
+        <div class="dato"><dt>Animales</dt><dd>6</dd></div>
+      </dl>
+      <div class="aviso info"><i data-ico="info"></i><div>Con esta jornada el carbunclo queda completo: <strong>102 de 102</strong>.</div></div>
+      <div class="form-pie">
+        <button class="btn" type="button" onclick="irPaso(2)">← Volver</button>
+        <button class="btn btn-primario btn-grande" type="button" data-guardar="Guardado: vacunación de 6 animales" data-ir="jornada-detalle.html">CONFIRMAR 6 ANIMALES</button>
+      </div>
+    </section>
+  </div>
+
+</main>
+
+<script>
+  var NOMBRES = {
+    vacunar: ["Datos de la vacunación", "💉 Vacunación"],
+    enfermos: ["Datos de los animales enfermos", "🤒 Enfermos"],
+    desparasitar: ["Datos de la desparasitación", "🪱 Desparasitación"],
+    analisis: ["Datos del análisis", "🧪 Análisis"],
+    tacto: ["Datos del tacto", "🩺 Tacto"],
+    servicio: ["Datos de la temporada de servicio", "🐂 Servicio"],
+    destete: ["Datos del destete", "🍼 Destete"],
+    castrar: ["Datos de la castración", "✂️ Castración"],
+    venta: ["Datos de la venta", "🚛 Venta"],
+    alimentar: ["Datos de la alimentación", "🌾 Alimentación"],
+    compra: ["Datos de la compra", "🛒 Compra"],
+    pesar: ["Datos de la pesada", "⚖️ Pesada"]
+  };
+
+  function elegirTipo(tipo) {
+    document.querySelectorAll(".campos-tipo").forEach(function (c) { c.classList.toggle("oculto", c.dataset.para !== tipo); });
+    document.querySelectorAll(".lista-tipo").forEach(function (c) { c.classList.toggle("oculto", c.dataset.para.split(" ").indexOf(tipo) < 0); });
+    document.querySelectorAll("#tipos .tipo").forEach(function (t) { t.classList.toggle("activo", t.dataset.valor === tipo); });
+    document.getElementById("titulo-datos").textContent = NOMBRES[tipo][0];
+    document.getElementById("resumen-tipo").textContent = NOMBRES[tipo][1];
+    document.getElementById("card-animales").classList.toggle("oculto", ["vacunar", "desparasitar", "castrar", "alimentar"].indexOf(tipo) >= 0);
+  }
+
+  function irPaso(n) {
+    MiHacienda.activarTab(document.querySelector('[data-tab="j-' + n + '"]'));
+    document.querySelectorAll("#pasos .paso").forEach(function (p) {
+      var k = +p.dataset.paso;
+      p.classList.toggle("activo", k === n);
+      p.classList.toggle("hecho", k < n);
+    });
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  function modo(v) {
+    document.getElementById("modo-car").classList.toggle("oculto", v !== "car");
+    document.getElementById("modo-filtro").classList.toggle("oculto", v !== "filtro");
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("tipos").addEventListener("cambio", function (e) { elegirTipo(e.detail); });
+    var tipo = new URLSearchParams(location.search).get("tipo");
+    if (tipo && NOMBRES[tipo]) elegirTipo(tipo);
+
+    // Botones Preñada / Vacía del tacto
+    document.querySelectorAll(".pv").forEach(function (pv) {
+      var b = pv.querySelectorAll("button");
+      b[0].addEventListener("click", function () { b[0].className = "sel-p"; b[1].className = ""; });
+      b[1].addEventListener("click", function () { b[1].className = "sel-v"; b[0].className = ""; });
+    });
+  });
+</script>
+
+</body>
+</html>

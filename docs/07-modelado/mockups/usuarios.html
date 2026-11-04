@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Usuarios — Mi Hacienda Digital</title>
+  <link rel="stylesheet" href="assets/estilos.css">
+  <script src="assets/app.js" defer></script>
+</head>
+<body data-layout="app" data-nav="usuarios" data-codigo="P17">
+
+<main class="contenido" data-tabs-ambito>
+
+  <div class="encabezado">
+    <div>
+      <h1>Usuarios</h1>
+      <p>Quién puede entrar al sistema y qué puede hacer. Hoy lo usás solo vos; podés sumar a alguien cuando haga falta.</p>
+    </div>
+    <div class="acciones">
+      <button class="btn btn-primario" type="button" data-abrir="modal-usuario"><i data-ico="mas"></i> Nuevo usuario</button>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <button data-tab="lista" class="activo">Usuarios (2)</button>
+    <button data-tab="auditoria">Auditoría</button>
+  </div>
+
+  <!-- Usuarios (RF-003) -->
+  <div class="tab-panel activo" id="lista">
+    <div class="tabla-wrap responsive">
+      <table class="tabla">
+        <thead><tr><th>Nombre</th><th>Email</th><th>Rol</th><th>Último ingreso</th><th>Estado</th><th></th></tr></thead>
+        <tbody>
+          <tr><td data-label="Nombre"><strong>Juan Pérez</strong> <small>(vos)</small></td><td data-label="Email">productor@ejemplo.com</td><td data-label="Rol"><span class="badge tierra">Administrador</span></td><td data-label="Último ingreso">Hoy 08:12</td><td data-label="Estado"><span class="badge ok">Activo</span></td><td class="sin-label"><button class="btn btn-chico" data-abrir="modal-usuario">Editar</button></td></tr>
+          <tr><td data-label="Nombre"><strong>Familia</strong></td><td data-label="Email">familia@ejemplo.com</td><td data-label="Rol"><span class="badge">Consulta</span></td><td data-label="Último ingreso">02/10/2026</td><td data-label="Estado"><span class="badge ok">Activo</span></td><td class="sin-label"><button class="btn btn-chico" data-abrir="modal-usuario">Editar</button></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <section class="card mt">
+      <h2>¿Qué puede hacer cada rol?</h2>
+      <div class="grilla g-4" style="margin-top:1rem">
+        <div><span class="badge tierra">Administrador</span><p class="chico" style="margin-top:.5rem">Todo. Es el único que da de baja animales, confirma ventas, anula registros y maneja usuarios.</p></div>
+        <div><span class="badge info">Veterinario</span><p class="chico" style="margin-top:.5rem">Para un veterinario de afuera, si algún día lo hay. Carga y consulta sanidad y reproducción.</p></div>
+        <div><span class="badge ok">Peón</span><p class="chico" style="margin-top:.5rem">Para el peón que ayuda en la manga. Carga jornadas, partos y animales enfermos. No borra ni anula.</p></div>
+        <div><span class="badge">Consulta</span><p class="chico" style="margin-top:.5rem">Para la familia u otra persona que solo quiera mirar fichas y reportes. Puede exportar.</p></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Auditoría (RF-004) -->
+  <div class="tab-panel" id="auditoria">
+    <div class="filtros">
+      <div class="campo"><label>Usuario</label><select class="input"><option>Todos</option><option>Juan</option><option>Familia</option></select></div>
+      <div class="campo"><label>Acción</label><select class="input"><option>Todas</option><option>Baja de animal</option><option>Venta</option><option>Corrección de madre</option><option>Anulación</option><option>Cambio de usuario</option></select></div>
+      <div class="campo"><label>Desde</label><input class="input" type="date" value="2026-01-01"></div>
+      <div class="campo"><label>Hasta</label><input class="input" type="date" value="2026-10-10"></div>
+    </div>
+    <div class="tabla-wrap responsive">
+      <table class="tabla">
+        <thead><tr><th>Fecha y hora</th><th>Usuario</th><th>Acción</th><th>Sobre</th><th>Detalle</th></tr></thead>
+        <tbody>
+          <tr><td data-label="Fecha">08/10/2026 19:50</td><td data-label="Usuario">Juan</td><td data-label="Acción"><span class="badge warn">Anulación</span></td><td data-label="Sobre">Vacunación · AB123 B117</td><td data-label="Detalle">"No pasó por la manga"</td></tr>
+          <tr><td data-label="Fecha">02/09/2026 20:15</td><td data-label="Usuario">Juan</td><td data-label="Acción"><span class="badge danger">Baja de animal</span></td><td data-label="Sobre">Cría de AB123 B140</td><td data-label="Detalle">Muerte — Diarrea</td></tr>
+          <tr><td data-label="Fecha">01/09/2026 21:02</td><td data-label="Usuario">Juan</td><td data-label="Acción"><span class="badge info">Cambio de usuario</span></td><td data-label="Sobre">Familia</td><td data-label="Detalle">Alta con rol Consulta</td></tr>
+          <tr><td data-label="Fecha">25/04/2026 19:40</td><td data-label="Usuario">Juan</td><td data-label="Acción"><span class="badge danger">Venta</span></td><td data-label="Sobre">33 terneros (jornada de venta)</td><td data-label="Detalle">Con destete y caravana · 6.440 kg con 3 % de desbaste · Consignataria El Ombú</td></tr>
+          <tr><td data-label="Fecha">10/07/2026 20:05</td><td data-label="Usuario">Juan</td><td data-label="Acción"><span class="badge warn">Corrección de madre</span></td><td data-label="Sobre">Cría de CD456 A033</td><td data-label="Detalle">Pasa a CD456 A040: "el ternero era de otra vaca"</td></tr>
+          <tr><td data-label="Fecha">10/04/2025 09:12</td><td data-label="Usuario">Juan</td><td data-label="Acción"><span class="badge warn">Anulación</span></td><td data-label="Sobre">Tacto · AB123 B081</td><td data-label="Detalle">"Se cargó a la vaca equivocada"</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</main>
+
+<div class="modal-fondo" id="modal-usuario">
+  <div class="modal" role="dialog">
+    <div class="modal-cab"><h2>Usuario</h2><button class="cerrar" data-cerrar aria-label="Cerrar">×</button></div>
+    <div class="modal-cuerpo">
+      <div class="form-grid">
+        <div class="campo completo"><label>Nombre <span class="req">*</span></label><input class="input" value="Familia"></div>
+        <div class="campo completo"><label>Email <span class="req">*</span></label><input class="input" type="email" value="familia@ejemplo.com"></div>
+        <div class="campo completo"><span class="label">Rol <span class="req">*</span></span>
+          <div class="opciones">
+            <label><input type="radio" name="rol"> Administrador</label>
+            <label><input type="radio" name="rol"> Veterinario</label>
+            <label><input type="radio" name="rol"> Peón</label>
+            <label><input type="radio" name="rol" checked> Consulta</label>
+          </div>
+        </div>
+        <div class="campo completo"><span class="label">Estado</span><div class="opciones"><label><input type="radio" name="est" checked> Activo</label><label><input type="radio" name="est"> Deshabilitado</label></div></div>
+      </div>
+      <div class="aviso info mt"><i data-ico="mail"></i><div>Al guardar un usuario nuevo le llega un mail para que cree su contraseña.</div></div>
+    </div>
+    <div class="modal-pie"><button class="btn" data-cerrar>Cancelar</button><button class="btn btn-primario" data-guardar>Guardar</button></div>
+  </div>
+</div>
+
+</body>
+</html>

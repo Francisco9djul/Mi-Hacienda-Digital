@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Animales — Mi Hacienda Digital</title>
+  <link rel="stylesheet" href="assets/estilos.css">
+  <script src="assets/app.js" defer></script>
+</head>
+<body data-layout="app" data-nav="animales" data-codigo="P03">
+
+<main class="contenido">
+
+  <div class="encabezado">
+    <div>
+      <h1>Animales</h1>
+      <p>189 animales activos en el establecimiento · 87 terneros al pie sin caravana · 3 apartados</p>
+    </div>
+    <div class="acciones">
+      <a class="btn" href="importar.html"><i data-ico="importar"></i> Importar planilla</a>
+      <a class="btn btn-primario" href="animal-nuevo.html"><i data-ico="mas"></i> Nuevo animal</a>
+    </div>
+  </div>
+
+  <form class="filtros">
+    <div class="campo">
+      <label for="f-car">Caravana (o la de la madre)</label>
+      <input class="input" id="f-car" placeholder="Ej: AB123 B081">
+    </div>
+    <div class="campo">
+      <label for="f-cat">Categoría</label>
+      <select class="input" id="f-cat"><option>Todas</option><option>Vacas</option><option>Vaquillonas</option><option>Terneros</option><option>Terneras</option><option>Novillitos</option><option>Toros</option></select>
+    </div>
+    <div class="campo">
+      <label for="f-sexo">Sexo</label>
+      <select class="input" id="f-sexo"><option>Todos</option><option>Hembra</option><option>Macho</option></select>
+    </div>
+    <div class="campo">
+      <label for="f-est">Estado</label>
+      <select class="input" id="f-est"><option>Activos</option><option>Apartados para vender o descartar</option><option>Dados de baja</option><option>Todos</option></select>
+    </div>
+    <button class="btn" type="reset">Limpiar</button>
+  </form>
+
+  <div class="pie-tabla" style="margin:0 0 .75rem">
+    <strong>189 animales</strong>
+    <div class="acciones">
+      <button class="btn btn-chico" type="button"><i data-ico="pdf" class="ico-sm"></i> PDF</button>
+      <button class="btn btn-chico" type="button"><i data-ico="excel" class="ico-sm"></i> Excel</button>
+    </div>
+  </div>
+
+  <div class="tabla-wrap responsive">
+    <table class="tabla">
+      <thead>
+        <tr>
+          <th class="centro"><input type="checkbox" aria-label="Seleccionar todos"></th>
+          <th>Caravana</th><th>Categoría</th><th>Sexo</th><th>Pelaje</th><th class="num">Edad</th><th>Estado</th><th class="num">Último peso</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="centro sin-label"><input type="checkbox" checked></td><td data-label="Caravana"><a class="caravana" href="animal-ficha.html">AB123 B081</a></td><td data-label="Categoría">Vaca</td><td data-label="Sexo">H</td><td data-label="Pelaje">Negro</td><td data-label="Edad" class="num">5a 1m</td><td data-label="Estado"><span class="badge warn">Preñada · sin parir</span></td><td data-label="Último peso" class="num">—</td></tr>
+        <tr><td class="centro sin-label"><input type="checkbox" checked></td><td data-label="Caravana"><a class="caravana" href="animal-ficha.html">AB123 B094</a></td><td data-label="Categoría">Vaca</td><td data-label="Sexo">H</td><td data-label="Pelaje">Negro</td><td data-label="Edad" class="num">4a 3m</td><td data-label="Estado"><span class="badge ok">Parida 12/08</span></td><td data-label="Último peso" class="num">—</td></tr>
+        <tr><td class="centro sin-label"><input type="checkbox" checked></td><td data-label="Caravana"><a class="caravana" href="animal-ficha.html">AB123 B102</a></td><td data-label="Categoría">Vaca</td><td data-label="Sexo">H</td><td data-label="Pelaje">Colorado</td><td data-label="Edad" class="num">6a 0m</td><td data-label="Estado"><span class="badge ok">Parida 03/08</span></td><td data-label="Último peso" class="num">—</td></tr>
+        <tr><td class="centro sin-label"><input type="checkbox"></td><td data-label="Caravana"><span class="caravana">Cría de AB123 B094</span></td><td data-label="Categoría">Ternero al pie</td><td data-label="Sexo">M</td><td data-label="Pelaje">Negro</td><td data-label="Edad" class="num">1m 28d</td><td data-label="Estado"><span class="badge danger">🤒 Diarrea</span></td><td data-label="Último peso" class="num">—</td></tr>
+        <tr><td class="centro sin-label"><input type="checkbox"></td><td data-label="Caravana"><span class="caravana">Cría de AB123 B102</span></td><td data-label="Categoría">Ternera al pie</td><td data-label="Sexo">H</td><td data-label="Pelaje">Colorado</td><td data-label="Edad" class="num">2m 7d</td><td data-label="Estado"><span class="badge warn">💊 En retiro</span></td><td data-label="Último peso" class="num">—</td></tr>
+        <tr><td class="centro sin-label"><input type="checkbox"></td><td data-label="Caravana"><span class="caravana">Cría de AB123 B117</span></td><td data-label="Categoría">Ternera al pie</td><td data-label="Sexo">H</td><td data-label="Pelaje">Negro</td><td data-label="Edad" class="num">0m 26d</td><td data-label="Estado"><span class="badge danger">🤒 Diarrea</span></td><td data-label="Último peso" class="num">—</td></tr>
+        <tr><td class="centro sin-label"><input type="checkbox"></td><td data-label="Caravana"><a class="caravana" href="animal-ficha.html">AB123 C015</a></td><td data-label="Categoría">Vaquillona</td><td data-label="Sexo">H</td><td data-label="Pelaje">Negro</td><td data-label="Edad" class="num">1a 2m</td><td data-label="Estado"><span class="badge info">En servicio</span></td><td data-label="Último peso" class="num">212 kg</td></tr>
+        <tr><td class="centro sin-label"><input type="checkbox"></td><td data-label="Caravana"><a class="caravana" href="animal-ficha.html">AB123 C022</a></td><td data-label="Categoría">Novillito</td><td data-label="Sexo">M</td><td data-label="Pelaje">Negro</td><td data-label="Edad" class="num">1a 1m</td><td data-label="Estado"><span class="badge danger">Carbunclo pendiente</span></td><td data-label="Último peso" class="num">205 kg</td></tr>
+        <tr><td class="centro sin-label"><input type="checkbox"></td><td data-label="Caravana"><a class="caravana" href="animal-ficha.html">GH234 A007</a></td><td data-label="Categoría">Toro</td><td data-label="Sexo">M</td><td data-label="Pelaje">Negro</td><td data-label="Edad" class="num">4a 6m</td><td data-label="Estado"><span class="badge info">En servicio</span></td><td data-label="Último peso" class="num">—</td></tr>
+        <tr><td class="centro sin-label"><input type="checkbox"></td><td data-label="Caravana"><a class="caravana" href="animal-ficha.html">CD456 A033</a></td><td data-label="Categoría">Vaca</td><td data-label="Sexo">H</td><td data-label="Pelaje">Negro</td><td data-label="Edad" class="num">9a 4m</td><td data-label="Estado"><span class="badge warn">📌 Apartada · descarte</span></td><td data-label="Último peso" class="num">—</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="pie-tabla">
+    <div class="acciones">
+      <strong>Seleccionados: 3</strong>
+      <button class="btn" type="button" data-guardar="3 animales apartados para vender">📌 Apartar seleccionados</button>
+      <a class="btn btn-primario" href="jornada-nueva.html">Cargar jornada con seleccionados</a>
+    </div>
+    <div class="paginado">
+      <a href="#">◀</a><span class="actual">1</span><a href="#">2</a><a href="#">3</a><span>…</span><a href="#">19</a><a href="#">▶</a>
+    </div>
+  </div>
+
+</main>
+
+</body>
+</html>

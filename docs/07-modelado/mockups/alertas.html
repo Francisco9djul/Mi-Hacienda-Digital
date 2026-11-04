@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pendientes — Mi Hacienda Digital</title>
+  <link rel="stylesheet" href="assets/estilos.css">
+  <script src="assets/app.js" defer></script>
+</head>
+<body data-layout="app" data-nav="alertas" data-codigo="P12">
+
+<main class="contenido">
+
+  <div class="encabezado">
+    <div>
+      <h1>Pendientes</h1>
+      <p>Lo que está atrasado, lo que tiene la ventana del plan abierta y lo que se viene en los próximos 30 días (anticipación configurable).</p>
+    </div>
+    <div class="acciones">
+      <select class="input" style="min-height:46px;width:auto" aria-label="Filtrar"><option>Todos</option><option>Sanidad</option><option>Reproducción</option><option>Cobros</option></select>
+    </div>
+  </div>
+
+  <section class="card">
+    <div class="card-titulo"><h2><span class="semaforo rojo" style="display:inline-block;margin-right:.5rem"></span> Vacunas obligatorias pendientes</h2><span class="badge danger">1</span></div>
+    <ul class="alertas">
+      <li>
+        <span class="semaforo rojo"></span>
+        <div class="texto">
+          <strong>Carbunclo — faltan 6 animales</strong>
+          <small>Ventana del plan: septiembre a noviembre · vence el 30/11/2026 · categorías pendientes: vaquillonas (5) y novillitos (1)</small>
+        </div>
+        <a class="btn btn-primario" href="jornada-nueva.html?tipo=vacunar">Vacunar ahora</a>
+      </li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <div class="card-titulo"><h2><span class="semaforo amarillo" style="display:inline-block;margin-right:.5rem"></span> Ventana abierta o próximos 30 días</h2><span class="badge warn">5</span></div>
+    <ul class="alertas">
+      <li>
+        <span class="semaforo amarillo"></span>
+        <div class="texto"><strong>Revisar la vaca AB123 B126 — hoy</strong><small>Recordatorio: "Ver si mejoró la renguera" · tratada el 07/10/2026 por pietín</small></div>
+        <button class="btn" type="button" data-guardar="Recordatorio marcado como hecho">✔ Hecho</button>
+      </li>
+      <li>
+        <span class="semaforo amarillo"></span>
+        <div class="texto"><strong>Mancha-gangrena-enterotoxemia 1.ª dosis — 87 terneros al pie</strong><small>Ventana: octubre a noviembre · generalmente se da en la yerra · la 2.ª dosis va en diciembre</small></div>
+        <a class="btn" href="jornada-nueva.html?tipo=vacunar">Cargar jornada</a>
+      </li>
+      <li>
+        <span class="semaforo amarillo"></span>
+        <div class="texto"><strong>Faltan parir 2 vacas</strong><small>La parición esperada termina el 21/10/2026 · AB123 B081 y AB123 B126</small></div>
+        <a class="btn" href="reproduccion.html#paricion">Ver vacas</a>
+      </li>
+      <li>
+        <span class="semaforo amarillo"></span>
+        <div class="texto"><strong>2 terneros machos sin castrar</strong><small>Nacidos después de la última castración (25/09/2026)</small></div>
+        <a class="btn" href="jornada-nueva.html?tipo=castrar">Cargar castración</a>
+      </li>
+      <li>
+        <span class="semaforo amarillo"></span>
+        <div class="texto"><strong>Cobro de la venta del 05/10 — 1.ª cuota el 04/11/2026</strong><small>4 vacas viejas a Frigorífico local · $ 2.460.000 (y otra cuota igual el 04/12)</small></div>
+        <a class="btn" href="reportes.html#ventas">Ver venta</a>
+      </li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <div class="card-titulo"><h2><span class="semaforo azul" style="display:inline-block;margin-right:.5rem"></span> Para tener en cuenta</h2><span class="badge info">3</span></div>
+    <ul class="alertas">
+      <li>
+        <span class="semaforo azul"></span>
+        <div class="texto"><strong>3 terneros con diarrea en curso</strong><small>Crías de AB123 B094 y AB123 B117, y una ternera negra con "mancha blanca en la frente" · desde el 05/10/2026</small></div>
+        <a class="btn" href="sanidad.html#enfermos">Ver</a>
+      </li>
+      <li>
+        <span class="semaforo azul"></span>
+        <div class="texto"><strong>3 vacas apartadas para descarte</strong><small>CD456 A033, EF789 A060 y AB123 B099 · para la próxima venta</small></div>
+        <a class="btn" href="animales.html?apartados=si">Ver apartados</a>
+      </li>
+      <li>
+        <span class="semaforo azul"></span>
+        <div class="texto"><strong>Quedan 9 rollos</strong><small>Al ritmo de 1 rollo por día alcanzan para 9 días</small></div>
+        <a class="btn" href="alimentacion.html">Ver alimentación</a>
+      </li>
+    </ul>
+  </section>
+
+  <p class="chico mt">Los pendientes se calculan solos a partir del plan sanitario, de los eventos y de los cobros cargados. Se van cuando cargás la vacuna, el parto, la castración o el cobro.</p>
+
+</main>
+
+</body>
+</html>

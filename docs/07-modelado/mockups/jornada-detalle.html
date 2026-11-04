@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jornada de vacunación — Mi Hacienda Digital</title>
+  <link rel="stylesheet" href="assets/estilos.css">
+  <script src="assets/app.js" defer></script>
+</head>
+<body data-layout="app" data-nav="jornadas" data-codigo="P11">
+
+<main class="contenido">
+
+  <a class="volver" href="jornadas.html"><i data-ico="volver"></i> Volver a Jornadas</a>
+
+  <div class="encabezado">
+    <div>
+      <h1>💉 Vacunación — Carbunclo · Vacas y toros</h1>
+      <p>08/10/2026 · Cargada por Juan el 08/10/2026 a las 19:42</p>
+    </div>
+    <div class="acciones">
+      <button class="btn" type="button"><i data-ico="pdf"></i> PDF</button>
+      <button class="btn" type="button"><i data-ico="excel"></i> Excel</button>
+      <button class="btn btn-peligro" type="button" data-abrir="modal-anular">Anular jornada</button>
+    </div>
+  </div>
+
+  <div class="grilla g-4">
+    <div class="card kpi"><div class="etiqueta">Animales</div><div class="valor">96</div><div class="detalle">faltan 6 (vaquillonas y novillito)</div></div>
+    <div class="card kpi"><div class="etiqueta">Producto</div><div class="valor" style="font-size:1.5rem;margin:.9rem 0">Carbunclo</div><div class="detalle">Laboratorio Sur · obligatoria</div></div>
+    <div class="card kpi"><div class="etiqueta">Categorías</div><div class="valor" style="font-size:1.25rem;margin:.9rem 0">Vacas 92 · Toros 4</div><div class="detalle">las dos el 08/10 · serie 4410 (vence 03/2027)</div></div>
+    <div class="card kpi"><div class="etiqueta">Próxima</div><div class="valor" style="font-size:1.5rem;margin:.9rem 0">Sep – nov 2027</div><div class="detalle">según plan sanitario</div></div>
+  </div>
+
+  <section class="card mt">
+    <div class="card-titulo">
+      <h2>Animales de la jornada</h2>
+      <input class="input" style="max-width:260px" placeholder="Buscar caravana…">
+    </div>
+    <div class="tabla-wrap responsive">
+      <table class="tabla">
+        <thead><tr><th>Caravana</th><th>Categoría</th><th>Estado del registro</th><th></th></tr></thead>
+        <tbody>
+          <tr><td data-label="Caravana"><a class="caravana" href="animal-ficha.html">AB123 B081</a></td><td data-label="Categoría">Vaca</td><td data-label="Estado"><span class="badge ok">Registrado</span></td><td class="sin-label"><button class="btn-link btn" data-abrir="modal-anular-uno">Anular</button></td></tr>
+          <tr><td data-label="Caravana"><a class="caravana" href="animal-ficha.html">AB123 B094</a></td><td data-label="Categoría">Vaca</td><td data-label="Estado"><span class="badge ok">Registrado</span></td><td class="sin-label"><button class="btn-link btn" data-abrir="modal-anular-uno">Anular</button></td></tr>
+          <tr><td data-label="Caravana"><a class="caravana" href="animal-ficha.html">AB123 B102</a></td><td data-label="Categoría">Vaca</td><td data-label="Estado"><span class="badge ok">Registrado</span></td><td class="sin-label"><button class="btn-link btn" data-abrir="modal-anular-uno">Anular</button></td></tr>
+          <tr class="anulado"><td data-label="Caravana">AB123 B117</td><td data-label="Categoría">Vaca</td><td data-label="Estado">Anulado — "No pasó por la manga"</td><td class="sin-label"></td></tr>
+          <tr><td data-label="Caravana"><a class="caravana" href="animal-ficha.html">CD456 A033</a></td><td data-label="Categoría">Vaca</td><td data-label="Estado"><span class="badge ok">Registrado</span></td><td class="sin-label"><button class="btn-link btn" data-abrir="modal-anular-uno">Anular</button></td></tr>
+          <tr><td data-label="Caravana"><a class="caravana" href="animal-ficha.html">GH234 A007</a></td><td data-label="Categoría">Toro</td><td data-label="Estado"><span class="badge ok">Registrado</span></td><td class="sin-label"><button class="btn-link btn" data-abrir="modal-anular-uno">Anular</button></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="pie-tabla"><span class="chico">Mostrando 6 de 96</span><div class="paginado"><a href="#">◀</a><span class="actual">1</span><a href="#">2</a><a href="#">…</a><a href="#">16</a><a href="#">▶</a></div></div>
+  </section>
+
+</main>
+
+<div class="modal-fondo" id="modal-anular">
+  <div class="modal" role="dialog">
+    <div class="modal-cab"><h2>Anular toda la jornada</h2><button class="cerrar" data-cerrar aria-label="Cerrar">×</button></div>
+    <div class="modal-cuerpo">
+      <div class="aviso danger" style="margin-bottom:1rem"><i data-ico="aviso"></i><div>Se van a anular las <strong>96 vacunaciones</strong> de esta jornada. Quedan en el historial, tachadas.</div></div>
+      <div class="campo"><label>Motivo <span class="req">*</span></label><textarea class="input" placeholder="Ej: Se cargó la vacuna equivocada"></textarea></div>
+    </div>
+    <div class="modal-pie"><button class="btn" data-cerrar>Cancelar</button><button class="btn btn-peligro-lleno" data-guardar="Jornada anulada">Anular jornada</button></div>
+  </div>
+</div>
+
+<div class="modal-fondo" id="modal-anular-uno">
+  <div class="modal" role="dialog" style="max-width:480px">
+    <div class="modal-cab"><h2>Anular para un animal</h2><button class="cerrar" data-cerrar aria-label="Cerrar">×</button></div>
+    <div class="modal-cuerpo">
+      <div class="campo"><label>Motivo <span class="req">*</span></label><textarea class="input" placeholder="Ej: No pasó por la manga"></textarea></div>
+    </div>
+    <div class="modal-pie"><button class="btn" data-cerrar>Cancelar</button><button class="btn btn-peligro-lleno" data-guardar="Registro anulado">Anular</button></div>
+  </div>
+</div>
+
+</body>
+</html>
