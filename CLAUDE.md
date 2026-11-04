@@ -47,4 +47,4 @@ start docs\07-modelado\mockups\index.html
 
 ## Git
 
-Rama actual `master`, rama principal `main`. Commits en español, descriptivos.
+Repo público: https://github.com/Francisco9djul/mi-hacienda-digital. Se trabaja sobre la rama `develop`; `main` es la rama principal y recibe lo estable desde `develop` (la rama local `master` sigue a `origin/main`). Commits en español, descriptivos.
