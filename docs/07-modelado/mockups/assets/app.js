@@ -54,7 +54,7 @@
     { id: "inicio", texto: "Inicio", href: "inicio.html", ico: "inicio" },
     { id: "animales", texto: "Animales", href: "animales.html", ico: "animales" },
     { id: "jornadas", texto: "Jornadas", href: "jornadas.html", ico: "jornadas" },
-    { id: "alertas", texto: "Pendientes", href: "alertas.html", ico: "alertas", cuenta: 10 },
+    { id: "alertas", texto: "Pendientes", href: "alertas.html", ico: "alertas", cuenta: 11 },
     { grupo: "Control" },
     { id: "sanidad", texto: "Sanidad", href: "sanidad.html", ico: "sanidad" },
     { id: "reproduccion", texto: "Reproducción", href: "reproduccion.html", ico: "reproduccion" },
@@ -89,7 +89,7 @@
       '<form class="buscador" action="animal-ficha.html" role="search">' + icono("buscar") +
       '<input name="caravana" type="search" placeholder="Buscar caravana… (ej: AB123 B081)" aria-label="Buscar caravana"></form>' +
       '<div class="barra-der">' +
-      '<a class="campana" href="alertas.html" title="Pendientes">' + icono("alertas") + '<span class="punto">10</span></a>' +
+      '<a class="campana" href="alertas.html" title="Pendientes">' + icono("alertas") + '<span class="punto">11</span></a>' +
       '<div class="desplegable" data-desplegable>' +
       '<button class="usuario btn" type="button" style="min-height:auto;border-radius:99px">' +
       '<span class="avatar">EG</span><span class="nombre-usuario" style="text-align:left">Juan<small class="chico">Administrador</small></span></button>' +

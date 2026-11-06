@@ -34,6 +34,9 @@
 | Vacunaciones, tratamientos, casos de enfermedad y análisis | RF-016, RF-017, RF-038, RF-040 | CLMB | CLM | CLM | L |
 | Plan sanitario | RF-018 | CLMB | CLM | L | L |
 | Alertas sanitarias | RF-019 | L | L | L | L |
+| Resolver animales que no se vacunaron o desparasitaron | RF-047 | CLMB | CLM | CLM | L |
+| Pendientes | RF-048 | L | L | L | L |
+| Anular registros y jornadas | RF-049 | B | — | — | — |
 | Recordatorios de revisión | RF-044 | CLMB | CLM | CLM | L |
 | Animales apartados | RF-045 | CLMB | L | CLM | L |
 | Alimentación y reservas | RF-046 | CLMB | L | CLM | L |
@@ -49,7 +52,7 @@
 ## Reglas
 
 - **Anulación:** solo el Administrador anula eventos y da de baja animales (RN-011). Si otro rol cargó un dato erróneo, lo corrige con M mientras el evento sea del día; después, debe pedir la anulación al Administrador.
-- **Control en el servidor:** los permisos se validan en la API, no solo ocultando botones en la interfaz (RNF-007).
+- **Control en el servidor:** los permisos se validan en la API, no solo ocultando botones en la interfaz (RF-050, RNF-007).
 - **Último administrador:** no se puede deshabilitar ni cambiar de rol al único Administrador activo.
 - **Jornada de venta:** como da de baja animales, solo el Administrador puede confirmarla (RN-011).
 - **Puesta en marcha:** la v1.0 se entrega con un solo usuario, el Administrador. Los demás usuarios los crea el productor cuando los necesite.
@@ -68,3 +71,4 @@
 | 0.8 | 2026-10-10 | Francisco Garcia Martinez | Permisos de RF-044 |
 | 0.9 | 2026-11-03 | Francisco Garcia Martinez | Permisos de RF-045 y RF-046 |
 | 0.10 | 2026-11-03 | Francisco Garcia Martinez | Datos del productor reemplazados por datos ficticios (nombre, establecimiento, ubicación, códigos SENASA y montos) para publicar el repositorio |
+| 0.11 | 2026-11-06 | Francisco Garcia Martinez | Permisos de RF-047, RF-048 y RF-049; control de permisos vinculado a RF-050 |

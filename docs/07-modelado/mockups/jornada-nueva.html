@@ -244,22 +244,32 @@
       <div class="card-titulo"><h3>6 animales de 2 categorías</h3></div>
       <p>Vaquillonas (5) el 10/10/2026 · Novillitos (1) el 12/10/2026.</p>
       <div class="campo mt">
-        <label for="excluir">¿Alguno no pasó por la manga? Escribí su caravana para excluirlo (opcional)</label>
-        <input class="input mono" id="excluir" placeholder="Ej: AB123 C015">
-        <span class="ayuda">Los excluidos siguen apareciendo como pendientes.</span>
+        <label>¿Alguno no pasó por la manga? Si sabés cuál es, escribí su caravana (opcional)</label>
+        <div class="form-grid">
+          <div class="campo"><label for="excluir">Caravana</label><input class="input mono" id="excluir" placeholder="Ej: AB123 C015"></div>
+          <div class="campo"><label for="excluir-obs">Observación</label><input class="input" id="excluir-obs" placeholder="Ej: Estaba en el corral"></div>
+        </div>
+        <span class="ayuda">Queda con un aviso en Pendientes y en su ficha hasta que lo resuelvas.</span>
       </div>
       <div class="campo mt">
-        <label>¿Faltaron animales y no sabés cuáles? Poné cuántos en cada categoría (opcional)</label>
-        <div class="tabla-wrap responsive">
+        <label>¿No te acordás de la caravana? Anotá lo que sepas del animal (opcional)</label>
+        <div class="tabla-wrap responsive oculto" data-tabla-faltantes>
           <table class="tabla">
-          <thead><tr><th>Categoría</th><th class="num">Animales</th><th>Faltaron sin identificar</th></tr></thead>
-          <tbody>
-          <tr><td data-label="Categoría">Vaquillonas</td><td data-label="Animales" class="num">5</td><td data-label="Faltaron sin identificar"><input class="input input-chico" inputmode="numeric" placeholder="0" style="max-width:6rem" aria-label="Faltaron sin identificar en Vaquillonas"></td></tr>
-          <tr><td data-label="Categoría">Novillitos</td><td data-label="Animales" class="num">1</td><td data-label="Faltaron sin identificar"><input class="input input-chico" inputmode="numeric" placeholder="0" style="max-width:6rem" aria-label="Faltaron sin identificar en Novillitos"></td></tr>
-          </tbody>
+          <thead><tr><th>Categoría</th><th>Pelaje</th><th>Observación</th><th class="num">Cantidad</th><th></th></tr></thead>
+          <tbody data-faltantes></tbody>
           </table>
         </div>
-        <span class="ayuda">Por ejemplo, "1 vaca". Se carga la vacuna a todos, pero la falta te queda en Pendientes hasta que identifiques al animal, marques que ya lo vacunaste o la cierres.</span>
+        <template data-fila-faltante>
+          <tr>
+            <td data-label="Categoría"><select class="input input-chico" aria-label="Categoría"><option>Vaquillonas</option><option>Novillitos</option></select></td>
+            <td data-label="Pelaje"><select class="input input-chico" aria-label="Pelaje"><option>No sé</option><option>Negro</option><option>Colorado</option></select></td>
+            <td data-label="Observación"><input class="input input-chico" style="min-width:15rem" placeholder="Ej: La que estaba renga" aria-label="Observación"></td>
+            <td data-label="Cantidad" class="num"><input class="input input-chico" inputmode="numeric" value="1" style="max-width:6rem" aria-label="Cantidad"></td>
+            <td class="sin-label"><button class="btn-link btn" type="button" data-quitar-faltante>Quitar</button></td>
+          </tr>
+        </template>
+        <button class="btn btn-chico mt" type="button" data-agregar-faltante>+ Agregar animal que faltó</button>
+        <span class="ayuda">Por ejemplo, "vaca, colorada, la que estaba renga". Se carga la vacuna a toda la categoría, pero cada animal que faltó te queda con un aviso en Pendientes hasta que lo identifiques y lo resuelvas.</span>
       </div>
     </section>
 
@@ -267,24 +277,32 @@
     <section class="card lista-tipo oculto" data-para="desparasitar">
       <div class="card-titulo"><h3>189 animales de 5 categorías (todo el rodeo)</h3></div>
       <div class="campo mt">
-        <label for="excluir-d">¿Alguno no pasó por la manga? Escribí su caravana para excluirlo (opcional)</label>
-        <input class="input mono" id="excluir-d" placeholder="Ej: AB123 C015">
+        <label>¿Alguno no pasó por la manga? Si sabés cuál es, escribí su caravana (opcional)</label>
+        <div class="form-grid">
+          <div class="campo"><label for="excluir-d">Caravana</label><input class="input mono" id="excluir-d" placeholder="Ej: AB123 C015"></div>
+          <div class="campo"><label for="excluir-obs-d">Observación</label><input class="input" id="excluir-obs-d" placeholder="Ej: Estaba en el corral"></div>
+        </div>
+        <span class="ayuda">Queda con un aviso en Pendientes y en su ficha hasta que lo resuelvas.</span>
       </div>
       <div class="campo mt">
-        <label>¿Faltaron animales y no sabés cuáles? Poné cuántos en cada categoría (opcional)</label>
-        <div class="tabla-wrap responsive">
+        <label>¿No te acordás de la caravana? Anotá lo que sepas del animal (opcional)</label>
+        <div class="tabla-wrap responsive oculto" data-tabla-faltantes>
           <table class="tabla">
-          <thead><tr><th>Categoría</th><th class="num">Animales</th><th>Faltaron sin identificar</th></tr></thead>
-          <tbody>
-          <tr><td data-label="Categoría">Vacas</td><td data-label="Animales" class="num">92</td><td data-label="Faltaron sin identificar"><input class="input input-chico" inputmode="numeric" placeholder="0" style="max-width:6rem" aria-label="Faltaron sin identificar en Vacas"></td></tr>
-          <tr><td data-label="Categoría">Toros</td><td data-label="Animales" class="num">4</td><td data-label="Faltaron sin identificar"><input class="input input-chico" inputmode="numeric" placeholder="0" style="max-width:6rem" aria-label="Faltaron sin identificar en Toros"></td></tr>
-          <tr><td data-label="Categoría">Vaquillonas</td><td data-label="Animales" class="num">5</td><td data-label="Faltaron sin identificar"><input class="input input-chico" inputmode="numeric" placeholder="0" style="max-width:6rem" aria-label="Faltaron sin identificar en Vaquillonas"></td></tr>
-          <tr><td data-label="Categoría">Novillitos</td><td data-label="Animales" class="num">1</td><td data-label="Faltaron sin identificar"><input class="input input-chico" inputmode="numeric" placeholder="0" style="max-width:6rem" aria-label="Faltaron sin identificar en Novillitos"></td></tr>
-          <tr><td data-label="Categoría">Terneros al pie</td><td data-label="Animales" class="num">87</td><td data-label="Faltaron sin identificar"><input class="input input-chico" inputmode="numeric" placeholder="0" style="max-width:6rem" aria-label="Faltaron sin identificar en Terneros al pie"></td></tr>
-          </tbody>
+          <thead><tr><th>Categoría</th><th>Pelaje</th><th>Observación</th><th class="num">Cantidad</th><th></th></tr></thead>
+          <tbody data-faltantes></tbody>
           </table>
         </div>
-        <span class="ayuda">Por ejemplo, "1 vaca". Se carga la desparasitación a todos, pero la falta te queda en Pendientes hasta que identifiques al animal, marques que ya lo desparasitaste o la cierres.</span>
+        <template data-fila-faltante>
+          <tr>
+            <td data-label="Categoría"><select class="input input-chico" aria-label="Categoría"><option>Vacas</option><option>Toros</option><option>Vaquillonas</option><option>Novillitos</option><option>Terneros al pie</option></select></td>
+            <td data-label="Pelaje"><select class="input input-chico" aria-label="Pelaje"><option>No sé</option><option>Negro</option><option>Colorado</option></select></td>
+            <td data-label="Observación"><input class="input input-chico" style="min-width:15rem" placeholder="Ej: La que estaba renga" aria-label="Observación"></td>
+            <td data-label="Cantidad" class="num"><input class="input input-chico" inputmode="numeric" value="1" style="max-width:6rem" aria-label="Cantidad"></td>
+            <td class="sin-label"><button class="btn-link btn" type="button" data-quitar-faltante>Quitar</button></td>
+          </tr>
+        </template>
+        <button class="btn btn-chico mt" type="button" data-agregar-faltante>+ Agregar animal que faltó</button>
+        <span class="ayuda">Por ejemplo, "vaca, colorada, la que estaba renga". Se carga la desparasitación a toda la categoría, pero cada animal que faltó te queda con un aviso en Pendientes hasta que lo identifiques y lo resuelvas.</span>
       </div>
     </section>
 
@@ -509,6 +527,26 @@
       var b = pv.querySelectorAll("button");
       b[0].addEventListener("click", function () { b[0].className = "sel-p"; b[1].className = ""; });
       b[1].addEventListener("click", function () { b[1].className = "sel-v"; b[0].className = ""; });
+    });
+
+    // Filas de animales que faltaron sin identificar (RN-027)
+    document.addEventListener("click", function (e) {
+      var agregar = e.target.closest("[data-agregar-faltante]");
+      if (agregar) {
+        var campo = agregar.closest(".campo");
+        var plantilla = campo.querySelector("[data-fila-faltante]");
+        campo.querySelector("[data-faltantes]").appendChild(plantilla.content.cloneNode(true));
+        campo.querySelector("[data-tabla-faltantes]").classList.remove("oculto");
+        return;
+      }
+      var quitar = e.target.closest("[data-quitar-faltante]");
+      if (quitar) {
+        var contenedor = quitar.closest(".campo");
+        quitar.closest("tr").remove();
+        if (!contenedor.querySelector("[data-faltantes]").rows.length) {
+          contenedor.querySelector("[data-tabla-faltantes]").classList.add("oculto");
+        }
+      }
     });
   });
 </script>

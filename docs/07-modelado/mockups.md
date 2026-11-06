@@ -14,20 +14,20 @@ El recorrido de todas las pantallas está descripto en `flujos-mockups.pdf`, que
 | P01b | Recuperar contraseña | [recuperar.html](mockups/recuperar.html) | RF-002 |
 | P02 | Tablero de inicio | [inicio.html](mockups/inicio.html) | RF-034, RF-019, RF-027 |
 | P03 | Listado de animales | [animales.html](mockups/animales.html) | RF-008, RF-033 |
-| P04 | Ficha del animal (con modales de baja, anulación, pesada, enfermedad y categoría) | [animal-ficha.html](mockups/animal-ficha.html) | RF-007, RF-009, RF-010, RF-012, RF-013, RF-038 |
+| P04 | Ficha del animal (con modales de baja, anulación, pesada, enfermedad y categoría) | [animal-ficha.html](mockups/animal-ficha.html) | RF-007, RF-009, RF-010, RF-012, RF-013, RF-038, RF-049 |
 | P05 | Nuevo animal (caravana SENASA y electrónica, aviso de reingreso) | [animal-nuevo.html](mockups/animal-nuevo.html) | RF-005, RF-006, RF-042, RN-013 |
 | P06 | Nueva jornada (asistente de 3 pasos, 12 tipos: vacunar, enfermos, desparasitar, análisis, tacto, servicio, castración, destete, venta, compra, pesar, alimentación) | [jornada-nueva.html](mockups/jornada-nueva.html) | RF-015, RF-016, RF-017, RF-022, RF-023, RF-026, RF-038, RF-040, RF-041, RF-043, RF-046, RN-014, RN-018, RN-020, RN-021, RN-026 |
 | P07 | Registrar parto (uno o dos terneros, sin caravana, padre desconocido) | [paricion.html](mockups/paricion.html) | RF-024, RN-005, RN-016 |
 | P08 | Reportes: stock, índices y conteo de parición, terneros (mortalidad y enfermedades), ventas, compras y cobros en cuotas, bajas, cobertura | [reportes.html](mockups/reportes.html) | RF-028 a RF-033, RF-039, RF-041, RF-043 |
 | P09 | Importar planilla | [importar.html](mockups/importar.html) | RF-014 |
 | P10 | Jornadas | [jornadas.html](mockups/jornadas.html) | RF-015, RF-020 |
-| P11 | Detalle de jornada | [jornada-detalle.html](mockups/jornada-detalle.html) | RF-020 |
-| P12 | Pendientes (alertas) | [alertas.html](mockups/alertas.html) | RF-019, RF-027 |
+| P11 | Detalle de jornada | [jornada-detalle.html](mockups/jornada-detalle.html) | RF-020, RF-047, RF-049 |
+| P12 | Pendientes (alertas) | [alertas.html](mockups/alertas.html) | RF-019, RF-027, RF-047, RF-048 |
 | P13 | Sanidad (con animales enfermos y análisis) | [sanidad.html](mockups/sanidad.html) | RF-016, RF-017, RF-019, RF-020, RF-038, RF-040 |
 | P14 | Plan sanitario anual | [plan-sanitario.html](mockups/plan-sanitario.html) | RF-018 |
 | P15 | Reproducción | [reproduccion.html](mockups/reproduccion.html) | RF-021 a RF-027 |
 | P16 | Catálogos | [catalogos.html](mockups/catalogos.html) | RF-035 |
-| P17 | Usuarios y auditoría | [usuarios.html](mockups/usuarios.html) | RF-003, RF-004 |
+| P17 | Usuarios y auditoría | [usuarios.html](mockups/usuarios.html) | RF-003, RF-004, RF-050 |
 | P18 | Establecimiento y respaldo | [configuracion.html](mockups/configuracion.html) | RF-036, RF-037 |
 | P19 | Alimentación y reservas | [alimentacion.html](mockups/alimentacion.html) | RF-046 |
 
@@ -285,3 +285,4 @@ Variante **tacto por lote**: el paso 2 muestra una tabla para cargar el resultad
 | 0.13 | 2026-11-03 | Francisco Garcia Martinez | Nombre del proyecto: Mi Hacienda Digital (antes Mi Yerra Digital) en wireframes ASCII, mockups HTML (logo "MH") y flujos-mockups.pdf (capturas nuevas) |
 | 0.14 | 2026-11-03 | Francisco Garcia Martinez | Datos del productor reemplazados por datos ficticios (nombre, establecimiento, ubicación, códigos SENASA y montos) para publicar el repositorio; `flujos-mockups.pdf` pasa a guardarse fuera del repositorio |
 | 0.15 | 2026-11-04 | Francisco Garcia Martinez | Animales que faltaron vacunar o desparasitar sin identificar (RN-027): cantidad por categoría en la Nueva jornada (P06), aviso con **Resolver** en Pendientes (P12) y tablero (P02), sección en el detalle de la jornada (P11) y cobertura de carbunclo actualizada en Sanidad y Reportes |
+| 0.16 | 2026-11-06 | Francisco Garcia Martinez | Animales que faltaron con pelaje, observación y cantidad en la Nueva jornada (P06); avisos identificados y sin identificar en Pendientes (P12) y tablero (P02); modal **Resolver** con las vacas de ese pelaje primero (P11, P12); aviso en la ficha (P04); RF-047 a RF-050 en la trazabilidad de pantallas |

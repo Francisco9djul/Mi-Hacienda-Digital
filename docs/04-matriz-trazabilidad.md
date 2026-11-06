@@ -26,7 +26,7 @@
 | RF-016 | Vacunación masiva por categoría | OE-02 | M3 | HU-16 | CP-016, CP-016b, CP-016c | M | 4 | Pendiente |
 | RF-017 | Tratamientos individuales y desparasitaciones por categoría | OE-02 | M3 | HU-17 | CP-017, CP-017b | M | 4 | Pendiente |
 | RF-018 | Plan sanitario anual | OE-02 | M3 | HU-18 | CP-018 | M | 4 | Pendiente |
-| RF-019 | Alertas sanitarias | OE-02 | M3 | HU-19 | CP-019 | M | 4 | Pendiente |
+| RF-019 | Alertas sanitarias | OE-02 | M3 | HU-19 | CP-019, CP-016b | M | 4 | Pendiente |
 | RF-020 | Historial sanitario | OE-02 | M3 | HU-20 | CP-020 | M | 4 | Pendiente |
 | RF-021 | Registrar celos (opcional) | OE-03 | M4 | HU-21 | CP-021 | C | 5 | Pendiente |
 | RF-022 | Temporada de servicio con toros en grupo | OE-03 | M4 | HU-22 | CP-022 | M | 5 | Pendiente |
@@ -54,6 +54,10 @@
 | RF-044 | Recordatorios de revisión | OE-02 | M3 | HU-44 | CP-044 | M | 4 | Pendiente |
 | RF-045 | Animales apartados para venta o descarte | OE-01, OE-04 | M2 | HU-45 | CP-045 | S | 3 | Pendiente |
 | RF-046 | Alimentación y reservas | OE-01 | M2 | HU-46 | CP-046 | C | 6 | Pendiente |
+| RF-047 | Resolver animales no vacunados o desparasitados | OE-02 | M3 | HU-47 | CP-047, CP-016c, CP-017b | M | 4 | Pendiente |
+| RF-048 | Pendientes en una sola pantalla | OE-02, OE-06 | M5 | HU-48 | CP-048 | M | 6 | Pendiente |
+| RF-049 | Anular registros y jornadas | OE-05 | M1 | HU-49 | CP-049 | M | 3 | Pendiente |
+| RF-050 | Permisos por rol | OE-05 | M1 | HU-50 | CP-050 | M | 3 | Pendiente |
 
 ## Requisitos no funcionales
 
@@ -104,18 +108,18 @@
 | RN-024 | RF-044 | CP-044 |
 | RN-025 | RF-013 | CP-013b |
 | RN-026 | RF-041 | CP-041b |
-| RN-027 | RF-016, RF-017, RF-019, RF-031 | CP-016b, CP-016c, CP-017b |
+| RN-027 | RF-016, RF-017, RF-019, RF-031, RF-047 | CP-016b, CP-016c, CP-017b, CP-047 |
 
 ## Cobertura
 
 | Objetivo | Requisitos que lo cubren |
 |---|---|
 | OE-01 — Registro centralizado | RF-005 a RF-015, RF-035 a RF-037, RF-042, RF-043, RF-045, RF-046 |
-| OE-02 — Sanidad con alertas | RF-016 a RF-020, RF-031, RF-038 a RF-040, RF-044 |
+| OE-02 — Sanidad con alertas | RF-016 a RF-020, RF-031, RF-038 a RF-040, RF-044, RF-047, RF-048 |
 | OE-03 — Control reproductivo | RF-013, RF-021 a RF-027 |
 | OE-04 — Stock e índices | RF-007, RF-010, RF-028 a RF-034, RF-039, RF-041, RF-043, RF-045 |
-| OE-05 — Acceso seguro por rol | RF-001 a RF-004, RNF-005 a RNF-007 |
-| OE-06 — Uso autónomo del productor | RF-008, RF-015, RF-034, RNF-001 a RNF-004, RNF-009, RNF-010 |
+| OE-05 — Acceso seguro por rol | RF-001 a RF-004, RF-049, RF-050, RNF-005 a RNF-007 |
+| OE-06 — Uso autónomo del productor | RF-008, RF-015, RF-034, RF-048, RNF-001 a RNF-004, RNF-009, RNF-010 |
 
 ## Historial de versiones
 
@@ -133,3 +137,4 @@
 | 0.10 | 2026-10-10 | Francisco Garcia Martinez | RF-017 redefinido; nuevo RF-044; RN-024 |
 | 0.11 | 2026-11-03 | Francisco Garcia Martinez | Nuevos RF-045 y RF-046; RN-025 y RN-026 (cuaderno del productor) |
 | 0.12 | 2026-11-04 | Francisco Garcia Martinez | RN-027 (faltantes sin identificar) y casos CP-016b, CP-016c y CP-017b |
+| 0.13 | 2026-11-06 | Francisco Garcia Martinez | Nuevos RF-047 a RF-050 con sus HU y CP; RN-027 con RF-047 y CP-047 |

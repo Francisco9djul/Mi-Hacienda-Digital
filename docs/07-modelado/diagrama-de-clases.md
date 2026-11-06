@@ -233,15 +233,19 @@ classDiagram
     class FaltanteJornada {
         +Jornada jornada
         +Categoria categoria
-        +int cantidad
-        +int cantidadResuelta
-        +pendiente() int
+        +Animal animal
+        +string pelaje
+        +string observacion
+        +string estado
+        +pendiente() bool
+        +actualizarDetalle(pelaje, observacion, usuario)
         +identificar(animal, usuario)
-        +marcarVacunado(fecha, animal, usuario)
+        +marcarAplicado(fecha, usuario)
         +cerrar(motivo, usuario)
     }
-    Jornada "1" *-- "*" FaltanteJornada : faltaron sin identificar
+    Jornada "1" *-- "*" FaltanteJornada : animales que faltaron
     FaltanteJornada "*" --> "1" Categoria
+    FaltanteJornada "*" --> "0..1" Animal : identificado
     class Venta {
         +string comprador
         +int cantidad
@@ -341,7 +345,7 @@ classDiagram
 - `Paricion.registrarCria()` implementa la RN-005: crea el `Animal` cría con madre, padre (del último `Servicio`) y categoría Ternero o Ternera.
 - `Evento.validar()` aplica la RN-002 (animal activo), la RN-003 (solo hembras en eventos reproductivos) y la RN-007 (fechas válidas).
 - `Evento.anular()` implementa la RNF-014 y la RN-011 (solo el administrador, con auditoría).
-- `FaltanteJornada` implementa la RN-027: los animales que faltaron vacunar o desparasitar sin identificar. `identificar()` marca `aplicado = false` en el `EventoSanitario` de ese animal en la jornada (no es una anulación: lo puede hacer quien carga vacunas, con auditoría). `pendiente()` alimenta el aviso de `ServicioAlertas` y la cobertura.
+- `FaltanteJornada` implementa la RN-027: cada animal que no se vacunó o desparasitó, identificado o no. `identificar()` completa `animal` y marca `aplicado = false` en su `EventoSanitario` de la jornada (no es una anulación: lo puede hacer quien carga vacunas, con auditoría), pero no cierra el aviso. `marcarAplicado()` y `cerrar()` lo cierran. `pendiente()` alimenta el aviso de `ServicioAlertas` y la cobertura.
 
 ## Historial de versiones
 
@@ -358,3 +362,4 @@ classDiagram
 | 0.9 | 2026-10-10 | Francisco Garcia Martinez | `Recordatorio`; marca y vencimiento de la serie |
 | 0.10 | 2026-11-03 | Francisco Garcia Martinez | Parición con 1 o 2 crías, `CobroCuota`, desbaste y comisión en `Venta`, forma de pago, `Suplementacion` y `Reserva`, apartar y corregir madre |
 | 0.11 | 2026-11-04 | Francisco Garcia Martinez | `FaltanteJornada` y `EventoSanitario.aplicado` (RN-027: animales que faltaron vacunar o desparasitar sin identificar) |
+| 0.12 | 2026-11-06 | Francisco Garcia Martinez | `FaltanteJornada` por animal, con pelaje, observación y estado; `actualizarDetalle()` y `marcarAplicado()` (RN-027) |
