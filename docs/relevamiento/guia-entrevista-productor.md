@@ -198,7 +198,7 @@ Pendiente para el próximo encuentro: preguntas 41 a 44 (mockups; de la 43 ya op
 | Conexión a internet | RNF-009, R-06 | Buena conexión en su casa | Sí | Se quita el supuesto de RNF-009 y baja la probabilidad de R-06. |
 | Impresión | RF-033 | Tiene impresora y le podría interesar imprimir | Sí | El PDF de listados y reportes sale listo para imprimir en A4 (HU-33). |
 | Veterinario y personal de campo | [Propuesta §8](../01-propuesta.md#8-stakeholders), [Plan §3.1](../02-plan-del-proyecto.md#31-recursos-humanos) | El dueño es veterinario; no hay personal fijo, a veces un peón | Sí | El productor cubre el rol de veterinario. No hace falta una entrevista aparte al veterinario. |
-| Usuarios y roles | [Roles y permisos](../07-modelado/roles-y-permisos.md) | Solo lo usa el dueño, como Administrador | Sí | Se mantienen los 4 roles. Encargado pasa a llamarse **Peón**. La v1.0 arranca con un solo usuario Administrador. |
+| Usuarios y roles | [Roles y permisos](../07-modelado/roles-y-permisos.md) | Solo lo usa el dueño, como Administrador | Sí | Encargado pasa a llamarse **Peón**. El rol Veterinario se quitó el 2026-11-06, así que quedan 3 roles. La v1.0 arranca con un solo usuario Administrador. |
 | Usuarios de solo lectura | [Roles y permisos](../07-modelado/roles-y-permisos.md) | La familia podría verlo | Sí | Rol Consulta confirmado. |
 | Registros actuales | [Propuesta §4](../01-propuesta.md#4-situación-actual) | Papel; anota él o el peón y lo pasa al llegar a su casa | Sí | Se vio el cuaderno (2026-11-03): anotaciones diarias en un cuaderno de campo. La carga inicial se hará a mano o con una planilla armada a partir del cuaderno (RF-014, R-07). |
 | Problemas P2 y P3 | [Propuesta §5](../01-propuesta.md#5-problemática) | Confirma que son riesgos reales | Sí | Las alertas sanitarias y reproductivas (RF-019, RF-027) siguen como Must. |
@@ -313,3 +313,4 @@ Pendiente para el próximo encuentro: preguntas 41 a 44 (mockups; de la 43 ya op
 | 0.16 | 2026-11-03 | Francisco Garcia Martinez | Pregunta 8 respondida con el cuaderno de campo del productor |
 | 0.17 | 2026-11-03 | Francisco Garcia Martinez | Enlace a la lista de validación de los mockups |
 | 0.18 | 2026-11-03 | Francisco Garcia Martinez | Datos del productor reemplazados por datos ficticios (nombre, establecimiento, ubicación, códigos SENASA y montos) para publicar el repositorio |
+| 0.19 | 2026-11-06 | Francisco Garcia Martinez | Se quita el rol Veterinario; la respuesta de la entrevista queda como se dio |

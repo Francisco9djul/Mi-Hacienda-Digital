@@ -16,7 +16,7 @@ Aplicación web para la gestión integral del rodeo bovino de un establecimiento
 
 | Módulo | Funciones principales |
 |---|---|
-| **M1 — Usuarios y seguridad** | Inicio de sesión, usuarios y roles: Administrador, Veterinario, Peón y Consulta. |
+| **M1 — Usuarios y seguridad** | Inicio de sesión, usuarios y roles: Administrador, Peón y Consulta. |
 | **M2 — Animales** | Alta, baja con motivo, reingreso y ficha con historial completo. Identificación por caravana SENASA (y electrónica). Los terneros al pie sin caravana se identifican por pelaje y seña. Jornadas de trabajo en la manga, ventas y compras con datos comerciales. |
 | **M3 — Sanidad** | Plan sanitario anual con ventanas de meses, vacunaciones y desparasitaciones por categoría, tratamientos individuales con período de retiro, casos de enfermedad, análisis y recordatorios de revisión. |
 | **M4 — Reproducción** | Temporada de servicio con los toros en grupo, tacto, pariciones (incluidos mellizos), destete y alertas de vacas que no parieron. |

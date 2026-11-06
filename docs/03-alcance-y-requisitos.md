@@ -100,13 +100,12 @@ Información obtenida hasta ahora (propuesta de PS, conversaciones del alumno co
 | Rol | Descripción |
 |---|---|
 | **Administrador** | El productor (que también es el veterinario del establecimiento). Acceso total: configura el establecimiento, gestiona usuarios, carga y anula registros, ve todos los reportes. |
-| **Veterinario** | Para un veterinario externo, si en el futuro lo hubiera. Carga y consulta eventos sanitarios y reproductivos. Consulta fichas y reportes. No gestiona usuarios ni configuración. |
 | **Peón** | Para el peón que a veces ayuda en la manga. Carga eventos de rutina (jornadas, pesadas, pariciones). No puede dar de baja animales ni anular registros. |
 | **Consulta** | Solo lectura (familia del productor; también contador o asesor). Ve fichas y reportes. |
 
 El detalle está en la [matriz de roles y permisos](07-modelado/roles-y-permisos.md).
 
-> ✅ **Validado en la entrevista.** Al inicio el sistema lo usa solo el productor, como Administrador. Los roles Veterinario, Peón y Consulta quedan disponibles para cuando los necesite (el productor estuvo de acuerdo en tenerlos).
+> ✅ **Validado en la entrevista.** Al inicio el sistema lo usa solo el productor, como Administrador. Los roles Peón y Consulta quedan disponibles para cuando los necesite. El rol Veterinario se quitó el 2026-11-06: no hay un veterinario aparte, porque el productor cubre esa tarea como Administrador.
 
 ## 7. Alcance
 
@@ -243,7 +242,7 @@ No forman parte de la versión 1.0:
 | RF-047 | M3 | El sistema deberá permitir resolver cada animal que no se vacunó o desparasitó en una jornada: identificarlo eligiendo entre los animales ya cargados, con los de su categoría y pelaje primero; registrar que ya se le aplicó, con la fecha; cerrarlo con un motivo; y agregar o corregir su pelaje y observación mientras siga sin identificar (RN-027). |
 | RF-048 | M5 | El sistema deberá mostrar en una sola pantalla todos los pendientes (sanidad, reproducción, cobros y reservas), agrupados por urgencia y con filtro por tipo, con el acceso para resolver cada uno. |
 | RF-049 | M1 | El sistema deberá permitir al administrador anular una jornada completa o el registro de un animal, indicando el motivo: el registro queda visible como anulado en el historial y no cuenta en stock, alertas ni reportes (RN-011). |
-| RF-050 | M1 | El sistema deberá aplicar los permisos de cada rol (Administrador, Veterinario, Peón y Consulta) según la [matriz de permisos](07-modelado/roles-y-permisos.md), validándolos en el servidor y mostrando solo las acciones permitidas. |
+| RF-050 | M1 | El sistema deberá aplicar los permisos de cada rol (Administrador, Peón y Consulta) según la [matriz de permisos](07-modelado/roles-y-permisos.md), validándolos en el servidor y mostrando solo las acciones permitidas. |
 
 ### 8.2 Requisitos no funcionales
 
@@ -326,3 +325,4 @@ Ver [05 — EDT](05-edt.md).
 | 0.16 | 2026-11-04 | Francisco Garcia Martinez | Animales que faltaron vacunar o desparasitar sin identificar: nueva RN-027; RF-016, RF-017, RF-019, RF-031 y RN-023 actualizados |
 | 0.17 | 2026-11-06 | Francisco Garcia Martinez | Faltantes con pelaje y observación, y aviso para todo animal no vacunado o no desparasitado (RN-027 reescrita; RN-023, RF-016, RF-017, RF-019 y RF-031 actualizados); nuevos RF-047 a RF-050 |
 | 0.18 | 2026-11-06 | Francisco Garcia Martinez | RN-027 y RF-047: la observación es solo para los animales sin identificar, no para los que se cargan por caravana |
+| 0.19 | 2026-11-06 | Francisco Garcia Martinez | Se quita el rol Veterinario: quedan Administrador, Peón y Consulta (sección 6 y RF-050) |

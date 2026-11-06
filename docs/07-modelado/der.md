@@ -323,7 +323,7 @@ erDiagram
 
 | Entidad.atributo | Dominio | Notas |
 |---|---|---|
-| `USUARIO.rol` | `ADMINISTRADOR`, `VETERINARIO`, `PEON`, `CONSULTA` | Ver [roles y permisos](roles-y-permisos.md) |
+| `USUARIO.rol` | `ADMINISTRADOR`, `PEON`, `CONSULTA` | Ver [roles y permisos](roles-y-permisos.md) |
 | `ANIMAL.sexo` | `M`, `H` | |
 | `ANIMAL.origen` | `NACIDO`, `COMPRADO`, `OTRO` | |
 | `ANIMAL.estado` | `ACTIVO`, `BAJA` | |
@@ -397,3 +397,4 @@ erDiagram
 | 0.13 | 2026-11-06 | Francisco Garcia Martinez | `FALTANTE_JORNADA` pasa a una fila por animal, con `animal_id`, `pelaje`, `observacion` y `estado`; se elimina `FALTANTE_RESOLUCION` (RN-027) |
 | 0.14 | 2026-11-06 | Francisco Garcia Martinez | Alternativa de `EVENTO_REPRODUCTIVO` referida a Prisma, el ORM elegido |
 | 0.15 | 2026-11-06 | Francisco Garcia Martinez | `FALTANTE_JORNADA.pelaje` y `observacion`: solo para animales sin identificar |
+| 0.16 | 2026-11-06 | Francisco Garcia Martinez | Se quita `VETERINARIO` de `USUARIO.rol` |

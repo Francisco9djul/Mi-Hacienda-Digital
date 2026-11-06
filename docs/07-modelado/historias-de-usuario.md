@@ -41,7 +41,7 @@
 **Como** administrador, **quiero** crear, modificar y deshabilitar usuarios y asignarles un rol, **para** controlar quién accede y qué puede hacer.
 - RF-003 · Prioridad **M** · 3 pts
 - **Criterios de aceptación:**
-  - Puedo crear un usuario con nombre, email y rol (Administrador, Veterinario, Peón o Consulta).
+  - Puedo crear un usuario con nombre, email y rol (Administrador, Peón o Consulta).
   - El email es único.
   - Puedo deshabilitar un usuario sin borrarlo.
   - No puedo deshabilitarme a mí mismo si soy el único administrador.
@@ -223,7 +223,7 @@
 ## M3 — Sanidad
 
 ### HU-16 — Registrar vacunaciones
-**Como** productor o veterinario, **quiero** registrar las vacunas aplicadas, **para** tener el historial sanitario y cumplir el calendario.
+**Como** productor, **quiero** registrar las vacunas aplicadas, **para** tener el historial sanitario y cumplir el calendario.
 - RF-016 · Prioridad **M** · 3 pts
 - **Criterios de aceptación:**
   - Elijo la vacuna con su **marca**, la **serie** y el **vencimiento** de la serie, y una, varias o **todas las categorías**, con la **fecha de cada categoría** (por ejemplo, vacas el 08/10 y vaquillonas el 09/10).
@@ -236,7 +236,7 @@
   - Si el producto tiene un intervalo de refuerzo, se calcula la fecha de la próxima dosis.
 
 ### HU-17 — Registrar tratamientos y desparasitaciones
-**Como** veterinario, **quiero** registrar el tratamiento de cada animal con su período de retiro, y desparasitar al rodeo por categoría, **para** saber qué animales no se pueden vender todavía.
+**Como** productor, **quiero** registrar el tratamiento de cada animal con su período de retiro, y desparasitar al rodeo por categoría, **para** saber qué animales no se pueden vender todavía.
 - RF-017 · Prioridad **M** · 3 pts
 - **Criterios de aceptación:**
   - El tratamiento es **individual**: elijo el animal por su caravana (o, si es un ternero al pie, por la madre o por sexo, pelaje y seña) y registro diagnóstico, producto, dosis, duración y fecha de inicio.
@@ -273,7 +273,7 @@
   - Desde una alerta puedo iniciar directamente la jornada de vacunación con esos animales ya seleccionados.
 
 ### HU-20 — Consultar el historial sanitario
-**Como** productor o veterinario, **quiero** ver todos los eventos sanitarios de un animal o de una jornada, **para** controlar lo que se hizo.
+**Como** productor, **quiero** ver todos los eventos sanitarios de un animal o de una jornada, **para** controlar lo que se hizo.
 - RF-020 · Prioridad **M** · 2 pts
 - **Criterios de aceptación:**
   - En la ficha del animal veo su historial sanitario.
@@ -291,7 +291,7 @@
   - Registro la evolución: en curso, recuperado o muerto. Si muere, se da de baja con la enfermedad como causa.
 
 ### HU-40 — Registrar análisis sanitarios
-**Como** veterinario, **quiero** registrar el raspaje de los toros y los sangrados con su resultado, **para** detectar a tiempo enfermedades venéreas y brucelosis.
+**Como** productor, **quiero** registrar el raspaje de los toros y los sangrados con su resultado, **para** detectar a tiempo enfermedades venéreas y brucelosis.
 - RF-040 · Prioridad **M** · 3 pts
 - Sube a Must: el raspaje de los toros es obligatorio.
 - **Criterios de aceptación:**
@@ -300,7 +300,7 @@
   - El plan sanitario puede incluir análisis con su ventana y frecuencia (el raspaje cada año antes del servicio; el sangrado cada año o año por medio).
 
 ### HU-44 — Recibir un aviso para revisar un animal
-**Como** veterinario, **quiero** que el sistema me avise cuándo tengo que revisar un animal que traté, **para** no olvidarme del seguimiento.
+**Como** productor, **quiero** que el sistema me avise cuándo tengo que revisar un animal que traté, **para** no olvidarme del seguimiento.
 - RF-044 · Prioridad **M** · 3 pts
 - **Criterios de aceptación:**
   - Al cargar un tratamiento o un caso de enfermedad puedo marcar "Avisarme para revisarlo en N días" (por ejemplo, 3) y un motivo.
@@ -308,7 +308,7 @@
   - El día indicado el aviso aparece en el tablero y en Pendientes, y sigue ahí hasta que lo marco como hecho (RN-024). Al marcarlo puedo crear otro.
 
 ### HU-47 — Resolver los animales que no se vacunaron o desparasitaron
-**Como** productor o veterinario, **quiero** identificar más adelante al animal que faltó y resolver su aviso, **para** que ninguno quede sin vacunar o desparasitar por olvido.
+**Como** productor, **quiero** identificar más adelante al animal que faltó y resolver su aviso, **para** que ninguno quede sin vacunar o desparasitar por olvido.
 - RF-047 · Prioridad **M** · 5 pts
 - **Criterios de aceptación:**
   - Desde el aviso o desde el detalle de la jornada veo qué anoté de ese animal: categoría, pelaje, observación y fecha de la jornada.
@@ -340,7 +340,7 @@
   - La temporada se puede copiar del año anterior con las fechas actualizadas.
 
 ### HU-23 — Registrar el tacto
-**Como** veterinario, **quiero** registrar el resultado del tacto, **para** saber qué vacas están preñadas y cuáles vacías.
+**Como** productor, **quiero** registrar el resultado del tacto, **para** saber qué vacas están preñadas y cuáles vacías.
 - RF-023 · Prioridad **M** · 3 pts
 - **Criterios de aceptación:**
   - Registro el resultado (preñada o vacía). Los meses de gestación son opcionales: el productor no los anota.
@@ -513,3 +513,4 @@
 | 0.13 | 2026-11-04 | Francisco Garcia Martinez | Animales que faltaron vacunar o desparasitar sin identificar (RN-027) en HU-16, HU-17, HU-19 y HU-31 |
 | 0.14 | 2026-11-06 | Francisco Garcia Martinez | Faltantes con pelaje, observación y cantidad, y aviso para todo animal no vacunado o no desparasitado (HU-09, HU-16, HU-17, HU-19 y HU-31); nuevas HU-47 (resolver faltantes), HU-48 (Pendientes), HU-49 (anular registros) y HU-50 (permisos por rol) |
 | 0.15 | 2026-11-06 | Francisco Garcia Martinez | HU-16 y HU-47: la observación es solo para los animales sin identificar |
+| 0.16 | 2026-11-06 | Francisco Garcia Martinez | Se quita el rol Veterinario: HU-03 y las historias de sanidad y tacto pasan a ser del productor (HU-16, HU-17, HU-20, HU-23, HU-40, HU-44 y HU-47) |
