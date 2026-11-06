@@ -10,13 +10,13 @@ Aplicación web para la gestión integral del rodeo bovino de un establecimiento
 
 - **Entrevista con el productor:** el primer encuentro está hecho y casi todas las preguntas tienen respuesta. Se revisaron fotos de su cuaderno de campo (mayo de 2024 a enero de 2026), que agregaron requisitos nuevos.
 - **Próximo paso:** segundo encuentro para validar los mockups con el productor ([lista de validación](docs/relevamiento/validacion-mockups.md)) y cerrar los requisitos (hito H1, 08/11/2026).
-- **Requisitos:** 46 funcionales (RF-001 a RF-046), 14 no funcionales y 26 reglas de negocio, con sus historias de usuario y casos de prueba trazados en la [matriz](docs/04-matriz-trazabilidad.md).
+- **Requisitos:** 50 funcionales (RF-001 a RF-050), 14 no funcionales y 27 reglas de negocio, con sus historias de usuario y casos de prueba trazados en la [matriz](docs/04-matriz-trazabilidad.md).
 
 ## Qué va a hacer el sistema (v1.0)
 
 | Módulo | Funciones principales |
 |---|---|
-| **M1 — Usuarios y seguridad** | Inicio de sesión, usuarios y roles: Administrador, Veterinario, Peón y Consulta. |
+| **M1 — Usuarios y seguridad** | Inicio de sesión, usuarios y roles: Administrador, Peón y Consulta. |
 | **M2 — Animales** | Alta, baja con motivo, reingreso y ficha con historial completo. Identificación por caravana SENASA (y electrónica). Los terneros al pie sin caravana se identifican por pelaje y seña. Jornadas de trabajo en la manga, ventas y compras con datos comerciales. |
 | **M3 — Sanidad** | Plan sanitario anual con ventanas de meses, vacunaciones y desparasitaciones por categoría, tratamientos individuales con período de retiro, casos de enfermedad, análisis y recordatorios de revisión. |
 | **M4 — Reproducción** | Temporada de servicio con los toros en grupo, tacto, pariciones (incluidos mellizos), destete y alertas de vacas que no parieron. |
@@ -25,7 +25,7 @@ Aplicación web para la gestión integral del rodeo bovino de un establecimiento
 
 Queda para una **v2.0**: versión móvil para cargar en la manga sin señal y lectura de caravanas electrónicas con bastón.
 
-**Plataforma:** aplicación web para PC (Windows y Chrome), con base de datos relacional (PostgreSQL como opción preferida) y hosting en planes gratuitos. El stack se elige en la etapa 2 entre .NET, JavaScript/TypeScript y Python ([comparativa](docs/02-plan-del-proyecto.md)).
+**Plataforma:** aplicación web para PC (Windows y Chrome), hecha con React, Node.js (NestJS) y PostgreSQL, con hosting en planes gratuitos de Render y Neon ([decisión y comparativa](docs/02-plan-del-proyecto.md#92-plataforma-tecnológica--opciones-evaluadas)).
 
 ## Cronograma
 

@@ -12,6 +12,7 @@
 - **Alertas:** se **calculan** a partir de los eventos y del plan sanitario, sin guardarse en una tabla. Así se evita mantener datos desincronizados. Si hiciera falta por rendimiento, se agregaría una tabla de caché.
 - **Cuaderno del productor (2026-11-03):** se agregaron mellizos (`cria2_id`), servicio individual (`toro_id`), animales apartados, cuotas de cobro (`COBRO_CUOTA`) y alimentación con stock de reservas (`SUPLEMENTACION`, `RESERVA`).
 - **Recordatorios:** los avisos de seguimiento (por ejemplo, revisar un animal tratado a los 3 días) se guardan en `RECORDATORIO`. A diferencia de las alertas del plan, no se calculan: los crea el usuario.
+- **Animales que faltaron (RN-027):** en una vacunación o desparasitación por categoría, cada animal que no se vacunó o desparasitó es una fila de `FALTANTE_JORNADA`, con `animal_id` si está identificado y, si no, con categoría y pelaje y observación opcionales. Una carga de "3 vacas" crea 3 filas. El excluido por caravana no recibe evento; el resto de la categoría sí. Al identificar un faltante se completa `animal_id` y su evento de esa jornada pasa a `aplicado = false`. El aviso sigue mientras `estado = PENDIENTE`, y los cambios quedan en `AUDITORIA`.
 - **Compras:** igual que las ventas, una jornada de compra da de alta varios animales y guarda los datos comerciales en `COMPRA`.
 - **Ventas:** cada jornada de venta tiene una fila en `VENTA` con los datos comerciales (comprador, kilos, precio, cobro). Los animales vendidos quedan con una `PESADA` marcada como promedio (RN-020). El resto de la gestión económica no se modela.
 - **Reingresos:** un animal trasladado que vuelve se reactiva (mismo registro) y el reingreso queda en `REINGRESO` (RN-019).
@@ -59,6 +60,10 @@ erDiagram
     ANIMAL ||--o{ REINGRESO : tiene
     ANIMAL ||--o{ RECORDATORIO : tiene
     EVENTO_SANITARIO |o--o{ RECORDATORIO : genera
+    JORNADA ||--o{ FALTANTE_JORNADA : "animales que faltaron"
+    CATEGORIA ||--o{ FALTANTE_JORNADA : "de la categoría"
+    ANIMAL |o--o{ FALTANTE_JORNADA : "identificado en"
+    USUARIO |o--o{ FALTANTE_JORNADA : resuelve
 
     ESTABLECIMIENTO {
         int id PK
@@ -193,6 +198,7 @@ erDiagram
         date fin_retiro
         date proxima_dosis
         string responsable
+        bool aplicado
         bool anulado
         string motivo_anulacion
     }
@@ -299,13 +305,25 @@ erDiagram
         int usuario_id FK
         datetime creada
     }
+    FALTANTE_JORNADA {
+        int id PK
+        int jornada_id FK
+        int categoria_id FK
+        int animal_id FK
+        string pelaje
+        string observacion
+        string estado
+        date fecha_resolucion
+        string motivo
+        int usuario_id FK
+    }
 ```
 
 ## Diccionario de datos (atributos con dominio restringido)
 
 | Entidad.atributo | Dominio | Notas |
 |---|---|---|
-| `USUARIO.rol` | `ADMINISTRADOR`, `VETERINARIO`, `PEON`, `CONSULTA` | Ver [roles y permisos](roles-y-permisos.md) |
+| `USUARIO.rol` | `ADMINISTRADOR`, `PEON`, `CONSULTA` | Ver [roles y permisos](roles-y-permisos.md) |
 | `ANIMAL.sexo` | `M`, `H` | |
 | `ANIMAL.origen` | `NACIDO`, `COMPRADO`, `OTRO` | |
 | `ANIMAL.estado` | `ACTIVO`, `BAJA` | |
@@ -335,6 +353,10 @@ erDiagram
 | `PRODUCTO_SANITARIO.marca` | Texto | Marca o laboratorio. Con la serie, permite saber con qué se vacunó |
 | `RECORDATORIO.hecho` | Booleano | El recordatorio se muestra en Pendientes desde `fecha` hasta que `hecho` es verdadero (RN-024) |
 | `EVENTO_SANITARIO.categoria_id` | FK | Categoría por la que se vacunó al animal en una vacunación masiva (RN-023). La dosis no se usa en las vacunaciones |
+| `EVENTO_SANITARIO.aplicado` | Booleano | `true` por defecto. Pasa a `false` cuando un animal sin identificar se identifica como faltante de la jornada (RN-027): sigue en el historial como "no aplicado" y no cuenta en la cobertura |
+| `FALTANTE_JORNADA.animal_id` | Opcional | Nulo mientras esté sin identificar. Identificarlo no cierra el aviso. Las filas sin identificar de una categoría no pueden superar los animales de esa categoría en la jornada menos los excluidos por caravana (RN-027) |
+| `FALTANTE_JORNADA.pelaje`, `observacion` | Opcionales | Datos para reconocer a un animal sin identificar ("colorado", "la que estaba renga"). Quedan vacíos si se carga directamente por caravana. Se pueden corregir mientras `animal_id` sea nulo |
+| `FALTANTE_JORNADA.estado` | `PENDIENTE`, `VACUNADO_DESPUES`, `CERRADO` | El aviso sigue en Pendientes mientras sea `PENDIENTE`. `VACUNADO_DESPUES` (también para desparasitaciones) lleva `fecha_resolucion` y, si tiene `animal_id`, crea su evento individual. `CERRADO` requiere `motivo` |
 | `EVENTO_SANITARIO.evolucion` | `EN_CURSO`, `RECUPERADO`, `MUERTO` | `MUERTO` → baja por muerte con la enfermedad como causa |
 | `ENFERMEDAD.nombre` | Texto | Valores iniciales: Diarrea, Neumonía, Ombligo, Otra |
 | `EVENTO_REPRODUCTIVO.tipo` | `CELO`, `SERVICIO`, `TACTO`, `PARICION`, `ABORTO`, `DESTETE` | Los atributos usados dependen del tipo (ver abajo) |
@@ -354,7 +376,7 @@ erDiagram
 | `ABORTO` | fecha, observaciones |
 | `DESTETE` | fecha, cria_id (el ternero destetado), peso_destete |
 
-> **Alternativa a evaluar en la etapa 2:** dividir `EVENTO_REPRODUCTIVO` en una tabla por tipo (herencia tabla-por-tipo) si los campos nulos complican las validaciones. Se decide según el ORM y el stack elegido.
+> **Alternativa a evaluar en la etapa 2:** dividir `EVENTO_REPRODUCTIVO` en una tabla por tipo (herencia tabla-por-tipo) si los campos nulos complican las validaciones. Se decide al implementar el esquema en Prisma, el ORM elegido.
 
 ## Historial de versiones
 
@@ -371,3 +393,8 @@ erDiagram
 | 0.9 | 2026-10-10 | Francisco Garcia Martinez | `RECORDATORIO`; marca del producto y vencimiento de la serie |
 | 0.10 | 2026-11-03 | Francisco Garcia Martinez | Mellizos, servicio individual, apartados, desbaste/comisión/neto, `COBRO_CUOTA`, forma de pago, `SUPLEMENTACION` y `RESERVA`, ombligo, jornadas de castración y alimentación |
 | 0.11 | 2026-11-03 | Francisco Garcia Martinez | Datos del productor reemplazados por datos ficticios (nombre, establecimiento, ubicación, códigos SENASA y montos) para publicar el repositorio |
+| 0.12 | 2026-11-04 | Francisco Garcia Martinez | Faltantes sin identificar en vacunaciones y desparasitaciones (RN-027): `FALTANTE_JORNADA`, `FALTANTE_RESOLUCION` y `EVENTO_SANITARIO.aplicado` |
+| 0.13 | 2026-11-06 | Francisco Garcia Martinez | `FALTANTE_JORNADA` pasa a una fila por animal, con `animal_id`, `pelaje`, `observacion` y `estado`; se elimina `FALTANTE_RESOLUCION` (RN-027) |
+| 0.14 | 2026-11-06 | Francisco Garcia Martinez | Alternativa de `EVENTO_REPRODUCTIVO` referida a Prisma, el ORM elegido |
+| 0.15 | 2026-11-06 | Francisco Garcia Martinez | `FALTANTE_JORNADA.pelaje` y `observacion`: solo para animales sin identificar |
+| 0.16 | 2026-11-06 | Francisco Garcia Martinez | Se quita `VETERINARIO` de `USUARIO.rol` |

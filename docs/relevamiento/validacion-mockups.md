@@ -62,8 +62,10 @@
 ## 3. Jornadas (cargar muchos animales de una vez) *(pregunta 43)*
 
 - [ ] **F10 — Vacunar** (por categoría, con marca, serie y vencimiento) · [abrir](../07-modelado/mockups/jornada-nueva.html?tipo=vacunar)
+  - Mostrar: si faltaron animales, carga una o varias caravanas o, si no se acuerda, por categoría con pelaje y observación ("vaca colorada, la que estaba renga"). Queda con aviso en [Pendientes](../07-modelado/mockups/alertas.html) y con **Resolver** elige la caravana entre las vacas coloradas, marca que ya la vacunó o que no se va a vacunar.
   - Fecha OK: ____ · Observaciones:
 - [ ] **F11 — Desparasitar** (por categoría, contra qué, aviso para rotar la droga) · [abrir](../07-modelado/mockups/jornada-nueva.html?tipo=desparasitar)
+  - Mostrar: los que faltaron, igual que en la vacunación; un animal identificado también queda con aviso y figura en su [ficha](../07-modelado/mockups/animal-ficha.html).
   - Fecha OK: ____ · Observaciones:
 - [ ] **F12 — Enfermos** (terneros por la madre o por sexo, pelaje y seña) · [abrir](../07-modelado/mockups/jornada-nueva.html?tipo=enfermos)
   - Fecha OK: ____ · Observaciones:
@@ -163,6 +165,7 @@
 - [ ] ¿Qué significa "(Azul)" al lado de algunas vacas en el cuaderno?
 - [ ] En la vacunación, "la fecha de la categoría": ¿es la fecha en que se vacunó cada categoría?
 - [ ] ¿De qué tamaño es la pantalla de su PC?
+- [ ] Cuando falta un animal y no se acuerda de la caravana, ¿le sirve anotar la categoría, el pelaje y una observación ("vaca colorada, la que estaba renga")? ¿Le sirve que todos los que no se vacunaron queden con aviso hasta resolverlos, y elegir la caravana después entre las vacas de ese pelaje? *(RN-027)*
 
 ## Nombres que usa el productor *(pregunta 44)*
 
@@ -176,3 +179,6 @@
 |---|---|---|---|
 | 0.1 | 2026-11-03 | Francisco Garcia Martinez | Versión inicial: 44 flujos para validar con el productor |
 | 0.2 | 2026-11-03 | Francisco Garcia Martinez | Datos del productor reemplazados por datos ficticios (nombre, establecimiento, ubicación, códigos SENASA y montos) para publicar el repositorio |
+| 0.3 | 2026-11-04 | Francisco Garcia Martinez | Faltantes sin identificar en F10 y F11, y duda para confirmar RN-027 con el productor |
+| 0.4 | 2026-11-06 | Francisco Garcia Martinez | Faltantes con pelaje y observación, aviso para todos y duda de RN-027 ampliada |
+| 0.5 | 2026-11-06 | Francisco Garcia Martinez | F10: se pueden cargar varias caravanas |

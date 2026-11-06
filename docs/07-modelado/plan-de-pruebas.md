@@ -15,9 +15,9 @@ Verificar que Mi Hacienda Digital cumple los requisitos funcionales y no funcion
 
 | Nivel | Qué se prueba | Cuándo | Herramienta |
 |---|---|---|---|
-| **Unitarias** | Reglas de negocio y cálculos: categoría sugerida, período de parición esperado, fin de retiro, próxima dosis, índices | En cada HU, antes del merge a `develop` | Framework de testing del stack elegido |
-| **Integración** | API + base de datos: endpoints, permisos por rol, transacciones de jornada y parición | En cada HU | Framework de testing + base de datos de prueba |
-| **Sistema / funcionales** | Casos de prueba CP-001 a CP-037 de punta a punta en el navegador | Al cierre de cada iteración | Manual con checklist (y E2E automatizado para los flujos críticos si el tiempo alcanza) |
+| **Unitarias** | Reglas de negocio y cálculos: categoría sugerida, período de parición esperado, fin de retiro, próxima dosis, índices | En cada HU, antes del merge a `develop` | Vitest |
+| **Integración** | API + base de datos: endpoints, permisos por rol, transacciones de jornada y parición | En cada HU | Vitest + base de datos de prueba |
+| **Sistema / funcionales** | Casos de prueba CP-001 a CP-037 de punta a punta en el navegador | Al cierre de cada iteración | Manual con checklist (y Playwright para los flujos críticos si el tiempo alcanza) |
 | **No funcionales** | Compatibilidad, responsive, rendimiento, seguridad, respaldo | Etapa 7 | DevTools del navegador, Lighthouse, scripts de carga de datos |
 | **Aceptación (UAT)** | El productor usa el sistema con sus datos reales en escenarios de su trabajo | Demo de cada iteración y etapa 7 | Guion de escenarios + acta |
 
@@ -57,8 +57,12 @@ Verificar que Mi Hacienda Digital cumple los requisitos funcionales y no funcion
 | CP-013 | RF-013 | Asignar madre (macho → error) y padre toro | Rechaza un macho como madre; acepta el toro |
 | CP-014 | RF-014 | Importar una planilla con 100 filas, 3 con caravana repetida y 2 con fecha inválida | Vista previa con 95 válidas y 5 errores identificados por fila; importa solo las 95 |
 | CP-015 | RF-015 | Pegar 50 caravanas, 2 inexistentes, y confirmar un tratamiento | Informa las 2 inexistentes; crea 48 eventos vinculados a una jornada |
-| CP-016 | RF-016 | Vacunar carbunclo a Vacas (08/10) y Toros (08/10), excluyendo 1 vaca; intentar con una fecha futura | 49 vacunaciones con la fecha de cada categoría y la serie; la vaca excluida sigue pendiente; la fecha futura se rechaza (RN-007, RN-023) |
+| CP-016 | RF-016 | Vacunar carbunclo a Vacas (08/10) y Toros (08/10), excluyendo 1 vaca por caravana; intentar con una fecha futura | 49 vacunaciones con la fecha de cada categoría y la serie; la vaca excluida queda con aviso en Pendientes y en su ficha; la fecha futura se rechaza (RN-007, RN-023) |
+| CP-016b | RF-016 | Vacunar carbunclo a las 46 Vacas cargando un faltante "vaca, colorada, la que estaba renga"; luego intentar cargar 47 faltantes | Se registran 46 vacunaciones y un faltante; aparece en Pendientes "Carbunclo: 1 vaca colorada, sin identificar · la que estaba renga"; la cobertura de vacas muestra 45 de 46 · 1 sin identificar y no repite esa vaca en los avisos del plan; 47 faltantes se rechaza (RN-027) |
+| CP-016c | RF-016, RF-047 | Cargar una fila "3 vacas" sin más datos; identificar una como AB123 B081, marcar otra como "ya la vacuné" el 15/10 sin identificarla y cerrar la tercera con motivo "se vendió" | La fila genera 3 avisos; AB123 B081 queda con la vacuna de la jornada *no aplicada* y su aviso sigue, ahora con la caravana y también en su ficha; los otros dos desaparecen de Pendientes; las tres acciones figuran en la auditoría (RN-027) |
 | CP-017 | RF-017 | Tratar una vaca (por caravana) con 21 días de retiro; desparasitar todas las categorías | La vaca figura "no apta para venta" hasta fecha + 21 (RN-009); la desparasitación queda para todo el rodeo con la fecha de cada categoría |
+| CP-016d | RF-016, RF-017 | Vacunar carbunclo a Vacas y Toros cargando en campos separados AB123 B081, AB123 B094, otra vez AB123 B094 y AB123 B990 (no existe); agregar una caravana de otra categoría y quitarla; repetir en una desparasitación | Cada campo avisa al cargarlo: repetida, inexistente o de otra categoría; con un solo campo no se ofrece "Quitar"; una caravana quitada no cuenta; al corregirlas quedan 2 animales sin el evento, cada uno con su aviso en Pendientes y en su ficha (RN-027) |
+| CP-017b | RF-017, RF-047 | Desparasitar contra piojo a todas las categorías excluyendo una vaca por caravana y cargando una fila "2 terneros"; identificar después uno por madre y seña | Tres avisos en Pendientes: la vaca con su caravana y los 2 terneros sin identificar; al identificar uno, su desparasitación queda *no aplicada* y su aviso sigue con los datos del ternero (RN-027, RN-021) |
 | CP-018 | RF-018 | Crear el plan del año y copiarlo al siguiente | El plan copiado tiene los mismos ítems con el año nuevo |
 | CP-018b | RF-018, RF-019 | Plan con brucelosis (terneras de 3 a 8 meses, diciembre – enero) y Rotatec 2.ª dosis | La alerta de brucelosis incluye solo terneras en ese rango de edad; la de 2.ª dosis, solo las vacas con 1.ª dosis (RN-015) |
 | CP-019 | RF-019 | Vacuna con próxima dosis dentro de 25 días (anticipación 30) y otra vencida | Alertas "próxima" y "atrasada" en el tablero; el botón abre la jornada con los animales cargados |
@@ -96,6 +100,10 @@ Verificar que Mi Hacienda Digital cumple los requisitos funcionales y no funcion
 | CP-043b | RF-043 | Compra de 4 vacas con 4 terneros al pie, pagada con cheque | Se crean 4 vacas y 4 terneros vinculados a cada vaca; la compra guarda la forma de pago |
 | CP-045 | RF-045 | Apartar 7 vacas vacías para vender y cargar la venta desde la lista | Las 7 figuran como apartadas y la jornada de venta las trae elegidas |
 | CP-046 | RF-046 | Stock de 20 rollos; dar 1 rollo al rodeo durante 11 días | El stock queda en 9 rollos y cada entrega queda registrada |
+| CP-047 | RF-047 | Faltante "vaca, colorada, la que estaba renga" en un rodeo con 3 vacas coloradas: abrir Resolver, corregir la observación e identificar una de ellas; repetir buscando una vaca negra | Se ve lo anotado; las 3 coloradas aparecen primero y se puede elegir otra caravana; la observación corregida queda guardada; al identificar, el aviso sigue con la caravana hasta marcarla como vacunada; todo queda en la auditoría (RN-027) |
+| CP-048 | RF-048 | Rodeo con una vacuna obligatoria pendiente, un recordatorio, un cobro y un faltante; filtrar por Cobros; cargar la vacuna que faltaba | Los pendientes aparecen agrupados por urgencia con su cantidad; el filtro deja solo el cobro; la vacuna cargada desaparece de la lista y baja el contador del menú |
+| CP-049 | RF-049 | Como Administrador, anular un registro de una jornada sin motivo y con motivo; anular toda la jornada | Sin motivo se rechaza; con motivo el registro queda tachado en el historial y deja de contar en reportes; la jornada muestra cuántos animales afecta antes de confirmar; todo queda en la auditoría (RN-011) |
+| CP-050 | RF-050 | Entrar como Consulta y como Peón; intentar anular una jornada desde la pantalla y llamando directo a la API | Consulta no ve botones de carga; Peón carga pero no ve Anular; la API rechaza la operación con un error de permisos (RNF-007) |
 | CP-038b | RF-038 | Registrar diarrea en "un ternero macho negro, mancha blanca en la frente" sin madre conocida | El caso se registra sobre ese ternero; si no se lo identifica, cuenta como un ternero distinto (RN-021) |
 | CP-018c | RF-018, RF-019 | Plan con mosca (dic – mar, 3 aplicaciones) y una sola aplicación hecha | El pendiente sigue y muestra "1 de 3" (RN-022) |
 
@@ -160,3 +168,8 @@ Los defectos se registran como *issues* en GitHub con la etiqueta `bug` y su sev
 | 0.10 | 2026-11-03 | Francisco Garcia Martinez | CP-022, CP-023 y CP-041 actualizados; nuevos CP-041b, CP-024b, CP-015b, CP-029b, CP-013b, CP-043b, CP-045 y CP-046 |
 | 0.11 | 2026-11-03 | Francisco Garcia Martinez | Nombre del proyecto: Mi Hacienda Digital (antes Mi Yerra Digital) |
 | 0.12 | 2026-11-03 | Francisco Garcia Martinez | Datos del productor reemplazados por datos ficticios (nombre, establecimiento, ubicación, códigos SENASA y montos) para publicar el repositorio |
+| 0.13 | 2026-11-04 | Francisco Garcia Martinez | CP-016b, CP-016c y CP-017b: animales que faltaron sin identificar (RN-027) |
+| 0.14 | 2026-11-06 | Francisco Garcia Martinez | CP-016, CP-016b, CP-016c y CP-017b actualizados (pelaje, observación y aviso para todos, RN-027); nuevos CP-047 a CP-050 |
+| 0.15 | 2026-11-06 | Francisco Garcia Martinez | Herramientas de prueba definidas por el stack elegido: Vitest y Playwright |
+| 0.16 | 2026-11-06 | Francisco Garcia Martinez | CP-016: la exclusión por caravana no lleva observación |
+| 0.17 | 2026-11-06 | Francisco Garcia Martinez | CP-016d: varias caravanas de animales que no se vacunaron o desparasitaron |

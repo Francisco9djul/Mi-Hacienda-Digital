@@ -102,11 +102,11 @@ flowchart LR
 | Recurso | Especificación |
 |---|---|
 | Equipo de desarrollo | PC del alumno (Windows 11) con IDE, Git y base de datos local. |
-| Repositorio | GitHub (privado). |
+| Repositorio | GitHub (público, con datos ficticios). |
 | Gestión de tareas | GitHub Projects (tablero Kanban). |
 | Documentación | Markdown en el repositorio (`docs/`). |
-| Servidor de producción | Hosting en la nube con plan gratuito (ver [sección 9](#9-especificaciones-técnicas)). |
-| Base de datos | Motor relacional (PostgreSQL como opción preferida). |
+| Servidor de producción | Render, plan gratuito (ver [sección 9](#9-especificaciones-técnicas)). |
+| Base de datos | PostgreSQL en Neon, plan gratuito. |
 | Equipo del cliente | Computadora personal del productor con Windows y Google Chrome, buena conexión a internet e impresora. |
 
 > ✅ **Validado en la entrevista** (bloque F). Usa Windows y Chrome, tiene buena conexión en su casa y tiene impresora.
@@ -236,11 +236,11 @@ flowchart LR
 
 ### 9.2 Plataforma tecnológica — opciones evaluadas
 
-> **Decisión: pendiente.** Se toma al cierre de la etapa 2 (hito H2), después del relevamiento.
+> **Decisión (2026-11-06):** JS/TS, con React y Node.js, sin Next.js. Falta el prototipo desplegado que pide el hito H2 para comprobar RNF-009 y RNF-012 (ver R-11).
 
 | Criterio | Peso | .NET (ASP.NET Core + Blazor) | JS/TS (React/Next.js + Node) | Python (Django) |
 |---|---|---|---|---|
-| Experiencia previa del alumno | Alto | Alta: se usa en el Proyecto Final | A evaluar | A evaluar |
+| Experiencia previa del alumno | Alto | Alta: se usa en el Proyecto Final | Con experiencia en React, JavaScript y TypeScript | A evaluar |
 | Velocidad de desarrollo de ABM y formularios | Alto | Media | Media | Alta (admin y formularios incluidos) |
 | Reportes PDF / Excel | Medio | Buenas librerías (QuestPDF, ClosedXML) | Buenas librerías | Buenas librerías (WeasyPrint, openpyxl) |
 | Preparación para PWA (v2.0) | Medio | Blazor WASM soporta PWA | Excelente soporte PWA | Requiere un frontend aparte para offline |
@@ -248,9 +248,32 @@ flowchart LR
 | Mantenibilidad a largo plazo | Medio | Alta (tipado fuerte) | Alta con TypeScript | Alta |
 | Rendimiento en PC y conexión rural | Medio | Blazor WASM tiene una descarga inicial pesada; Blazor Server necesita conexión estable | Bueno | Bueno (render en servidor) |
 
-**Base de datos:** se recomienda **PostgreSQL**. Es gratuita, robusta, está soportada por los tres stacks y tiene planes gestionados gratuitos.
+**Stack elegido:**
 
-**Hosting:** el cliente pidió costo de operación cero, así que se usan **solo planes gratuitos** para la aplicación y la base de datos. Hay que tener en cuenta sus límites: la aplicación puede "dormirse" sin uso y tardar en responder, hay topes de almacenamiento y algunas bases se pausan después de días sin actividad. Los respaldos se hacen con una tarea programada gratuita que guarda la copia fuera del proveedor. La elección depende del stack.
+| Parte | Tecnología |
+|---|---|
+| Frontend | React + Vite + TypeScript, con Vite PWA para la v2.0 |
+| Backend | Node.js LTS + NestJS + TypeScript (API REST) |
+| Acceso a datos | Prisma |
+| Base de datos | PostgreSQL |
+| Validación | Zod |
+| Contraseñas | Argon2 (RNF-005) |
+| Reportes | ExcelJS (Excel) y PDFKit (PDF) |
+| Pruebas | Vitest (unitarias e integración) y Playwright (de punta a punta) |
+| Despliegue | Docker en Render; el mismo servicio entrega el frontend y la API |
+
+**Base de datos:** se usa **PostgreSQL**. Es gratuita, robusta y tiene planes gestionados gratuitos.
+
+**Hosting:** el cliente pidió costo de operación cero, así que se usan **solo planes gratuitos**: **Render** para la aplicación y **Neon** para la base de datos. La base no se aloja en Render porque su plan gratuito de PostgreSQL vence a los 30 días.
+
+| Servicio | Límites del plan gratuito (consultados el 2026-11-06) | Efecto en el sistema |
+|---|---|---|
+| Render | 750 horas por mes; se duerme a los 15 minutos sin tráfico y tarda cerca de 1 minuto en despertar | Alcanzan para un servicio todo el mes; RNF-011 acepta la espera |
+| Neon | 1 GB por proyecto; 100 horas de cómputo por mes (unidades CU-hora); se suspende a los 5 minutos sin uso; restauración de solo 6 horas | No reemplaza los respaldos de RNF-008 |
+
+**Respaldos (RNF-008):** Neon no cubre los 30 días que pide el requisito, así que hace falta una tarea programada diaria que genere una copia encriptada y la guarde fuera del proveedor.
+
+> ⚠️ **Supuesto — a validar en el prototipo.** La tarea corre en GitHub Actions, desde un repositorio privado, y guarda la copia en un almacenamiento gratuito (por ejemplo, Backblaze B2). No se usa este repositorio porque es público: sus artifacts quedarían expuestos y sus tareas programadas se desactivan tras 60 días sin actividad.
 
 ### 9.3 Criterios para la decisión
 
@@ -269,3 +292,4 @@ flowchart LR
 | 0.4 | 2026-10-10 | Francisco Garcia Martinez | Hosting gratuito (costo cero); módulos actualizados con casos de enfermedad, reporte de terneros y temporada de servicio |
 | 0.5 | 2026-10-10 | Francisco Garcia Martinez | Lector RFID con más prioridad en la v2.0 (caravana electrónica en uso) |
 | 0.6 | 2026-11-03 | Francisco Garcia Martinez | Datos del productor reemplazados por datos ficticios (nombre, establecimiento, ubicación, códigos SENASA y montos) para publicar el repositorio |
+| 0.7 | 2026-11-06 | Francisco Garcia Martinez | Stack elegido (React, Node.js con NestJS y PostgreSQL), hosting en Render y Neon con sus límites, y estrategia de respaldos; repositorio público en los recursos técnicos; experiencia del alumno en JS/TS registrada |

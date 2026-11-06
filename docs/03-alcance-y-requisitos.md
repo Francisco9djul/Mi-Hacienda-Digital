@@ -100,13 +100,12 @@ Información obtenida hasta ahora (propuesta de PS, conversaciones del alumno co
 | Rol | Descripción |
 |---|---|
 | **Administrador** | El productor (que también es el veterinario del establecimiento). Acceso total: configura el establecimiento, gestiona usuarios, carga y anula registros, ve todos los reportes. |
-| **Veterinario** | Para un veterinario externo, si en el futuro lo hubiera. Carga y consulta eventos sanitarios y reproductivos. Consulta fichas y reportes. No gestiona usuarios ni configuración. |
 | **Peón** | Para el peón que a veces ayuda en la manga. Carga eventos de rutina (jornadas, pesadas, pariciones). No puede dar de baja animales ni anular registros. |
 | **Consulta** | Solo lectura (familia del productor; también contador o asesor). Ve fichas y reportes. |
 
 El detalle está en la [matriz de roles y permisos](07-modelado/roles-y-permisos.md).
 
-> ✅ **Validado en la entrevista.** Al inicio el sistema lo usa solo el productor, como Administrador. Los roles Veterinario, Peón y Consulta quedan disponibles para cuando los necesite (el productor estuvo de acuerdo en tenerlos).
+> ✅ **Validado en la entrevista.** Al inicio el sistema lo usa solo el productor, como Administrador. Los roles Peón y Consulta quedan disponibles para cuando los necesite. El rol Veterinario se quitó el 2026-11-06: no hay un veterinario aparte, porque el productor cubre esa tarea como Administrador.
 
 ## 7. Alcance
 
@@ -209,10 +208,10 @@ No forman parte de la versión 1.0:
 | RF-013 | M2 | El sistema deberá permitir registrar la madre y, si se conoce, el padre (toro) de un animal, y corregir la madre de un ternero cuando se anotó mal (RN-025). |
 | RF-014 | M2 | El sistema deberá permitir importar animales desde una planilla Excel o CSV, validando los datos e informando los errores. |
 | RF-015 | M2 | El sistema deberá permitir seleccionar varios animales (por filtro o lista de caravanas) para registrar un mismo evento en una jornada. En el destete y la venta, los terneros al pie se eligen por sexo, pelaje y cantidad (RN-018). |
-| RF-016 | M3 | El sistema deberá permitir registrar vacunaciones de forma masiva, eligiendo una, varias o todas las categorías, con la fecha de cada categoría, el producto con su marca, la serie y el vencimiento de la serie. También se podrá registrar una vacuna a un animal suelto desde su ficha. |
-| RF-017 | M3 | El sistema deberá permitir registrar tratamientos veterinarios de forma individual (por caravana, o por madre o seña en los terneros al pie), con diagnóstico, producto, forma de aplicación, dosis, duración y período de retiro, y desparasitaciones de forma masiva por categoría, indicando contra qué parásito es (internos, mosca, piojo, sarna) y mostrando la droga usada la vez anterior, para poder rotarlas. |
+| RF-016 | M3 | El sistema deberá permitir registrar vacunaciones de forma masiva, eligiendo una, varias o todas las categorías, con la fecha de cada categoría, el producto con su marca, la serie y el vencimiento de la serie. Se podrán indicar los animales que no se vacunaron por una o varias caravanas o, si no se sabe cuáles fueron, por categoría con pelaje, observación y cantidad (RN-027). También se podrá registrar una vacuna a un animal suelto desde su ficha. |
+| RF-017 | M3 | El sistema deberá permitir registrar tratamientos veterinarios de forma individual (por caravana, o por madre o seña en los terneros al pie), con diagnóstico, producto, forma de aplicación, dosis, duración y período de retiro, y desparasitaciones de forma masiva por categoría (con los animales que faltaron por una o varias caravanas o, si no se sabe cuáles fueron, por categoría con pelaje, observación y cantidad, RN-027), indicando contra qué parásito es (internos, mosca, piojo, sarna) y mostrando la droga usada la vez anterior, para poder rotarlas. |
 | RF-018 | M3 | El sistema deberá permitir definir un plan sanitario anual indicando, para cada producto y dosis, la ventana de meses de aplicación, una o más categorías, la frecuencia en años (1 o 2), la cantidad mínima de aplicaciones en la ventana (por ejemplo, 3 contra la mosca) y condiciones opcionales de edad, sexo y preñez. Los ítems pueden quedar inactivos (por ejemplo, la aftosa estratégica de junio). El sistema vendrá con el [plan de Los Álamos](relevamiento/plan-sanitario-establecimiento.md) precargado. |
-| RF-019 | M3 | El sistema deberá generar alertas de próximas vacunaciones y refuerzos, vacunas atrasadas y fin de períodos de retiro. |
+| RF-019 | M3 | El sistema deberá generar alertas de próximas vacunaciones y refuerzos, vacunas atrasadas, animales que no se vacunaron o desparasitaron, identificados o no (RN-027), y fin de períodos de retiro. |
 | RF-020 | M3 | El sistema deberá permitir consultar el historial sanitario por animal y por jornada, y buscar qué animales recibieron un producto, una marca o una serie determinada. |
 | RF-021 | M4 | El sistema deberá permitir registrar celos de las hembras (opcional: el productor los anota solo si los ve). |
 | RF-022 | M4 | El sistema deberá permitir registrar la temporada de servicio por monta natural: fechas de entrada y salida de los toros, hembras que entraron en servicio y, opcionalmente, los toros del grupo. Como excepción, se podrá registrar un servicio individual de una hembra con un toro conocido y su fecha. |
@@ -224,7 +223,7 @@ No forman parte de la versión 1.0:
 | RF-028 | M5 | El sistema deberá mostrar el stock actual por categoría, y el stock a una fecha determinada. |
 | RF-029 | M5 | El sistema deberá calcular los índices reproductivos de una temporada (% de preñez, % de parición, % de destete e intervalo entre partos) y mostrar el conteo de la parición: terneros nacidos por pelaje y sexo, vacas paridas, mellizos y vacas que faltan parir. |
 | RF-030 | M5 | El sistema deberá generar un reporte de mortandad y bajas por causa y período, que incluya la mortalidad de terneros (también los que nacen muertos). |
-| RF-031 | M5 | El sistema deberá generar un reporte de cobertura sanitaria (animales vacunados y pendientes por plan). |
+| RF-031 | M5 | El sistema deberá generar un reporte de cobertura sanitaria (animales vacunados y pendientes por plan, incluidos los que faltaron, identificados o no). |
 | RF-032 | M5 | El sistema deberá permitir filtrar los reportes por período y categoría. |
 | RF-033 | M5 | El sistema deberá permitir exportar los reportes y listados a PDF (listo para imprimir en A4) y Excel. |
 | RF-034 | M5 | El sistema deberá mostrar un tablero de inicio con resumen del stock y alertas pendientes. |
@@ -240,6 +239,10 @@ No forman parte de la versión 1.0:
 | RF-044 | M3 | El sistema deberá permitir crear recordatorios de seguimiento para un animal (por ejemplo, "revisar en 3 días" al cargar un tratamiento o un caso de enfermedad) y mostrarlos en Pendientes el día indicado hasta marcarlos como hechos. |
 | RF-045 | M2 | El sistema deberá permitir marcar animales como apartados para venta o para descarte, con fecha y motivo, listarlos y cargarlos directamente en una jornada de venta. |
 | RF-046 | M2 | El sistema deberá permitir registrar de forma simple la alimentación del rodeo o de un grupo de animales (rollos, silo, parcela de avena o maíz, con cantidad y fecha) y llevar el stock de rollos y silo. |
+| RF-047 | M3 | El sistema deberá permitir resolver cada animal que no se vacunó o desparasitó en una jornada: identificarlo eligiendo entre los animales ya cargados, con los de su categoría y pelaje primero; registrar que ya se le aplicó, con la fecha; cerrarlo con un motivo; y agregar o corregir su pelaje y observación mientras siga sin identificar (RN-027). |
+| RF-048 | M5 | El sistema deberá mostrar en una sola pantalla todos los pendientes (sanidad, reproducción, cobros y reservas), agrupados por urgencia y con filtro por tipo, con el acceso para resolver cada uno. |
+| RF-049 | M1 | El sistema deberá permitir al administrador anular una jornada completa o el registro de un animal, indicando el motivo: el registro queda visible como anulado en el historial y no cuenta en stock, alertas ni reportes (RN-011). |
+| RF-050 | M1 | El sistema deberá aplicar los permisos de cada rol (Administrador, Peón y Consulta) según la [matriz de permisos](07-modelado/roles-y-permisos.md), validándolos en el servidor y mostrando solo las acciones permitidas. |
 
 ### 8.2 Requisitos no funcionales
 
@@ -286,10 +289,11 @@ No forman parte de la versión 1.0:
 | RN-020 | En una venta se carga el peso total del lote y el % de desbaste. Kilos netos = kilos × (1 − desbaste); bruto = kilos netos × precio por kilo; neto = bruto − comisión − gastos. Cada animal vendido queda con el peso promedio (kilos netos ÷ cantidad), marcado como promedio. |
 | RN-021 | Un caso de enfermedad en un ternero al pie se registra eligiendo el ternero por su madre o por sexo, pelaje y seña particular. Si no se lo puede identificar, se registra sobre "un ternero al pie" del grupo y cuenta como un ternero distinto en el % de enfermos. |
 | RN-022 | Un ítem del plan con varias aplicaciones mínimas (por ejemplo, 3 contra la mosca en verano) sigue pendiente hasta que se completan todas dentro de la ventana. El pendiente muestra cuántas van ("mosca: 1 de 3"). |
-| RN-023 | Una vacunación o desparasitación por categoría se registra para todos los animales activos de las categorías elegidas (y que cumplan las condiciones del ítem del plan), en la fecha indicada para cada categoría. Se pueden excluir animales puntuales que no pasaron por la manga. |
+| RN-023 | Una vacunación o desparasitación por categoría se registra para todos los animales activos de las categorías elegidas (y que cumplan las condiciones del ítem del plan), en la fecha indicada para cada categoría. Los animales que no pasaron por la manga se excluyen por caravana o, si no se sabe cuáles fueron, se indican por categoría, con pelaje y observación opcionales (RN-027). |
 | RN-024 | Un recordatorio de seguimiento aparece en el tablero y en Pendientes desde su fecha hasta que se marca como hecho. Los avisos se ven dentro del sistema (no hay correo ni WhatsApp en la v1.0). |
 | RN-025 | La madre de un ternero se puede corregir (por ejemplo, "era otra vaca"). El cambio queda en la auditoría con fecha, usuario y motivo, y los índices se recalculan. |
 | RN-026 | Una venta puede cobrarse en varias cuotas. Queda pendiente de cobro hasta que se cobran todas, y cada cuota vencida sin cobrar aparece en Pendientes. |
+| RN-027 | Todo animal que no se vacuna o desparasita en una jornada por categoría queda con un **aviso** en Pendientes y en el tablero hasta que se resuelve, esté identificado o no. **Identificado:** se indican una o varias caravanas, cada una con su aviso, y no se les registra el evento ("Piojo: AB123 B081 sin desparasitar"); el aviso también aparece en su ficha. **Sin identificar:** se indica la categoría y, de forma opcional, el pelaje, una observación y la cantidad (1 por defecto), por ejemplo "vaca colorada, la que estaba renga" ("Carbunclo: 1 vaca colorada, sin identificar"). Cada animal de la cantidad queda como un faltante aparte; el total por categoría no puede superar los animales de esa categoría en la jornada menos los excluidos por caravana. El evento se registra igual para toda la categoría, pero el faltante no cuenta como vacunado en la cobertura. Un animal con este aviso no se repite en los avisos del plan ni cuenta dos veces en la cobertura. **Identificar** no cierra el aviso, porque el animal sigue sin vacunar: se elige entre los animales ya cargados, con los de esa categoría y pelaje primero (los terneros al pie, por madre o seña); su evento de esa jornada queda como *no aplicado* y el aviso pasa a mostrar la caravana. El aviso se cierra con **ya se le aplicó** (con fecha y, si está identificado, con su evento individual) o **no se va a aplicar** (con motivo). Mientras siga sin identificar se pueden agregar o corregir el pelaje y la observación. Puede hacerlo quien carga vacunas y queda en la auditoría. |
 
 ### 8.4 Matriz de trazabilidad
 
@@ -318,3 +322,8 @@ Ver [05 — EDT](05-edt.md).
 | 0.13 | 2026-11-03 | Francisco Garcia Martinez | Nombre del proyecto: Mi Hacienda Digital (antes Mi Yerra Digital) |
 | 0.14 | 2026-11-03 | Francisco Garcia Martinez | Análisis documental de los registros del productor: hecho |
 | 0.15 | 2026-11-03 | Francisco Garcia Martinez | Datos del productor reemplazados por datos ficticios (nombre, establecimiento, ubicación, códigos SENASA y montos) para publicar el repositorio |
+| 0.16 | 2026-11-04 | Francisco Garcia Martinez | Animales que faltaron vacunar o desparasitar sin identificar: nueva RN-027; RF-016, RF-017, RF-019, RF-031 y RN-023 actualizados |
+| 0.17 | 2026-11-06 | Francisco Garcia Martinez | Faltantes con pelaje y observación, y aviso para todo animal no vacunado o no desparasitado (RN-027 reescrita; RN-023, RF-016, RF-017, RF-019 y RF-031 actualizados); nuevos RF-047 a RF-050 |
+| 0.18 | 2026-11-06 | Francisco Garcia Martinez | RN-027 y RF-047: la observación es solo para los animales sin identificar, no para los que se cargan por caravana |
+| 0.19 | 2026-11-06 | Francisco Garcia Martinez | Se quita el rol Veterinario: quedan Administrador, Peón y Consulta (sección 6 y RF-050) |
+| 0.20 | 2026-11-06 | Francisco Garcia Martinez | RN-027, RF-016 y RF-017: se pueden cargar varias caravanas de animales que no se vacunaron o desparasitaron |

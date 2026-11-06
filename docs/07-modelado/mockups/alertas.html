@@ -22,7 +22,7 @@
   </div>
 
   <section class="card">
-    <div class="card-titulo"><h2><span class="semaforo rojo" style="display:inline-block;margin-right:.5rem"></span> Vacunas obligatorias pendientes</h2><span class="badge danger">1</span></div>
+    <div class="card-titulo"><h2><span class="semaforo rojo" style="display:inline-block;margin-right:.5rem"></span> Vacunas obligatorias pendientes</h2><span class="badge danger">2</span></div>
     <ul class="alertas">
       <li>
         <span class="semaforo rojo"></span>
@@ -32,16 +32,29 @@
         </div>
         <a class="btn btn-primario" href="jornada-nueva.html?tipo=vacunar">Vacunar ahora</a>
       </li>
+      <li>
+        <span class="semaforo rojo"></span>
+        <div class="texto">
+          <strong>Carbunclo — 1 vaca colorada, sin identificar</strong>
+          <small>"La que estaba renga" · faltó en la vacunación del 08/10/2026 · cuando la reconozcas, elegí su caravana o marcá que ya la vacunaste</small>
+        </div>
+        <button class="btn" type="button" data-abrir="modal-faltante">Resolver</button>
+      </li>
     </ul>
   </section>
 
   <section class="card">
-    <div class="card-titulo"><h2><span class="semaforo amarillo" style="display:inline-block;margin-right:.5rem"></span> Ventana abierta o próximos 30 días</h2><span class="badge warn">5</span></div>
+    <div class="card-titulo"><h2><span class="semaforo amarillo" style="display:inline-block;margin-right:.5rem"></span> Ventana abierta o próximos 30 días</h2><span class="badge warn">6</span></div>
     <ul class="alertas">
       <li>
         <span class="semaforo amarillo"></span>
         <div class="texto"><strong>Revisar la vaca AB123 B126 — hoy</strong><small>Recordatorio: "Ver si mejoró la renguera" · tratada el 07/10/2026 por pietín</small></div>
         <button class="btn" type="button" data-guardar="Recordatorio marcado como hecho">✔ Hecho</button>
+      </li>
+      <li>
+        <span class="semaforo amarillo"></span>
+        <div class="texto"><strong>Piojo — AB123 B081 sin desparasitar</strong><small>No se desparasitó en la jornada del 20/08/2026</small></div>
+        <button class="btn" type="button" data-abrir="modal-faltante-identificado">Resolver</button>
       </li>
       <li>
         <span class="semaforo amarillo"></span>
@@ -87,9 +100,75 @@
     </ul>
   </section>
 
-  <p class="chico mt">Los pendientes se calculan solos a partir del plan sanitario, de los eventos y de los cobros cargados. Se van cuando cargás la vacuna, el parto, la castración o el cobro.</p>
+  <p class="chico mt">Los pendientes se calculan solos a partir del plan sanitario, de los eventos y de los cobros cargados. Se van cuando cargás la vacuna, el parto, la castración o el cobro, o cuando resolvés el aviso.</p>
 
 </main>
+
+<!-- Modal: resolver un animal que faltó sin identificar (RN-027) -->
+<div class="modal-fondo" id="modal-faltante">
+  <div class="modal" role="dialog" aria-labelledby="t-faltante">
+    <div class="modal-cab"><h2 id="t-faltante">Resolver: 1 vaca colorada sin vacunar contra carbunclo</h2><button class="cerrar" data-cerrar aria-label="Cerrar">×</button></div>
+    <div class="modal-cuerpo">
+      <div class="aviso info" style="margin-bottom:1.25rem"><i data-ico="info"></i><div>En la vacunación del <strong>08/10/2026</strong> faltó <strong>1 vaca colorada</strong>. Anotaste: <strong>"La que estaba renga"</strong>. Este aviso sigue en Pendientes hasta que la vacunes o decidas no vacunarla.</div></div>
+      <div class="campo completo"><label>¿Qué querés hacer? <span class="req">*</span></label>
+        <div class="opciones">
+          <label><input type="radio" name="faltante" checked> Ya sé cuál es</label>
+          <label><input type="radio" name="faltante"> Ya la vacuné</label>
+          <label><input type="radio" name="faltante"> No se va a vacunar</label>
+        </div>
+      </div>
+      <div class="campo completo mt"><label>¿Cuál es? Primero aparecen las vacas coloradas</label>
+        <div class="tabla-wrap responsive">
+          <table class="tabla">
+            <thead><tr><th></th><th>Caravana</th><th>Pelaje</th><th>Estado</th></tr></thead>
+            <tbody>
+              <tr><td class="centro sin-label"><input type="radio" name="faltante-animal" aria-label="Elegir AB123 B102"></td><td data-label="Caravana" class="mono">AB123 B102</td><td data-label="Pelaje">Colorado</td><td data-label="Estado">Parida 03/08</td></tr>
+              <tr><td class="centro sin-label"><input type="radio" name="faltante-animal" aria-label="Elegir AB123 B140"></td><td data-label="Caravana" class="mono">AB123 B140</td><td data-label="Pelaje">Colorado</td><td data-label="Estado">Preñada</td></tr>
+              <tr><td class="centro sin-label"><input type="radio" name="faltante-animal" aria-label="Elegir AB123 B151"></td><td data-label="Caravana" class="mono">AB123 B151</td><td data-label="Pelaje">Colorado</td><td data-label="Estado">Preñada</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <input class="input mono mt" placeholder="¿Es otra? Buscá la caravana" aria-label="Buscar otra caravana">
+        <span class="ayuda">Si es un ternero al pie, buscalo por la madre o por sexo, pelaje y seña.</span>
+      </div>
+      <div class="form-grid mt">
+        <div class="campo"><label>Pelaje</label><select class="input"><option>No sé</option><option>Negro</option><option selected>Colorado</option></select><span class="ayuda">Podés corregirlo hasta que la identifiques.</span></div>
+        <div class="campo"><label>Observación</label><input class="input" value="La que estaba renga"><span class="ayuda">Podés corregirla hasta que la identifiques.</span></div>
+        <div class="campo"><label>Fecha en que la vacunaste</label><input class="input" type="date"><span class="ayuda">Solo si elegiste "Ya la vacuné". Si no sabés cuál es, solo se cierra el aviso.</span></div>
+        <div class="campo"><label>Motivo</label><select class="input"><option>Se vendió</option><option>Se murió</option><option>No se va a vacunar</option><option>Otro</option></select><span class="ayuda">Solo si elegiste "No se va a vacunar".</span></div>
+      </div>
+      <p class="chico mt">Si elegís "Ya sé cuál es", la vacuna de esa vaca en esta jornada queda como <strong>no aplicada</strong> y el aviso sigue, ahora con su caravana y también en su ficha, hasta que la vacunes. Todo queda en la auditoría.</p>
+    </div>
+    <div class="modal-pie">
+      <button class="btn" data-cerrar>Cancelar</button>
+      <button class="btn btn-primario" data-guardar="Cambios guardados">Guardar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: resolver un animal identificado que no se desparasitó (RN-027) -->
+<div class="modal-fondo" id="modal-faltante-identificado">
+  <div class="modal" role="dialog" aria-labelledby="t-faltante-id">
+    <div class="modal-cab"><h2 id="t-faltante-id">Resolver: AB123 B081 sin desparasitar contra piojo</h2><button class="cerrar" data-cerrar aria-label="Cerrar">×</button></div>
+    <div class="modal-cuerpo">
+      <div class="aviso info" style="margin-bottom:1.25rem"><i data-ico="info"></i><div>No se desparasitó en la jornada del <strong>20/08/2026</strong>.</div></div>
+      <div class="campo completo"><label>¿Qué querés hacer? <span class="req">*</span></label>
+        <div class="opciones">
+          <label><input type="radio" name="faltante-id" checked> Ya la desparasité</label>
+          <label><input type="radio" name="faltante-id"> No se va a desparasitar</label>
+        </div>
+      </div>
+      <div class="form-grid mt">
+        <div class="campo"><label>Fecha en que la desparasitaste</label><input class="input" type="date"></div>
+        <div class="campo"><label>Motivo</label><select class="input"><option>Se vendió</option><option>Se murió</option><option>No se va a desparasitar</option><option>Otro</option></select><span class="ayuda">Solo si elegiste "No se va a desparasitar".</span></div>
+      </div>
+    </div>
+    <div class="modal-pie">
+      <button class="btn" data-cerrar>Cancelar</button>
+      <button class="btn btn-primario" data-guardar="Aviso resuelto">Guardar</button>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
