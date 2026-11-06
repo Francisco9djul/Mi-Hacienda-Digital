@@ -85,7 +85,7 @@ Verificar que Mi Hacienda Digital cumple los requisitos funcionales y no funcion
 | CP-035 | RF-035 | Intentar eliminar una raza en uso; desactivarla | La eliminación se rechaza; desactivada, no aparece en las altas nuevas |
 | CP-036 | RF-036 | Cambiar el nombre y la anticipación de alertas | Se reflejan en los PDF y en el cálculo de alertas |
 | CP-037 | RF-037 | Descargar el respaldo | Excel con una hoja por entidad; queda en la auditoría |
-| CP-038 | RF-038 | Registrar diarrea en un ternero sin caravana (por la madre) con causa probable; luego evolución "muerto" | El caso queda en la ficha; el ternero se da de baja por muerte con la diarrea como causa |
+| CP-038 | RF-038 | Registrar diarrea en un ternero al pie con la caravana de su madre y causa probable; luego evolución "muerto" | El caso queda en la ficha; el ternero se da de baja por muerte con la diarrea como causa |
 | CP-039 | RF-039 | Temporada con 50 terneros nacidos: 2 muertos al nacer, 1 muerto por diarrea, 8 con diarrea (uno con dos casos) y 5 con neumonía | Mortalidad 6%, diarrea 16%, neumonía 10%, con numerador y denominador (RN-016, RN-017) |
 | CP-040 | RF-040 | Raspaje de 4 toros: 3 negativos y 1 positivo | Los resultados quedan en cada ficha; el positivo aparece como alerta |
 | CP-041 | RF-041 | Venta de 50 terneros, 11.300 kg, 3 % de desbaste, $ 4.000/kg, 4 % de comisión | Kilos netos 10.961, promedio 219 kg, bruto $ 43.844.000, neto $ 42.090.240 (RN-020) |
@@ -104,7 +104,8 @@ Verificar que Mi Hacienda Digital cumple los requisitos funcionales y no funcion
 | CP-048 | RF-048 | Rodeo con una vacuna obligatoria pendiente, un recordatorio, un cobro y un faltante; filtrar por Cobros; cargar la vacuna que faltaba | Los pendientes aparecen agrupados por urgencia con su cantidad; el filtro deja solo el cobro; la vacuna cargada desaparece de la lista y baja el contador del menú |
 | CP-049 | RF-049 | Como Administrador, anular un registro de una jornada sin motivo y con motivo; anular toda la jornada | Sin motivo se rechaza; con motivo el registro queda tachado en el historial y deja de contar en reportes; la jornada muestra cuántos animales afecta antes de confirmar; todo queda en la auditoría (RN-011) |
 | CP-050 | RF-050 | Entrar como Consulta y como Peón; intentar anular una jornada desde la pantalla y llamando directo a la API | Consulta no ve botones de carga; Peón carga pero no ve Anular; la API rechaza la operación con un error de permisos (RNF-007) |
-| CP-038b | RF-038 | Registrar diarrea en "un ternero macho negro, mancha blanca en la frente" sin madre conocida | El caso se registra sobre ese ternero; si no se lo identifica, cuenta como un ternero distinto (RN-021) |
+| CP-038b | RF-038 | Registrar diarrea sin caravana: categoría Terneros al pie, pelaje negro, observación "mancha blanca en la frente" | El caso se registra con esos datos; si no se lo identifica, cuenta como un ternero distinto (RN-021) |
+| CP-038c | RF-038 | Jornada de enfermos: cargar AB123 B102, otra fila con AB123 B102, otra con AB123 B990 (no existe) y otra sin caravana ni categoría; quitar filas hasta dejar una | Con AB123 B102, categoría y pelaje se completan solos; avisa la repetida y la inexistente; la fila sin caravana ni categoría no cuenta; con una sola fila no se ofrece "Quitar" (RN-021) |
 | CP-018c | RF-018, RF-019 | Plan con mosca (dic – mar, 3 aplicaciones) y una sola aplicación hecha | El pendiente sigue y muestra "1 de 3" (RN-022) |
 
 ## 7. Casos de prueba no funcionales
@@ -173,3 +174,4 @@ Los defectos se registran como *issues* en GitHub con la etiqueta `bug` y su sev
 | 0.15 | 2026-11-06 | Francisco Garcia Martinez | Herramientas de prueba definidas por el stack elegido: Vitest y Playwright |
 | 0.16 | 2026-11-06 | Francisco Garcia Martinez | CP-016: la exclusión por caravana no lleva observación |
 | 0.17 | 2026-11-06 | Francisco Garcia Martinez | CP-016d: varias caravanas de animales que no se vacunaron o desparasitaron |
+| 0.18 | 2026-11-06 | Francisco Garcia Martinez | CP-038 y CP-038b actualizados; nuevo CP-038c: filas de animales enfermos |

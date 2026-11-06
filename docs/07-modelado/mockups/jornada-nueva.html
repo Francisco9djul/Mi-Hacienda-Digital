@@ -353,20 +353,25 @@
       <p class="chico mt">Si una caravana es de una vaca con ternero al pie, el sistema pregunta si la jornada es para la vaca o para su ternero.</p>
     </section>
 
-    <!-- Enfermos: terneros al pie -->
+    <!-- Enfermos: un animal por fila (RF-038, RN-021) -->
     <section class="card lista-tipo oculto" data-para="enfermos">
-      <div class="card-titulo"><h3>Terneros enfermos</h3><span class="chico">Por la madre o por sexo, pelaje y seña</span></div>
+      <div class="card-titulo"><h3>Animales enfermos</h3><span class="chico" data-enfermos-cuenta>Ningún animal cargado</span></div>
       <div class="tabla-wrap responsive">
         <table class="tabla">
-          <thead><tr><th class="centro">✔</th><th>Ternero</th><th>Cómo se lo identificó</th></tr></thead>
-          <tbody>
-            <tr><td class="centro sin-label"><input type="checkbox" checked></td><td data-label="Ternero">Cría de <span class="mono">AB123 B094</span> · macho negro</td><td data-label="Identificación">Por la madre</td></tr>
-            <tr><td class="centro sin-label"><input type="checkbox" checked></td><td data-label="Ternero">Hembra negra · <em>"mancha blanca en la frente"</em></td><td data-label="Identificación">Por pelaje y seña</td></tr>
-            <tr><td class="centro sin-label"><input type="checkbox" checked></td><td data-label="Ternero">Un ternero macho colorado <small>(sin identificar)</small></td><td data-label="Identificación">Solo sexo y pelaje: cuenta como un ternero aparte</td></tr>
+          <thead><tr><th>Caravana</th><th>Categoría</th><th>Pelaje</th><th>Observación</th><th></th></tr></thead>
+          <tbody data-enfermos>
+            <tr data-enfermo>
+              <td data-label="Caravana"><input class="input input-chico mono" style="min-width:10rem" placeholder="Ej: AB123 B081" aria-label="Caravana" data-enfermo-caravana><span class="ayuda oculto" style="display:block;margin-top:.25rem" data-enfermo-aviso></span></td>
+              <td data-label="Categoría"><select class="input input-chico" style="min-width:10.5rem" aria-label="Categoría" data-enfermo-categoria><option value="">Elegí</option><option>Vacas</option><option>Toros</option><option>Vaquillonas</option><option>Novillitos</option><option>Terneros al pie</option></select></td>
+              <td data-label="Pelaje"><select class="input input-chico" style="min-width:7.5rem" aria-label="Pelaje" data-enfermo-pelaje><option>No sé</option><option>Negro</option><option>Colorado</option></select></td>
+              <td data-label="Observación"><input class="input input-chico" style="min-width:13rem" placeholder="Ej: Mancha en la frente" aria-label="Observación"></td>
+              <td class="sin-label"><button class="btn-link btn oculto" type="button" data-quitar-enfermo>Quitar</button></td>
+            </tr>
           </tbody>
         </table>
       </div>
-      <button class="btn btn-chico mt" type="button">+ Agregar ternero por sexo, pelaje y seña</button>
+      <button class="btn btn-chico mt" type="button" data-agregar-enfermo>+ Agregar otro animal</button>
+      <span class="ayuda" style="display:block;margin-top:.75rem">Si sabés la caravana, la categoría y el pelaje se completan solos. Si no, elegí la categoría y anotá lo que sepas. En un ternero al pie, elegí esa categoría y poné la caravana de la madre si la sabés.</span>
     </section>
 
     <!-- Compra: animales comprados -->
@@ -507,7 +512,7 @@
     document.querySelectorAll("#tipos .tipo").forEach(function (t) { t.classList.toggle("activo", t.dataset.valor === tipo); });
     document.getElementById("titulo-datos").textContent = NOMBRES[tipo][0];
     document.getElementById("resumen-tipo").textContent = NOMBRES[tipo][1];
-    document.getElementById("card-animales").classList.toggle("oculto", ["vacunar", "desparasitar", "castrar", "alimentar"].indexOf(tipo) >= 0);
+    document.getElementById("card-animales").classList.toggle("oculto", ["vacunar", "desparasitar", "enfermos", "castrar", "alimentar"].indexOf(tipo) >= 0);
   }
 
   function irPaso(n) {
@@ -572,6 +577,70 @@
         revisarExcluidos(lista);
       });
       lista.parentNode.querySelector("[data-agregar-excluido]").addEventListener("click", function () { agregarExcluido(lista); });
+    });
+
+    // Animales enfermos: una fila por animal (RF-038, RN-021)
+    var ANIMALES = {
+      "AB123 B081": ["Vacas", "Negro"],
+      "AB123 B094": ["Vacas", "Negro"],
+      "AB123 B102": ["Vacas", "Colorado"],
+      "AB123 C022": ["Novillitos", "Negro"],
+      "GH234 A007": ["Toros", "Negro"]
+    };
+    var TERNERO = "Terneros al pie";
+    var listaEnfermos = document.querySelector("[data-enfermos]");
+    function revisarEnfermos() {
+      var filas = listaEnfermos.querySelectorAll("[data-enfermo]"), vistas = {}, n = 0;
+      filas.forEach(function (fila) {
+        fila.querySelector("[data-quitar-enfermo]").classList.toggle("oculto", filas.length < 2);
+        var c = fila.querySelector("[data-enfermo-caravana]").value.trim().toUpperCase();
+        var categoria = fila.querySelector("[data-enfermo-categoria]").value;
+        var ternero = categoria === TERNERO, texto = "", error = false;
+        if (c && !ternero && vistas[c]) { texto = "Ya cargaste este animal."; error = true; }
+        else if (c && !ANIMALES[c] && c.length >= 10) { texto = "No encontramos esta caravana."; error = true; }
+        else if (ternero && ANIMALES[c]) { texto = "Cría de " + c + "."; }
+        var aviso = fila.querySelector("[data-enfermo-aviso]");
+        aviso.textContent = texto;
+        aviso.style.color = error ? "var(--rojo)" : "";
+        aviso.classList.toggle("oculto", !texto);
+        if (c && !ternero) vistas[c] = true;
+        if (!error && (categoria || ANIMALES[c])) n++;
+      });
+      var cuenta = document.querySelector("[data-enfermos-cuenta]");
+      cuenta.textContent = n === 0 ? "Ningún animal cargado" : n === 1 ? "1 animal cargado" : n + " animales cargados";
+    }
+    listaEnfermos.addEventListener("input", function (e) {
+      if (e.target.matches("[data-enfermo-caravana]")) {
+        var fila = e.target.closest("[data-enfermo]");
+        var datos = ANIMALES[e.target.value.trim().toUpperCase()];
+        var categoria = fila.querySelector("[data-enfermo-categoria]");
+        if (datos && categoria.value !== TERNERO) {
+          categoria.value = datos[0];
+          fila.querySelector("[data-enfermo-pelaje]").value = datos[1];
+        }
+      }
+      revisarEnfermos();
+    });
+    listaEnfermos.addEventListener("change", function (e) {
+      if (e.target.matches("[data-enfermo-categoria]")) {
+        var fila = e.target.closest("[data-enfermo]");
+        var datos = ANIMALES[fila.querySelector("[data-enfermo-caravana]").value.trim().toUpperCase()];
+        if (datos && e.target.value !== TERNERO) e.target.value = datos[0];
+      }
+      revisarEnfermos();
+    });
+    listaEnfermos.addEventListener("click", function (e) {
+      var quitar = e.target.closest("[data-quitar-enfermo]");
+      if (quitar) { quitar.closest("[data-enfermo]").remove(); revisarEnfermos(); }
+    });
+    document.querySelector("[data-agregar-enfermo]").addEventListener("click", function () {
+      var fila = listaEnfermos.querySelector("[data-enfermo]").cloneNode(true);
+      fila.querySelectorAll("input").forEach(function (i) { i.value = ""; });
+      fila.querySelectorAll("select").forEach(function (s) { s.selectedIndex = 0; });
+      fila.querySelector("[data-enfermo-aviso]").classList.add("oculto");
+      listaEnfermos.appendChild(fila);
+      revisarEnfermos();
+      fila.querySelector("input").focus();
     });
 
     // Filas de animales que faltaron sin identificar (RN-027)

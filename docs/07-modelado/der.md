@@ -8,7 +8,7 @@
 - **Jornada:** agrupa eventos cargados en una misma operación sobre varios animales (RF-015). Cada evento puede pertenecer, opcionalmente, a una jornada.
 - **Sin borrado físico (RNF-014):** los animales tienen `estado` y datos de baja. Los eventos tienen `anulado`, `motivo_anulacion` y `anulado_por`.
 - **Toros:** un toro es un `ANIMAL` macho del establecimiento. Como los toros están en grupo con las vacas, se registran **por temporada** (`TEMPORADA_TORO`) y no por servicio. La genealogía apunta a `ANIMAL` (madre y, si se conoce, padre). No hay inseminación artificial en la v1.0.
-- **Enfermedades:** los casos de enfermedad son eventos sanitarios de tipo `ENFERMEDAD`, con la enfermedad del catálogo, la causa probable y la evolución. El producto es opcional (si hubo tratamiento).
+- **Enfermedades:** los casos de enfermedad son eventos sanitarios de tipo `ENFERMEDAD`, con la enfermedad del catálogo, la causa probable y la evolución. El producto es opcional (si hubo tratamiento). Si no se sabe qué animal es, `animal_id` queda nulo y el caso guarda categoría, pelaje y observación (RN-021).
 - **Alertas:** se **calculan** a partir de los eventos y del plan sanitario, sin guardarse en una tabla. Así se evita mantener datos desincronizados. Si hiciera falta por rendimiento, se agregaría una tabla de caché.
 - **Cuaderno del productor (2026-11-03):** se agregaron mellizos (`cria2_id`), servicio individual (`toro_id`), animales apartados, cuotas de cobro (`COBRO_CUOTA`) y alimentación con stock de reservas (`SUPLEMENTACION`, `RESERVA`).
 - **Recordatorios:** los avisos de seguimiento (por ejemplo, revisar un animal tratado a los 3 días) se guardan en `RECORDATORIO`. A diferencia de las alertas del plan, no se calculan: los crea el usuario.
@@ -192,6 +192,8 @@ erDiagram
         int enfermedad_id FK
         string causa_probable
         string evolucion
+        string pelaje
+        string observacion
         string resultado_analisis
         string objetivo
         int duracion_dias
@@ -358,6 +360,7 @@ erDiagram
 | `FALTANTE_JORNADA.pelaje`, `observacion` | Opcionales | Datos para reconocer a un animal sin identificar ("colorado", "la que estaba renga"). Quedan vacíos si se carga directamente por caravana. Se pueden corregir mientras `animal_id` sea nulo |
 | `FALTANTE_JORNADA.estado` | `PENDIENTE`, `VACUNADO_DESPUES`, `CERRADO` | El aviso sigue en Pendientes mientras sea `PENDIENTE`. `VACUNADO_DESPUES` (también para desparasitaciones) lleva `fecha_resolucion` y, si tiene `animal_id`, crea su evento individual. `CERRADO` requiere `motivo` |
 | `EVENTO_SANITARIO.evolucion` | `EN_CURSO`, `RECUPERADO`, `MUERTO` | `MUERTO` → baja por muerte con la enfermedad como causa |
+| `EVENTO_SANITARIO.pelaje`, `observacion` | Opcionales | Solo en `ENFERMEDAD`: datos para reconocer al animal. `animal_id` puede ser nulo únicamente en este tipo, y entonces `categoria_id` es obligatoria (RN-021) |
 | `ENFERMEDAD.nombre` | Texto | Valores iniciales: Diarrea, Neumonía, Ombligo, Otra |
 | `EVENTO_REPRODUCTIVO.tipo` | `CELO`, `SERVICIO`, `TACTO`, `PARICION`, `ABORTO`, `DESTETE` | Los atributos usados dependen del tipo (ver abajo) |
 | `EVENTO_REPRODUCTIVO.resultado_tacto` | `PRENADA`, `VACIA` | |
@@ -398,3 +401,4 @@ erDiagram
 | 0.14 | 2026-11-06 | Francisco Garcia Martinez | Alternativa de `EVENTO_REPRODUCTIVO` referida a Prisma, el ORM elegido |
 | 0.15 | 2026-11-06 | Francisco Garcia Martinez | `FALTANTE_JORNADA.pelaje` y `observacion`: solo para animales sin identificar |
 | 0.16 | 2026-11-06 | Francisco Garcia Martinez | Se quita `VETERINARIO` de `USUARIO.rol` |
+| 0.17 | 2026-11-06 | Francisco Garcia Martinez | `EVENTO_SANITARIO`: `pelaje` y `observacion`; caso de enfermedad sin animal identificado (RN-021) |
