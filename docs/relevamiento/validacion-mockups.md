@@ -67,7 +67,7 @@
 - [ ] **F11 — Desparasitar** (por categoría, contra qué, aviso para rotar la droga) · [abrir](../07-modelado/mockups/jornada-nueva.html?tipo=desparasitar)
   - Mostrar: los que faltaron, igual que en la vacunación; un animal identificado también queda con aviso y figura en su [ficha](../07-modelado/mockups/animal-ficha.html).
   - Fecha OK: ____ · Observaciones:
-- [ ] **F12 — Enfermos** (terneros por la madre o por sexo, pelaje y seña) · [abrir](../07-modelado/mockups/jornada-nueva.html?tipo=enfermos)
+- [ ] **F12 — Enfermos** (cada animal con caravana, categoría, pelaje y observación) · [abrir](../07-modelado/mockups/jornada-nueva.html?tipo=enfermos)
   - Fecha OK: ____ · Observaciones:
 - [ ] **F13 — Análisis** (raspaje de toros, sangrado, resultado por animal) · [abrir](../07-modelado/mockups/jornada-nueva.html?tipo=analisis)
   - Fecha OK: ____ · Observaciones:
@@ -182,3 +182,4 @@
 | 0.3 | 2026-11-04 | Francisco Garcia Martinez | Faltantes sin identificar en F10 y F11, y duda para confirmar RN-027 con el productor |
 | 0.4 | 2026-11-06 | Francisco Garcia Martinez | Faltantes con pelaje y observación, aviso para todos y duda de RN-027 ampliada |
 | 0.5 | 2026-11-06 | Francisco Garcia Martinez | F10: se pueden cargar varias caravanas |
+| 0.6 | 2026-11-06 | Francisco Garcia Martinez | F12: filas de animales enfermos |

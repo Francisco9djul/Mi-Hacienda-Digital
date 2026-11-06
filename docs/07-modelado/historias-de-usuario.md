@@ -287,8 +287,9 @@
 - Lo pidió el productor: la diarrea es importante y la neumonía muy importante (entrevista, pregunta 34).
 - **Criterios de aceptación:**
   - Registro la enfermedad (diarrea, neumonía u otra del catálogo), la fecha, la causa probable y, si quiero, el tratamiento aplicado.
-  - Puedo registrarlo en un ternero sin caravana, eligiéndolo por la madre o por sexo, pelaje y seña particular (RN-021).
-  - Puedo cargar varios terneros enfermos de una vez, como jornada.
+  - Cargo cada animal con su **caravana, categoría, pelaje y observación**. Si pongo la caravana, la categoría y el pelaje se completan solos; si no la sé, elijo la categoría y anoto lo que sepa (RN-021).
+  - En un ternero al pie, que no tiene caravana, elijo esa categoría y puedo poner la caravana de la madre.
+  - Puedo cargar varios animales enfermos de una vez, como jornada: cada uno va en su fila y agrego otra cuando la necesito. Si hay más de una fila, puedo quitar la que no corresponda.
   - Registro la evolución: en curso, recuperado o muerto. Si muere, se da de baja con la enfermedad como causa.
 
 ### HU-40 — Registrar análisis sanitarios
@@ -516,3 +517,4 @@
 | 0.15 | 2026-11-06 | Francisco Garcia Martinez | HU-16 y HU-47: la observación es solo para los animales sin identificar |
 | 0.16 | 2026-11-06 | Francisco Garcia Martinez | Se quita el rol Veterinario: HU-03 y las historias de sanidad y tacto pasan a ser del productor (HU-16, HU-17, HU-20, HU-23, HU-40, HU-44 y HU-47) |
 | 0.17 | 2026-11-06 | Francisco Garcia Martinez | HU-16 y HU-17: varias caravanas de animales que no pasaron por la manga |
+| 0.18 | 2026-11-06 | Francisco Garcia Martinez | HU-38: cada animal enfermo se carga con caravana, categoría, pelaje y observación |

@@ -151,7 +151,10 @@
     <div class="modal-cab"><h2>Animal enfermo</h2><button class="cerrar" data-cerrar aria-label="Cerrar">×</button></div>
     <div class="modal-cuerpo">
       <div class="form-grid">
-        <div class="campo completo"><span class="label">Animal <span class="req">*</span></span><div class="opciones"><label><input type="radio" name="ide"> Por caravana</label><label><input type="radio" name="ide"> Ternero, por la madre</label><label><input type="radio" name="ide" checked> Ternero, por sexo, pelaje y seña</label></div><div class="fila-inputs mt"><select class="input" aria-label="Sexo"><option>Hembra</option><option>Macho</option></select><select class="input" aria-label="Pelaje"><option>Negra</option><option>Colorada</option></select><input class="input" value="mancha blanca en la frente" aria-label="Seña"></div><span class="ayuda">✔ Coincide con 1 ternera al pie (cría de AB123 B117). Si no coincide con ninguno, se registra igual como "un ternero al pie" de ese grupo.</span></div>
+        <div class="campo"><label>Caravana</label><input class="input mono" placeholder="Ej: AB123 B081"><span class="ayuda">Si es un ternero al pie, la de su madre. Si no la sabés, dejala vacía.</span></div>
+        <div class="campo"><label>Categoría <span class="req">*</span></label><select class="input"><option>Vacas</option><option>Toros</option><option>Vaquillonas</option><option>Novillitos</option><option selected>Terneros al pie</option></select></div>
+        <div class="campo"><label>Pelaje</label><select class="input"><option>No sé</option><option selected>Negro</option><option>Colorado</option></select></div>
+        <div class="campo"><label>Observación</label><input class="input" value="mancha blanca en la frente" placeholder="Ej: Mancha blanca en la frente"></div>
         <div class="campo"><label>Fecha <span class="req">*</span></label><input class="input" type="date" value="2026-10-05"></div>
         <div class="campo"><label>Enfermedad <span class="req">*</span></label><select class="input"><option selected>Diarrea</option><option>Neumonía</option><option>Ombligo</option><option>Otra</option></select></div>
         <div class="campo completo"><label>Causa probable</label><input class="input" value="Frío y lluvia"></div>
@@ -159,7 +162,7 @@
         <div class="campo"><label>Evolución</label><select class="input"><option>En curso</option><option>Recuperado</option><option>Murió</option></select><span class="ayuda">Si murió, se da de baja con esta enfermedad como causa.</span></div>
         <div class="campo completo"><span class="label">Aviso</span><div class="fila-inputs"><label><input type="checkbox" checked> Avisarme para revisarlo en</label><input class="input" value="3" style="max-width:80px"><span>días</span></div></div>
       </div>
-      <p class="chico mt">Para varios terneros a la vez usá <a href="jornada-nueva.html?tipo=enfermos">Nueva jornada → Enfermos</a>.</p>
+      <p class="chico mt">Para varios animales a la vez usá <a href="jornada-nueva.html?tipo=enfermos">Nueva jornada → Enfermos</a>.</p>
     </div>
     <div class="modal-pie"><button class="btn" data-cerrar>Cancelar</button><button class="btn btn-primario" data-guardar>Guardar</button></div>
   </div>

@@ -45,7 +45,7 @@
 | RF-035 | Catálogos | OE-01 | M6 | HU-35 | CP-035 | M | 3 | Pendiente |
 | RF-036 | Datos del establecimiento | OE-01 | M6 | HU-36 | CP-036 | S | 3 | Pendiente |
 | RF-037 | Respaldo / exportación completa | OE-01 | M6 | HU-37 | CP-037 | S | 6 | Pendiente |
-| RF-038 | Casos de enfermedad | OE-02 | M3 | HU-38 | CP-038 | M | 4 | Pendiente |
+| RF-038 | Casos de enfermedad | OE-02 | M3 | HU-38 | CP-038, CP-038c | M | 4 | Pendiente |
 | RF-039 | Mortalidad y enfermedades de terneros | OE-02, OE-04 | M5 | HU-39 | CP-039 | M | 6 | Pendiente |
 | RF-040 | Análisis sanitarios (raspaje obligatorio, sangrado) | OE-02 | M3 | HU-40 | CP-040 | M | 4 | Pendiente |
 | RF-041 | Datos comerciales de la venta y cobro | OE-04 | M2 | HU-41 | CP-041 | S | 3 | Pendiente |
@@ -102,7 +102,7 @@
 | RN-018 | RF-015, RF-026 | CP-026b |
 | RN-019 | RF-042 | CP-042 |
 | RN-020 | RF-015, RF-041 | CP-041 |
-| RN-021 | RF-038 | CP-038b |
+| RN-021 | RF-038 | CP-038b, CP-038c |
 | RN-022 | RF-018, RF-019 | CP-018c |
 | RN-023 | RF-016, RF-017 | CP-016 |
 | RN-024 | RF-044 | CP-044 |
@@ -139,3 +139,4 @@
 | 0.12 | 2026-11-04 | Francisco Garcia Martinez | RN-027 (faltantes sin identificar) y casos CP-016b, CP-016c y CP-017b |
 | 0.13 | 2026-11-06 | Francisco Garcia Martinez | Nuevos RF-047 a RF-050 con sus HU y CP; RN-027 con RF-047 y CP-047 |
 | 0.14 | 2026-11-06 | Francisco Garcia Martinez | CP-016d en RF-016, RF-017 y RN-027 |
+| 0.15 | 2026-11-06 | Francisco Garcia Martinez | CP-038c en RF-038 y RN-021 |

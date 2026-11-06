@@ -289,3 +289,4 @@ Variante **tacto por lote**: el paso 2 muestra una tabla para cargar el resultad
 | 0.17 | 2026-11-06 | Francisco Garcia Martinez | Nueva jornada (P06) y Pendientes (P12): sin observación al cargar un animal por caravana |
 | 0.18 | 2026-11-06 | Francisco Garcia Martinez | Usuarios (P17): se quita el rol Veterinario |
 | 0.19 | 2026-11-06 | Francisco Garcia Martinez | Nueva jornada (P06): varias caravanas de animales que no pasaron por la manga, en vacunar y desparasitar |
+| 0.20 | 2026-11-06 | Francisco Garcia Martinez | Enfermos en Nueva jornada (P06) y Sanidad (P13): cada animal con caravana, categoría, pelaje y observación |

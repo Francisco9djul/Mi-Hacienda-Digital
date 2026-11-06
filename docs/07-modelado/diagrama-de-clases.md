@@ -121,6 +121,8 @@ classDiagram
         +Enfermedad enfermedad
         +string causaProbable
         +Evolucion evolucion
+        +string pelaje
+        +string observacion
         +ResultadoAnalisis resultadoAnalisis
         +Objetivo objetivo
         +Date finRetiro
@@ -364,3 +366,4 @@ classDiagram
 | 0.12 | 2026-11-06 | Francisco Garcia Martinez | `FaltanteJornada` por animal, con pelaje, observación y estado; `actualizarDetalle()` y `marcarAplicado()` (RN-027) |
 | 0.13 | 2026-11-06 | Francisco Garcia Martinez | Tipos y sintaxis definitivos en TypeScript, por el stack elegido |
 | 0.14 | 2026-11-06 | Francisco Garcia Martinez | Se quita `VETERINARIO` del enumerado `Rol` |
+| 0.15 | 2026-11-06 | Francisco Garcia Martinez | `EventoSanitario`: `pelaje` y `observacion` para casos de enfermedad (RN-021) |
