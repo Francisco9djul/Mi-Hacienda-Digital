@@ -376,7 +376,7 @@ erDiagram
 | `ABORTO` | fecha, observaciones |
 | `DESTETE` | fecha, cria_id (el ternero destetado), peso_destete |
 
-> **Alternativa a evaluar en la etapa 2:** dividir `EVENTO_REPRODUCTIVO` en una tabla por tipo (herencia tabla-por-tipo) si los campos nulos complican las validaciones. Se decide según el ORM y el stack elegido.
+> **Alternativa a evaluar en la etapa 2:** dividir `EVENTO_REPRODUCTIVO` en una tabla por tipo (herencia tabla-por-tipo) si los campos nulos complican las validaciones. Se decide al implementar el esquema en Prisma, el ORM elegido.
 
 ## Historial de versiones
 
@@ -395,4 +395,5 @@ erDiagram
 | 0.11 | 2026-11-03 | Francisco Garcia Martinez | Datos del productor reemplazados por datos ficticios (nombre, establecimiento, ubicación, códigos SENASA y montos) para publicar el repositorio |
 | 0.12 | 2026-11-04 | Francisco Garcia Martinez | Faltantes sin identificar en vacunaciones y desparasitaciones (RN-027): `FALTANTE_JORNADA`, `FALTANTE_RESOLUCION` y `EVENTO_SANITARIO.aplicado` |
 | 0.13 | 2026-11-06 | Francisco Garcia Martinez | `FALTANTE_JORNADA` pasa a una fila por animal, con `animal_id`, `pelaje`, `observacion` y `estado`; se elimina `FALTANTE_RESOLUCION` (RN-027) |
+| 0.14 | 2026-11-06 | Francisco Garcia Martinez | Alternativa de `EVENTO_REPRODUCTIVO` referida a Prisma, el ORM elegido |
 | 0.15 | 2026-11-06 | Francisco Garcia Martinez | `FALTANTE_JORNADA.pelaje` y `observacion`: solo para animales sin identificar |

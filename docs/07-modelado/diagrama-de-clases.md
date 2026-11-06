@@ -1,6 +1,6 @@
 # Diagrama de Clases
 
-> Anexo 1, punto 3 de la guía de la cátedra. Entrega incremental. Modelo de dominio independiente del lenguaje: los tipos y la sintaxis definitivos dependen del stack que se elija en la etapa 2.
+> Anexo 1, punto 3 de la guía de la cátedra. Entrega incremental. Modelo de dominio independiente del lenguaje: los tipos y la sintaxis definitivos se escriben en TypeScript, el lenguaje del stack elegido.
 
 ## Modelo de dominio
 
@@ -363,3 +363,4 @@ classDiagram
 | 0.10 | 2026-11-03 | Francisco Garcia Martinez | Parición con 1 o 2 crías, `CobroCuota`, desbaste y comisión en `Venta`, forma de pago, `Suplementacion` y `Reserva`, apartar y corregir madre |
 | 0.11 | 2026-11-04 | Francisco Garcia Martinez | `FaltanteJornada` y `EventoSanitario.aplicado` (RN-027: animales que faltaron vacunar o desparasitar sin identificar) |
 | 0.12 | 2026-11-06 | Francisco Garcia Martinez | `FaltanteJornada` por animal, con pelaje, observación y estado; `actualizarDetalle()` y `marcarAplicado()` (RN-027) |
+| 0.13 | 2026-11-06 | Francisco Garcia Martinez | Tipos y sintaxis definitivos en TypeScript, por el stack elegido |

@@ -25,7 +25,7 @@ Aplicación web para la gestión integral del rodeo bovino de un establecimiento
 
 Queda para una **v2.0**: versión móvil para cargar en la manga sin señal y lectura de caravanas electrónicas con bastón.
 
-**Plataforma:** aplicación web para PC (Windows y Chrome), con base de datos relacional (PostgreSQL como opción preferida) y hosting en planes gratuitos. El stack se elige en la etapa 2 entre .NET, JavaScript/TypeScript y Python ([comparativa](docs/02-plan-del-proyecto.md)).
+**Plataforma:** aplicación web para PC (Windows y Chrome), hecha con React, Node.js (NestJS) y PostgreSQL, con hosting en planes gratuitos de Render y Neon ([decisión y comparativa](docs/02-plan-del-proyecto.md#92-plataforma-tecnológica--opciones-evaluadas)).
 
 ## Cronograma
 

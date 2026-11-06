@@ -15,9 +15,9 @@ Verificar que Mi Hacienda Digital cumple los requisitos funcionales y no funcion
 
 | Nivel | Qué se prueba | Cuándo | Herramienta |
 |---|---|---|---|
-| **Unitarias** | Reglas de negocio y cálculos: categoría sugerida, período de parición esperado, fin de retiro, próxima dosis, índices | En cada HU, antes del merge a `develop` | Framework de testing del stack elegido |
-| **Integración** | API + base de datos: endpoints, permisos por rol, transacciones de jornada y parición | En cada HU | Framework de testing + base de datos de prueba |
-| **Sistema / funcionales** | Casos de prueba CP-001 a CP-037 de punta a punta en el navegador | Al cierre de cada iteración | Manual con checklist (y E2E automatizado para los flujos críticos si el tiempo alcanza) |
+| **Unitarias** | Reglas de negocio y cálculos: categoría sugerida, período de parición esperado, fin de retiro, próxima dosis, índices | En cada HU, antes del merge a `develop` | Vitest |
+| **Integración** | API + base de datos: endpoints, permisos por rol, transacciones de jornada y parición | En cada HU | Vitest + base de datos de prueba |
+| **Sistema / funcionales** | Casos de prueba CP-001 a CP-037 de punta a punta en el navegador | Al cierre de cada iteración | Manual con checklist (y Playwright para los flujos críticos si el tiempo alcanza) |
 | **No funcionales** | Compatibilidad, responsive, rendimiento, seguridad, respaldo | Etapa 7 | DevTools del navegador, Lighthouse, scripts de carga de datos |
 | **Aceptación (UAT)** | El productor usa el sistema con sus datos reales en escenarios de su trabajo | Demo de cada iteración y etapa 7 | Guion de escenarios + acta |
 
@@ -169,4 +169,5 @@ Los defectos se registran como *issues* en GitHub con la etiqueta `bug` y su sev
 | 0.12 | 2026-11-03 | Francisco Garcia Martinez | Datos del productor reemplazados por datos ficticios (nombre, establecimiento, ubicación, códigos SENASA y montos) para publicar el repositorio |
 | 0.13 | 2026-11-04 | Francisco Garcia Martinez | CP-016b, CP-016c y CP-017b: animales que faltaron sin identificar (RN-027) |
 | 0.14 | 2026-11-06 | Francisco Garcia Martinez | CP-016, CP-016b, CP-016c y CP-017b actualizados (pelaje, observación y aviso para todos, RN-027); nuevos CP-047 a CP-050 |
+| 0.15 | 2026-11-06 | Francisco Garcia Martinez | Herramientas de prueba definidas por el stack elegido: Vitest y Playwright |
 | 0.16 | 2026-11-06 | Francisco Garcia Martinez | CP-016: la exclusión por caravana no lleva observación |

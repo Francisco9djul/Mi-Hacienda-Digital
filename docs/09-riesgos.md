@@ -69,7 +69,7 @@
 | R-05 | **Mitigar** | Acordar fechas de demo al inicio; preferir videollamada; evitar las semanas de mayor trabajo de campo; consultas cortas por WhatsApp | Demo postergada 2 veces | Alumno |
 | R-06 | **Mitigar** | Conexión verificada en la entrevista: es buena; frontend liviano; paginación; RNF-009; PWA offline en la v2.0 si hace falta | Tiempos de carga > 3 s en la PC del productor | Alumno |
 | R-07 | **Mitigar** | Pedir una muestra de los registros en papel en la etapa 1; con unas 100 vacas y sus terneros, evaluar la carga manual si la planilla no conviene; planilla modelo simple; vista previa con errores (RF-014); ayudar al productor a ordenar la planilla | Más del 20% de filas con error en la importación de prueba | Alumno + Productor |
-| R-08 | **Mitigar / Transferir** | Respaldos automáticos diarios del proveedor (RNF-008); exportación completa descargable (RF-037); sin borrado físico (RNF-014); probar la restauración (CP-N08) | Falla del proveedor o error en los datos | Alumno |
+| R-08 | **Mitigar / Transferir** | Respaldos diarios encriptados fuera del proveedor (RNF-008), porque el plan gratuito de Neon solo permite restaurar las últimas 6 horas; exportación completa descargable (RF-037); sin borrado físico (RNF-014); probar la restauración (CP-N08) | Falla del proveedor o error en los datos | Alumno |
 | R-09 | **Mitigar** | Elegir el stack según los planes gratuitos disponibles; desplegar de forma estándar (por ejemplo, con un contenedor) para poder cambiar de proveedor; respaldo diario fuera del proveedor (RNF-008); documentar cómo migrar a otro plan gratuito | Aviso de cambio de condiciones del proveedor o límite de uso alcanzado | Alumno |
 | R-10 | **Mitigar** | Código y documentación claros; manual técnico de despliegue y respaldo; acordar con el productor un esquema de soporte después de la PS | Cierre de la PS | Alumno + Productor |
 | R-11 | **Mitigar** | Decisión con criterios ponderados (plan, sección 9); prototipo mínimo ("hola mundo" desplegado) antes de cerrar H2 | El prototipo no cumple RNF-009 o RNF-012 | Alumno |
@@ -94,3 +94,4 @@
 | 0.7 | 2026-10-10 | Francisco Garcia Martinez | R-03: HU-43 entre las candidatas a postergar |
 | 0.8 | 2026-11-03 | Francisco Garcia Martinez | R-03 y R-07 ajustados con el cuaderno del productor (más alcance, rodeo más grande) |
 | 0.9 | 2026-11-03 | Francisco Garcia Martinez | Datos del productor reemplazados por datos ficticios (nombre, establecimiento, ubicación, códigos SENASA y montos) para publicar el repositorio |
+| 0.10 | 2026-11-06 | Francisco Garcia Martinez | R-08: los respaldos diarios salen del proveedor, por los límites del plan gratuito de Neon |
