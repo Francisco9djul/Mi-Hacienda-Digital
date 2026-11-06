@@ -53,7 +53,7 @@
       </li>
       <li>
         <span class="semaforo amarillo"></span>
-        <div class="texto"><strong>Piojo — AB123 B081 sin desparasitar</strong><small>"Estaba en el corral" · no se desparasitó en la jornada del 20/08/2026</small></div>
+        <div class="texto"><strong>Piojo — AB123 B081 sin desparasitar</strong><small>No se desparasitó en la jornada del 20/08/2026</small></div>
         <button class="btn" type="button" data-abrir="modal-faltante-identificado">Resolver</button>
       </li>
       <li>
@@ -132,8 +132,8 @@
         <span class="ayuda">Si es un ternero al pie, buscalo por la madre o por sexo, pelaje y seña.</span>
       </div>
       <div class="form-grid mt">
-        <div class="campo"><label>Pelaje</label><select class="input"><option>No sé</option><option>Negro</option><option selected>Colorado</option></select><span class="ayuda">Podés corregirlo mientras siga pendiente.</span></div>
-        <div class="campo"><label>Observación</label><input class="input" value="La que estaba renga"><span class="ayuda">Podés corregirla mientras siga pendiente.</span></div>
+        <div class="campo"><label>Pelaje</label><select class="input"><option>No sé</option><option>Negro</option><option selected>Colorado</option></select><span class="ayuda">Podés corregirlo hasta que la identifiques.</span></div>
+        <div class="campo"><label>Observación</label><input class="input" value="La que estaba renga"><span class="ayuda">Podés corregirla hasta que la identifiques.</span></div>
         <div class="campo"><label>Fecha en que la vacunaste</label><input class="input" type="date"><span class="ayuda">Solo si elegiste "Ya la vacuné". Si no sabés cuál es, solo se cierra el aviso.</span></div>
         <div class="campo"><label>Motivo</label><select class="input"><option>Se vendió</option><option>Se murió</option><option>No se va a vacunar</option><option>Otro</option></select><span class="ayuda">Solo si elegiste "No se va a vacunar".</span></div>
       </div>
@@ -151,7 +151,7 @@
   <div class="modal" role="dialog" aria-labelledby="t-faltante-id">
     <div class="modal-cab"><h2 id="t-faltante-id">Resolver: AB123 B081 sin desparasitar contra piojo</h2><button class="cerrar" data-cerrar aria-label="Cerrar">×</button></div>
     <div class="modal-cuerpo">
-      <div class="aviso info" style="margin-bottom:1.25rem"><i data-ico="info"></i><div>No se desparasitó en la jornada del <strong>20/08/2026</strong>. Anotaste: <strong>"Estaba en el corral"</strong>.</div></div>
+      <div class="aviso info" style="margin-bottom:1.25rem"><i data-ico="info"></i><div>No se desparasitó en la jornada del <strong>20/08/2026</strong>.</div></div>
       <div class="campo completo"><label>¿Qué querés hacer? <span class="req">*</span></label>
         <div class="opciones">
           <label><input type="radio" name="faltante-id" checked> Ya la desparasité</label>
@@ -161,7 +161,6 @@
       <div class="form-grid mt">
         <div class="campo"><label>Fecha en que la desparasitaste</label><input class="input" type="date"></div>
         <div class="campo"><label>Motivo</label><select class="input"><option>Se vendió</option><option>Se murió</option><option>No se va a desparasitar</option><option>Otro</option></select><span class="ayuda">Solo si elegiste "No se va a desparasitar".</span></div>
-        <div class="campo completo"><label>Observación</label><input class="input" value="Estaba en el corral"></div>
       </div>
     </div>
     <div class="modal-pie">

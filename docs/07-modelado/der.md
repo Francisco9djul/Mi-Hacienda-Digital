@@ -355,7 +355,7 @@ erDiagram
 | `EVENTO_SANITARIO.categoria_id` | FK | Categoría por la que se vacunó al animal en una vacunación masiva (RN-023). La dosis no se usa en las vacunaciones |
 | `EVENTO_SANITARIO.aplicado` | Booleano | `true` por defecto. Pasa a `false` cuando un animal sin identificar se identifica como faltante de la jornada (RN-027): sigue en el historial como "no aplicado" y no cuenta en la cobertura |
 | `FALTANTE_JORNADA.animal_id` | Opcional | Nulo mientras esté sin identificar. Identificarlo no cierra el aviso. Las filas sin identificar de una categoría no pueden superar los animales de esa categoría en la jornada menos los excluidos por caravana (RN-027) |
-| `FALTANTE_JORNADA.pelaje`, `observacion` | Opcionales | Datos para reconocer al animal después ("colorado", "la que estaba renga"). Se pueden corregir mientras siga `PENDIENTE` |
+| `FALTANTE_JORNADA.pelaje`, `observacion` | Opcionales | Datos para reconocer a un animal sin identificar ("colorado", "la que estaba renga"). Quedan vacíos si se carga directamente por caravana. Se pueden corregir mientras `animal_id` sea nulo |
 | `FALTANTE_JORNADA.estado` | `PENDIENTE`, `VACUNADO_DESPUES`, `CERRADO` | El aviso sigue en Pendientes mientras sea `PENDIENTE`. `VACUNADO_DESPUES` (también para desparasitaciones) lleva `fecha_resolucion` y, si tiene `animal_id`, crea su evento individual. `CERRADO` requiere `motivo` |
 | `EVENTO_SANITARIO.evolucion` | `EN_CURSO`, `RECUPERADO`, `MUERTO` | `MUERTO` → baja por muerte con la enfermedad como causa |
 | `ENFERMEDAD.nombre` | Texto | Valores iniciales: Diarrea, Neumonía, Ombligo, Otra |
@@ -395,3 +395,4 @@ erDiagram
 | 0.11 | 2026-11-03 | Francisco Garcia Martinez | Datos del productor reemplazados por datos ficticios (nombre, establecimiento, ubicación, códigos SENASA y montos) para publicar el repositorio |
 | 0.12 | 2026-11-04 | Francisco Garcia Martinez | Faltantes sin identificar en vacunaciones y desparasitaciones (RN-027): `FALTANTE_JORNADA`, `FALTANTE_RESOLUCION` y `EVENTO_SANITARIO.aplicado` |
 | 0.13 | 2026-11-06 | Francisco Garcia Martinez | `FALTANTE_JORNADA` pasa a una fila por animal, con `animal_id`, `pelaje`, `observacion` y `estado`; se elimina `FALTANTE_RESOLUCION` (RN-027) |
+| 0.15 | 2026-11-06 | Francisco Garcia Martinez | `FALTANTE_JORNADA.pelaje` y `observacion`: solo para animales sin identificar |

@@ -228,7 +228,7 @@
 - **Criterios de aceptación:**
   - Elijo la vacuna con su **marca**, la **serie** y el **vencimiento** de la serie, y una, varias o **todas las categorías**, con la **fecha de cada categoría** (por ejemplo, vacas el 08/10 y vaquillonas el 09/10).
   - La vacuna queda registrada para todos los animales de esas categorías (RN-023): no tengo que cargar caravanas.
-  - Si sé cuál no pasó por la manga, lo excluyo por su **caravana** y puedo agregar una **observación**.
+  - Si sé cuál no pasó por la manga, lo excluyo por su **caravana**, sin más datos.
   - Si no me acuerdo de la caravana, cargo el animal por **categoría** y, si quiero, con **pelaje**, **observación** y **cantidad** (1 por defecto), para reconocerlo después; por ejemplo, "vaca, colorada, la que estaba renga" (RN-027). No puedo poner más de los que hay en esa categoría.
   - Si faltaron varios sin ningún dato, cargo una sola fila (por ejemplo, "3 vacas") y más adelante le agrego el detalle a cada una.
   - Todo animal que no se vacunó me queda con un **aviso**, esté identificado o no, hasta que lo resuelvo (HU-47).
@@ -316,7 +316,7 @@
   - Al identificarlo, su registro de esa jornada queda como **no aplicado** y el aviso sigue, ahora con su caravana y también en su ficha: el animal todavía no se vacunó.
   - Marco **ya lo vacuné** (o desparasité) con la fecha: si está identificado, se le registra el evento; si no, solo se cierra el aviso con esa fecha.
   - Marco **no se va a vacunar** con un motivo (por ejemplo, se vendió o se murió) y el aviso se cierra.
-  - Mientras siga pendiente, puedo agregar o corregir el pelaje y la observación.
+  - Mientras siga sin identificar, puedo agregar o corregir el pelaje y la observación.
   - Cada acción queda en la auditoría (RN-027).
 
 ## M4 — Reproducción
@@ -512,3 +512,4 @@
 | 0.12 | 2026-11-03 | Francisco Garcia Martinez | Datos del productor reemplazados por datos ficticios (nombre, establecimiento, ubicación, códigos SENASA y montos) para publicar el repositorio |
 | 0.13 | 2026-11-04 | Francisco Garcia Martinez | Animales que faltaron vacunar o desparasitar sin identificar (RN-027) en HU-16, HU-17, HU-19 y HU-31 |
 | 0.14 | 2026-11-06 | Francisco Garcia Martinez | Faltantes con pelaje, observación y cantidad, y aviso para todo animal no vacunado o no desparasitado (HU-09, HU-16, HU-17, HU-19 y HU-31); nuevas HU-47 (resolver faltantes), HU-48 (Pendientes), HU-49 (anular registros) y HU-50 (permisos por rol) |
+| 0.15 | 2026-11-06 | Francisco Garcia Martinez | HU-16 y HU-47: la observación es solo para los animales sin identificar |
