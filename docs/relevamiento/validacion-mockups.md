@@ -62,7 +62,7 @@
 ## 3. Jornadas (cargar muchos animales de una vez) *(pregunta 43)*
 
 - [ ] **F10 — Vacunar** (por categoría, con marca, serie y vencimiento) · [abrir](../07-modelado/mockups/jornada-nueva.html?tipo=vacunar)
-  - Mostrar: si faltó alguno, lo carga por caravana o, si no se acuerda, por categoría con pelaje y observación ("vaca colorada, la que estaba renga"). Queda con aviso en [Pendientes](../07-modelado/mockups/alertas.html) y con **Resolver** elige la caravana entre las vacas coloradas, marca que ya la vacunó o que no se va a vacunar.
+  - Mostrar: si faltaron animales, carga una o varias caravanas o, si no se acuerda, por categoría con pelaje y observación ("vaca colorada, la que estaba renga"). Queda con aviso en [Pendientes](../07-modelado/mockups/alertas.html) y con **Resolver** elige la caravana entre las vacas coloradas, marca que ya la vacunó o que no se va a vacunar.
   - Fecha OK: ____ · Observaciones:
 - [ ] **F11 — Desparasitar** (por categoría, contra qué, aviso para rotar la droga) · [abrir](../07-modelado/mockups/jornada-nueva.html?tipo=desparasitar)
   - Mostrar: los que faltaron, igual que en la vacunación; un animal identificado también queda con aviso y figura en su [ficha](../07-modelado/mockups/animal-ficha.html).
@@ -181,3 +181,4 @@
 | 0.2 | 2026-11-03 | Francisco Garcia Martinez | Datos del productor reemplazados por datos ficticios (nombre, establecimiento, ubicación, códigos SENASA y montos) para publicar el repositorio |
 | 0.3 | 2026-11-04 | Francisco Garcia Martinez | Faltantes sin identificar en F10 y F11, y duda para confirmar RN-027 con el productor |
 | 0.4 | 2026-11-06 | Francisco Garcia Martinez | Faltantes con pelaje y observación, aviso para todos y duda de RN-027 ampliada |
+| 0.5 | 2026-11-06 | Francisco Garcia Martinez | F10: se pueden cargar varias caravanas |

@@ -228,7 +228,8 @@
 - **Criterios de aceptación:**
   - Elijo la vacuna con su **marca**, la **serie** y el **vencimiento** de la serie, y una, varias o **todas las categorías**, con la **fecha de cada categoría** (por ejemplo, vacas el 08/10 y vaquillonas el 09/10).
   - La vacuna queda registrada para todos los animales de esas categorías (RN-023): no tengo que cargar caravanas.
-  - Si sé cuál no pasó por la manga, lo excluyo por su **caravana**, sin más datos.
+  - Si sé cuáles no pasaron por la manga, cargo sus **caravanas**, sin más datos: cada una va en su propio campo y agrego otro cuando lo necesito, tantos como quiera. Si hay más de un campo, puedo quitar el que no corresponda.
+  - Al cargar cada caravana, el sistema me avisa si no existe, si no es de las categorías elegidas o si ya la cargué.
   - Si no me acuerdo de la caravana, cargo el animal por **categoría** y, si quiero, con **pelaje**, **observación** y **cantidad** (1 por defecto), para reconocerlo después; por ejemplo, "vaca, colorada, la que estaba renga" (RN-027). No puedo poner más de los que hay en esa categoría.
   - Si faltaron varios sin ningún dato, cargo una sola fila (por ejemplo, "3 vacas") y más adelante le agrego el detalle a cada una.
   - Todo animal que no se vacunó me queda con un **aviso**, esté identificado o no, hasta que lo resuelvo (HU-47).
@@ -241,7 +242,7 @@
 - **Criterios de aceptación:**
   - El tratamiento es **individual**: elijo el animal por su caravana (o, si es un ternero al pie, por la madre o por sexo, pelaje y seña) y registro diagnóstico, producto, dosis, duración y fecha de inicio.
   - Al guardar puedo pedir que me avise para revisarlo en una cantidad de días (HU-44).
-  - La desparasitación es **masiva**: elijo una, varias o todas las categorías, con la fecha de cada una (RN-023). Los que no pasaron por la manga los cargo igual que en la vacunación: por caravana, o por categoría con pelaje, observación y cantidad si no me acuerdo de cuáles son. Todos me quedan con aviso hasta que los resuelvo (RN-027, HU-47).
+  - La desparasitación es **masiva**: elijo una, varias o todas las categorías, con la fecha de cada una (RN-023). Los que no pasaron por la manga los cargo igual que en la vacunación: por una o varias caravanas, o por categoría con pelaje, observación y cantidad si no me acuerdo de cuáles son. Todos me quedan con aviso hasta que los resuelvo (RN-027, HU-47).
   - El período de retiro se completa desde el producto y puede modificarse.
   - El animal queda marcado como "no apto para venta o faena" hasta que termina el retiro (RN-009).
   - En una desparasitación indico contra qué es (internos, mosca, piojo, sarna) y el producto con su forma de aplicación (inyectable, pour-on, baño).
@@ -514,3 +515,4 @@
 | 0.14 | 2026-11-06 | Francisco Garcia Martinez | Faltantes con pelaje, observación y cantidad, y aviso para todo animal no vacunado o no desparasitado (HU-09, HU-16, HU-17, HU-19 y HU-31); nuevas HU-47 (resolver faltantes), HU-48 (Pendientes), HU-49 (anular registros) y HU-50 (permisos por rol) |
 | 0.15 | 2026-11-06 | Francisco Garcia Martinez | HU-16 y HU-47: la observación es solo para los animales sin identificar |
 | 0.16 | 2026-11-06 | Francisco Garcia Martinez | Se quita el rol Veterinario: HU-03 y las historias de sanidad y tacto pasan a ser del productor (HU-16, HU-17, HU-20, HU-23, HU-40, HU-44 y HU-47) |
+| 0.17 | 2026-11-06 | Francisco Garcia Martinez | HU-16 y HU-17: varias caravanas de animales que no pasaron por la manga |

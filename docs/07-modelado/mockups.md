@@ -288,3 +288,4 @@ Variante **tacto por lote**: el paso 2 muestra una tabla para cargar el resultad
 | 0.16 | 2026-11-06 | Francisco Garcia Martinez | Animales que faltaron con pelaje, observación y cantidad en la Nueva jornada (P06); avisos identificados y sin identificar en Pendientes (P12) y tablero (P02); modal **Resolver** con las vacas de ese pelaje primero (P11, P12); aviso en la ficha (P04); RF-047 a RF-050 en la trazabilidad de pantallas |
 | 0.17 | 2026-11-06 | Francisco Garcia Martinez | Nueva jornada (P06) y Pendientes (P12): sin observación al cargar un animal por caravana |
 | 0.18 | 2026-11-06 | Francisco Garcia Martinez | Usuarios (P17): se quita el rol Veterinario |
+| 0.19 | 2026-11-06 | Francisco Garcia Martinez | Nueva jornada (P06): varias caravanas de animales que no pasaron por la manga, en vacunar y desparasitar |

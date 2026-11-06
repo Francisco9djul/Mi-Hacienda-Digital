@@ -23,8 +23,8 @@
 | RF-013 | Genealogía | OE-01, OE-03 | M2 | HU-13 | CP-013 | S | 3 | Pendiente |
 | RF-014 | Importar desde planilla | OE-01 | M2 | HU-14 | CP-014 | M | 3 | Pendiente |
 | RF-015 | Jornada: evento para varios animales | OE-01, OE-06 | M2 | HU-15 | CP-015 | M | 3 | Pendiente |
-| RF-016 | Vacunación masiva por categoría | OE-02 | M3 | HU-16 | CP-016, CP-016b, CP-016c | M | 4 | Pendiente |
-| RF-017 | Tratamientos individuales y desparasitaciones por categoría | OE-02 | M3 | HU-17 | CP-017, CP-017b | M | 4 | Pendiente |
+| RF-016 | Vacunación masiva por categoría | OE-02 | M3 | HU-16 | CP-016, CP-016b, CP-016c, CP-016d | M | 4 | Pendiente |
+| RF-017 | Tratamientos individuales y desparasitaciones por categoría | OE-02 | M3 | HU-17 | CP-017, CP-017b, CP-016d | M | 4 | Pendiente |
 | RF-018 | Plan sanitario anual | OE-02 | M3 | HU-18 | CP-018 | M | 4 | Pendiente |
 | RF-019 | Alertas sanitarias | OE-02 | M3 | HU-19 | CP-019, CP-016b | M | 4 | Pendiente |
 | RF-020 | Historial sanitario | OE-02 | M3 | HU-20 | CP-020 | M | 4 | Pendiente |
@@ -108,7 +108,7 @@
 | RN-024 | RF-044 | CP-044 |
 | RN-025 | RF-013 | CP-013b |
 | RN-026 | RF-041 | CP-041b |
-| RN-027 | RF-016, RF-017, RF-019, RF-031, RF-047 | CP-016b, CP-016c, CP-017b, CP-047 |
+| RN-027 | RF-016, RF-017, RF-019, RF-031, RF-047 | CP-016b, CP-016c, CP-016d, CP-017b, CP-047 |
 
 ## Cobertura
 
@@ -138,3 +138,4 @@
 | 0.11 | 2026-11-03 | Francisco Garcia Martinez | Nuevos RF-045 y RF-046; RN-025 y RN-026 (cuaderno del productor) |
 | 0.12 | 2026-11-04 | Francisco Garcia Martinez | RN-027 (faltantes sin identificar) y casos CP-016b, CP-016c y CP-017b |
 | 0.13 | 2026-11-06 | Francisco Garcia Martinez | Nuevos RF-047 a RF-050 con sus HU y CP; RN-027 con RF-047 y CP-047 |
+| 0.14 | 2026-11-06 | Francisco Garcia Martinez | CP-016d en RF-016, RF-017 y RN-027 |
