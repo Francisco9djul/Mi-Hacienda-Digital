@@ -35,6 +35,7 @@
 | Alertas sanitarias | RF-019 | L | L | L |
 | Resolver animales que no se vacunaron o desparasitaron | RF-047 | CLMB | CLM | L |
 | Pendientes | RF-048 | L | L | L |
+| Finalizar un animal en tratamiento | RF-038, RN-029 | M | M, solo "se recuperó" | — |
 | Anular registros y jornadas | RF-049 | B | — | — |
 | Recordatorios de revisión | RF-044 | CLMB | CLM | L |
 | Animales apartados | RF-045 | CLMB | CLM | L |
@@ -72,3 +73,4 @@
 | 0.10 | 2026-11-03 | Francisco Garcia Martinez | Datos del productor reemplazados por datos ficticios (nombre, establecimiento, ubicación, códigos SENASA y montos) para publicar el repositorio |
 | 0.11 | 2026-11-06 | Francisco Garcia Martinez | Permisos de RF-047, RF-048 y RF-049; control de permisos vinculado a RF-050 |
 | 0.12 | 2026-11-06 | Francisco Garcia Martinez | Se quita el rol Veterinario y su columna en la matriz |
+| 0.13 | 2026-11-07 | Francisco Garcia Martinez | Permiso para finalizar un animal en tratamiento (RN-029) |

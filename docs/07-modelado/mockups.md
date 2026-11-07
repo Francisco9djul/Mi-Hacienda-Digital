@@ -22,7 +22,7 @@ El recorrido de todas las pantallas está descripto en `flujos-mockups.pdf`, que
 | P09 | Importar planilla | [importar.html](mockups/importar.html) | RF-014 |
 | P10 | Jornadas | [jornadas.html](mockups/jornadas.html) | RF-015, RF-020 |
 | P11 | Detalle de jornada | [jornada-detalle.html](mockups/jornada-detalle.html) | RF-020, RF-047, RF-049 |
-| P12 | Pendientes (alertas) | [alertas.html](mockups/alertas.html) | RF-019, RF-027, RF-047, RF-048 |
+| P12 | Pendientes (alertas) | [alertas.html](mockups/alertas.html) | RF-019, RF-027, RF-038, RF-047, RF-048 |
 | P13 | Sanidad (con animales enfermos y análisis) | [sanidad.html](mockups/sanidad.html) | RF-016, RF-017, RF-019, RF-020, RF-038, RF-040 |
 | P14 | Plan sanitario anual | [plan-sanitario.html](mockups/plan-sanitario.html) | RF-018 |
 | P15 | Reproducción | [reproduccion.html](mockups/reproduccion.html) | RF-021 a RF-027 |
@@ -290,3 +290,8 @@ Variante **tacto por lote**: el paso 2 muestra una tabla para cargar el resultad
 | 0.18 | 2026-11-06 | Francisco Garcia Martinez | Usuarios (P17): se quita el rol Veterinario |
 | 0.19 | 2026-11-06 | Francisco Garcia Martinez | Nueva jornada (P06): varias caravanas de animales que no pasaron por la manga, en vacunar y desparasitar |
 | 0.20 | 2026-11-06 | Francisco Garcia Martinez | Enfermos en Nueva jornada (P06) y Sanidad (P13): cada animal con caravana, categoría, pelaje y observación |
+| 0.21 | 2026-11-07 | Francisco Garcia Martinez | Enfermos en Nueva jornada (P06) y Sanidad (P13): identificar por caravana, por la madre o sin identificar; casos sin identificar en el historial |
+| 0.22 | 2026-11-07 | Francisco Garcia Martinez | Pendientes (P12): animales en tratamiento y modal para finalizarlos |
+| 0.23 | 2026-11-07 | Francisco Garcia Martinez | Se quita "Tratar un animal": el tratamiento se carga en "Animal enfermo" o con "Agregar tratamiento" en Pendientes (P04, P06, P12, P13) |
+| 0.24 | 2026-11-07 | Francisco Garcia Martinez | Agregar tratamiento y finalizar pasan a Sanidad (P13); Pendientes (P12) solo avisa y se actualiza |
+| 0.25 | 2026-11-07 | Francisco Garcia Martinez | Sanidad (P13): filtros de tratamiento y evolución en Animales enfermos |

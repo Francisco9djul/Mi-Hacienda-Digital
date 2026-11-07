@@ -10,7 +10,7 @@ Aplicación web para la gestión integral del rodeo bovino de un establecimiento
 
 - **Entrevista con el productor:** el primer encuentro está hecho y casi todas las preguntas tienen respuesta. Se revisaron fotos de su cuaderno de campo (mayo de 2024 a enero de 2026), que agregaron requisitos nuevos.
 - **Próximo paso:** segundo encuentro para validar los mockups con el productor ([lista de validación](docs/relevamiento/validacion-mockups.md)) y cerrar los requisitos (hito H1, 08/11/2026).
-- **Requisitos:** 50 funcionales (RF-001 a RF-050), 14 no funcionales y 27 reglas de negocio, con sus historias de usuario y casos de prueba trazados en la [matriz](docs/04-matriz-trazabilidad.md).
+- **Requisitos:** 50 funcionales (RF-001 a RF-050), 14 no funcionales y 30 reglas de negocio, con sus historias de usuario y casos de prueba trazados en la [matriz](docs/04-matriz-trazabilidad.md).
 
 ## Qué va a hacer el sistema (v1.0)
 

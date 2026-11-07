@@ -54,7 +54,7 @@
     { id: "inicio", texto: "Inicio", href: "inicio.html", ico: "inicio" },
     { id: "animales", texto: "Animales", href: "animales.html", ico: "animales" },
     { id: "jornadas", texto: "Jornadas", href: "jornadas.html", ico: "jornadas" },
-    { id: "alertas", texto: "Pendientes", href: "alertas.html", ico: "alertas", cuenta: 11 },
+    { id: "alertas", texto: "Pendientes", href: "alertas.html", ico: "alertas", cuenta: 14 },
     { grupo: "Control" },
     { id: "sanidad", texto: "Sanidad", href: "sanidad.html", ico: "sanidad" },
     { id: "reproduccion", texto: "Reproducción", href: "reproduccion.html", ico: "reproduccion" },
@@ -89,7 +89,7 @@
       '<form class="buscador" action="animal-ficha.html" role="search">' + icono("buscar") +
       '<input name="caravana" type="search" placeholder="Buscar caravana… (ej: AB123 B081)" aria-label="Buscar caravana"></form>' +
       '<div class="barra-der">' +
-      '<a class="campana" href="alertas.html" title="Pendientes">' + icono("alertas") + '<span class="punto">11</span></a>' +
+      '<a class="campana" href="alertas.html" title="Pendientes">' + icono("alertas") + '<span class="punto">14</span></a>' +
       '<div class="desplegable" data-desplegable>' +
       '<button class="usuario btn" type="button" style="min-height:auto;border-radius:99px">' +
       '<span class="avatar">EG</span><span class="nombre-usuario" style="text-align:left">Juan<small class="chico">Administrador</small></span></button>' +
@@ -228,7 +228,72 @@
     });
   }
 
-  window.MiHacienda = { icono: icono, toast: mostrarToast, activarTab: activarTab };
+  window.MiHacienda = { icono: icono, toast: mostrarToast, activarTab: activarTab, finalizarCaso: finalizarCaso };
+
+  // Cómo se identifica al animal: muestra solo los campos de la opción elegida (RN-021)
+  function iniciarIdentificacion() {
+    document.addEventListener("change", function (e) {
+      if (!e.target.matches("[data-modo]")) return;
+      var bloque = e.target.closest("[data-identificar]");
+      bloque.querySelectorAll("[data-modo-campos]").forEach(function (el) {
+        el.classList.toggle("oculto", el.dataset.modoCampos !== e.target.value);
+      });
+    });
+  }
+
+  // Tratamiento de un animal enfermo: campos opcionales y retiro según el producto (RN-030)
+  function iniciarTratamiento() {
+    document.addEventListener("change", function (e) {
+      if (e.target.matches("[data-con-tratamiento]")) {
+        e.target.closest("[data-tratamiento]").querySelector("[data-tratamiento-campos]").classList.toggle("oculto", !e.target.checked);
+      }
+      if (e.target.matches("[data-producto]")) {
+        var dias = e.target.selectedOptions[0].dataset.retiro;
+        e.target.closest(".form-grid").querySelector("[data-retiro-texto]").value = dias ? dias + " días, según el producto" : "Sin retiro";
+      }
+    });
+  }
+
+  // Animales en tratamiento: se finalizan en Sanidad y los avisos se actualizan solos (RN-029).
+  // En el mockup se recuerda solo mientras la pestaña siga abierta.
+  var CLAVE_CASOS = "mi-hacienda-casos-finalizados", PENDIENTES = 14, EN_TRATAMIENTO = 4;
+  function casosFinalizados() {
+    try { return JSON.parse(sessionStorage.getItem(CLAVE_CASOS)) || {}; } catch (e) { return {}; }
+  }
+  var finalizados = casosFinalizados();
+  function ponerTexto(selector, texto) {
+    document.querySelectorAll(selector).forEach(function (el) { el.textContent = texto; });
+  }
+  function aplicarCasos() {
+    var n = Object.keys(finalizados).length, quedan = EN_TRATAMIENTO - n;
+    ponerTexto(".punto, .cuenta", PENDIENTES - n);
+    // Pendientes
+    document.querySelectorAll("[data-aviso-caso]").forEach(function (el) {
+      if (finalizados[el.dataset.avisoCaso]) el.remove();
+    });
+    ponerTexto("[data-tratamiento-cuenta]", quedan);
+    document.querySelectorAll("[data-seccion-tratamiento]").forEach(function (el) { el.classList.toggle("oculto", quedan === 0); });
+    // Inicio
+    ponerTexto("[data-inicio-tratamiento]", quedan === 1 ? "1 animal en tratamiento" : quedan + " animales en tratamiento");
+    document.querySelectorAll("[data-inicio-tratamiento-fila]").forEach(function (el) { el.classList.toggle("oculto", quedan === 0); });
+    // Sanidad
+    document.querySelectorAll("[data-fila-caso]").forEach(function (fila) {
+      var caso = finalizados[fila.dataset.filaCaso];
+      if (!caso) return;
+      fila.querySelector('[data-label="Evolución"]').innerHTML = caso.resultado === "murio"
+        ? '<span class="badge danger">Murió ' + caso.fecha + "</span>"
+        : '<span class="badge ok">Recuperado ' + caso.fecha + "</span>";
+      fila.querySelector("[data-acciones-caso]").innerHTML = "";
+    });
+    ponerTexto("[data-kpi-enfermos]", quedan);
+    if (n) ponerTexto("[data-kpi-enfermos-detalle]", quedan === 1 ? "animal en tratamiento" : "animales en tratamiento");
+    ponerTexto("[data-tab-enfermos]", "Animales enfermos (" + quedan + " en curso)");
+  }
+  function finalizarCaso(id, resultado, fecha) {
+    finalizados[id] = { resultado: resultado, fecha: fecha };
+    try { sessionStorage.setItem(CLAVE_CASOS, JSON.stringify(finalizados)); } catch (e) { /* sigue funcionando en esta pantalla */ }
+    aplicarCasos();
+  }
 
   document.addEventListener("DOMContentLoaded", function () {
     armarLayout();
@@ -239,5 +304,8 @@
     iniciarDesplegables();
     iniciarGuardar();
     iniciarTipos();
+    iniciarIdentificacion();
+    iniciarTratamiento();
+    aplicarCasos();
   });
 })();

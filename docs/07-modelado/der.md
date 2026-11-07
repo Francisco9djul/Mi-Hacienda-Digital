@@ -8,7 +8,7 @@
 - **Jornada:** agrupa eventos cargados en una misma operación sobre varios animales (RF-015). Cada evento puede pertenecer, opcionalmente, a una jornada.
 - **Sin borrado físico (RNF-014):** los animales tienen `estado` y datos de baja. Los eventos tienen `anulado`, `motivo_anulacion` y `anulado_por`.
 - **Toros:** un toro es un `ANIMAL` macho del establecimiento. Como los toros están en grupo con las vacas, se registran **por temporada** (`TEMPORADA_TORO`) y no por servicio. La genealogía apunta a `ANIMAL` (madre y, si se conoce, padre). No hay inseminación artificial en la v1.0.
-- **Enfermedades:** los casos de enfermedad son eventos sanitarios de tipo `ENFERMEDAD`, con la enfermedad del catálogo, la causa probable y la evolución. El producto es opcional (si hubo tratamiento). Si no se sabe qué animal es, `animal_id` queda nulo y el caso guarda categoría, pelaje y observación (RN-021).
+- **Enfermedades:** los casos de enfermedad son eventos sanitarios de tipo `ENFERMEDAD`, con la enfermedad del catálogo, la causa probable y la evolución. Sus tratamientos son eventos de tipo `TRATAMIENTO` vinculados por `caso_id`, con producto y retiro (RN-030). Un caso sin identificar tiene `animal_id` nulo para siempre y guarda categoría, pelaje y observación: figura en el historial de enfermedades, pero en ninguna ficha (RN-021).
 - **Alertas:** se **calculan** a partir de los eventos y del plan sanitario, sin guardarse en una tabla. Así se evita mantener datos desincronizados. Si hiciera falta por rendimiento, se agregaría una tabla de caché.
 - **Cuaderno del productor (2026-11-03):** se agregaron mellizos (`cria2_id`), servicio individual (`toro_id`), animales apartados, cuotas de cobro (`COBRO_CUOTA`) y alimentación con stock de reservas (`SUPLEMENTACION`, `RESERVA`).
 - **Recordatorios:** los avisos de seguimiento (por ejemplo, revisar un animal tratado a los 3 días) se guardan en `RECORDATORIO`. A diferencia de las alertas del plan, no se calculan: los crea el usuario.
@@ -36,7 +36,8 @@ erDiagram
     ANIMAL ||--o{ CAMBIO_CATEGORIA : tiene
     CATEGORIA ||--o{ CAMBIO_CATEGORIA : "anterior / nueva"
 
-    ANIMAL ||--o{ EVENTO_SANITARIO : recibe
+    ANIMAL |o--o{ EVENTO_SANITARIO : recibe
+    ANIMAL |o--o{ EVENTO_SANITARIO : "baja sin identificar"
     PRODUCTO_SANITARIO |o--o{ EVENTO_SANITARIO : "se aplica en"
     ENFERMEDAD |o--o{ EVENTO_SANITARIO : "diagnosticada en"
     PRODUCTO_SANITARIO ||--o{ PLAN_SANITARIO_ITEM : "se planifica en"
@@ -58,8 +59,9 @@ erDiagram
     VENTA ||--|{ COBRO_CUOTA : "se cobra en"
     RESERVA ||--o{ SUPLEMENTACION : "se descuenta en"
     ANIMAL ||--o{ REINGRESO : tiene
-    ANIMAL ||--o{ RECORDATORIO : tiene
+    ANIMAL |o--o{ RECORDATORIO : tiene
     EVENTO_SANITARIO |o--o{ RECORDATORIO : genera
+    EVENTO_SANITARIO |o--o{ EVENTO_SANITARIO : "caso con sus tratamientos"
     JORNADA ||--o{ FALTANTE_JORNADA : "animales que faltaron"
     CATEGORIA ||--o{ FALTANTE_JORNADA : "de la categoría"
     ANIMAL |o--o{ FALTANTE_JORNADA : "identificado en"
@@ -188,12 +190,14 @@ erDiagram
         string serie
         date vencimiento_serie
         int categoria_id FK
-        string diagnostico
+        int caso_id FK
         int enfermedad_id FK
         string causa_probable
         string evolucion
+        date fecha_fin_evolucion
         string pelaje
         string observacion
+        int animal_baja_id FK
         string resultado_analisis
         string objetivo
         int duracion_dias
@@ -330,7 +334,7 @@ erDiagram
 | `ANIMAL.origen` | `NACIDO`, `COMPRADO`, `OTRO` | |
 | `ANIMAL.estado` | `ACTIVO`, `BAJA` | |
 | `ANIMAL.motivo_baja` | `VENTA`, `MUERTE`, `TRASLADO`, `OTRO` | `causa_muerte` solo si es `MUERTE`. `TRASLADO` es el pase a otro campo del productor |
-| `ANIMAL.caravana` | Texto, opcional | Caravana oficial de SENASA, formato `AA999A999` en mayúsculas y sin espacios (RN-013). Única entre animales `ACTIVO` (RN-001): índice único parcial. Vacía en los terneros al pie hasta el destete. Los 5 primeros caracteres son el código del establecimiento de origen |
+| `ANIMAL.caravana` | Texto, opcional | Caravana oficial de SENASA, formato `AA999A999` en mayúsculas y sin espacios (RN-013). Única entre animales `ACTIVO` (RN-001): índice único parcial. Vacía en los terneros al pie hasta el destete. Si un animal pierde la caravana no se sabe cuál es, así que este dato no cambia y sus casos se cargan sin identificar (RN-021). Los 5 primeros caracteres son el código del establecimiento de origen |
 | `ESTABLECIMIENTO.codigo_caravana` | `AA999` | Primera parte de la caravana SENASA de los animales nacidos en el campo (AB123). Se completa sola al caravanear |
 | `PRODUCTO_SANITARIO.via_aplicacion` | `INYECTABLE`, `POUR_ON`, `BANO_ASPERSION`, `ORAL`, `OTRA` | |
 | `EVENTO_SANITARIO.objetivo` | `INTERNOS`, `MOSCA`, `PIOJO`, `SARNA`, `OTRO` | Solo en `DESPARASITACION` |
@@ -343,7 +347,7 @@ erDiagram
 | `ANIMAL.fecha_estimada` | Booleano | `true` si la fecha se calculó a partir de una edad estimada |
 | `CATEGORIA.sexo` | `M`, `H`, `AMBOS` | Valores iniciales: Ternero, Ternera, Vaquillona, Vaca, Novillito, Novillo, Toro |
 | `PRODUCTO_SANITARIO.tipo` | `VACUNA`, `ANTIPARASITARIO`, `ANTIBIOTICO`, `VITAMINA`, `ANALISIS`, `OTRO` | |
-| `EVENTO_SANITARIO.tipo` | `VACUNACION`, `TRATAMIENTO`, `DESPARASITACION`, `ENFERMEDAD`, `ANALISIS` | `ANALISIS` usa `producto_id` (raspaje, sangrado) y `resultado_analisis`. `ENFERMEDAD` usa `enfermedad_id`, `causa_probable` y `evolucion`; el producto es opcional |
+| `EVENTO_SANITARIO.tipo` | `VACUNACION`, `TRATAMIENTO`, `DESPARASITACION`, `ENFERMEDAD`, `ANALISIS` | `ANALISIS` usa `producto_id` (raspaje, sangrado) y `resultado_analisis`. `ENFERMEDAD` usa `enfermedad_id`, `causa_probable` y `evolucion`, sin producto. `TRATAMIENTO` usa `caso_id`, `producto_id`, `dosis`, `duracion_dias` y `fin_retiro` |
 | `EVENTO_SANITARIO.resultado_analisis` | `NEGATIVO`, `POSITIVO`, `SOSPECHOSO` | Solo en `ANALISIS`. `POSITIVO` genera alerta |
 | `PLAN_SANITARIO_ITEM.cada_anios` | 1 o 2 | 2 = año por medio (sangrado) |
 | `VENTA.total` | Decimal | Bruto: `kilos_totales` × (1 − `desbaste_pct`) × `precio_kg`. `neto` = total − comisión − `gastos`. Peso promedio = kilos netos ÷ `cantidad` (RN-020) |
@@ -359,14 +363,18 @@ erDiagram
 | `FALTANTE_JORNADA.animal_id` | Opcional | Nulo mientras esté sin identificar. Identificarlo no cierra el aviso. Las filas sin identificar de una categoría no pueden superar los animales de esa categoría en la jornada menos los excluidos por caravana (RN-027) |
 | `FALTANTE_JORNADA.pelaje`, `observacion` | Opcionales | Datos para reconocer a un animal sin identificar ("colorado", "la que estaba renga"). Quedan vacíos si se carga directamente por caravana. Se pueden corregir mientras `animal_id` sea nulo |
 | `FALTANTE_JORNADA.estado` | `PENDIENTE`, `VACUNADO_DESPUES`, `CERRADO` | El aviso sigue en Pendientes mientras sea `PENDIENTE`. `VACUNADO_DESPUES` (también para desparasitaciones) lleva `fecha_resolucion` y, si tiene `animal_id`, crea su evento individual. `CERRADO` requiere `motivo` |
-| `EVENTO_SANITARIO.evolucion` | `EN_CURSO`, `RECUPERADO`, `MUERTO` | `MUERTO` → baja por muerte con la enfermedad como causa |
-| `EVENTO_SANITARIO.pelaje`, `observacion` | Opcionales | Solo en `ENFERMEDAD`: datos para reconocer al animal. `animal_id` puede ser nulo únicamente en este tipo, y entonces `categoria_id` es obligatoria (RN-021) |
+| `EVENTO_SANITARIO.evolucion` | `EN_CURSO`, `RECUPERADO`, `MUERTO` | `EN_CURSO` figura en Pendientes (RN-029). `MUERTO` → baja por muerte con la enfermedad como causa |
+| `EVENTO_SANITARIO.fecha_fin_evolucion` | Opcional | Fecha en que se finaliza el caso como `RECUPERADO` o `MUERTO` (RN-029) |
+| `EVENTO_SANITARIO.pelaje`, `observacion` | Opcionales | Solo en `ENFERMEDAD` sin identificar. `animal_id` puede ser nulo únicamente en este tipo y en sus tratamientos, y entonces `categoria_id` es obligatoria en el caso. No se puede completar después (RN-021) |
+| `EVENTO_SANITARIO.caso_id` | FK, solo en `TRATAMIENTO` | Obligatorio: el caso de enfermedad al que pertenece. El tratamiento toma de él el `animal_id` (RN-030) |
+| `EVENTO_SANITARIO.animal_baja_id` | Opcional | Animal que el sistema dio de baja para descontarlo del stock cuando muere uno sin identificar. No es el animal del caso: el caso no figura en su historial, y se reactiva si se anula el caso (RN-028) |
+| `RECORDATORIO.animal_id` | Opcional | Nulo en un caso sin identificar; entonces `evento_sanitario_id` es obligatorio y el aviso muestra sus datos |
 | `ENFERMEDAD.nombre` | Texto | Valores iniciales: Diarrea, Neumonía, Ombligo, Otra |
 | `EVENTO_REPRODUCTIVO.tipo` | `CELO`, `SERVICIO`, `TACTO`, `PARICION`, `ABORTO`, `DESTETE` | Los atributos usados dependen del tipo (ver abajo) |
 | `EVENTO_REPRODUCTIVO.resultado_tacto` | `PRENADA`, `VACIA` | |
 | `EVENTO_REPRODUCTIVO.tipo_parto` | `NORMAL`, `ASISTIDO`, `CESAREA` | |
 | `EVENTO_REPRODUCTIVO.estado_cria` | `VIVA`, `MUERTA` | `VIVA` → se crea la cría y se completa `cria_id` (RN-005). `MUERTA` cuenta en la mortalidad de terneros (RN-016) |
-| `JORNADA.tipo` | `VACUNACION`, `TRATAMIENTO`, `TACTO`, `SERVICIO`, `PESADA`, `DESTETE`, `VENTA`, `ENFERMEDAD`, `ANALISIS`, `COMPRA`, `CASTRACION`, `ALIMENTACION` | |
+| `JORNADA.tipo` | `VACUNACION`, `TACTO`, `SERVICIO`, `PESADA`, `DESTETE`, `VENTA`, `ENFERMEDAD`, `ANALISIS`, `COMPRA`, `CASTRACION`, `ALIMENTACION` | |
 
 ### Atributos usados por cada tipo de evento reproductivo
 
@@ -402,3 +410,6 @@ erDiagram
 | 0.15 | 2026-11-06 | Francisco Garcia Martinez | `FALTANTE_JORNADA.pelaje` y `observacion`: solo para animales sin identificar |
 | 0.16 | 2026-11-06 | Francisco Garcia Martinez | Se quita `VETERINARIO` de `USUARIO.rol` |
 | 0.17 | 2026-11-06 | Francisco Garcia Martinez | `EVENTO_SANITARIO`: `pelaje` y `observacion`; caso de enfermedad sin animal identificado (RN-021) |
+| 0.18 | 2026-11-07 | Francisco Garcia Martinez | `EVENTO_SANITARIO`: casos y tratamientos sin identificar, `animal_baja_id` (RN-021, RN-028); `RECORDATORIO.animal_id` opcional |
+| 0.19 | 2026-11-07 | Francisco Garcia Martinez | `EVENTO_SANITARIO.fecha_fin_evolucion`; casos en curso en Pendientes (RN-029) |
+| 0.20 | 2026-11-07 | Francisco Garcia Martinez | `TRATAMIENTO` vinculado a su caso por `caso_id`; sin `diagnostico` (RN-030) |

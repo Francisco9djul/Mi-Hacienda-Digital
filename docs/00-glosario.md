@@ -31,7 +31,7 @@ Términos del campo y del proyecto que se usan en toda la documentación. Están
 | **Peón** | Trabajador rural que ayuda en las tareas con la hacienda. |
 | **Manga** | Pasillo angosto por donde se pasa la hacienda para trabajarla de a un animal. |
 | **Brete / Cepo** | Final de la manga, donde se inmoviliza al animal para vacunarlo, revisarlo o caravanearlo. |
-| **Yerra** | Jornada de trabajo en la manga con los terneros: marcar, señalar, vacunar y castrar. En Los Álamos los terneros **no** se caravanean en la yerra sino al destete. En la app, *jornada* es una carga de un mismo evento para muchos animales. |
+| **Yerra** | Jornada de trabajo en la manga con los terneros: marcar, señalar, vacunar y castrar. En Los Álamos los terneros **no** se caravanean en la yerra sino al destete, que muchas veces coincide con la venta. En la app, *jornada* es una carga de un mismo evento para muchos animales. |
 | **Celo** | Período en que la hembra acepta al macho. |
 | **Servicio** | Cubrir a la hembra, por **monta natural** (toro) o **inseminación artificial (IA)**. En Los Álamos es solo monta natural, con 4 toros juntos con las vacas: no se sabe qué toro sirvió a cada vaca. |
 | **Temporada de servicio** | Período del año en que se ponen los toros con las vacas o se insemina. En Los Álamos, de fines de agosto a principios de enero (por ejemplo, del 27/8 al 11/1); cambia cada año. |
@@ -46,7 +46,7 @@ Términos del campo y del proyecto que se usan en toda la documentación. Están
 | **Silo** | Forraje (por ejemplo, de maíz) conservado para darle al rodeo. |
 | **Desbaste** | Descuento porcentual del peso del lote en la venta, por lo que pierde el animal entre el campo y la balanza (por ejemplo, 3 %). |
 | **Comisión** | Porcentaje que cobra la consignataria sobre la venta (por ejemplo, 4 %). |
-| **Ternero al pie** | Ternero que todavía está con la madre, sin destetar. En Los Álamos no tiene caravana hasta el destete. |
+| **Ternero al pie** | Ternero que todavía está con la madre, sin destetar. En Los Álamos no tiene caravana hasta el destete o la venta, salvo si se lo compró ya caravaneado. |
 | **Aborto** | Pérdida de la preñez antes del término. |
 | **Período de retiro / carencia** | Días después de un tratamiento en los que el animal no puede ir a faena ni su leche al consumo. |
 | **Serie** | Identificación de la tanda de fabricación de una vacuna (lo que en otros productos se llama lote). El productor la anota en cada vacunación, junto con la marca y el vencimiento, para saber con qué vacunó. |
@@ -111,3 +111,4 @@ Términos del campo y del proyecto que se usan en toda la documentación. Están
 | 0.11 | 2026-10-10 | Francisco Garcia Martinez | Serie con marca y vencimiento |
 | 0.12 | 2026-11-03 | Francisco Garcia Martinez | Mellizos, apartar, rollo, silo, desbaste y comisión; fechas de servicio, parición y destete según el cuaderno |
 | 0.13 | 2026-11-03 | Francisco Garcia Martinez | Datos del productor reemplazados por datos ficticios (nombre, establecimiento, ubicación, códigos SENASA y montos) para publicar el repositorio |
+| 0.14 | 2026-11-07 | Francisco Garcia Martinez | Yerra y Ternero al pie: cuándo se caravanea |
