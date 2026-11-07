@@ -41,10 +41,9 @@
           <a href="#" data-abrir="modal-evento">❤️ Celo (si lo viste)</a>
           <div class="chico" style="padding:.4rem .85rem">Sanidad</div>
           <a href="#" data-abrir="modal-evento">💉 Vacuna</a>
-          <a href="#" data-abrir="modal-enfermedad">💊 Tratamiento</a>
           <a href="#" data-abrir="modal-recordatorio">⏰ Recordatorio</a>
           <a href="#" data-guardar="Vaca apartada para descarte">📌 Apartar para vender o descartar</a>
-          <a href="#" data-abrir="modal-enfermedad">🤒 Enfermedad</a>
+          <a href="#" data-abrir="modal-enfermedad">🤒 Animal enfermo</a>
           <div class="chico" style="padding:.4rem .85rem">Manejo</div>
           <a href="#" data-abrir="modal-pesada">⚖️ Pesada</a>
           <a href="#" data-abrir="modal-categoria">🏷️ Cambiar categoría</a>
@@ -257,14 +256,22 @@
 <!-- Modal: enfermedad (RF-038) -->
 <div class="modal-fondo" id="modal-enfermedad">
   <div class="modal" role="dialog">
-    <div class="modal-cab"><h2>Enfermedad o tratamiento — AB123 B081</h2><button class="cerrar" data-cerrar aria-label="Cerrar">×</button></div>
+    <div class="modal-cab"><h2>Animal enfermo — AB123 B081</h2><button class="cerrar" data-cerrar aria-label="Cerrar">×</button></div>
     <div class="modal-cuerpo">
       <div class="form-grid">
         <div class="campo"><label>Fecha <span class="req">*</span></label><input class="input" type="date" value="2026-10-10"></div>
-        <div class="campo"><label>Enfermedad <span class="req">*</span></label><select class="input"><option>Diarrea</option><option>Neumonía</option><option>Queratoconjuntivitis</option><option>Otra</option></select></div>
+        <div class="campo"><label>Enfermedad <span class="req">*</span></label><select class="input"><option>Diarrea</option><option>Neumonía</option><option>Queratoconjuntivitis</option><option>Pietín</option><option>Otra</option></select></div>
         <div class="campo completo"><label>Causa probable</label><input class="input" placeholder="Ej: frío y lluvia, cambio de alimentación, no se sabe"></div>
-        <div class="campo"><label>Tratamiento (opcional)</label><select class="input"><option>Sin tratamiento</option><option>Oxitetraciclina</option><option>Enrofloxacina</option><option>Sales de rehidratación</option></select></div>
-        <div class="campo"><label>Evolución</label><select class="input"><option>En curso</option><option>Recuperado</option><option>Murió</option></select><span class="ayuda">Si muere, se da de baja con esta enfermedad como causa.</span></div>
+        <div class="campo completo" data-tratamiento>
+          <label><input type="checkbox" data-con-tratamiento> Le di un tratamiento</label>
+          <div class="mt oculto" data-tratamiento-campos><div class="form-grid">
+            <div class="campo"><label>Producto <span class="req">*</span></label><select class="input" data-producto><option data-retiro="">Sales de rehidratación</option><option data-retiro="28" selected>Oxitetraciclina LA (inyectable)</option><option data-retiro="14">Enrofloxacina (inyectable)</option></select></div>
+            <div class="campo"><label>Dosis</label><input class="input" value="20 ml"></div>
+            <div class="campo"><label>Duración (días)</label><input class="input" value="1"></div>
+            <div class="campo"><label>Retiro</label><input class="input" value="28 días, según el producto" disabled data-retiro-texto></div>
+          </div><span class="ayuda" style="display:block;margin-top:.5rem">Si le das otro más adelante, lo agregás desde Sanidad.</span></div>
+        </div>
+        <div class="campo"><label>Evolución</label><select class="input"><option>En curso</option><option>Recuperado</option><option>Murió</option></select><span class="ayuda">Si queda en curso, te aparece en Pendientes hasta que lo finalices en Sanidad. Si muere, se da de baja con esta enfermedad como causa.</span></div>
         <div class="campo completo"><span class="label">Aviso</span><div class="fila-inputs"><label><input type="checkbox"> Avisarme para revisarla en</label><input class="input" value="3" style="max-width:80px"><span>días</span></div></div>
       </div>
     </div>
@@ -318,7 +325,7 @@
   </div>
 </div>
 
-<!-- Modal: evento genérico (tacto, aborto, celo, vacuna, tratamiento) -->
+<!-- Modal: evento genérico (tacto, aborto, celo, vacuna) -->
 <div class="modal-fondo" id="modal-evento">
   <div class="modal" role="dialog">
     <div class="modal-cab"><h2>Tacto — AB123 B081</h2><button class="cerrar" data-cerrar aria-label="Cerrar">×</button></div>

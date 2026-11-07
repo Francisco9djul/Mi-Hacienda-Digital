@@ -32,7 +32,7 @@
   - Preguntar: ¿qué agregaría o sacaría?
   - Fecha OK: ____ · Observaciones:
 - [ ] **F03 — Pendientes** · [pendientes](../07-modelado/mockups/alertas.html)
-  - Mostrar: vacunas obligatorias, ventana del plan abierta, revisiones de animales tratados, vacas que faltan parir, terneros sin castrar, cuotas por cobrar, apartados, rollos.
+  - Mostrar: vacunas obligatorias, ventana del plan abierta, animales en tratamiento (llevan a Sanidad y se actualizan solos), revisiones de animales tratados, vacas que faltan parir, terneros sin castrar, cuotas por cobrar, apartados, rollos.
   - Preguntar: ¿los 30 días de anticipación le sirven?
   - Fecha OK: ____ · Observaciones:
 
@@ -67,7 +67,7 @@
 - [ ] **F11 — Desparasitar** (por categoría, contra qué, aviso para rotar la droga) · [abrir](../07-modelado/mockups/jornada-nueva.html?tipo=desparasitar)
   - Mostrar: los que faltaron, igual que en la vacunación; un animal identificado también queda con aviso y figura en su [ficha](../07-modelado/mockups/animal-ficha.html).
   - Fecha OK: ____ · Observaciones:
-- [ ] **F12 — Enfermos** (cada animal con caravana, categoría, pelaje y observación) · [abrir](../07-modelado/mockups/jornada-nueva.html?tipo=enfermos)
+- [ ] **F12 — Enfermos** (cada animal por caravana, por la madre o sin identificar) · [abrir](../07-modelado/mockups/jornada-nueva.html?tipo=enfermos)
   - Fecha OK: ____ · Observaciones:
 - [ ] **F13 — Análisis** (raspaje de toros, sangrado, resultado por animal) · [abrir](../07-modelado/mockups/jornada-nueva.html?tipo=analisis)
   - Fecha OK: ____ · Observaciones:
@@ -97,10 +97,12 @@
 
 - [ ] **F24 — Vacunas pendientes según el plan** · [sanidad](../07-modelado/mockups/sanidad.html)
   - Fecha OK: ____ · Observaciones:
-- [ ] **F25 — Tratar un animal y aviso para revisarlo** · [sanidad → Tratar un animal](../07-modelado/mockups/sanidad.html)
-  - Mostrar: tratamiento individual por caravana, retiro calculado, "avisarme en 3 días".
+- [ ] **F25 — Tratamiento del animal enfermo y aviso para revisarlo** · [sanidad → Animal enfermo](../07-modelado/mockups/sanidad.html) · [sanidad → enfermos → Tratar](../07-modelado/mockups/sanidad.html#enfermos)
+  - Mostrar: el enfermo y su tratamiento en una sola carga, agregar otro después, retiro calculado, "avisarme en 3 días".
+  - Preguntar: lo que no es una enfermedad (una herida, una vitamina), ¿lo cargaría con la enfermedad "Otra" o suma opciones al catálogo? ¿Algún tratamiento no tiene que quedar en seguimiento?
   - Fecha OK: ____ · Observaciones:
 - [ ] **F26 — Animales enfermos** · [sanidad → enfermos](../07-modelado/mockups/sanidad.html#enfermos)
+  - Mostrar: una sola grilla, con o sin tratamiento, y sus filtros; finalizar un animal (se recuperó o murió) y ver que el aviso desaparece de Pendientes; un caso sin identificar ("ternero colorado, estaba rengo") en el historial y sin ficha. Confirmar con el productor qué pasa si muere: cuenta en la mortalidad y el stock baja en 1 (RN-028).
   - Fecha OK: ____ · Observaciones:
 - [ ] **F27 — Análisis y período de retiro** · [análisis](../07-modelado/mockups/sanidad.html#analisis) · [retiro](../07-modelado/mockups/sanidad.html#retiro)
   - Fecha OK: ____ · Observaciones:
@@ -183,3 +185,8 @@
 | 0.4 | 2026-11-06 | Francisco Garcia Martinez | Faltantes con pelaje y observación, aviso para todos y duda de RN-027 ampliada |
 | 0.5 | 2026-11-06 | Francisco Garcia Martinez | F10: se pueden cargar varias caravanas |
 | 0.6 | 2026-11-06 | Francisco Garcia Martinez | F12: filas de animales enfermos |
+| 0.7 | 2026-11-07 | Francisco Garcia Martinez | F12 y F26: animales sin identificar; RN-028 a confirmar con el productor |
+| 0.8 | 2026-11-07 | Francisco Garcia Martinez | F03: animales en tratamiento |
+| 0.9 | 2026-11-07 | Francisco Garcia Martinez | F25: tratamiento dentro del animal enfermo; consulta por lo que no es una enfermedad |
+| 0.10 | 2026-11-07 | Francisco Garcia Martinez | F03, F25 y F26: tratar y finalizar en Sanidad |
+| 0.11 | 2026-11-07 | Francisco Garcia Martinez | F26: grilla única de enfermos y filtros |

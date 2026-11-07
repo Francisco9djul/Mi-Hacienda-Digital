@@ -6,6 +6,7 @@
   <title>Sanidad — Mi Hacienda Digital</title>
   <link rel="stylesheet" href="assets/estilos.css">
   <script src="assets/app.js" defer></script>
+  <style>@media (min-width: 641px) { #enfermos .tabla th, #enfermos .tabla td { padding-left: .5rem; padding-right: .5rem; } }</style>
 </head>
 <body data-layout="app" data-nav="sanidad" data-codigo="P13">
 
@@ -18,7 +19,6 @@
     </div>
     <div class="acciones">
       <a class="btn" href="plan-sanitario.html"><i data-ico="calendario"></i> Plan sanitario 2026</a>
-      <button class="btn" type="button" data-abrir="modal-tratar">💊 Tratar un animal</button>
       <button class="btn" type="button" data-abrir="modal-enfermo">🤒 Animal enfermo</button>
       <a class="btn" href="jornada-nueva.html?tipo=analisis">🧪 Análisis</a>
       <a class="btn btn-primario" href="jornada-nueva.html?tipo=vacunar"><i data-ico="mas"></i> Vacunar / desparasitar</a>
@@ -28,16 +28,16 @@
   <div class="grilla g-4">
     <div class="card kpi"><div class="etiqueta">Carbunclo (obligatoria)</div><div class="valor" style="color:var(--amarillo)">93 %</div><div class="detalle">95 de 102 · 1 sin identificar · vence 30/11</div></div>
     <div class="card kpi"><div class="etiqueta">Ventana abierta</div><div class="valor" style="color:var(--amarillo)">87</div><div class="detalle">terneros · mancha 1.ª dosis</div></div>
-    <div class="card kpi"><div class="etiqueta">Enfermos en curso</div><div class="valor" style="color:var(--rojo)">3</div><div class="detalle">terneros con diarrea</div></div>
-    <div class="card kpi"><div class="etiqueta">En retiro</div><div class="valor" style="color:var(--amarillo)">1</div><div class="detalle">no apto venta/faena</div></div>
+    <div class="card kpi"><div class="etiqueta">Enfermos en curso</div><div class="valor" style="color:var(--rojo)" data-kpi-enfermos>4</div><div class="detalle" data-kpi-enfermos-detalle>3 terneros con diarrea y 1 vaca con pietín</div></div>
+    <div class="card kpi"><div class="etiqueta">En retiro</div><div class="valor" style="color:var(--amarillo)">2</div><div class="detalle">no apto venta/faena</div></div>
   </div>
 
   <section class="card mt" data-tabs-ambito>
     <div class="tabs">
       <button data-tab="proximas" class="activo">Vacunas pendientes</button>
-      <button data-tab="enfermos">Animales enfermos (3 en curso)</button>
+      <button data-tab="enfermos" data-tab-enfermos>Animales enfermos (4 en curso)</button>
       <button data-tab="analisis">Análisis</button>
-      <button data-tab="retiro">En período de retiro (1)</button>
+      <button data-tab="retiro">En período de retiro (2)</button>
       <button data-tab="historial">Historial</button>
     </div>
 
@@ -56,18 +56,27 @@
     </div>
 
     <div class="tab-panel" id="enfermos">
+      <div class="filtros" style="box-shadow:none">
+        <div class="campo"><label for="filtro-identificacion">Identificación</label><select class="input" id="filtro-identificacion" data-filtro-enfermos><option value="">Todos</option><option value="identificado">Identificados</option><option value="sin">Sin identificar</option></select></div>
+        <div class="campo"><label for="filtro-tratamiento">Tratamiento</label><select class="input" id="filtro-tratamiento" data-filtro-enfermos><option value="">Todos</option><option value="con">Con tratamiento</option><option value="sin">Sin tratamiento</option></select></div>
+        <div class="campo"><label for="filtro-evolucion">Evolución</label><select class="input" id="filtro-evolucion" data-filtro-enfermos><option value="">Todas</option><option value="curso">En curso</option><option value="recuperado">Recuperado</option><option value="murio">Murió</option></select></div>
+      </div>
+      <p class="chico" style="margin-bottom:.75rem">Acá les agregás tratamientos y los finalizás; Pendientes se actualiza solo. Los sin identificar figuran solo acá y en el historial: no tienen ficha.</p>
       <div class="tabla-wrap responsive">
         <table class="tabla">
           <thead><tr><th>Fecha</th><th>Animal</th><th>Enfermedad</th><th>Causa probable</th><th>Tratamiento</th><th>Evolución</th><th></th></tr></thead>
           <tbody>
-            <tr><td data-label="Fecha">05/10/2026</td><td data-label="Animal">Cría de <a class="caravana" href="animal-ficha.html">AB123 B094</a></td><td data-label="Enfermedad"><span class="badge danger">Diarrea</span></td><td data-label="Causa">Frío y lluvia</td><td data-label="Tratamiento">Sales de rehidratación</td><td data-label="Evolución"><span class="badge warn">En curso</span></td><td class="sin-label"><button class="btn btn-chico" data-abrir="modal-enfermo">Actualizar</button></td></tr>
-            <tr><td data-label="Fecha">05/10/2026</td><td data-label="Animal">Cría de <a class="caravana" href="animal-ficha.html">AB123 B117</a></td><td data-label="Enfermedad"><span class="badge danger">Diarrea</span></td><td data-label="Causa">Frío y lluvia</td><td data-label="Tratamiento">Sales de rehidratación</td><td data-label="Evolución"><span class="badge warn">En curso</span></td><td class="sin-label"><button class="btn btn-chico" data-abrir="modal-enfermo">Actualizar</button></td></tr>
-            <tr><td data-label="Fecha">05/10/2026</td><td data-label="Animal">Ternera negra · <em>"mancha blanca en la frente"</em></td><td data-label="Enfermedad"><span class="badge danger">Diarrea</span></td><td data-label="Causa">Frío y lluvia</td><td data-label="Tratamiento">Sales de rehidratación</td><td data-label="Evolución"><span class="badge warn">En curso</span></td><td class="sin-label"><button class="btn btn-chico" data-abrir="modal-enfermo">Actualizar</button></td></tr>
+            <tr data-fila-caso="b126" data-caso-titulo="Vaca AB123 B126 — Pietín" data-caso-detalle="En curso desde el 07/10/2026 · oxitetraciclina LA · retiro hasta el 04/11/2026" data-caso-baja="Se da de baja por muerte, con el pietín como causa."><td data-label="Fecha">07/10/2026</td><td data-label="Animal">Vaca <a class="caravana" href="animal-ficha.html">AB123 B126</a></td><td data-label="Enfermedad"><span class="badge warn">Pietín</span></td><td data-label="Causa">No se sabe</td><td data-label="Tratamiento">Oxitetraciclina LA</td><td data-label="Evolución"><span class="badge warn">En curso</span></td><td class="sin-label" data-acciones-caso><div class="acciones"><button class="btn btn-chico" type="button" data-abrir="modal-agregar-tratamiento">Tratar</button><button class="btn btn-chico" type="button" data-abrir="modal-finalizar">Finalizar</button></div></td></tr>
+            <tr data-fila-caso="b094" data-caso-titulo="Cría de AB123 B094 — Diarrea" data-caso-detalle="En curso desde el 05/10/2026 · sales de rehidratación · causa probable: frío y lluvia" data-caso-baja="Se da de baja por muerte, con la diarrea como causa."><td data-label="Fecha">05/10/2026</td><td data-label="Animal">Cría de <a class="caravana" href="animal-ficha.html">AB123 B094</a></td><td data-label="Enfermedad"><span class="badge danger">Diarrea</span></td><td data-label="Causa">Frío y lluvia</td><td data-label="Tratamiento">Sales de rehidratación</td><td data-label="Evolución"><span class="badge warn">En curso</span></td><td class="sin-label" data-acciones-caso><div class="acciones"><button class="btn btn-chico" type="button" data-abrir="modal-agregar-tratamiento">Tratar</button><button class="btn btn-chico" type="button" data-abrir="modal-finalizar">Finalizar</button></div></td></tr>
+            <tr data-fila-caso="b117" data-caso-titulo="Cría de AB123 B117 — Diarrea" data-caso-detalle="En curso desde el 05/10/2026 · sin tratamiento · causa probable: frío y lluvia" data-caso-baja="Se da de baja por muerte, con la diarrea como causa."><td data-label="Fecha">05/10/2026</td><td data-label="Animal">Cría de <a class="caravana" href="animal-ficha.html">AB123 B117</a></td><td data-label="Enfermedad"><span class="badge danger">Diarrea</span></td><td data-label="Causa">Frío y lluvia</td><td data-label="Tratamiento">Sin tratamiento</td><td data-label="Evolución"><span class="badge warn">En curso</span></td><td class="sin-label" data-acciones-caso><div class="acciones"><button class="btn btn-chico" type="button" data-abrir="modal-agregar-tratamiento">Tratar</button><button class="btn btn-chico" type="button" data-abrir="modal-finalizar">Finalizar</button></div></td></tr>
+            <tr data-fila-caso="ternero-negro" data-caso-titulo="Ternero negro, sin identificar — Diarrea" data-caso-detalle="&quot;Mancha blanca en la frente&quot; · en curso desde el 05/10/2026 · sales de rehidratación" data-caso-baja="Cuenta en la mortalidad y el stock de Terneros al pie baja en 1, sin indicar cuál fue." data-caso-sin><td data-label="Fecha">05/10/2026</td><td data-label="Animal">Ternero negro · <em>"mancha blanca en la frente"</em> <span class="badge warn">Sin identificar</span></td><td data-label="Enfermedad"><span class="badge danger">Diarrea</span></td><td data-label="Causa">Frío y lluvia</td><td data-label="Tratamiento">Sales de rehidratación</td><td data-label="Evolución"><span class="badge warn">En curso</span></td><td class="sin-label" data-acciones-caso><div class="acciones"><button class="btn btn-chico" type="button" data-abrir="modal-agregar-tratamiento">Tratar</button><button class="btn btn-chico" type="button" data-abrir="modal-finalizar">Finalizar</button></div></td></tr>
+            <tr><td data-label="Fecha">28/09/2026</td><td data-label="Animal">Ternero colorado · <em>"estaba rengo"</em> <span class="badge warn">Sin identificar</span></td><td data-label="Enfermedad"><span class="badge warn">Otra</span></td><td data-label="Causa">No se sabe</td><td data-label="Tratamiento">Oxitetraciclina LA</td><td data-label="Evolución"><span class="badge ok">Recuperado</span></td><td class="sin-label"></td></tr>
             <tr><td data-label="Fecha">22/09/2026</td><td data-label="Animal">Cría de <a class="caravana" href="animal-ficha.html">AB123 B102</a></td><td data-label="Enfermedad"><span class="badge warn">Neumonía</span></td><td data-label="Causa">Cambio brusco de temperatura</td><td data-label="Tratamiento">Oxitetraciclina LA</td><td data-label="Evolución"><span class="badge ok">Recuperada</span></td><td class="sin-label"></td></tr>
             <tr><td data-label="Fecha">28/08/2026</td><td data-label="Animal">Cría de <span class="caravana">AB123 B140</span></td><td data-label="Enfermedad"><span class="badge danger">Diarrea</span></td><td data-label="Causa">Barro en la parición</td><td data-label="Tratamiento">Enrofloxacina</td><td data-label="Evolución"><span class="badge danger">Murió 02/09</span></td><td class="sin-label"></td></tr>
           </tbody>
         </table>
       </div>
+      <p class="chico mt oculto" data-enfermos-vacio>No hay animales con estos filtros.</p>
       <p class="chico mt">El resumen por temporada y por causa está en <a href="reportes.html#terneros">Reportes → Terneros</a>.</p>
     </div>
 
@@ -91,6 +100,7 @@
         <table class="tabla">
           <thead><tr><th>Animal</th><th>Categoría</th><th>Producto</th><th>Aplicado</th><th>Retiro hasta</th><th>Faltan</th></tr></thead>
           <tbody>
+            <tr><td data-label="Animal">Vaca <a class="caravana" href="animal-ficha.html">AB123 B126</a></td><td data-label="Categoría">Vaca</td><td data-label="Producto">Oxitetraciclina LA (pietín)</td><td data-label="Aplicado">07/10/2026</td><td data-label="Retiro hasta">04/11/2026</td><td data-label="Faltan">25 días</td></tr>
             <tr><td data-label="Animal">Cría de <a class="caravana" href="animal-ficha.html">AB123 B102</a></td><td data-label="Categoría">Ternera al pie</td><td data-label="Producto">Oxitetraciclina LA (neumonía)</td><td data-label="Aplicado">22/09/2026</td><td data-label="Retiro hasta"><strong>20/10/2026</strong></td><td data-label="Faltan"><span class="badge warn">10 días</span></td></tr>
           </tbody>
         </table>
@@ -110,7 +120,9 @@
           <thead><tr><th>Fecha</th><th>Tipo</th><th>Producto / enfermedad</th><th class="num">Animales</th><th>Responsable</th><th></th></tr></thead>
           <tbody>
             <tr><td data-label="Fecha">08/10/2026</td><td data-label="Tipo">Vacunación</td><td data-label="Producto">Carbunclo (vacas y toros)</td><td data-label="Animales" class="num">96</td><td data-label="Responsable">Juan</td><td class="sin-label"><a href="jornada-detalle.html">Ver jornada</a></td></tr>
+            <tr><td data-label="Fecha">07/10/2026</td><td data-label="Tipo">Enfermedad</td><td data-label="Producto">Pietín — vaca AB123 B126 · oxitetraciclina LA</td><td data-label="Animales" class="num">1</td><td data-label="Responsable">Juan</td><td class="sin-label"></td></tr>
             <tr><td data-label="Fecha">05/10/2026</td><td data-label="Tipo">Enfermedad</td><td data-label="Producto">Diarrea</td><td data-label="Animales" class="num">2</td><td data-label="Responsable">Juan</td><td class="sin-label"><a href="jornada-detalle.html">Ver jornada</a></td></tr>
+            <tr><td data-label="Fecha">28/09/2026</td><td data-label="Tipo">Enfermedad</td><td data-label="Producto">Otra — ternero colorado, "estaba rengo" <span class="badge warn">Sin identificar</span></td><td data-label="Animales" class="num">1</td><td data-label="Responsable">Juan</td><td class="sin-label"></td></tr>
             <tr><td data-label="Fecha">20/08/2026</td><td data-label="Tipo">Desparasitación</td><td data-label="Producto">Piojo — cipermetrina pour-on (2 de 2)</td><td data-label="Animales" class="num">165</td><td data-label="Responsable">Juan</td><td class="sin-label"><a href="jornada-detalle.html">Ver jornada</a></td></tr>
             <tr><td data-label="Fecha">15/07/2026</td><td data-label="Tipo">Análisis</td><td data-label="Producto">Raspaje — 4 toros negativos</td><td data-label="Animales" class="num">4</td><td data-label="Responsable">Juan</td><td class="sin-label"><a href="jornada-detalle.html">Ver jornada</a></td></tr>
             <tr><td data-label="Fecha">15/06/2026</td><td data-label="Tipo">Vacunación</td><td data-label="Producto">Aftosa (estratégica)</td><td data-label="Animales" class="num">8</td><td data-label="Responsable">Juan</td><td class="sin-label"><a href="jornada-detalle.html">Ver jornada</a></td></tr>
@@ -124,42 +136,37 @@
 
 </main>
 
-<!-- Modal: tratar un animal (RF-017, RF-044) -->
-<div class="modal-fondo" id="modal-tratar">
-  <div class="modal" role="dialog">
-    <div class="modal-cab"><h2>Tratar un animal</h2><button class="cerrar" data-cerrar aria-label="Cerrar">×</button></div>
-    <div class="modal-cuerpo">
-      <div class="form-grid">
-        <div class="campo completo"><label>Caravana <span class="req">*</span></label><input class="input mono" value="AB123 B126"><span class="ayuda" style="color:var(--verde)">✔ Vaca AB123 B126 · 6 años</span></div>
-        <div class="campo"><label>Fecha <span class="req">*</span></label><input class="input" type="date" value="2026-10-07"></div>
-        <div class="campo"><label>Diagnóstico</label><input class="input" value="Pietín (renguera)"></div>
-        <div class="campo"><label>Producto <span class="req">*</span></label><select class="input"><option selected>Oxitetraciclina LA (inyectable)</option><option>Enrofloxacina (inyectable)</option></select></div>
-        <div class="campo"><label>Dosis</label><input class="input" value="20 ml"></div>
-        <div class="campo"><label>Duración (días)</label><input class="input" value="1"></div>
-        <div class="campo"><label>Retiro hasta</label><input class="input" value="04/11/2026" disabled><span class="ayuda">28 días, según el producto.</span></div>
-        <div class="campo completo"><span class="label">Aviso</span><div class="fila-inputs"><label><input type="checkbox" checked> Avisarme para revisarla en</label><input class="input" value="3" style="max-width:80px"><span>días</span><input class="input" value="Ver si mejoró la renguera" aria-label="Motivo"></div><span class="ayuda">El 10/10/2026 aparece en Pendientes hasta que lo marques como hecho.</span></div>
-      </div>
-      <p class="chico mt">Para un ternero sin caravana, elegilo por la madre o por sexo, pelaje y seña.</p>
-    </div>
-    <div class="modal-pie"><button class="btn" data-cerrar>Cancelar</button><button class="btn btn-primario" data-guardar="Tratamiento guardado. Te aviso el 10/10 para revisarla.">Guardar</button></div>
-  </div>
-</div>
-
 <!-- Modal: animal enfermo (RF-038) -->
 <div class="modal-fondo" id="modal-enfermo">
   <div class="modal" role="dialog">
     <div class="modal-cab"><h2>Animal enfermo</h2><button class="cerrar" data-cerrar aria-label="Cerrar">×</button></div>
     <div class="modal-cuerpo">
       <div class="form-grid">
-        <div class="campo"><label>Caravana</label><input class="input mono" placeholder="Ej: AB123 B081"><span class="ayuda">Si es un ternero al pie, la de su madre. Si no la sabés, dejala vacía.</span></div>
-        <div class="campo"><label>Categoría <span class="req">*</span></label><select class="input"><option>Vacas</option><option>Toros</option><option>Vaquillonas</option><option>Novillitos</option><option selected>Terneros al pie</option></select></div>
-        <div class="campo"><label>Pelaje</label><select class="input"><option>No sé</option><option selected>Negro</option><option>Colorado</option></select></div>
-        <div class="campo"><label>Observación</label><input class="input" value="mancha blanca en la frente" placeholder="Ej: Mancha blanca en la frente"></div>
+        <div class="campo completo" data-identificar data-identificar-enfermo>
+          <span class="label">¿Cómo lo identificás? <span class="req">*</span></span>
+          <div class="opciones" role="radiogroup" aria-label="Cómo lo identificás"><label><input type="radio" name="ide-enfermo" value="caravana" data-modo> Por caravana</label><label><input type="radio" name="ide-enfermo" value="madre" data-modo> Por la madre</label><label><input type="radio" name="ide-enfermo" value="sin" data-modo checked> Sin identificar</label></div>
+          <div class="form-grid mt">
+            <div class="campo completo oculto" data-modo-campos="caravana"><label>Caravana <span class="req">*</span></label><input class="input mono" placeholder="Ej: AB123 B081"></div>
+            <div class="campo completo oculto" data-modo-campos="madre"><label>Caravana de la madre <span class="req">*</span></label><input class="input mono" placeholder="Ej: AB123 B094"></div>
+            <div class="campo" data-modo-campos="sin"><label>Categoría <span class="req">*</span></label><select class="input"><option>Vacas</option><option>Toros</option><option>Vaquillonas</option><option>Novillitos</option><option selected>Terneros al pie</option></select></div>
+            <div class="campo" data-modo-campos="sin"><label>Pelaje</label><select class="input"><option>No sé</option><option selected>Negro</option><option>Colorado</option></select></div>
+            <div class="campo completo" data-modo-campos="sin"><label>Observación (opcional)</label><input class="input" value="Mancha blanca en la frente"></div>
+            <div class="completo aviso info" data-modo-campos="sin"><i data-ico="info"></i><div>Queda en el historial de enfermedades, pero no en la ficha de ningún animal, y no se puede identificar después. Si le das un producto con retiro, no podemos controlarlo.</div></div>
+          </div>
+        </div>
         <div class="campo"><label>Fecha <span class="req">*</span></label><input class="input" type="date" value="2026-10-05"></div>
-        <div class="campo"><label>Enfermedad <span class="req">*</span></label><select class="input"><option selected>Diarrea</option><option>Neumonía</option><option>Ombligo</option><option>Otra</option></select></div>
+        <div class="campo"><label>Enfermedad <span class="req">*</span></label><select class="input"><option selected>Diarrea</option><option>Neumonía</option><option>Ombligo</option><option>Pietín</option><option>Otra</option></select></div>
         <div class="campo completo"><label>Causa probable</label><input class="input" value="Frío y lluvia"></div>
-        <div class="campo"><label>Tratamiento (opcional)</label><select class="input"><option>Sales de rehidratación</option><option>Enrofloxacina</option><option>Oxitetraciclina LA</option><option>Sin tratamiento</option></select></div>
-        <div class="campo"><label>Evolución</label><select class="input"><option>En curso</option><option>Recuperado</option><option>Murió</option></select><span class="ayuda">Si murió, se da de baja con esta enfermedad como causa.</span></div>
+                        <div class="campo completo" data-tratamiento>
+          <label><input type="checkbox" data-con-tratamiento checked> Le di un tratamiento</label>
+          <div class="mt" data-tratamiento-campos><div class="form-grid">
+            <div class="campo"><label>Producto <span class="req">*</span></label><select class="input" data-producto><option data-retiro="">Sales de rehidratación</option><option data-retiro="28" selected>Oxitetraciclina LA (inyectable)</option><option data-retiro="14">Enrofloxacina (inyectable)</option></select></div>
+            <div class="campo"><label>Dosis</label><input class="input" value="20 ml"></div>
+            <div class="campo"><label>Duración (días)</label><input class="input" value="1"></div>
+            <div class="campo"><label>Retiro</label><input class="input" value="28 días, según el producto" disabled data-retiro-texto></div>
+          </div><span class="ayuda" style="display:block;margin-top:.5rem">Si le das otro más adelante, lo agregás desde esta pantalla, en Animales enfermos.</span></div>
+        </div>
+        <div class="campo"><label>Evolución</label><select class="input" data-evolucion-enfermo><option>En curso</option><option>Recuperado</option><option>Murió</option></select><span class="ayuda" data-muerte-identificado>Si queda en curso, te aparece en Pendientes hasta que lo finalices acá, en Animales enfermos. Si murió, se da de baja con esta enfermedad como causa.</span><span class="ayuda oculto" data-muerte-sin style="color:var(--rojo)">Cuenta en la mortalidad y el stock de la categoría baja en 1, sin indicar cuál fue.</span></div>
         <div class="campo completo"><span class="label">Aviso</span><div class="fila-inputs"><label><input type="checkbox" checked> Avisarme para revisarlo en</label><input class="input" value="3" style="max-width:80px"><span>días</span></div></div>
       </div>
       <p class="chico mt">Para varios animales a la vez usá <a href="jornada-nueva.html?tipo=enfermos">Nueva jornada → Enfermos</a>.</p>
@@ -167,6 +174,137 @@
     <div class="modal-pie"><button class="btn" data-cerrar>Cancelar</button><button class="btn btn-primario" data-guardar>Guardar</button></div>
   </div>
 </div>
+
+<!-- Modal: agregar un tratamiento a un animal enfermo (RF-017, RN-030) -->
+<div class="modal-fondo" id="modal-agregar-tratamiento">
+  <div class="modal" role="dialog" aria-labelledby="t-agregar">
+    <div class="modal-cab"><h2 id="t-agregar">Agregar tratamiento</h2><button class="cerrar" data-cerrar aria-label="Cerrar">×</button></div>
+    <div class="modal-cuerpo">
+      <div class="aviso info" style="margin-bottom:1.25rem"><i data-ico="info"></i><div data-agregar-detalle></div></div>
+      <div class="campo completo" style="margin-bottom:1rem"><label for="fecha-tratamiento">Fecha <span class="req">*</span></label><input class="input" id="fecha-tratamiento" type="date" value="2026-10-10"></div>
+      <div class="form-grid">
+            <div class="campo"><label>Producto <span class="req">*</span></label><select class="input" data-producto><option data-retiro="">Sales de rehidratación</option><option data-retiro="28" selected>Oxitetraciclina LA (inyectable)</option><option data-retiro="14">Enrofloxacina (inyectable)</option></select></div>
+            <div class="campo"><label>Dosis</label><input class="input" value="20 ml"></div>
+            <div class="campo"><label>Duración (días)</label><input class="input" value="1"></div>
+            <div class="campo"><label>Retiro</label><input class="input" value="28 días, según el producto" disabled data-retiro-texto></div>
+          </div>
+      <div class="aviso warn mt oculto" data-agregar-sin><i data-ico="aviso"></i><div>No podemos controlar el período de retiro ni bloquear la venta de este animal, porque no se sabe cuál es.</div></div>
+      <div class="campo completo mt"><span class="label">Aviso</span><div class="fila-inputs"><label><input type="checkbox"> Avisarme para revisarlo en</label><input class="input" value="3" style="max-width:80px" aria-label="Días"><span>días</span></div></div>
+    </div>
+    <div class="modal-pie">
+      <button class="btn" data-cerrar>Cancelar</button>
+      <button class="btn btn-primario" data-guardar="Tratamiento agregado. El animal sigue en tratamiento hasta que lo finalices.">Guardar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: finalizar un animal en tratamiento (RF-038, RN-029) -->
+<div class="modal-fondo" id="modal-finalizar">
+  <div class="modal" role="dialog" aria-labelledby="t-finalizar">
+    <div class="modal-cab"><h2 id="t-finalizar">Finalizar</h2><button class="cerrar" data-cerrar aria-label="Cerrar">×</button></div>
+    <div class="modal-cuerpo">
+      <div class="aviso info" style="margin-bottom:1.25rem"><i data-ico="info"></i><div data-finalizar-detalle></div></div>
+      <div class="campo completo"><span class="label">¿Cómo terminó? <span class="req">*</span></span>
+        <div class="opciones" role="radiogroup" aria-label="Cómo terminó">
+          <label><input type="radio" name="finalizar" value="recuperado" checked data-finalizar-resultado> Se recuperó</label>
+          <label><input type="radio" name="finalizar" value="murio" data-finalizar-resultado> Murió</label>
+        </div>
+      </div>
+      <div class="campo completo mt"><label for="fecha-finalizar">Fecha <span class="req">*</span></label><input class="input" id="fecha-finalizar" type="date" value="2026-10-10"></div>
+      <div class="aviso warn mt oculto" data-finalizar-baja><i data-ico="aviso"></i><div></div></div>
+    </div>
+    <div class="modal-pie">
+      <button class="btn" data-cerrar>Cancelar</button>
+      <button class="btn btn-primario" data-guardar="Tratamiento finalizado: se recuperó" data-finalizar-guardar>Guardar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Filtros de la pestaña Animales enfermos (RF-038)
+    function aplicarFiltros() {
+      var ident = document.getElementById("filtro-identificacion").value;
+      var trat = document.getElementById("filtro-tratamiento").value;
+      var evol = document.getElementById("filtro-evolucion").value;
+      var visibles = 0;
+      document.querySelectorAll("#enfermos tbody tr").forEach(function (fila) {
+        var sinIdentificar = fila.querySelector('[data-label="Animal"]').textContent.indexOf("Sin identificar") >= 0;
+        var sinTratamiento = fila.querySelector('[data-label="Tratamiento"]').textContent.trim() === "Sin tratamiento";
+        var evolucion = fila.querySelector('[data-label="Evolución"]').textContent;
+        var estado = evolucion.indexOf("En curso") >= 0 ? "curso" : evolucion.indexOf("Recuperad") >= 0 ? "recuperado" : "murio";
+        var ve = (!ident || (ident === "sin") === sinIdentificar)
+          && (!trat || (trat === "sin") === sinTratamiento)
+          && (!evol || evol === estado);
+        fila.classList.toggle("oculto", !ve);
+        if (ve) visibles++;
+      });
+      document.querySelector("[data-enfermos-vacio]").classList.toggle("oculto", visibles > 0);
+    }
+    document.querySelectorAll("[data-filtro-enfermos]").forEach(function (filtro) {
+      filtro.addEventListener("change", aplicarFiltros);
+    });
+    // Aviso si muere un animal sin identificar (RN-028)
+    var bloque = document.querySelector("[data-identificar-enfermo]");
+    var evolucion = document.querySelector("[data-evolucion-enfermo]");
+    function revisarMuerte() {
+      var sin = evolucion.value === "Murió" && bloque.querySelector("[data-modo]:checked").value === "sin";
+      document.querySelector("[data-muerte-sin]").classList.toggle("oculto", !sin);
+      document.querySelector("[data-muerte-identificado]").classList.toggle("oculto", sin);
+    }
+    evolucion.addEventListener("change", revisarMuerte);
+    bloque.addEventListener("change", revisarMuerte);
+
+    // Agregar tratamiento y finalizar un animal en tratamiento (RF-017, RF-038, RN-029, RN-030)
+    var agregar = document.getElementById("modal-agregar-tratamiento");
+    var finalizar = document.getElementById("modal-finalizar");
+    var guardarFin = finalizar.querySelector("[data-finalizar-guardar]");
+    var baja = finalizar.querySelector("[data-finalizar-baja]");
+    var filaActual = null, filaTratar = null;
+    function revisarFinal() {
+      var murio = finalizar.querySelector("[data-finalizar-resultado]:checked").value === "murio";
+      baja.classList.toggle("oculto", !murio);
+      guardarFin.dataset.guardar = murio ? "Finalizado: murió. Pendientes ya está actualizado." : "Finalizado: se recuperó. Pendientes ya está actualizado.";
+    }
+    document.querySelectorAll('[data-fila-caso] [data-abrir="modal-agregar-tratamiento"]').forEach(function (boton) {
+      boton.addEventListener("click", function () {
+        var fila = boton.closest("[data-fila-caso]");
+        filaTratar = fila;
+        agregar.querySelector("h2").textContent = "Agregar tratamiento: " + fila.dataset.casoTitulo;
+        agregar.querySelector("[data-agregar-detalle]").textContent = fila.dataset.casoDetalle;
+        agregar.querySelector("[data-agregar-sin]").classList.toggle("oculto", !fila.hasAttribute("data-caso-sin"));
+      });
+    });
+    document.querySelectorAll('[data-fila-caso] [data-abrir="modal-finalizar"]').forEach(function (boton) {
+      boton.addEventListener("click", function () {
+        filaActual = boton.closest("[data-fila-caso]");
+        finalizar.querySelector("h2").textContent = "Finalizar: " + filaActual.dataset.casoTitulo;
+        finalizar.querySelector("[data-finalizar-detalle]").textContent = filaActual.dataset.casoDetalle;
+        baja.lastElementChild.textContent = filaActual.dataset.casoBaja;
+        finalizar.querySelector('[data-finalizar-resultado][value="recuperado"]').checked = true;
+        revisarFinal();
+      });
+    });
+    // El tratamiento se completa en la misma fila (RN-030)
+    agregar.querySelector("[data-guardar]").addEventListener("click", function () {
+      if (!filaTratar) return;
+      var celda = filaTratar.querySelector('[data-label="Tratamiento"]');
+      var producto = agregar.querySelector("[data-producto]").selectedOptions[0].textContent.replace(" (inyectable)", "");
+      celda.textContent = celda.textContent.trim() === "Sin tratamiento" ? producto : celda.textContent.trim() + " + " + producto;
+      filaTratar.dataset.casoDetalle = filaTratar.dataset.casoDetalle.replace("sin tratamiento", producto);
+      filaTratar = null;
+      aplicarFiltros();
+    });
+    finalizar.addEventListener("change", revisarFinal);
+    guardarFin.addEventListener("click", function () {
+      if (!filaActual) return;
+      var f = document.getElementById("fecha-finalizar").value.split("-");
+      MiHacienda.finalizarCaso(filaActual.dataset.filaCaso, finalizar.querySelector("[data-finalizar-resultado]:checked").value, f[2] + "/" + f[1] + "/" + f[0]);
+      filaActual = null;
+      aplicarFiltros();
+    });
+  });
+</script>
 
 </body>
 </html>

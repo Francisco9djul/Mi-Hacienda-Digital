@@ -117,17 +117,20 @@ classDiagram
         +string serie
         +Date vencimientoSerie
         +Categoria categoria
-        +string diagnostico
+        +EventoSanitario caso
         +Enfermedad enfermedad
         +string causaProbable
         +Evolucion evolucion
+        +Date fechaFinEvolucion
         +string pelaje
         +string observacion
+        +Animal animalBaja
         +ResultadoAnalisis resultadoAnalisis
         +Objetivo objetivo
         +Date finRetiro
         +Date proximaDosis
         +bool aplicado
+        +finalizar(evolucion, fecha)
         +calcularFinRetiro()
         +calcularProximaDosis()
     }
@@ -205,6 +208,7 @@ classDiagram
         +marcarHecho(fecha)
     }
     Recordatorio --> EventoSanitario
+    EventoSanitario "1" o-- "*" EventoSanitario : tratamientos
     class Enfermedad {
         +string nombre
     }
@@ -336,6 +340,7 @@ classDiagram
     }
     ServicioAlertas ..> Alerta
     ServicioAlertas ..> FaltanteJornada : avisos pendientes
+    ServicioAlertas ..> EventoSanitario : casos en curso
     ServicioJornadas ..> ServicioAuditoria
     ServicioAnimales ..> ServicioAuditoria
 ```
@@ -346,6 +351,8 @@ classDiagram
 - `Paricion.registrarCria()` implementa la RN-005: crea el `Animal` cría con madre, padre (del último `Servicio`) y categoría Ternero o Ternera.
 - `Evento.validar()` aplica la RN-002 (animal activo), la RN-003 (solo hembras en eventos reproductivos) y la RN-007 (fechas válidas).
 - `Evento.anular()` implementa la RNF-014 y la RN-011 (solo el administrador, con auditoría).
+- Un `EventoSanitario` de tratamiento pertenece a su `caso` de enfermedad y toma de él el animal; la evolución es del caso (RN-030). En un caso sin identificar, `animal` queda vacío (RN-021). Si muere, `animalBaja` es el animal descontado del stock, sin atribuirle el caso (RN-028).
+- `EventoSanitario.finalizar()` implementa la RN-029: saca el caso en curso de Pendientes como recuperado o muerto.
 - `FaltanteJornada` implementa la RN-027: cada animal que no se vacunó o desparasitó, identificado o no. `identificar()` completa `animal` y marca `aplicado = false` en su `EventoSanitario` de la jornada (no es una anulación: lo puede hacer quien carga vacunas, con auditoría), pero no cierra el aviso. `marcarAplicado()` y `cerrar()` lo cierran. `pendiente()` alimenta el aviso de `ServicioAlertas` y la cobertura.
 
 ## Historial de versiones
@@ -367,3 +374,6 @@ classDiagram
 | 0.13 | 2026-11-06 | Francisco Garcia Martinez | Tipos y sintaxis definitivos en TypeScript, por el stack elegido |
 | 0.14 | 2026-11-06 | Francisco Garcia Martinez | Se quita `VETERINARIO` del enumerado `Rol` |
 | 0.15 | 2026-11-06 | Francisco Garcia Martinez | `EventoSanitario`: `pelaje` y `observacion` para casos de enfermedad (RN-021) |
+| 0.16 | 2026-11-07 | Francisco Garcia Martinez | `EventoSanitario`: sin identificar y `animalBaja` (RN-021, RN-028) |
+| 0.17 | 2026-11-07 | Francisco Garcia Martinez | `EventoSanitario.finalizar()` y `fechaFinEvolucion` (RN-029) |
+| 0.18 | 2026-11-07 | Francisco Garcia Martinez | `EventoSanitario.caso`: tratamientos dentro del caso; sin `diagnostico` (RN-030) |

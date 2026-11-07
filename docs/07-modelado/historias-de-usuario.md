@@ -172,7 +172,7 @@
   - Selecciono animales por filtro (categoría, sexo), por selección en el listado o **escribiendo o pegando una lista de caravanas**. La vacunación no usa caravanas: se elige por categoría (HU-16).
   - Las caravanas inexistentes se informan antes de confirmar.
   - Tipos de jornada: vacunación, desparasitación, enfermos, análisis, tacto, servicio, **castración**, destete, **venta**, **compra**, pesada y alimentación.
-  - En la castración indico la fecha y cuántos terneros machos se castraron; quedan marcados como castrados los terneros al pie de ese grupo. Los tratamientos son individuales (HU-17).
+  - En la castración indico la fecha y cuántos terneros machos se castraron; quedan marcados como castrados los terneros al pie de ese grupo. Los tratamientos se cargan con el animal enfermo (HU-38).
   - Los terneros al pie se eligen **por sexo, pelaje y cantidad**, no por la madre (RN-018).
   - En la jornada de venta cargo la fecha, la cantidad y los **kilos totales del lote**: cada animal queda con el peso promedio (RN-020). Los animales se dan de baja por venta. A los terneros al pie se les registra también el destete y les cargo la caravana (RN-014). Los datos comerciales se cargan en el mismo paso (HU-41).
   - Para tacto, pesada y venta puedo cargar un valor distinto por animal en una tabla.
@@ -237,14 +237,14 @@
   - Si el producto tiene un intervalo de refuerzo, se calcula la fecha de la próxima dosis.
 
 ### HU-17 — Registrar tratamientos y desparasitaciones
-**Como** productor, **quiero** registrar el tratamiento de cada animal con su período de retiro, y desparasitar al rodeo por categoría, **para** saber qué animales no se pueden vender todavía.
+**Como** productor, **quiero** registrar el tratamiento de cada animal enfermo con su período de retiro, y desparasitar al rodeo por categoría, **para** saber qué animales no se pueden vender todavía.
 - RF-017 · Prioridad **M** · 3 pts
 - **Criterios de aceptación:**
-  - El tratamiento es **individual**: elijo el animal por su caravana (o, si es un ternero al pie, por la madre o por sexo, pelaje y seña) y registro diagnóstico, producto, dosis, duración y fecha de inicio.
+  - El tratamiento es **individual** y pertenece a un animal enfermo (HU-38, RN-030): lo cargo junto con el caso o después, en Sanidad, con el botón "Tratar", con producto, dosis, duración y fecha de inicio. Puedo agregar más de uno.
   - Al guardar puedo pedir que me avise para revisarlo en una cantidad de días (HU-44).
   - La desparasitación es **masiva**: elijo una, varias o todas las categorías, con la fecha de cada una (RN-023). Los que no pasaron por la manga los cargo igual que en la vacunación: por una o varias caravanas, o por categoría con pelaje, observación y cantidad si no me acuerdo de cuáles son. Todos me quedan con aviso hasta que los resuelvo (RN-027, HU-47).
   - El período de retiro se completa desde el producto y puede modificarse.
-  - El animal queda marcado como "no apto para venta o faena" hasta que termina el retiro (RN-009).
+  - El animal queda marcado como "no apto para venta o faena" hasta que termina el retiro (RN-009). Si no está identificado, el sistema me avisa que no puede controlarlo.
   - En una desparasitación indico contra qué es (internos, mosca, piojo, sarna) y el producto con su forma de aplicación (inyectable, pour-on, baño).
   - En la desparasitación interna veo qué droga usé la vez anterior, para rotarla.
 
@@ -286,11 +286,15 @@
 - RF-038 · Prioridad **M** · 3 pts
 - Lo pidió el productor: la diarrea es importante y la neumonía muy importante (entrevista, pregunta 34).
 - **Criterios de aceptación:**
-  - Registro la enfermedad (diarrea, neumonía u otra del catálogo), la fecha, la causa probable y, si quiero, el tratamiento aplicado.
-  - Cargo cada animal con su **caravana, categoría, pelaje y observación**. Si pongo la caravana, la categoría y el pelaje se completan solos; si no la sé, elijo la categoría y anoto lo que sepa (RN-021).
-  - En un ternero al pie, que no tiene caravana, elijo esa categoría y puedo poner la caravana de la madre.
+  - En una sola carga registro la enfermedad (diarrea, neumonía u otra del catálogo), la fecha, la causa probable y, si quiero, el tratamiento (HU-17). No tengo que cargar el animal dos veces.
+  - Elijo cómo identificar a cada animal (RN-021):
+    - **Por caravana:** el caso queda en su ficha y en el historial de enfermedades.
+    - **Por la madre**, si es un ternero al pie: pongo la caravana de la madre y el caso queda en la ficha del ternero y en el historial.
+    - **Sin identificar:** cargo categoría y, si quiero, pelaje y observación. No queda en ninguna ficha ni se puede identificar después, pero figura en el historial; por ejemplo, "ternero colorado, estaba rengo", con su fecha.
   - Puedo cargar varios animales enfermos de una vez, como jornada: cada uno va en su fila y agrego otra cuando la necesito. Si hay más de una fila, puedo quitar la que no corresponda.
-  - Registro la evolución: en curso, recuperado o muerto. Si muere, se da de baja con la enfermedad como causa.
+  - Registro la evolución: en curso, recuperado o muerto. Si muere, se da de baja con la enfermedad como causa. Si no estaba identificado, cuenta en la mortalidad y el stock de su categoría baja en 1 (RN-028).
+  - En Sanidad veo a todos los animales enfermos en una sola grilla, con o sin tratamiento, y puedo filtrarla por identificación, tratamiento y evolución.
+  - Si queda en curso, el animal figura en Pendientes como "en tratamiento". Lo finalizo en Sanidad, con la fecha y si se recuperó o murió, y el aviso de Pendientes se actualiza solo (RN-029).
 
 ### HU-40 — Registrar análisis sanitarios
 **Como** productor, **quiero** registrar el raspaje de los toros y los sangrados con su resultado, **para** detectar a tiempo enfermedades venéreas y brucelosis.
@@ -305,7 +309,7 @@
 **Como** productor, **quiero** que el sistema me avise cuándo tengo que revisar un animal que traté, **para** no olvidarme del seguimiento.
 - RF-044 · Prioridad **M** · 3 pts
 - **Criterios de aceptación:**
-  - Al cargar un tratamiento o un caso de enfermedad puedo marcar "Avisarme para revisarlo en N días" (por ejemplo, 3) y un motivo.
+  - Al cargar un tratamiento o un caso de enfermedad puedo marcar "Avisarme para revisarlo en N días" (por ejemplo, 3) y un motivo, también si el animal no está identificado: el aviso muestra sus datos.
   - También puedo crear un recordatorio suelto desde la ficha de cualquier animal.
   - El día indicado el aviso aparece en el tablero y en Pendientes, y sigue ahí hasta que lo marco como hecho (RN-024). Al marcarlo puedo crear otro.
 
@@ -445,9 +449,9 @@
 - RF-048 · Prioridad **M** · 3 pts
 - **Criterios de aceptación:**
   - Veo los pendientes agrupados: vacunas obligatorias, ventana abierta o próximos 30 días (RN-010) y para tener en cuenta, con la cantidad de cada grupo.
-  - Incluye sanidad (plan, animales que faltaron y recordatorios), reproducción, cobros de ventas, animales apartados y reservas.
+  - Incluye sanidad (plan, animales que faltaron, animales en tratamiento y recordatorios), reproducción, cobros de ventas, animales apartados y reservas.
   - Puedo filtrar por tipo: sanidad, reproducción o cobros.
-  - Cada pendiente tiene el botón para resolverlo: vacunar, resolver, marcar como hecho o ver la venta.
+  - Cada pendiente tiene el botón para resolverlo: vacunar, resolver, ir a Sanidad, marcar como hecho o ver la venta.
   - Un pendiente desaparece solo cuando se carga lo que faltaba o se cierra.
   - El menú y la campana muestran cuántos pendientes hay.
 
@@ -518,3 +522,8 @@
 | 0.16 | 2026-11-06 | Francisco Garcia Martinez | Se quita el rol Veterinario: HU-03 y las historias de sanidad y tacto pasan a ser del productor (HU-16, HU-17, HU-20, HU-23, HU-40, HU-44 y HU-47) |
 | 0.17 | 2026-11-06 | Francisco Garcia Martinez | HU-16 y HU-17: varias caravanas de animales que no pasaron por la manga |
 | 0.18 | 2026-11-06 | Francisco Garcia Martinez | HU-38: cada animal enfermo se carga con caravana, categoría, pelaje y observación |
+| 0.19 | 2026-11-07 | Francisco Garcia Martinez | HU-17, HU-38 y HU-44: animal por caravana, por la madre o sin identificar; muerte sin identificar |
+| 0.20 | 2026-11-07 | Francisco Garcia Martinez | HU-38 y HU-48: animales en tratamiento en Pendientes (RN-029) |
+| 0.21 | 2026-11-07 | Francisco Garcia Martinez | HU-15, HU-17 y HU-38: una sola carga del animal enfermo con su tratamiento (RN-030) |
+| 0.22 | 2026-11-07 | Francisco Garcia Martinez | HU-17, HU-38 y HU-48: tratar y finalizar en Sanidad; Pendientes solo avisa |
+| 0.23 | 2026-11-07 | Francisco Garcia Martinez | HU-38: una sola grilla de animales enfermos, con filtros |

@@ -79,14 +79,35 @@
     </ul>
   </section>
 
-  <section class="card">
-    <div class="card-titulo"><h2><span class="semaforo azul" style="display:inline-block;margin-right:.5rem"></span> Para tener en cuenta</h2><span class="badge info">3</span></div>
+  <section class="card" data-seccion-tratamiento>
+    <div class="card-titulo"><h2><span class="semaforo amarillo" style="display:inline-block;margin-right:.5rem"></span> Animales en tratamiento</h2><span class="badge warn" data-tratamiento-cuenta>4</span></div>
     <ul class="alertas">
-      <li>
-        <span class="semaforo azul"></span>
-        <div class="texto"><strong>3 terneros con diarrea en curso</strong><small>Crías de AB123 B094 y AB123 B117, y una ternera negra con "mancha blanca en la frente" · desde el 05/10/2026</small></div>
-        <a class="btn" href="sanidad.html#enfermos">Ver</a>
+      <li data-aviso-caso="b126">
+        <span class="semaforo amarillo"></span>
+        <div class="texto"><strong>Vaca AB123 B126 — Pietín</strong><small>En curso desde el 07/10/2026 · oxitetraciclina LA · retiro hasta el 04/11/2026</small></div>
+        <a class="btn" href="sanidad.html#enfermos">Ver en Sanidad</a>
       </li>
+      <li data-aviso-caso="b094">
+        <span class="semaforo amarillo"></span>
+        <div class="texto"><strong>Cría de AB123 B094 — Diarrea</strong><small>En curso desde el 05/10/2026 · sales de rehidratación · causa probable: frío y lluvia</small></div>
+        <a class="btn" href="sanidad.html#enfermos">Ver en Sanidad</a>
+      </li>
+      <li data-aviso-caso="b117">
+        <span class="semaforo amarillo"></span>
+        <div class="texto"><strong>Cría de AB123 B117 — Diarrea</strong><small>En curso desde el 05/10/2026 · sin tratamiento · causa probable: frío y lluvia</small></div>
+        <a class="btn" href="sanidad.html#enfermos">Ver en Sanidad</a>
+      </li>
+      <li data-aviso-caso="ternero-negro">
+        <span class="semaforo amarillo"></span>
+        <div class="texto"><strong>Ternero negro, sin identificar — Diarrea</strong><small>&quot;Mancha blanca en la frente&quot; · en curso desde el 05/10/2026 · sales de rehidratación</small></div>
+        <a class="btn" href="sanidad.html#enfermos">Ver en Sanidad</a>
+      </li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <div class="card-titulo"><h2><span class="semaforo azul" style="display:inline-block;margin-right:.5rem"></span> Para tener en cuenta</h2><span class="badge info">2</span></div>
+    <ul class="alertas">
       <li>
         <span class="semaforo azul"></span>
         <div class="texto"><strong>3 vacas apartadas para descarte</strong><small>CD456 A033, EF789 A060 y AB123 B099 · para la próxima venta</small></div>
@@ -100,7 +121,7 @@
     </ul>
   </section>
 
-  <p class="chico mt">Los pendientes se calculan solos a partir del plan sanitario, de los eventos y de los cobros cargados. Se van cuando cargás la vacuna, el parto, la castración o el cobro, o cuando resolvés el aviso.</p>
+  <p class="chico mt">Los pendientes se calculan solos a partir del plan sanitario, de los eventos y de los cobros cargados. Se van cuando cargás la vacuna, el parto, la castración o el cobro, o cuando resolvés el aviso. Un animal en tratamiento sigue acá hasta que lo finalices en Sanidad.</p>
 
 </main>
 

@@ -81,13 +81,21 @@
       <!-- Enfermos -->
       <div class="form-grid campos-tipo oculto" data-para="enfermos">
         <div class="campo"><label>Fecha <span class="req">*</span></label><input class="input" type="date" value="2026-10-10"></div>
-        <div class="campo"><label>Enfermedad <span class="req">*</span></label><select class="input"><option selected>Diarrea</option><option>Neumonía</option><option>Otra</option></select></div>
+        <div class="campo"><label>Enfermedad <span class="req">*</span></label><select class="input"><option selected>Diarrea</option><option>Neumonía</option><option>Pietín</option><option>Otra</option></select></div>
         <div class="campo completo"><label>Causa probable</label><input class="input" value="Frío y lluvia de la semana"><span class="ayuda">Si no la sabés, dejala vacía. Sirve para ver después qué provoca las enfermedades.</span></div>
-        <div class="campo"><label>Tratamiento (opcional)</label><select class="input"><option>Sales de rehidratación</option><option>Enrofloxacina</option><option>Oxitetraciclina</option><option>Sin tratamiento</option></select></div>
-        <div class="campo"><label>Evolución</label><select class="input"><option>En curso</option><option>Recuperado</option></select><span class="ayuda">Después la actualizás en cada animal.</span></div>
+        <div class="campo completo" data-tratamiento>
+          <label><input type="checkbox" data-con-tratamiento> Les di un tratamiento</label>
+          <div class="mt oculto" data-tratamiento-campos><div class="form-grid">
+            <div class="campo"><label>Producto <span class="req">*</span></label><select class="input" data-producto><option data-retiro="">Sales de rehidratación</option><option data-retiro="28" selected>Oxitetraciclina LA (inyectable)</option><option data-retiro="14">Enrofloxacina (inyectable)</option></select></div>
+            <div class="campo"><label>Dosis</label><input class="input" value="20 ml"></div>
+            <div class="campo"><label>Duración (días)</label><input class="input" value="1"></div>
+            <div class="campo"><label>Retiro</label><input class="input" value="28 días, según el producto" disabled data-retiro-texto></div>
+          </div><span class="ayuda" style="display:block;margin-top:.5rem">Se carga el mismo a todos. Si le das otro a alguno, lo agregás desde Sanidad.</span></div>
+        </div>
+        <div class="campo"><label>Evolución</label><select class="input"><option>En curso</option><option>Recuperado</option></select><span class="ayuda">Si queda en curso, te aparece en Pendientes hasta que lo finalices en Sanidad.</span></div>
       </div>
 
-      <!-- Tratar -->
+      <!-- Desparasitar -->
       <div class="form-grid campos-tipo oculto" data-para="desparasitar">
         <div class="campo"><label>Contra qué <span class="req">*</span></label><select class="input"><option selected>Parásitos internos</option><option>Mosca de los cuernos</option><option>Piojo</option><option>Sarna</option></select></div>
         <div class="campo"><label>Producto <span class="req">*</span></label><select class="input"><option>Ivermectina 1% (inyectable)</option><option selected>Doramectina (inyectable)</option><option>Levamisol (inyectable)</option><option>Cipermetrina (pour-on)</option><option>Cipermetrina (baño de aspersión)</option></select></div>
@@ -109,7 +117,7 @@
           </div>
         </div>
         <div class="completo aviso warn"><i data-ico="aviso"></i><div>Este producto tiene <strong>35 días de retiro</strong>. Los animales quedan <strong>no aptos para venta ni faena hasta el 14/11/2026</strong>.</div></div>
-        <div class="completo aviso info"><i data-ico="info"></i><div>¿Querés tratar a un animal enfermo? Los tratamientos son individuales: hacelo desde su ficha o desde <a href="sanidad.html">Sanidad → Tratar un animal</a>.</div></div>
+        <div class="completo aviso info"><i data-ico="info"></i><div>¿Querés tratar a un animal enfermo? Cargalo desde su ficha o desde <a href="sanidad.html">Sanidad → Animal enfermo</a>, con su tratamiento.</div></div>
       </div>
 
       <!-- Análisis -->
@@ -353,25 +361,26 @@
       <p class="chico mt">Si una caravana es de una vaca con ternero al pie, el sistema pregunta si la jornada es para la vaca o para su ternero.</p>
     </section>
 
-    <!-- Enfermos: un animal por fila (RF-038, RN-021) -->
+    <!-- Enfermos: cada animal con su forma de identificarlo (RF-038, RN-021) -->
     <section class="card lista-tipo oculto" data-para="enfermos">
       <div class="card-titulo"><h3>Animales enfermos</h3><span class="chico" data-enfermos-cuenta>Ningún animal cargado</span></div>
-      <div class="tabla-wrap responsive">
-        <table class="tabla">
-          <thead><tr><th>Caravana</th><th>Categoría</th><th>Pelaje</th><th>Observación</th><th></th></tr></thead>
-          <tbody data-enfermos>
-            <tr data-enfermo>
-              <td data-label="Caravana"><input class="input input-chico mono" style="min-width:10rem" placeholder="Ej: AB123 B081" aria-label="Caravana" data-enfermo-caravana><span class="ayuda oculto" style="display:block;margin-top:.25rem" data-enfermo-aviso></span></td>
-              <td data-label="Categoría"><select class="input input-chico" style="min-width:10.5rem" aria-label="Categoría" data-enfermo-categoria><option value="">Elegí</option><option>Vacas</option><option>Toros</option><option>Vaquillonas</option><option>Novillitos</option><option>Terneros al pie</option></select></td>
-              <td data-label="Pelaje"><select class="input input-chico" style="min-width:7.5rem" aria-label="Pelaje" data-enfermo-pelaje><option>No sé</option><option>Negro</option><option>Colorado</option></select></td>
-              <td data-label="Observación"><input class="input input-chico" style="min-width:13rem" placeholder="Ej: Mancha en la frente" aria-label="Observación"></td>
-              <td class="sin-label"><button class="btn-link btn oculto" type="button" data-quitar-enfermo>Quitar</button></td>
-            </tr>
-          </tbody>
-        </table>
+      <div data-enfermos>
+        <div data-enfermo data-identificar style="border:1px solid var(--borde);border-radius:var(--radio);padding:1rem;margin-bottom:.75rem">
+          <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.5rem">
+            <div class="opciones" role="radiogroup" aria-label="Cómo lo identificás"><label><input type="radio" name="ide-1" value="caravana" data-modo checked> Por caravana</label><label><input type="radio" name="ide-1" value="madre" data-modo> Por la madre</label><label><input type="radio" name="ide-1" value="sin" data-modo> Sin identificar</label></div>
+            <button class="btn-link btn oculto" type="button" data-quitar-enfermo>Quitar</button>
+          </div>
+          <div class="form-grid mt">
+            <div class="campo" data-modo-campos="caravana"><label>Caravana <span class="req">*</span></label><input class="input mono" placeholder="Ej: AB123 B081" aria-label="Caravana" data-enfermo-caravana><span class="ayuda oculto" data-enfermo-aviso></span></div>
+            <div class="campo oculto" data-modo-campos="madre"><label>Caravana de la madre <span class="req">*</span></label><input class="input mono" placeholder="Ej: AB123 B094" aria-label="Caravana de la madre" data-enfermo-madre><span class="ayuda oculto" data-enfermo-aviso-madre></span></div>
+            <div class="campo oculto" data-modo-campos="sin"><label>Categoría <span class="req">*</span></label><select class="input" aria-label="Categoría" data-enfermo-categoria><option value="">Elegí</option><option>Vacas</option><option>Toros</option><option>Vaquillonas</option><option>Novillitos</option><option>Terneros al pie</option></select></div>
+            <div class="campo oculto" data-modo-campos="sin"><label>Pelaje</label><select class="input" aria-label="Pelaje"><option>No sé</option><option>Negro</option><option>Colorado</option></select></div>
+            <div class="campo completo oculto" data-modo-campos="sin"><label>Observación (opcional)</label><input class="input" placeholder="Ej: Estaba rengo" aria-label="Observación"></div>
+            <div class="completo aviso info oculto" data-modo-campos="sin"><i data-ico="info"></i><div>Queda en el historial de enfermedades, pero no en la ficha de ningún animal, y no se puede identificar después. Si le das un producto con retiro, no podemos controlarlo.</div></div>
+          </div>
+        </div>
       </div>
-      <button class="btn btn-chico mt" type="button" data-agregar-enfermo>+ Agregar otro animal</button>
-      <span class="ayuda" style="display:block;margin-top:.75rem">Si sabés la caravana, la categoría y el pelaje se completan solos. Si no, elegí la categoría y anotá lo que sepas. En un ternero al pie, elegí esa categoría y poné la caravana de la madre si la sabés.</span>
+      <button class="btn btn-chico" type="button" data-agregar-enfermo>+ Agregar otro animal</button>
     </section>
 
     <!-- Compra: animales comprados -->
@@ -579,7 +588,7 @@
       lista.parentNode.querySelector("[data-agregar-excluido]").addEventListener("click", function () { agregarExcluido(lista); });
     });
 
-    // Animales enfermos: una fila por animal (RF-038, RN-021)
+    // Animales enfermos: cada uno con su forma de identificarlo (RF-038, RN-021)
     var ANIMALES = {
       "AB123 B081": ["Vacas", "Negro"],
       "AB123 B094": ["Vacas", "Negro"],
@@ -587,60 +596,53 @@
       "AB123 C022": ["Novillitos", "Negro"],
       "GH234 A007": ["Toros", "Negro"]
     };
-    var TERNERO = "Terneros al pie";
-    var listaEnfermos = document.querySelector("[data-enfermos]");
+    var listaEnfermos = document.querySelector("[data-enfermos]"), proximaFila = 2;
+    function mostrarAviso(aviso, texto, error) {
+      aviso.textContent = texto;
+      aviso.style.color = error ? "var(--rojo)" : "var(--verde)";
+      aviso.classList.toggle("oculto", !texto);
+    }
     function revisarEnfermos() {
       var filas = listaEnfermos.querySelectorAll("[data-enfermo]"), vistas = {}, n = 0;
       filas.forEach(function (fila) {
         fila.querySelector("[data-quitar-enfermo]").classList.toggle("oculto", filas.length < 2);
+        var modo = fila.querySelector("[data-modo]:checked").value;
         var c = fila.querySelector("[data-enfermo-caravana]").value.trim().toUpperCase();
-        var categoria = fila.querySelector("[data-enfermo-categoria]").value;
-        var ternero = categoria === TERNERO, texto = "", error = false;
-        if (c && !ternero && vistas[c]) { texto = "Ya cargaste este animal."; error = true; }
-        else if (c && !ANIMALES[c] && c.length >= 10) { texto = "No encontramos esta caravana."; error = true; }
-        else if (ternero && ANIMALES[c]) { texto = "Cría de " + c + "."; }
-        var aviso = fila.querySelector("[data-enfermo-aviso]");
-        aviso.textContent = texto;
-        aviso.style.color = error ? "var(--rojo)" : "";
-        aviso.classList.toggle("oculto", !texto);
-        if (c && !ternero) vistas[c] = true;
-        if (!error && (categoria || ANIMALES[c])) n++;
-      });
-      var cuenta = document.querySelector("[data-enfermos-cuenta]");
-      cuenta.textContent = n === 0 ? "Ningún animal cargado" : n === 1 ? "1 animal cargado" : n + " animales cargados";
-    }
-    listaEnfermos.addEventListener("input", function (e) {
-      if (e.target.matches("[data-enfermo-caravana]")) {
-        var fila = e.target.closest("[data-enfermo]");
-        var datos = ANIMALES[e.target.value.trim().toUpperCase()];
-        var categoria = fila.querySelector("[data-enfermo-categoria]");
-        if (datos && categoria.value !== TERNERO) {
-          categoria.value = datos[0];
-          fila.querySelector("[data-enfermo-pelaje]").value = datos[1];
+        var m = fila.querySelector("[data-enfermo-madre]").value.trim().toUpperCase();
+        var textoC = "", errorC = false, textoM = "", errorM = false;
+        if (modo === "caravana" && c) {
+          if (vistas[c]) { textoC = "Ya cargaste este animal."; errorC = true; }
+          else if (ANIMALES[c]) { textoC = "✔ " + ANIMALES[c][0] + " · " + ANIMALES[c][1]; vistas[c] = true; n++; }
+          else if (c.length >= 10) { textoC = "No encontramos esta caravana."; errorC = true; }
         }
-      }
-      revisarEnfermos();
-    });
-    listaEnfermos.addEventListener("change", function (e) {
-      if (e.target.matches("[data-enfermo-categoria]")) {
-        var fila = e.target.closest("[data-enfermo]");
-        var datos = ANIMALES[fila.querySelector("[data-enfermo-caravana]").value.trim().toUpperCase()];
-        if (datos && e.target.value !== TERNERO) e.target.value = datos[0];
-      }
-      revisarEnfermos();
-    });
+        if (modo === "madre" && m) {
+          if (ANIMALES[m] && ANIMALES[m][0] === "Vacas") { textoM = "✔ Cría de " + m; n++; }
+          else if (ANIMALES[m]) { textoM = "Esta caravana no es de una vaca."; errorM = true; }
+          else if (m.length >= 10) { textoM = "No encontramos esta caravana."; errorM = true; }
+        }
+        if (modo === "sin" && fila.querySelector("[data-enfermo-categoria]").value) n++;
+        mostrarAviso(fila.querySelector("[data-enfermo-aviso]"), textoC, errorC);
+        mostrarAviso(fila.querySelector("[data-enfermo-aviso-madre]"), textoM, errorM);
+      });
+      document.querySelector("[data-enfermos-cuenta]").textContent = n === 0 ? "Ningún animal cargado" : n === 1 ? "1 animal cargado" : n + " animales cargados";
+    }
+    listaEnfermos.addEventListener("input", revisarEnfermos);
+    listaEnfermos.addEventListener("change", revisarEnfermos);
     listaEnfermos.addEventListener("click", function (e) {
       var quitar = e.target.closest("[data-quitar-enfermo]");
       if (quitar) { quitar.closest("[data-enfermo]").remove(); revisarEnfermos(); }
     });
     document.querySelector("[data-agregar-enfermo]").addEventListener("click", function () {
       var fila = listaEnfermos.querySelector("[data-enfermo]").cloneNode(true);
-      fila.querySelectorAll("input").forEach(function (i) { i.value = ""; });
+      var nombre = "ide-" + proximaFila++;
+      fila.querySelectorAll('input:not([type="radio"])').forEach(function (i) { i.value = ""; });
       fila.querySelectorAll("select").forEach(function (s) { s.selectedIndex = 0; });
-      fila.querySelector("[data-enfermo-aviso]").classList.add("oculto");
+      fila.querySelectorAll("[data-modo]").forEach(function (r) { r.name = nombre; });
       listaEnfermos.appendChild(fila);
-      revisarEnfermos();
-      fila.querySelector("input").focus();
+      var primera = fila.querySelector("[data-modo]");
+      primera.checked = true;
+      primera.dispatchEvent(new Event("change", { bubbles: true }));
+      fila.querySelector("[data-enfermo-caravana]").focus();
     });
 
     // Filas de animales que faltaron sin identificar (RN-027)

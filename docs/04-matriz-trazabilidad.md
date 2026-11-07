@@ -24,7 +24,7 @@
 | RF-014 | Importar desde planilla | OE-01 | M2 | HU-14 | CP-014 | M | 3 | Pendiente |
 | RF-015 | Jornada: evento para varios animales | OE-01, OE-06 | M2 | HU-15 | CP-015 | M | 3 | Pendiente |
 | RF-016 | Vacunación masiva por categoría | OE-02 | M3 | HU-16 | CP-016, CP-016b, CP-016c, CP-016d | M | 4 | Pendiente |
-| RF-017 | Tratamientos individuales y desparasitaciones por categoría | OE-02 | M3 | HU-17 | CP-017, CP-017b, CP-016d | M | 4 | Pendiente |
+| RF-017 | Tratamientos individuales y desparasitaciones por categoría | OE-02 | M3 | HU-17 | CP-017, CP-017b, CP-017c, CP-016d, CP-038f | M | 4 | Pendiente |
 | RF-018 | Plan sanitario anual | OE-02 | M3 | HU-18 | CP-018 | M | 4 | Pendiente |
 | RF-019 | Alertas sanitarias | OE-02 | M3 | HU-19 | CP-019, CP-016b | M | 4 | Pendiente |
 | RF-020 | Historial sanitario | OE-02 | M3 | HU-20 | CP-020 | M | 4 | Pendiente |
@@ -45,7 +45,7 @@
 | RF-035 | Catálogos | OE-01 | M6 | HU-35 | CP-035 | M | 3 | Pendiente |
 | RF-036 | Datos del establecimiento | OE-01 | M6 | HU-36 | CP-036 | S | 3 | Pendiente |
 | RF-037 | Respaldo / exportación completa | OE-01 | M6 | HU-37 | CP-037 | S | 6 | Pendiente |
-| RF-038 | Casos de enfermedad | OE-02 | M3 | HU-38 | CP-038, CP-038c | M | 4 | Pendiente |
+| RF-038 | Casos de enfermedad | OE-02 | M3 | HU-38 | CP-038, CP-038c, CP-038d, CP-038e, CP-038f | M | 4 | Pendiente |
 | RF-039 | Mortalidad y enfermedades de terneros | OE-02, OE-04 | M5 | HU-39 | CP-039 | M | 6 | Pendiente |
 | RF-040 | Análisis sanitarios (raspaje obligatorio, sangrado) | OE-02 | M3 | HU-40 | CP-040 | M | 4 | Pendiente |
 | RF-041 | Datos comerciales de la venta y cobro | OE-04 | M2 | HU-41 | CP-041 | S | 3 | Pendiente |
@@ -55,7 +55,7 @@
 | RF-045 | Animales apartados para venta o descarte | OE-01, OE-04 | M2 | HU-45 | CP-045 | S | 3 | Pendiente |
 | RF-046 | Alimentación y reservas | OE-01 | M2 | HU-46 | CP-046 | C | 6 | Pendiente |
 | RF-047 | Resolver animales no vacunados o desparasitados | OE-02 | M3 | HU-47 | CP-047, CP-016c, CP-017b | M | 4 | Pendiente |
-| RF-048 | Pendientes en una sola pantalla | OE-02, OE-06 | M5 | HU-48 | CP-048 | M | 6 | Pendiente |
+| RF-048 | Pendientes en una sola pantalla | OE-02, OE-06 | M5 | HU-48 | CP-048, CP-038e | M | 6 | Pendiente |
 | RF-049 | Anular registros y jornadas | OE-05 | M1 | HU-49 | CP-049 | M | 3 | Pendiente |
 | RF-050 | Permisos por rol | OE-05 | M1 | HU-50 | CP-050 | M | 3 | Pendiente |
 
@@ -102,13 +102,16 @@
 | RN-018 | RF-015, RF-026 | CP-026b |
 | RN-019 | RF-042 | CP-042 |
 | RN-020 | RF-015, RF-041 | CP-041 |
-| RN-021 | RF-038 | CP-038b, CP-038c |
+| RN-021 | RF-017, RF-038 | CP-017c, CP-038b, CP-038c |
 | RN-022 | RF-018, RF-019 | CP-018c |
 | RN-023 | RF-016, RF-017 | CP-016 |
 | RN-024 | RF-044 | CP-044 |
 | RN-025 | RF-013 | CP-013b |
 | RN-026 | RF-041 | CP-041b |
 | RN-027 | RF-016, RF-017, RF-019, RF-031, RF-047 | CP-016b, CP-016c, CP-016d, CP-017b, CP-047 |
+| RN-028 | RF-030, RF-038 | CP-038d |
+| RN-029 | RF-038, RF-048 | CP-038e |
+| RN-030 | RF-017, RF-038 | CP-038f |
 
 ## Cobertura
 
@@ -140,3 +143,6 @@
 | 0.13 | 2026-11-06 | Francisco Garcia Martinez | Nuevos RF-047 a RF-050 con sus HU y CP; RN-027 con RF-047 y CP-047 |
 | 0.14 | 2026-11-06 | Francisco Garcia Martinez | CP-016d en RF-016, RF-017 y RN-027 |
 | 0.15 | 2026-11-06 | Francisco Garcia Martinez | CP-038c en RF-038 y RN-021 |
+| 0.16 | 2026-11-07 | Francisco Garcia Martinez | RN-021 con RF-017; nueva RN-028; CP-017c y CP-038d |
+| 0.17 | 2026-11-07 | Francisco Garcia Martinez | Nueva RN-029; CP-038e |
+| 0.18 | 2026-11-07 | Francisco Garcia Martinez | Nueva RN-030; CP-038f |
